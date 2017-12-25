@@ -40,7 +40,7 @@ org.jdesktop.swingx.demos.monthview.MonthViewDemo
 org.jdesktop.swingx.demos.monthviewext.MonthViewExtDemo
 #org.jdesktop.swingx.demos.xbutton.XButtonDemo
 org.jdesktop.swingx.demos.xlabel.XLabelDemo
-org.jdesktop.swingx.demos.imagepanel.ImagePanelDemo
+#org.jdesktop.swingx.demos.imagepanel.ImagePanelDemo
 org.jdesktop.swingx.demos.imageview.ImageViewDemo
 #org.jdesktop.swingx.demos.multithumbslider.MultiThumbSliderDemo
 #org.jdesktop.swingx.demos.radiogroup.RadioGroupDemo

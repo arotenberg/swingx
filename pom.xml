@@ -165,6 +165,6 @@
     <module>swingx-beaninfo</module>
     <!-- module>swingx-maps</module -->
     <!-- module>swingx-experimental</module -->
-    <!-- module>swingx-demos</module -->
+    <module>swingx-demos</module>
   </modules>
 </project>
