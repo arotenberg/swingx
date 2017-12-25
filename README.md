@@ -1,9 +1,10 @@
 # SwingX, salvaged
 
 This repository contains a copy of the source code for the SwingX library. The code was downloaded
-from the SwingX development SVN repository on java.net before Oracle acquired Sun and took that site
-offline permanently. The code is therefore more recent than any released version of SwingX. It might
-have had version number 1.5.6 had it ever been released.
+from the SwingX development SVN repository on [java.net](https://en.wikipedia.org/wiki/Java.net)
+before Oracle acquired Sun and took that site offline permanently. The code is therefore more recent
+than any released version of SwingX. It might have had version number 1.6.6 had it ever been
+released.
 
 The code was downloaded from https://svn.java.net/svn/swingx~svn/trunk. The downloaded commit was
 SVN revision 4316 by user "kleopatra", made at 11:59:46 AM, Wednesday, October 09, 2013.
@@ -18,6 +19,11 @@ The build-swingx-demos branch also modifies the pom files to build the swingx-de
 is disabled by default. swingx-demos contains SwingXSet, which is a useful demo program that shows
 off various nonstandard Swing components added by SwingX, similar to what the SwingSet program does
 for the base set of Swing components.
+
+**If you are just looking for a binary of SwingXSet so that you can preview the various SwingX
+components, you can download an executable JAR file from
+[the releases page](https://github.com/arotenberg/swingx/releases).**
+
 
 ## The original SwingX readme
 
