@@ -5,6 +5,9 @@ from the SwingX development SVN repository on java.net before Oracle acquired Su
 offline permanently. The code is therefore more recent than any released version of SwingX. It might
 have had version number 1.5.6 had it ever been released.
 
+The code was downloaded from https://svn.java.net/svn/swingx~svn/trunk. The downloaded commit was
+SVN revision 4316 by user "kleopatra", made at 11:59:46 AM, Wednesday, October 09, 2013.
+
 ## Eclipse import and the SwingXSet demo program
 
 The original SwingX source code included Maven pom.xml files, but did not include any development
