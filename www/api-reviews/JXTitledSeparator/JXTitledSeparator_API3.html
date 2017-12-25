@@ -1,0 +1,242 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>JXTitledSeparator_API.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.java-keywords {color: #000099; font-family: Monospaced; font-weight: bold}
+.java-layer-method {font-family: Monospaced; font-weight: bold}
+.java-block-comment {color: #737373}
+.java-annotation {color: #006f00}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/Users/richardallenbair/Documents/Source/Projects/swingx-work/jxtitledseparator/swingx/src/java/org/jdesktop/swingx/JXTitledSeparator_API.java</td></tr></table>
+<pre>
+<span class="java-block-comment">/*</span>
+<span class="java-block-comment"> * $Id: JXTitledSeparator_API3.html 1411 2006-09-20 22:15:12Z rbair $</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * Copyright 2004 Sun Microsystems, Inc., 4150 Network Circle,</span>
+<span class="java-block-comment"> * Santa Clara, California 95054, U.S.A. All rights reserved.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * This library is free software; you can redistribute it and/or</span>
+<span class="java-block-comment"> * modify it under the terms of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License as published by the Free Software Foundation; either</span>
+<span class="java-block-comment"> * version 2.1 of the License, or (at your option) any later version.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * This library is distributed in the hope that it will be useful,</span>
+<span class="java-block-comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="java-block-comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span>
+<span class="java-block-comment"> * Lesser General Public License for more details.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * You should have received a copy of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License along with this library; if not, write to the Free Software</span>
+<span class="java-block-comment"> * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</span>
+<span class="java-block-comment"> */</span>
+
+<span class="java-keywords">package</span> org.jdesktop.swingx;
+
+<span class="java-keywords">import</span> java.awt.Color;
+<span class="java-keywords">import</span> java.awt.Dimension;
+<span class="java-keywords">import</span> java.awt.Font;
+<span class="java-keywords">import</span> java.awt.GridBagConstraints;
+<span class="java-keywords">import</span> java.awt.GridBagLayout;
+<span class="java-keywords">import</span> java.awt.Insets;
+<span class="java-keywords">import</span> javax.swing.Box;
+<span class="java-keywords">import</span> javax.swing.Icon;
+<span class="java-keywords">import</span> javax.swing.JLabel;
+<span class="java-keywords">import</span> javax.swing.JSeparator;
+<span class="java-keywords">import</span> javax.swing.SwingConstants;
+<span class="java-keywords">import</span> javax.swing.UIManager;
+
+<span class="java-block-comment">/**</span>
+<span class="java-block-comment"> * &lt;p&gt;A simple horizontal separator that contains a title.&lt;br/&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;JXTitledSeparator allows you to specify the title via the {@link #setTitle} method.</span>
+<span class="java-block-comment"> * The title alignment may be specified by using the {@link #setHorizontalAlignment}</span>
+<span class="java-block-comment"> * method, and accepts all the same arguments as the {@link javax.swing.JLabel#setHorizontalAlignment}</span>
+<span class="java-block-comment"> * method.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;In addition, you may specify an Icon to use with this separator. The icon</span>
+<span class="java-block-comment"> * will appear &quot;leading&quot; the title (on the left in left-to-right languages,</span>
+<span class="java-block-comment"> * on the right in right-to-left languages). To change the position of the</span>
+<span class="java-block-comment"> * title with respect to the icon, call {@link #setHorizontalTextPosition}.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;The default font and color of the title comes from the &lt;code&gt;LookAndFeel&lt;/code&gt;, mimicking</span>
+<span class="java-block-comment"> * the font and color of the {@link javax.swing.TitledBorder}&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;Here are a few example code snippets:</span>
+<span class="java-block-comment"> * &lt;pre&gt;&lt;code&gt;</span>
+<span class="java-block-comment"> *  //create a plain separator</span>
+<span class="java-block-comment"> *  JXTitledSeparator sep = new JXTitledSeparator();</span>
+<span class="java-block-comment"> *  sep.setText(&quot;Customer Info&quot;);</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> *  //create a separator with an icon</span>
+<span class="java-block-comment"> *  sep = new JXTitledSeparator();</span>
+<span class="java-block-comment"> *  sep.setText(&quot;Customer Info&quot;);</span>
+<span class="java-block-comment"> *  sep.setIcon(new ImageIcon(&quot;myimage.png&quot;));</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> *  //create a separator with an icon to the right of the title,</span>
+<span class="java-block-comment"> *  //center justified</span>
+<span class="java-block-comment"> *  sep = new JXTitledSeparator();</span>
+<span class="java-block-comment"> *  sep.setText(&quot;Customer Info&quot;);</span>
+<span class="java-block-comment"> *  sep.setIcon(new ImageIcon(&quot;myimage.png&quot;));</span>
+<span class="java-block-comment"> *  sep.setHorizontalAlignment(SwingConstants.CENTER</span><span class="java-block-comment">)</span><span class="java-block-comment">;</span>
+<span class="java-block-comment"> *  sep.setHorizontalTextPosition(SwingConstants.TRAILING);</span>
+<span class="java-block-comment"> * &lt;/code&gt;&lt;/pre&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * @author rbair</span>
+<span class="java-block-comment"> */</span>
+<span class="java-keywords">public</span> <span class="java-keywords">class</span> JXTitledSeparator <span class="java-keywords">extends</span> JXPanel {
+    <span class="java-block-comment">/** </span>
+<span class="java-block-comment">     * Creates a new instance of &lt;code&gt;JXTitledSeparator&lt;/code&gt;. The default title is simply</span>
+<span class="java-block-comment">     * an empty string. Default justification is &lt;code&gt;LEADING&lt;/code&gt;, and the default</span>
+<span class="java-block-comment">     * horizontal text position is &lt;code&gt;TRAILING&lt;/code&gt; (title follows icon)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">JXTitledSeparator</span>();
+    
+    <span class="java-block-comment">/** </span>
+<span class="java-block-comment">     * Creates a new instance of &lt;code&gt;JXTitledSeparator&lt;/code&gt; with the specified</span>
+<span class="java-block-comment">     * title. Default horizontal alignment is &lt;code&gt;LEADING&lt;/code&gt;, and the default</span>
+<span class="java-block-comment">     * horizontal text position is &lt;code&gt;TRAILING&lt;/code&gt; (title follows icon)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">JXTitledSeparator</span>(String title);
+    
+    <span class="java-block-comment">/** </span>
+<span class="java-block-comment">     * Creates a new instance of &lt;code&gt;JXTitledSeparator&lt;/code&gt; with the specified</span>
+<span class="java-block-comment">     * title, icon, and horizontal alignment. The default</span>
+<span class="java-block-comment">     * horizontal text position is &lt;code&gt;TRAILING&lt;/code&gt; (title follows icon)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">JXTitledSeparator</span>(String title, Icon icon, <span class="java-keywords">int</span> horizontalAlignment);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Sets the title for the separator. This may be simple html, or plain</span>
+<span class="java-block-comment">     * text.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param title the new title. Any string input is acceptable</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setTitle</span>(String title);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Gets the title.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @return the title being used for this &lt;code&gt;JXTitledSeparator&lt;/code&gt;. </span>
+<span class="java-block-comment">     *         This will be the raw title text, and so may include html tags etc </span>
+<span class="java-block-comment">     *         if they were so specified in #setTitle.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> String <span class="java-layer-method">getTitle</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Sets the alignment of the title along the X axis. If leading, then</span>
+<span class="java-block-comment">     * the title will lead the separator (in left-to-right languages,</span>
+<span class="java-block-comment">     * the title will be to the left and the separator to the right). If centered,</span>
+<span class="java-block-comment">     * then a separator will be to the left, followed by the title (centered),</span>
+<span class="java-block-comment">     * followed by a separator to the right. Trailing will have the title</span>
+<span class="java-block-comment">     * on the right with a separator to its left, in left-to-right languages.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt;LEFT and RIGHT always position the text left or right of the separator,</span>
+<span class="java-block-comment">     * respectively, regardless of the language orientation.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param alignment  One of the following constants</span>
+<span class="java-block-comment">     *           defined in &lt;code&gt;SwingConstants&lt;/code&gt;:</span>
+<span class="java-block-comment">     *           &lt;code&gt;LEFT&lt;/code&gt;,</span>
+<span class="java-block-comment">     *           &lt;code&gt;CENTER&lt;/code&gt;,</span>
+<span class="java-block-comment">     *           &lt;code&gt;RIGHT&lt;/code&gt;,</span>
+<span class="java-block-comment">     *           &lt;code&gt;LEADING&lt;/code&gt; (the default) or</span>
+<span class="java-block-comment">     *           &lt;code&gt;TRAILING&lt;/code&gt;.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @throws IllegalArgumentException if the alignment does not match one of</span>
+<span class="java-block-comment">     *         the accepted inputs.</span>
+<span class="java-block-comment">     * @see SwingConstants</span>
+<span class="java-block-comment">     * @see #getHorizontalAlignment</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setHorizontalAlignment</span>(<span class="java-keywords">int</span> alignment);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Returns the alignment of the title contents along the X axis.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return   The value of the horizontalAlignment property, one of the </span>
+<span class="java-block-comment">     *           following constants defined in &lt;code&gt;SwingConstants&lt;/code&gt;:</span>
+<span class="java-block-comment">     *           &lt;code&gt;LEFT&lt;/code&gt;,</span>
+<span class="java-block-comment">     *           &lt;code&gt;CENTER&lt;/code&gt;, </span>
+<span class="java-block-comment">     *           &lt;code&gt;RIGHT&lt;/code&gt;,</span>
+<span class="java-block-comment">     *           &lt;code&gt;LEADING&lt;/code&gt; or</span>
+<span class="java-block-comment">     *           &lt;code&gt;TRAILING&lt;/code&gt;.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @see #setHorizontalAlignment</span>
+<span class="java-block-comment">     * @see SwingConstants</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">int</span> <span class="java-layer-method">getHorizontalAlignment</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Sets the horizontal position of the title&apos;s text,</span>
+<span class="java-block-comment">     * relative to the icon.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param position  One of the following constants</span>
+<span class="java-block-comment">     *           defined in &lt;code&gt;SwingConstants&lt;/code&gt;:</span>
+<span class="java-block-comment">     *           &lt;code&gt;LEFT&lt;/code&gt;,</span>
+<span class="java-block-comment">     *           &lt;code&gt;CENTER&lt;/code&gt;,</span>
+<span class="java-block-comment">     *           &lt;code&gt;RIGHT&lt;/code&gt;,</span>
+<span class="java-block-comment">     *           &lt;code&gt;LEADING&lt;/code&gt;, or</span>
+<span class="java-block-comment">     *           &lt;code&gt;TRAILING&lt;/code&gt; (the default).</span>
+<span class="java-block-comment">     * @throws IllegalArgumentException if the position does not match one of</span>
+<span class="java-block-comment">     *         the accepted inputs.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setHorizontalTextPosition</span>(<span class="java-keywords">int</span> position);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Returns the horizontal position of the title&apos;s text,</span>
+<span class="java-block-comment">     * relative to the icon.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return   One of the following constants</span>
+<span class="java-block-comment">     *           defined in &lt;code&gt;SwingConstants&lt;/code&gt;:</span>
+<span class="java-block-comment">     *           &lt;code&gt;LEFT&lt;/code&gt;,</span>
+<span class="java-block-comment">     *           &lt;code&gt;CENTER&lt;/code&gt;, </span>
+<span class="java-block-comment">     *           &lt;code&gt;RIGHT&lt;/code&gt;,</span>
+<span class="java-block-comment">     *           &lt;code&gt;LEADING&lt;/code&gt; or</span>
+<span class="java-block-comment">     *           &lt;code&gt;TRAILING&lt;/code&gt;.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @see SwingConstants</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">int</span> <span class="java-layer-method">getHorizontalTextPosition</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Defines the icon this component will display.  If</span>
+<span class="java-block-comment">     * the value of icon is null, nothing is displayed.</span>
+<span class="java-block-comment">     * &lt;p&gt;</span>
+<span class="java-block-comment">     * The default value of this property is null.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @see #setHorizontalTextPosition</span>
+<span class="java-block-comment">     * @see #getIcon</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setIcon</span>(Icon icon);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Returns the graphic image (glyph, icon) that the </span>
+<span class="java-block-comment">     * &lt;code&gt;JXTitledSeparator&lt;/code&gt; displays.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return an Icon</span>
+<span class="java-block-comment">     * @see #setIcon</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Icon <span class="java-layer-method">getIcon</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * @inheritDoc</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-annotation">@</span>Override
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setForeground</span>(Color foreground);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * @inheritDoc</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-annotation">@</span>Override
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setFont</span>(Font font);
+}
+
+
+</pre></body>
+</html>

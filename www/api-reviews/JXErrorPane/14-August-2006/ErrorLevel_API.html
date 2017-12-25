@@ -1,0 +1,72 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>ErrorLevel_API.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.java-numeric-literals {color: #780000}
+.java-keywords {color: #000099; font-family: Monospaced; font-weight: bold}
+.java-layer-method {font-family: Monospaced; font-weight: bold}
+.java-block-comment {color: #737373}
+.java-string-literal {color: #99006b}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/Users/richardallenbair/Documents/Source/Projects/nonsense/swingx/src/beaninfo/ErrorLevel_API.java</td></tr></table>
+<pre>
+<span class="java-block-comment">/*</span>
+<span class="java-block-comment"> * $Id: ErrorLevel_API.html 1362 2006-08-24 20:06:25Z rbair $</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * Copyright 2004 Sun Microsystems, Inc., 4150 Network Circle,</span>
+<span class="java-block-comment"> * Santa Clara, California 95054, U.S.A. All rights reserved.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * This library is free software; you can redistribute it and/or</span>
+<span class="java-block-comment"> * modify it under the terms of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License as published by the Free Software Foundation; either</span>
+<span class="java-block-comment"> * version 2.1 of the License, or (at your option) any later version.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * This library is distributed in the hope that it will be useful,</span>
+<span class="java-block-comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="java-block-comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span>
+<span class="java-block-comment"> * Lesser General Public License for more details.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * You should have received a copy of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License along with this library; if not, write to the Free Software</span>
+<span class="java-block-comment"> * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</span>
+<span class="java-block-comment"> */</span>
+
+<span class="java-keywords">package</span> org.jdesktop.swingx.error;
+
+<span class="java-keywords">import</span> java.util.logging.Level;
+
+<span class="java-block-comment">/**</span>
+<span class="java-block-comment"> * &lt;p&gt;Extends {@link java.util.logging.Level} adding the &lt;code&gt;FATAL&lt;/code&gt; error level.</span>
+<span class="java-block-comment"> * Fatal errors are those unrecoverable errors that must result in the termination</span>
+<span class="java-block-comment"> * of the application.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * @author rbair</span>
+<span class="java-block-comment"> */</span>
+<span class="java-keywords">public</span> <span class="java-keywords">class</span> ErrorLevel <span class="java-keywords">extends</span> Level {
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * FATAL is a message level indicating a catastrophic failure that should</span>
+<span class="java-block-comment">     * result in the immediate termination of the application.</span>
+<span class="java-block-comment">     * &lt;p&gt;</span>
+<span class="java-block-comment">     * In general FATAL messages should describe events that are</span>
+<span class="java-block-comment">     * of considerable critical and which will prevent</span>
+<span class="java-block-comment">     * program execution.   They should be reasonably intelligible</span>
+<span class="java-block-comment">     * to end users and to system administrators.</span>
+<span class="java-block-comment">     * This level is initialized to &lt;CODE&gt;1100&lt;/CODE&gt;.</span>
+<span class="java-block-comment">     */</span>    
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">final</span> ErrorLevel FATAL = <span class="java-keywords">new</span> <span class="java-layer-method">ErrorLevel</span>(<span class="java-string-literal">&quot;FATAL&quot;</span>, <span class="java-numeric-literals">1100</span>);
+    
+    <span class="java-block-comment">/** Creates a new instance of ErrorLevel */</span>
+    <span class="java-keywords">protected</span> <span class="java-layer-method">ErrorLevel</span>(String name, <span class="java-keywords">int</span> value);
+}
+
+
+</pre></body>
+</html>

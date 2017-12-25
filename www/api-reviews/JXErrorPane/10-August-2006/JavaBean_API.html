@@ -1,0 +1,405 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>JavaBean_API.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.java-keywords {color: #000099; font-family: Monospaced; font-weight: bold}
+.java-layer-method {font-family: Monospaced; font-weight: bold}
+.java-block-comment {color: #737373}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/Users/richardallenbair/Documents/Source/Projects/nonsense/swingx/src/beaninfo/JavaBean_API.java</td></tr></table>
+<pre>
+<span class="java-block-comment">/*</span>
+<span class="java-block-comment"> * $Id: JavaBean_API.html 1316 2006-08-10 22:46:55Z rbair $</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * Copyright 2004 Sun Microsystems, Inc., 4150 Network Circle,</span>
+<span class="java-block-comment"> * Santa Clara, California 95054, U.S.A. All rights reserved.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * This library is free software; you can redistribute it and/or</span>
+<span class="java-block-comment"> * modify it under the terms of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License as published by the Free Software Foundation; either</span>
+<span class="java-block-comment"> * version 2.1 of the License, or (at your option) any later version.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * This library is distributed in the hope that it will be useful,</span>
+<span class="java-block-comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="java-block-comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span>
+<span class="java-block-comment"> * Lesser General Public License for more details.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * You should have received a copy of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License along with this library; if not, write to the Free Software</span>
+<span class="java-block-comment"> * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</span>
+<span class="java-block-comment"> */</span>
+
+<span class="java-keywords">package</span> org.jdesktop.swingx;
+
+<span class="java-keywords">import</span> java.beans.PropertyChangeEvent;
+<span class="java-keywords">import</span> java.beans.PropertyChangeListener;
+<span class="java-keywords">import</span> java.beans.PropertyChangeSupport;
+
+<span class="java-block-comment">/**</span>
+<span class="java-block-comment"> * &lt;p&gt;A convenience class from which to extend all non-visual JavaBeans. It</span>
+<span class="java-block-comment"> * manages the PropertyChange notification system, making it relatively trivial</span>
+<span class="java-block-comment"> * to add support for property change events in getters/setters.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;Here is a simple example bean that contains one property, foo, and the</span>
+<span class="java-block-comment"> * proper pattern for implementing property change notification:</span>
+<span class="java-block-comment"> * &lt;pre&gt;&lt;code&gt;</span>
+<span class="java-block-comment"> *  public class ABean extends JavaBean {</span>
+<span class="java-block-comment"> *    private String foo;</span>
+<span class="java-block-comment"> *    </span>
+<span class="java-block-comment"> *    public void setFoo(String newFoo) {</span>
+<span class="java-block-comment"> *      String old = getFoo();</span>
+<span class="java-block-comment"> *      this.foo = newFoo;</span>
+<span class="java-block-comment"> *      firePropertyChange(&quot;foo&quot;, old, getFoo());</span>
+<span class="java-block-comment"> *    }</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> *    public String getFoo() {</span>
+<span class="java-block-comment"> *      return foo;</span>
+<span class="java-block-comment"> *    }</span>
+<span class="java-block-comment"> *  }</span>
+<span class="java-block-comment"> * &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;You will notice that &quot;getFoo()&quot; is used in the setFoo method rather than</span>
+<span class="java-block-comment"> * accessing &quot;foo&quot; directly for the gets. This is done intentionally so that if</span>
+<span class="java-block-comment"> * a subclass overrides getFoo() to return, for instance, a constant value the</span>
+<span class="java-block-comment"> * property change notification system will continue to work properly.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;The firePropertyChange method takes into account the old value and the new</span>
+<span class="java-block-comment"> * value. Only if the two differ will it fire a property change event. So you can</span>
+<span class="java-block-comment"> * be assured from the above code fragment that a property change event will only</span>
+<span class="java-block-comment"> * occur if old is indeed different from getFoo()&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;&lt;code&gt;JavaBean&lt;/code&gt; also supports {@link VetoablePropertyChange} events. </span>
+<span class="java-block-comment"> * These events are similar to &lt;code&gt;PropertyChange&lt;/code&gt; events, except a special</span>
+<span class="java-block-comment"> * exception can be used to veto changing the property. For example, perhaps the</span>
+<span class="java-block-comment"> * property is changing from &quot;fred&quot; to &quot;red&quot;, but a listener deems that &quot;red&quot; is </span>
+<span class="java-block-comment"> * unexceptable. In this case, the listener can fire a veto exception and the property must</span>
+<span class="java-block-comment"> * remain &quot;fred&quot;. For example:</span>
+<span class="java-block-comment"> * &lt;pre&gt;&lt;code&gt;</span>
+<span class="java-block-comment"> *  public class ABean extends JavaBean {</span>
+<span class="java-block-comment"> *    private String foo;</span>
+<span class="java-block-comment"> *    </span>
+<span class="java-block-comment"> *    public void setFoo(String newFoo) throws PropertyVetoException {</span>
+<span class="java-block-comment"> *      String old = getFoo();</span>
+<span class="java-block-comment"> *      this.foo = newFoo;</span>
+<span class="java-block-comment"> *      fireVetoableChange(&quot;foo&quot;, old, getFoo());</span>
+<span class="java-block-comment"> *    }</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> *    public String getFoo() {</span>
+<span class="java-block-comment"> *      return foo;</span>
+<span class="java-block-comment"> *    }</span>
+<span class="java-block-comment"> *  }</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> *  public class Tester {</span>
+<span class="java-block-comment"> *    public static void main(String... args) {</span>
+<span class="java-block-comment"> *      try {</span>
+<span class="java-block-comment"> *        ABean a = new ABean();</span>
+<span class="java-block-comment"> *        a.setFoo(&quot;fred&quot;);</span>
+<span class="java-block-comment"> *        a.addVetoableChangeListener(new VetoableChangeListener() {</span>
+<span class="java-block-comment"> *          public void vetoableChange(PropertyChangeEvent evt) throws PropertyVetoException {</span>
+<span class="java-block-comment"> *            if (&quot;red&quot;.equals(evt.getNewValue()) {</span>
+<span class="java-block-comment"> *              throw new PropertyVetoException(&quot;Cannot be red!&quot;, evt);</span>
+<span class="java-block-comment"> *            }</span>
+<span class="java-block-comment"> *          }</span>
+<span class="java-block-comment"> *        }</span>
+<span class="java-block-comment"> *        a.setFoo(&quot;red&quot;);</span>
+<span class="java-block-comment"> *      } catch (Exception e) {</span>
+<span class="java-block-comment"> *        e.printStackTrace(); // this will be executed</span>
+<span class="java-block-comment"> *      }</span>
+<span class="java-block-comment"> *    }</span>
+<span class="java-block-comment"> *  }</span>
+<span class="java-block-comment"> * &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * @author rbair</span>
+<span class="java-block-comment"> */</span>
+<span class="java-keywords">public</span> <span class="java-keywords">class</span> JavaBean_API {
+    <span class="java-block-comment">/** Creates a new instance of JavaBean */</span>
+    <span class="java-keywords">protected</span> <span class="java-layer-method">JavaBean</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Add a PropertyChangeListener to the listener list.</span>
+<span class="java-block-comment">     * The listener is registered for all properties.</span>
+<span class="java-block-comment">     * The same listener object may be added more than once, and will be called</span>
+<span class="java-block-comment">     * as many times as it is added.</span>
+<span class="java-block-comment">     * If &lt;code&gt;listener&lt;/code&gt; is null, no exception is thrown and no action</span>
+<span class="java-block-comment">     * is taken.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param listener  The PropertyChangeListener to be added</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">addPropertyChangeListener</span>(PropertyChangeListener listener);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Remove a PropertyChangeListener from the listener list.</span>
+<span class="java-block-comment">     * This removes a PropertyChangeListener that was registered</span>
+<span class="java-block-comment">     * for all properties.</span>
+<span class="java-block-comment">     * If &lt;code&gt;listener&lt;/code&gt; was added more than once to the same event</span>
+<span class="java-block-comment">     * source, it will be notified one less time after being removed.</span>
+<span class="java-block-comment">     * If &lt;code&gt;listener&lt;/code&gt; is null, or was never added, no exception is</span>
+<span class="java-block-comment">     * thrown and no action is taken.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param listener  The PropertyChangeListener to be removed</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">removePropertyChangeListener</span>(PropertyChangeListener listener);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Returns an array of all the listeners that were added to the</span>
+<span class="java-block-comment">     * PropertyChangeSupport object with addPropertyChangeListener().</span>
+<span class="java-block-comment">     * &lt;p&gt;</span>
+<span class="java-block-comment">     * If some listeners have been added with a named property, then</span>
+<span class="java-block-comment">     * the returned array will be a mixture of PropertyChangeListeners</span>
+<span class="java-block-comment">     * and &lt;code&gt;PropertyChangeListenerProxy&lt;/code&gt;s. If the calling</span>
+<span class="java-block-comment">     * method is interested in distinguishing the listeners then it must</span>
+<span class="java-block-comment">     * test each element to see if it&apos;s a</span>
+<span class="java-block-comment">     * &lt;code&gt;PropertyChangeListenerProxy&lt;/code&gt;, perform the cast, and examine</span>
+<span class="java-block-comment">     * the parameter.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;pre&gt;</span>
+<span class="java-block-comment">     * PropertyChangeListener[] listeners = bean.getPropertyChangeListeners();</span>
+<span class="java-block-comment">     * for (int i = 0; i &lt; listeners.length; i++) {</span>
+<span class="java-block-comment">     *</span>  <span class="java-block-comment"> if (listeners[i] instanceof PropertyChangeListenerProxy) {</span>
+<span class="java-block-comment">     *     PropertyChangeListenerProxy proxy = </span>
+<span class="java-block-comment">     *                    (PropertyChangeListenerProxy)listeners[i];</span>
+<span class="java-block-comment">     *     if (proxy.getPropertyName().equals(&quot;foo&quot;)) {</span>
+<span class="java-block-comment">     *       // proxy is a PropertyChangeListener which was associated</span>
+<span class="java-block-comment">     *       // with the property named &quot;foo&quot;</span>
+<span class="java-block-comment">     *     }</span>
+<span class="java-block-comment">     *   }</span>
+<span class="java-block-comment">     * }</span>
+<span class="java-block-comment">     *&lt;/pre&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @see java.beans.PropertyChangeListenerProxy</span>
+<span class="java-block-comment">     * @return all of the &lt;code&gt;PropertyChangeListeners&lt;/code&gt; added or an </span>
+<span class="java-block-comment">     *         empty array if no listeners have been added</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> PropertyChangeListener[] <span class="java-layer-method">getPropertyChangeListeners</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Add a PropertyChangeListener for a specific property.  The listener</span>
+<span class="java-block-comment">     * will be invoked only when a call on firePropertyChange names that</span>
+<span class="java-block-comment">     * specific property.</span>
+<span class="java-block-comment">     * The same listener object may be added more than once.  For each</span>
+<span class="java-block-comment">     * property,  the listener will be invoked the number of times it was added</span>
+<span class="java-block-comment">     * for that property.</span>
+<span class="java-block-comment">     * If &lt;code&gt;propertyName&lt;/code&gt; or &lt;code&gt;listener&lt;/code&gt; is null, no</span>
+<span class="java-block-comment">     * exception is thrown and no action is taken.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param propertyName  The name of the property to listen on.</span>
+<span class="java-block-comment">     * @param listener  The PropertyChangeListener to be added</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">addPropertyChangeListener</span>(String propertyName, PropertyChangeListener listener);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Remove a PropertyChangeListener for a specific property.</span>
+<span class="java-block-comment">     * If &lt;code&gt;listener&lt;/code&gt; was added more than once to the same event</span>
+<span class="java-block-comment">     * source for the specified property, it will be notified one less time</span>
+<span class="java-block-comment">     * after being removed.</span>
+<span class="java-block-comment">     * If &lt;code&gt;propertyName&lt;/code&gt; is null,  no exception is thrown and no</span>
+<span class="java-block-comment">     * action is taken.</span>
+<span class="java-block-comment">     * If &lt;code&gt;listener&lt;/code&gt; is null, or was never added for the specified</span>
+<span class="java-block-comment">     * property, no exception is thrown and no action is taken.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param propertyName  The name of the property that was listened on.</span>
+<span class="java-block-comment">     * @param listener  The PropertyChangeListener to be removed</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">removePropertyChangeListener</span>(String propertyName, PropertyChangeListener listener);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Returns an array of all the listeners which have been associated </span>
+<span class="java-block-comment">     * with the named property.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param propertyName  The name of the property being listened to</span>
+<span class="java-block-comment">     * @return all of the &lt;code&gt;PropertyChangeListeners&lt;/code&gt; associated with</span>
+<span class="java-block-comment">     *         the named property.  If no such listeners have been added,</span>
+<span class="java-block-comment">     *         or if &lt;code&gt;propertyName&lt;/code&gt; is null, an empty array is</span>
+<span class="java-block-comment">     *         returned.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> PropertyChangeListener[] <span class="java-layer-method">getPropertyChangeListeners</span>(String propertyName);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Report a bound property update to any registered listeners.</span>
+<span class="java-block-comment">     * No event is fired if old and new are equal and non-null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;</span>
+<span class="java-block-comment">     * This is merely a convenience wrapper around the more general</span>
+<span class="java-block-comment">     * firePropertyChange method that takes {@code</span>
+<span class="java-block-comment">     * PropertyChangeEvent} value.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param propertyName  The programmatic name of the property</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">that was changed.</span>
+<span class="java-block-comment">     * @param oldValue  The old value of the property.</span>
+<span class="java-block-comment">     * @param newValue  The new value of the property.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">protected</span> <span class="java-keywords">void</span> <span class="java-layer-method">firePropertyChange</span>(String propertyName, Object oldValue, Object newValue);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Fire an existing PropertyChangeEvent to any registered listeners.</span>
+<span class="java-block-comment">     * No event is fired if the given event&apos;s old and new values are</span>
+<span class="java-block-comment">     * equal and non-null.</span>
+<span class="java-block-comment">     * @param evt  The PropertyChangeEvent object.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">protected</span> <span class="java-keywords">void</span> <span class="java-layer-method">firePropertyChange</span>(PropertyChangeEvent evt);
+
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Report a bound indexed property update to any registered</span>
+<span class="java-block-comment">     * listeners. </span>
+<span class="java-block-comment">     * &lt;p&gt;</span>
+<span class="java-block-comment">     * No event is fired if old and new values are equal</span>
+<span class="java-block-comment">     * and non-null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;</span>
+<span class="java-block-comment">     * This is merely a convenience wrapper around the more general</span>
+<span class="java-block-comment">     * firePropertyChange method that takes {@code PropertyChangeEvent} value.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param propertyName The programmatic name of the property that</span>
+<span class="java-block-comment">     *                     was changed.</span>
+<span class="java-block-comment">     * @param index        index of the property element that was changed.</span>
+<span class="java-block-comment">     * @param oldValue     The old value of the property.</span>
+<span class="java-block-comment">     * @param newValue     The new value of the property.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">protected</span> <span class="java-keywords">void</span> <span class="java-layer-method">fireIndexedPropertyChange</span>(String propertyName, <span class="java-keywords">int</span> index,
+                                          Object oldValue, Object newValue);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Check if there are any listeners for a specific property, including</span>
+<span class="java-block-comment">     * those registered on all properties.  If &lt;code&gt;propertyName&lt;/code&gt;</span>
+<span class="java-block-comment">     * is null, only check for listeners registered on all properties.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param propertyName  the property name.</span>
+<span class="java-block-comment">     * @return true if there are one or more listeners for the given property</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">boolean</span> <span class="java-layer-method">hasPropertyChangeListeners</span>(String propertyName);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Check if there are any listeners for a specific property, including</span>
+<span class="java-block-comment">     * those registered on all properties.  If &lt;code&gt;propertyName&lt;/code&gt;</span>
+<span class="java-block-comment">     * is null, only check for listeners registered on all properties.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param propertyName  the property name.</span>
+<span class="java-block-comment">     * @return true if there are one or more listeners for the given property</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">boolean</span> <span class="java-layer-method">hasVetoableChangeListeners</span>(String propertyName);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Add a VetoableListener to the listener list.</span>
+<span class="java-block-comment">     * The listener is registered for all properties.</span>
+<span class="java-block-comment">     * The same listener object may be added more than once, and will be called</span>
+<span class="java-block-comment">     * as many times as it is added.</span>
+<span class="java-block-comment">     * If &lt;code&gt;listener&lt;/code&gt; is null, no exception is thrown and no action</span>
+<span class="java-block-comment">     * is taken.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param listener  The VetoableChangeListener to be added</span>
+<span class="java-block-comment">     */</span>
+
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">addVetoableChangeListener</span>(VetoableChangeListener listener);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Remove a VetoableChangeListener from the listener list.</span>
+<span class="java-block-comment">     * This removes a VetoableChangeListener that was registered</span>
+<span class="java-block-comment">     * for all properties.</span>
+<span class="java-block-comment">     * If &lt;code&gt;listener&lt;/code&gt; was added more than once to the same event</span>
+<span class="java-block-comment">     * source, it will be notified one less time after being removed.</span>
+<span class="java-block-comment">     * If &lt;code&gt;listener&lt;/code&gt; is null, or was never added, no exception is</span>
+<span class="java-block-comment">     * thrown and no action is taken.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param listener  The VetoableChangeListener to be removed</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">removeVetoableChangeListener</span>(VetoableChangeListener listener);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Returns the list of VetoableChangeListeners. If named vetoable change listeners</span>
+<span class="java-block-comment">     * were added, then VetoableChangeListenerProxy wrappers will returned</span>
+<span class="java-block-comment">     * &lt;p&gt;</span>
+<span class="java-block-comment">     * @return List of VetoableChangeListeners and VetoableChangeListenerProxys</span>
+<span class="java-block-comment">     *         if named property change listeners were added.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> VetoableChangeListener[] <span class="java-layer-method">getVetoableChangeListeners</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Add a VetoableChangeListener for a specific property.  The listener</span>
+<span class="java-block-comment">     * will be invoked only when a call on fireVetoableChange names that</span>
+<span class="java-block-comment">     * specific property.</span>
+<span class="java-block-comment">     * The same listener object may be added more than once.  For each</span>
+<span class="java-block-comment">     * property,  the listener will be invoked the number of times it was added</span>
+<span class="java-block-comment">     * for that property.</span>
+<span class="java-block-comment">     * If &lt;code&gt;propertyName&lt;/code&gt; or &lt;code&gt;listener&lt;/code&gt; is null, no</span>
+<span class="java-block-comment">     * exception is thrown and no action is taken.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param propertyName  The name of the property to listen on.</span>
+<span class="java-block-comment">     * @param listener  The VetoableChangeListener to be added</span>
+<span class="java-block-comment">     */</span>
+
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">addVetoableChangeListener</span>(String propertyName,
+                VetoableChangeListener listener);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Remove a VetoableChangeListener for a specific property.</span>
+<span class="java-block-comment">     * If &lt;code&gt;listener&lt;/code&gt; was added more than once to the same event</span>
+<span class="java-block-comment">     * source for the specified property, it will be notified one less time</span>
+<span class="java-block-comment">     * after being removed.</span>
+<span class="java-block-comment">     * If &lt;code&gt;propertyName&lt;/code&gt; is null, no exception is thrown and no</span>
+<span class="java-block-comment">     * action is taken.</span>
+<span class="java-block-comment">     * If &lt;code&gt;listener&lt;/code&gt; is null, or was never added for the specified</span>
+<span class="java-block-comment">     * property, no exception is thrown and no action is taken.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param propertyName  The name of the property that was listened on.</span>
+<span class="java-block-comment">     * @param listener  The VetoableChangeListener to be removed</span>
+<span class="java-block-comment">     */</span>
+
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">removeVetoableChangeListener</span>(String propertyName,
+                VetoableChangeListener listener);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Returns an array of all the listeners which have been associated </span>
+<span class="java-block-comment">     * with the named property.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param propertyName  The name of the property being listened to</span>
+<span class="java-block-comment">     * @return all the &lt;code&gt;VetoableChangeListeners&lt;/code&gt; associated with</span>
+<span class="java-block-comment">     *         the named property.  If no such listeners have been added,</span>
+<span class="java-block-comment">     *         or if &lt;code&gt;propertyName&lt;/code&gt; is null, an empty array is</span>
+<span class="java-block-comment">     *         returned.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> VetoableChangeListener[] <span class="java-layer-method">getVetoableChangeListeners</span>(String propertyName);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Report a vetoable property update to any registered listeners.  If</span>
+<span class="java-block-comment">     * anyone vetos the change, then fire a new event reverting everyone to </span>
+<span class="java-block-comment">     * the old value and then rethrow the PropertyVetoException.</span>
+<span class="java-block-comment">     * &lt;p&gt;</span>
+<span class="java-block-comment">     * No event is fired if old and new are equal and non-null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param propertyName  The programmatic name of the property</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">that is about to change..</span>
+<span class="java-block-comment">     * @param oldValue  The old value of the property.</span>
+<span class="java-block-comment">     * @param newValue  The new value of the property.</span>
+<span class="java-block-comment">     * @exception PropertyVetoException if the recipient wishes the property</span>
+<span class="java-block-comment">     *              change to be rolled back.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">protected</span> <span class="java-keywords">void</span> <span class="java-layer-method">fireVetoableChange</span>(String propertyName, 
+                                        Object oldValue, Object newValue)
+                                        <span class="java-keywords">throws</span> PropertyVetoException;
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Fire a vetoable property update to any registered listeners.  If</span>
+<span class="java-block-comment">     * anyone vetos the change, then fire a new event reverting everyone to </span>
+<span class="java-block-comment">     * the old value and then rethrow the PropertyVetoException.</span>
+<span class="java-block-comment">     * &lt;p&gt;</span>
+<span class="java-block-comment">     * No event is fired if old and new are equal and non-null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param evt  The PropertyChangeEvent to be fired.</span>
+<span class="java-block-comment">     * @exception PropertyVetoException if the recipient wishes the property</span>
+<span class="java-block-comment">     *              change to be rolled back.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">protected</span> <span class="java-keywords">void</span> <span class="java-layer-method">fireVetoableChange</span>(PropertyChangeEvent evt)
+                                        <span class="java-keywords">throws</span> PropertyVetoException;
+}
+
+</pre></body>
+</html>

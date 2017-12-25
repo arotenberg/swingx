@@ -1,0 +1,190 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>IncidentInfo_API.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.java-layer-method {font-family: Monospaced; font-weight: bold}
+.java-keywords {color: #000099; font-family: Monospaced; font-weight: bold}
+.java-block-comment {color: #737373}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/Users/richardallenbair/Documents/Source/Projects/nonsense/swingx/src/beaninfo/IncidentInfo_API.java</td></tr></table>
+<pre>
+<span class="java-keywords">package</span> org.jdesktop.swingx.error;
+
+<span class="java-block-comment">/**</span>
+<span class="java-block-comment"> * A simple class that encapsulates all the information needed</span>
+<span class="java-block-comment"> * to report a problem to the automated report/processing system.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * @author Alexander Zuev</span>
+<span class="java-block-comment"> * @author rbair</span>
+<span class="java-block-comment"> * @version 1.4</span>
+<span class="java-block-comment"> */</span>
+<span class="java-keywords">public</span> <span class="java-keywords">class</span> IncidentInfo {
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Creates a new IncidentInfo based on the provided data.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param header                used as a quick reference for the </span>
+<span class="java-block-comment">     *                              incident (for example, it might be used as the</span>
+<span class="java-block-comment">     *                              title of an error dialog or as the subject of</span>
+<span class="java-block-comment">     *                              an email message). Must not be null.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param basicErrorMessage     short description of the problem. May be null</span>
+<span class="java-block-comment">     *                              only if &lt;code&gt;errorException&lt;/code&gt; is not null.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param detailedErrorMessage  full description of the problem. It is recommended,</span>
+<span class="java-block-comment">     *                              though not required, that this String contain HTML</span>
+<span class="java-block-comment">     *                              to improve the look and layout of the detailed</span>
+<span class="java-block-comment">     *                              error message. May be null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param category              A category name, indicating where in the application</span>
+<span class="java-block-comment">     *                              this incident occurred. It is recommended that </span>
+<span class="java-block-comment">     *                              this be the same value as you would use when logging.</span>
+<span class="java-block-comment">     *                              This may be null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param errorException        &lt;code&gt;Throwable&lt;/code&gt; that can be used as a </span>
+<span class="java-block-comment">     *                              source for additional information such as call</span>
+<span class="java-block-comment">     *                              stack, thread name, etc. May be null. If null,</span>
+<span class="java-block-comment">     *                              then &lt;code&gt;basicErrorMessage&lt;/code&gt; must not</span>
+<span class="java-block-comment">     *                              be null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param errorLevel            any Level (Level.SEVERE, Level.WARNING, etc).</span>
+<span class="java-block-comment">     *                              If null, then the level will be set to SEVERE.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @throws NullPointerException if both &lt;code&gt;basicErrorMessage&lt;/code&gt;</span>
+<span class="java-block-comment">     *                              and errorException are null, or</span>
+<span class="java-block-comment">     *                              &lt;code&gt;header&lt;/code&gt; is null.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">IncidentInfo</span>(String header, String basicErrorMessage, String detailedErrorMessage,
+                        String category, Throwable errorException, Level errorLevel);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Creates a new &lt;code&gt;IncidentInfo&lt;/code&gt; based on the provided data. </span>
+<span class="java-block-comment">     * &lt;code&gt;basicErrorMessage&lt;/code&gt; must not be null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param header                used as a quick reference for the </span>
+<span class="java-block-comment">     *                              incident (for example, it might be used as the</span>
+<span class="java-block-comment">     *                              title of an error dialog or as the subject of</span>
+<span class="java-block-comment">     *                              an email message). Must not be null.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param basicErrorMessage     short description of the problem. Must not be null.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param detailedErrorMessage  full description of the problem. It is recommended,</span>
+<span class="java-block-comment">     *                              though not required, that this String contain HTML</span>
+<span class="java-block-comment">     *                              to improve the look and layout of the detailed</span>
+<span class="java-block-comment">     *                              error message. May be null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @throws NullPointerException if &lt;code&gt;basicErrorMessage&lt;/code&gt; or </span>
+<span class="java-block-comment">     *                              &lt;code&gt;header&lt;/code&gt; is null</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">IncidentInfo</span>(String header, String basicErrorMessage, String detailedErrorMessage);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Creates a new &lt;code&gt;IncidentInfo&lt;/code&gt; based on the specified</span>
+<span class="java-block-comment">     * &lt;code&gt;Throwable&lt;/code&gt;. This constructor should not normally be used for</span>
+<span class="java-block-comment">     * anticipated exceptions, since the resulting &lt;code&gt;basicErrorMessage&lt;/code&gt;</span>
+<span class="java-block-comment">     * and &lt;code&gt;detailedErrorMessage&lt;/code&gt; will be very technical, and may</span>
+<span class="java-block-comment">     * not provide much help to the user. Use this constructor for unexpected errors</span>
+<span class="java-block-comment">     * that nonetheless need to be handled by the user.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param header                used as a quick reference for the </span>
+<span class="java-block-comment">     *                              incident (for example, it might be used as the</span>
+<span class="java-block-comment">     *                              title of an error dialog or as the subject of</span>
+<span class="java-block-comment">     *                              an email message). Must not be null.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param errorException        &lt;code&gt;Throwable&lt;/code&gt; that can be used as a </span>
+<span class="java-block-comment">     *                              source for additional information such as call</span>
+<span class="java-block-comment">     *                              stack, thread name, etc. Must not be null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @throws NullPointerException if both &lt;code&gt;header&lt;/cod&gt; and</span>
+<span class="java-block-comment">     *                              &lt;code&gt;errorException&lt;/code&gt; is null.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">IncidentInfo</span>(String header, Throwable errorException);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Gets the string to use for a dialog title or other quick reference. Used</span>
+<span class="java-block-comment">     * as a quick reference for the incident. For example, it might be used as the</span>
+<span class="java-block-comment">     * title of an error dialog or as the subject of an email message. This value</span>
+<span class="java-block-comment">     * will never be null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return quick reference String</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> String <span class="java-layer-method">getHeader</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Gets the basic error message. This message should be clear and user oriented.</span>
+<span class="java-block-comment">     * This String may have HTML formatting, but any such formatting should be used</span>
+<span class="java-block-comment">     * sparingly. Generally, such formatting makes sense for making certain words bold,</span>
+<span class="java-block-comment">     * but should not be used for page layout or other such things.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;For example, the following are perfectly acceptable basic error messages:</span>
+<span class="java-block-comment">     * &lt;pre&gt;</span>
+<span class="java-block-comment">     *      &quot;Your camera cannot be located. Please make sure that it is powered on</span>
+<span class="java-block-comment">     *       and that it is connected to this computer. Consult the instructions</span>
+<span class="java-block-comment">     *       provided with your camera to make sure you are using the appropriate</span>
+<span class="java-block-comment">     *       cable for attaching the camera to this computer&quot;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     *      &quot;&amp;lt;html&amp;gt;You are running on &amp;lt;b&amp;gt;reserver&amp;lt;/b&amp;gt; battery </span>
+<span class="java-block-comment">     *       power. Please plug into a power source immediately, or your work may</span>
+<span class="java-block-comment">     *       be lost!&amp;lt;/html&amp;gt;&quot;</span>
+<span class="java-block-comment">     * &lt;/pre&gt;&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;If {@link #getErrorException} returns a non-null value, then this</span>
+<span class="java-block-comment">     * method &lt;b&gt;may&lt;/b&gt; return a null value.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return basic error message or null if {@link #getErrorException} returns</span>
+<span class="java-block-comment">     *         a non null value</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> String <span class="java-layer-method">getBasicErrorMessage</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Gets the detailed error message. Unlike {@link #getBasicErrorMessage},</span>
+<span class="java-block-comment">     * this method may return a more technical message to the user. However, it</span>
+<span class="java-block-comment">     * should still be user oriented. This String should be formatted using basic</span>
+<span class="java-block-comment">     * HTML to improve readability as necessary.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;This method may return null.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return detailed error message or null if a detailed error message was not</span>
+<span class="java-block-comment">     *         provided</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> String <span class="java-layer-method">getDetailedErrorMessage</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Gets the category name. This value indicates where in the application</span>
+<span class="java-block-comment">     * this incident occurred. It is recommended that this be the same value as</span>
+<span class="java-block-comment">     * you would use when logging. This may be null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return the category. May be null.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> String <span class="java-layer-method">getCategory</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Gets the actual exception that generated the error. If this returns a</span>
+<span class="java-block-comment">     * non null value, then {@link #getBasicErrorMessage} may return a null value.</span>
+<span class="java-block-comment">     * If this returns a non null value and {@link #getDetailedErrorMessage} returns</span>
+<span class="java-block-comment">     * a null value, then this returned &lt;code&gt;Throwable&lt;/code&gt; may be used as the</span>
+<span class="java-block-comment">     * basis for the detailed error message (generally by showing the stack trace).</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return exception or null if no exception provided</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Throwable <span class="java-layer-method">getErrorException</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Gets the severity of the error. The default level is &lt;code&gt;Level.SEVERE&lt;/code&gt;,</span>
+<span class="java-block-comment">     * but any {@link Level} may be specified when constructing an</span>
+<span class="java-block-comment">     * &lt;code&gt;IncidentInfo&lt;/code&gt;.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return the error level. This will never be null</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Level <span class="java-layer-method">getErrorLevel</span>();
+}
+
+</pre></body>
+</html>

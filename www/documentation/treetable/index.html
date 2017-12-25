@@ -1,0 +1,667 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>Object List</title>
+</head>
+<body>
+<h1>
+</h1>
+<h1 style="text-align: center;">TreeTable as an Object List</h1>
+<h5 style="text-align: center;">Brought to you by:
+David John Burrowes -&nbsp; Interaction Designer - Sun Microsystems,
+Inc.</h5>
+<hr style="width: 100%; height: 1px;" noshade="noshade">
+<blockquote>
+  <h4>NOTE:</h4>
+  <p>This specification is "in progress". I'll
+peridocially update it to include sections with information about more
+details, and to reflect feedback
+from the community. A revision history can be found a the bottom of the
+document.
+  </p>
+Feedback on this specification should be sent to the <a
+ href="mailto:jdnc@jdnc.dev.java.net">jdnc@jdnc.dev.java.net</a>
+mailing list (see the <a
+ href="https://jdnc.dev.java.net/servlets/ProjectMailingListList">mailing
+list subscription page</a> and the <a
+ href="http://www.javadesktop.org/forums/forum.jspa?forumID=53">forums</a>
+which are a different presentation of the same information).</blockquote>
+<hr style="width: 100%; height: 1px;" noshade="noshade">
+<h2>Contents</h2>
+<ul>
+  <li><a href="posted/ol.html#Introduction_">Introduction</a></li>
+  <li><a href="posted/ol.html#Overview">Overview</a></li>
+  <li><a href="posted/ol.html#List_Behaviors_">List Behaviors</a></li>
+  <ul>
+    <li><a href="posted/ol.html#Row_Selection_">Row Selection</a></li>
+    <li>Column Movement</li>
+    <li>Column Sizing</li>
+    <li>Column Sorting</li>
+  </ul>
+  <li>Revision History
+  </li>
+</ul>
+<h2><a name="Introduction_"></a>Introduction</h2>
+<p>The most common use of a tree table component is to display a
+hierarchical list of objects. In this usage, each row represents an
+object, and each column represents some attribute of that object.
+Additionally, an object may have one or more "child" objects which are
+shown indented beneath the "parent" object.
+</p>
+<p>Note: "object" means an
+object in the mind of the user (file, appointment, breakpoint, etc),
+not a java.lang.Object.</p>
+<p>This document is a user interface specification for that usage of a
+TreeTable in JDNC (called a Hierarchical Object List in this document).
+It contains sections for all the behaviors and the appearance details
+of that usage, with sub-sections for four different looks and feels
+(JLF/Ocean, Windows XP, GNOME 2.x and Macintosh OS X 10.3).
+</p>
+<p>Note: JDNC will not deliver a Macintosh look and feel. This is
+documented here to help demonstrate the breadth of features the
+component must be able to support, and to provide guidance to anyone
+that would like to provide this support.
+</p>
+<p>This specification covers two categories of details. The first
+is information that must be provided by the component itself. The
+second category is information that an application developer can use to
+make their application more professional and to avoid "re-inventing the
+wheel" for these common design decisions.
+</p>
+Note that after the Overview section, the terms MUST, SHOULD and MAY in
+this document have the formal meaning found in <a
+ href="http://rfc.net/rfc2119.html">http://rfc.net/rfc2119.html</a>. 
+
+Much of the information about what is standard on the various platforms
+comes from some demo applications. These are provided for <a
+ href="ol/gtktvapp.tar">GNOME/GTK+2.0</a>, <a href="ol/mac.zip">Macintosh</a>.
+
+<h2><a name="Overview"></a>Overview</h2>
+
+
+
+<h2><a name="List_Behaviors_"></a>List Behaviors
+</h2>
+<h3><a name="Row_Selection_"></a>Row Selection
+</h3>
+<p>A list must allow 0 or 1, or multiple rows to be selected.
+Continuous and
+discontinuous sets of rows may be selected.
+</p>
+<div style="text-align: center;">
+<table style="width: 100%; text-align: left;" border="0" cellpadding="2"
+ cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top; text-align: center;"><img
+ alt="continuous selection example" src="ol/continuous.png"
+ style="width: 332px; height: 232px;">
+      </td>
+      <td style="vertical-align: top; text-align: center;"><img
+ alt="discontinuous" src="ol/discontinuous.png"
+ style="width: 332px; height: 232px;">
+      </td>
+    </tr>
+  </tbody>
+</table>
+<div style="text-align: left;">
+<p>When a row is selected, the whole row must be selected.
+</p>
+<p>One term will be useful to understand the rules below:
+</p>
+<ul>
+  <li>Anchor
+row: a row that the underlying software uses to determine where to make
+continuous selections from. The user is never given any feedback to
+indicate which row is the anchor.</li>
+</ul>
+<h4>Details For <img alt="WindowsXP" src="ol/winxp.gif"
+ style="width: 120px; height: 24px;"></h4>
+<p>These are the rules for row selection with the keyboard and mouse.
+These have been derived from those in the Windows Explorer list view.
+Aside from
+being reasonably well defined and internally consistent, this is also
+the model used
+by other Swing components in the Windows look and feel.
+</p>
+<p>There are written standards for <a
+ href="http://www.msdn.microsoft.com/library/default.asp?url=/library/en-us/dnwue/html/appxA.asp">Mouse</a>
+and <a
+ href="http://www.msdn.microsoft.com/library/default.asp?url=/library/en-us/dnwue/html/appxB.asp">Keyboard</a>
+interfaces in <a
+ href="http://www.msdn.microsoft.com/library/default.asp?url=/library/en-us/dnwue/html/welcome.asp">The
+Microsoft Windows User Experience</a> book. However, the list
+view doesn't fully adhere to those guidelines. These links are provided
+just for reference.
+</p>
+<p>The component must support two editing modes (detailed further
+below). The gestures below assume either that the cell clicked on is a
+non-editable cell, or the list is in select-click-to-edit mode. (this
+will make more sense when you read that editing section)
+</p>
+<p>This table documents the location of the focus indicator. Note that
+the focus indicator is not always shown to the user.
+</p>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="0">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">
+      </td>
+      <th style="vertical-align: top;">On a Selected Row
+      </th>
+      <th style="vertical-align: top;">On a Non-Selected Row
+      </th>
+      <th style="vertical-align: top;">On Background
+      </th>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Left Click
+      </th>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">Selected:
+Clicked row (on mouseDown)
+Deselected: All others (on mouseUp when in selection, on mouseDown when
+outside)
+Anchor: Clicked row
+Focus: Clicked row
+      </td>
+      <td style="vertical-align: top;">Selected: None
+Deselected: All (on mouseUp)
+Anchor: No change
+Focus: No change
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Shift Left Click
+      </th>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">Selected:
+Rows between anchor and clicked (inclusive) (on mouseDown)
+Deselected: All others (on mouseDown)
+Anchor: No change
+Focus: Clicked row
+      </td>
+      <td colspan="1" rowspan="3" style="vertical-align: top;">Selected:
+None
+Deselected: None
+Anchor: No change
+Focus: No change
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Ctrl Left Click
+      </th>
+      <td style="vertical-align: top;">Selected: None
+Deselected: Clicked row (on mouseUp)
+Anchor: Clicked row
+Focus: Clicked row
+      </td>
+      <td style="vertical-align: top;">Selected: Clicked row (on
+mouseUp)
+Deselected: None 
+Anchor: Clicked row
+Focus: Clicked row
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Ctrl-Shift Left Click
+      </th>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">Selected:
+If the Anchor is selected, then all rows between the anchor and the
+clicked row (inclusive). Otherwise, only the clicked row is selected
+Deselected: If the anchor is selected, then none. Otherwise, all rows
+between the anchor and the clicked row (exclusive).
+Anchor: No change
+Focus: Clicked row
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Arrow up/down</th>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">Selected:
+Row above/below row that had focus
+Deselected: All others
+Anchor: Row above/below row that had focus
+Focus: The row above/below the row that had focus
+      </td>
+      <td colspan="1" rowspan="8" style="vertical-align: top;">n/a</td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Shift Arrow up/down</th>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">Selected:
+Rows between anchor and row above/below row that had focus (inclusive)
+Deselected: All others
+Anchor: No change
+Focus: The row above/below the row that had focus
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Ctrl Arrow up/down</th>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">Selected:
+None
+Deselected: None
+Anchor: No change
+Focus: The row above/below the row that had focus
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Ctrl-Shift Arrow up/down</th>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">Same as
+Shift Arrow up/down
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Space
+      </th>
+      <td style="vertical-align: top;">Selected: None
+Deselected: None
+Anchor: No change
+Focus: No change
+      </td>
+      <td style="vertical-align: top;">Selected: Row with focus
+Deselected: None
+Anchor: No change
+Focus: No change
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Shift Space
+      </th>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">Selected:
+Rows between anchor and focused (inclusive)
+Deselected: All others
+Anchor: No change
+Focus: No change
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Ctrl Space
+      </th>
+      <td style="vertical-align: top;">Selected: None
+Deselected: Row with focus
+Anchor: Row with focus
+Focus: No change
+      </td>
+      <td style="vertical-align: top;">Selected: Row with focus
+Deselected: None
+Anchor: Row with focus
+Focus: No change
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Ctrl-Shift Space
+      </th>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">Selected:
+Row with focus
+Deselected: All others
+Anchor: Row with focus
+Focus: No change
+      </td>
+    </tr>
+  </tbody>
+</table>
+<p>Other notes:
+</p>
+<ul>
+  <li>The keyboard focus indicator's visibility is controlled on a
+window basis. The general rules are:
+  </li>
+  <ul>
+    <li>It is not shown when a window is first displayed or when it is
+brought to the foreground (nor is it shown when the window is in the
+background).</li>
+    <li>Any time a keydown event occurs in the window, the focus
+indicator will be shown (if appropriate) on the currently focused
+component.</li>
+    <ul>
+      <li>Certain keys, however, have an immediate effect, and that
+action more or less captures the keydown so that the window doesn't get
+it and thus doesn't show the keyboard focus indicator (e.g. Alt,
+certain F-keys)
+      </li>
+    </ul>
+  </ul>
+  <li>When an arrow key is pressed, the focus marker must be moved to
+the cell above (up-arrow) or below (down-arrow) the cell that had the
+keyboard focus marker before the key was pressed.</li>
+  <li>The Home key must behave just like using the up arrow key, in the
+table
+above, except that instead of moving one row up, it moves to the first
+row (and the first column) in the list. Thus, unmodified Home
+must select the first row
+in the list and
+deselects all others, Ctrl-Home must move the keyboard focus to the
+first
+row and changes no selection, etc.</li>
+  <li>The End key must be like the Home key except it affects the last
+row (and last column) in the list.
+  </li>
+  <li>The PageUp key must behave just like using the up arrow key,
+except that it moves the selection and focus to the first whole
+row (unchanged column) visible on the
+screen, and if it is already on that row the view must automatically
+scroll to the topmost visible row (unchanged column) on the next
+view-full of information
+(in that case, the row that was at the top should be kept as the last
+whole visible row in the scrolled view).</li>
+  <li>The PageDown key must be like the PageUp key except it affects
+the last visible row (unchanged column)in the list.</li>
+  <li>If the focus indicator is in the first row in the list
+then pressing the up arrow, home, or PageUp keys must have no
+effect. If it is in the last row, then down arrow, End and
+PageDown must have no effect.</li>
+  <li>If the rows are not draggable, the left drag must always be
+treated like a
+click.</li>
+  <li>If the list allows only one row to be selected at a time, then
+the shift and ctrl modifiers must be ignored and all behavior should
+be like an unmodified click, arrow key, or space.</li>
+  <li>Applications must ignore modifier keys on a right click.</li>
+  <li>Applications may provide a "Select All" command (generally
+Ctrl-A) which selects all the rows in the list (but doesn't affect the
+anchor)</li>
+  <li>Applications must assure that a right click will have the same
+effect as an unmodified left
+click excpet that a contextual menu must be shown on mouseUp and any
+other mouseUp behavior (e.g. deselection) is not done.</li>
+</ul>
+<p>Ordinarily the component provides a keyboard focus in the individual
+cells. This allows the component to provide a way to manipulate
+the size and
+ordering of the columns from the keyboard in a cross-platform
+manner. However, the component should provide a mode where the
+keyboard focus spans all cells of a row, which is more consistent with
+the Windows style. In this case, however, it the columns must not be
+able to be resized or repositioned.</p>
+<p>Appearance:</p>
+<p>This image demonstrates a multiple selection, and the keyboard focus
+on the third row. Note: This is a mockup, which is based on a
+combination of the behavior in Windows Explorer details view, and the
+feedback in some of the MMC plugins (e.g. Event Viewer)
+</p>
+<p><img alt="selection" src="ol/selection1-winxp.png"
+ style="border: 1px solid ; width: 511px; height: 117px;">
+</p>
+<p>This demonstrates the same list, but with the keyboard focus moved
+out of the selection (this also is a mockup):
+</p>
+<p><img alt="keyboard focus outside" src="ol/selection2-winxp.png"
+ style="border: 1px solid ; width: 511px; height: 117px;">
+</p>
+<p>This demonstrates the same list when some other component has the
+focus. Unsurprisingly, the keyboard focus is not shown at all.
+This is also a mockup, but note that the blue-tinted icons on the left
+are actually what Windows does in the Explorer.
+</p>
+<p><img alt="Not focused" src="ol/selection3-winxp.png"
+ style="border: 1px solid ; width: 511px; height: 117px;">
+</p>
+<p>This demonstrates the keyboard focus existing in a single cell,
+which should be used any time there are editable cells. This is
+emphatically a mockup.
+</p>
+<p><img alt="cell focused" src="ol/selection4.png"
+ style="border: 1px solid ; width: 511px; height: 117px;">
+</p>
+<h4>Details For <img alt="Java Emblem" src="ol/java-cropped.gif"
+ style="width: 13px; height: 24px;">
+</h4>
+<p>The JLF/Ocean behaviors should be identical to the Windows ones,
+above, with these exceptions:
+</p>
+<ul>
+  <li>Ctrl-/ must select all rows (anchor not affected)
+  </li>
+  <li>Ctrl-\ must deselect all rows (anchor not affected)</li>
+</ul>
+<p>Relevant resources are the summary of shortcuts for <a
+ href="http://java.sun.com/products/jlf/ed2/book/Appendix.A8.html">lists</a>
+and for <a
+ href="http://java.sun.com/products/jlf/ed2/book/Appendix.A22.html">trees</a>
+in the <a href="http://java.sun.com/products/jlf/ed2/book/index.html">JLF
+Design Guidelines</a>.
+</p>
+<h4>Details For <img alt="Gnome Logo" src="ol/gnome.png"
+ style="width: 24px; height: 24px;">
+</h4>
+<p>The rules for keyboard navigation and row selection presented here
+are derived from those in the System Monitor tree view (type
+Ctrl-Alt-Del from the GNOME environment to get it). This seems to
+be basically consistent in its behavior with other similar components
+in the envrionment (e.g. the list view in Nautilus).
+</p>
+<p>There is some relevant material in the GNOME standards for <a
+ href="http://www.gnome.org/learn/access-guide/2.8/ch03s08.html#keynav-34">keyboard
+accessibility</a>.
+</p>
+<p>The rules are identical to the Windows ones, listed above, with
+these exceptions:
+</p>
+<ul>
+  <li>Ctrl-Shift Left Click must be identical to Ctrl Left Click</li>
+  <li>Ctrl-Shift Up/Down Arrow must be identical to Ctrl Up/Down Arrow</li>
+  <li>Shift Space must be identical to Space</li>
+  <li>Ctrl-Shift Space must select nothing, deselect nothing, and not
+affect the anchor</li>
+  <li>The algorithm for determining what PageUp and PageDown are
+different than on Windows. On GNOME, if N whole rows can be shown
+in the list, then pressing PageDown must affect the Nth row down the
+list (including counting the one that started with the focus). PageUp
+counts the same number of rows up. (Put another way, pressing PageUp or
+PageDown on GNOME always skips a fixed number of rows, while on Windows
+the number of rows skipped will vary based on which row started out
+with the keyboard focus).
+  </li>
+  <li>Keyboard focus must be able to be put in the column headers</li>
+  <li>If the keyboard focus indicator was showing in the component when
+it last had focus, and it is again given focus, the indicator must be
+visible, no matter how the component got focus.
+  </li>
+  <li>However, the focus indicator in rows must be hidden as a result
+of mouse
+operations in the component, and must be shown after keyboard gestures.
+[Note: This may be a bug in GNOME, since other components show the
+keyboard focus after a mouse gesture]
+  </li>
+</ul>
+Appearance:
+<p>NOTE: The first three illustrations are of an actual use of a
+component like this in GNOME. In this case, whole rows are
+selected, and because no individual cells are ediable, the keyboard
+focus spans the whole row. It's also interesting to note the
+notable differences in sizes of text and widgets compared to Windows.
+</p>
+<p>This image demonstrates a multiple selection, and the keyboard focus
+on the fifth row.</p>
+<p><img alt="Demonstration of Selection" src="ol/selection1.png"
+ style="border: 1px solid ; width: 467px; height: 233px;"></p>
+<p>This demonstrates the same list, but with the keyboard focus moved
+out of the selection:
+</p>
+<p><img alt="Demonstration of selection" src="ol/selection2.png"
+ style="border: 1px solid ; width: 467px; height: 234px;">
+</p>
+<p>This demonstrates the same list when some other component has the
+focus. Unsurprisingly, the keyboard focus is not shown at all.</p>
+<p><img alt="Demonstration of selection" src="ol/selection3.png"
+ style="border: 1px solid ; width: 457px; height: 234px;">
+</p>
+<p>This demonstrates the keyboard focus existing in a single cell,
+which should be used any time there are editable cells. Note that
+this behavior does not exist "natively" in GNOME, but is provided to
+support the cross-platform accessibility requirements for column
+reordering and sizing. This is a
+simple extrapolation from the above patterns:
+</p>
+<p><img alt="Selection of a single cell" src="ol/selection4-cell.png"
+ style="border: 1px solid ; width: 467px; height: 233px;">
+</p>
+<h4>Details For<img alt="MacOS X 10.3 (Panther)" src="ol/panther.jpg"
+ style="width: 24px; height: 24px;"></h4>
+<p>The Macintosh has a significantly different set of gestures for
+selecting rows.
+</p>
+<table style="width: 100%; text-align: left;" border="1" cellpadding="2"
+ cellspacing="0">
+  <tbody>
+    <tr>
+      <td style="vertical-align: top;">
+      </td>
+      <th style="vertical-align: top;">On a Selected Row
+      </th>
+      <th style="vertical-align: top;">On a Non-Selected Row
+      </th>
+      <th style="vertical-align: top;">On Background
+      </th>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Left Click
+      </th>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">Selected:
+Clicked row (on mouseDown)
+Deselected: All others (on mouseDown)
+Anchor: Clicked row
+      </td>
+      <td colspan="1" rowspan="4" style="vertical-align: top;">Selected:
+None
+Deselected: All (on mouseDown)
+Anchor: First row
+      
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Shift Left Click
+      </th>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">Selected:
+Rows between the anchor and the clicked row (inclusive) (on mouseDown).
+Deselected: None
+Anchor: Clicked row
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Command Left Click
+      </th>
+      <td style="vertical-align: top;">Selected: None
+Deselected: Clicked row (on mouseDown)
+Anchor: No change
+      </td>
+      <td style="vertical-align: top;">Selected: Clicked row (on
+mouseDown)
+Deselected: None 
+Anchor: Clicked row
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Command-Shift Left Click
+      </th>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">Same as
+Command Left Click
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Arrow up/down</th>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">Selected:
+Row above/below the first/last selected row in the list
+Deselected: All others
+Anchor: Row that received the selection
+      </td>
+      <td colspan="1" rowspan="4" style="vertical-align: top;">n/a</td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Shift Arrow up/down</th>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">Selected:
+Rows between the last/first selected row and the first/last row
+above/below the selected row (or, if the first/last row, then the that
+row) (inclusive)
+Deselected: none
+Anchor: No change</td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Command Arrow up/down</th>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">Same as
+Arrow up/down
+      </td>
+    </tr>
+    <tr>
+      <th style="vertical-align: top;">Command-Shift Arrow up/down</th>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">Same as
+Arrow up/down </td>
+    </tr>
+  </tbody>
+</table>
+
+<ul>
+  <li>The component must provide the platform-specific scheme where no
+keyboard focus indicator is shown in the list.</li>
+  <li>When a keyboard focus indicator is shown (to support cross
+platform accessibility requirements) it must be shown on the clicked
+cell, or the cell above or below the one that had the focus indicator
+when the up/down arrow key was pressed.</li>
+  <li>The PageUp and PageDown keys must scroll the component one full
+view-full (approximately six pixels less than the height of the
+component), but the selection, anchor and focus are not changed.
+  </li>
+  <li>Option Up Arrow is the same as Left Clicking on the first row in
+the list</li>
+  <li>Option Down Arrow is the same as Left Clicking the last row in
+the list
+  </li>
+  <li>If the rows are not draggable, the Left Drag must be treated like
+a click followed by a series of shift-clicks, and Shift Left Drag must
+be treated like a Shift Click followed by a series of Shift Clicks
+  </li>
+  <li>If the list allows only one row to be selected at a time, then
+the shift and command modifiers must be ignored and all behavior should
+be like an unmodified click, arrow key.</li>
+  <li>Applications must ignore modifier keys on a right click.</li>
+  <li>Applications may provide a "Select All" command (generally
+Ctrl-A) which selects all the rows in the list (but doesn't affect the
+anchor)</li>
+  <li>Applications must assure that a right click will have the same
+effect as an unmodified left
+click excpet that a contextual menu must be shown on mouseUp and any
+other mouseUp behavior (e.g. deselection) is not done.</li>
+</ul>
+<p>Appearance:</p>
+<p>This image demonstrates a multiple selection.
+</p>
+<p><img alt="x" src="ol/selection1-mac.png"
+ style="border: 1px solid ; width: 300px; height: 125px;">
+</p>
+<p>This demonstrates the same list when some other component has the
+focus.
+</p>
+<img alt="x" src="ol/selection3-mac.png"
+ style="border: 1px solid ; width: 300px; height: 125px;">
+<p>This demonstrates the keyboard focus existing in a single cell,
+which should be used any time there are editable cells. This is a
+mockup.
+</p>
+<p><img alt="x" src="ol/selection4-mac.png"
+ style="border: 1px solid ; width: 300px; height: 125px;">
+</p>
+<h4>Other General Details
+</h4>
+<p>An application should persist the selection in
+primary windows
+across
+runs of the application.
+</p>
+</div>
+</div>
+<h2>Revision History</h2>
+<table border=1 cellpadding=2 cellspacing=0>
+<tbody>
+<tr>
+<th>Date</th>
+<th>Details</th>
+</tr>
+<tr>
+<td>2005-May-4</td>
+<td>Initial revision posted to
+<a href="https://swingx.dev.java.net/documentation/treetable/index.html">https://swingx.dev.java.net/documentation/treetable/index.html</a></td>
+</tr>
+</tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>Compare property names for semantic "identifer" vs. "label"</title>
+</head>
+<body>
+<h1>Identifier vs. Label</h1>
+<br>
+<table style="text-align: left; width: 100%;" border="1" cellspacing="2"
+ cellpadding="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top;">Class<br>
+      </th>
+      <th style="vertical-align: top;">Identifier Property Name<br>
+      </th>
+      <th style="vertical-align: top;">Label Property Name<br>
+      </th>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">DataField markup<br>
+      </td>
+      <td style="vertical-align: top;">name (String) </td>
+      <td style="vertical-align: top;">title (String)</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">MetaData<br>
+      </td>
+      <td style="vertical-align: top;">name (String)</td>
+      <td style="vertical-align: top;">label (String)</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">MetaDataProvider<br>
+      </td>
+      <td style="vertical-align: top;">fieldName (String)<br>
+      </td>
+      <td style="vertical-align: top;">na<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">DataModel<br>
+      </td>
+      <td style="vertical-align: top;">fieldName (String)</td>
+      <td style="vertical-align: top;">na<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">TableColumn<br>
+      </td>
+      <td style="vertical-align: top;">identifier (Object)<br>
+      </td>
+      <td style="vertical-align: top;">headerValue (Object)<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">TableColumnExt<br>
+      </td>
+      <td style="vertical-align: top;">identifier<br>
+      </td>
+      <td style="vertical-align: top;">title (== headerValue.toString)<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">TableModel<br>
+      </td>
+      <td style="vertical-align: top;">na<br>
+      </td>
+      <td style="vertical-align: top;">columnName (String)<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JTable<br>
+      </td>
+      <td style="vertical-align: top;">indirect notion through method<br>
+TableColumn getColumn(identifier)<br>
+delegate to same in TableColumnModel<br>
+      </td>
+      <td style="vertical-align: top;">columnName (String)<br>
+      <br>
+delegate to TableModel<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JXTable<br>
+      </td>
+      <td style="vertical-align: top;">super<br>
+indirect notion through method<br>
+TableColumnExt getColumnExt(identifier)<br>
+      </td>
+      <td style="vertical-align: top;">super<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">TableColumnModel<br>
+      </td>
+      <td style="vertical-align: top;">indirect notion through method<br>
+int getColumnIndex(identifier)<br>
+      </td>
+      <td style="vertical-align: top;">na<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">TableColumnModelExt<br>
+      </td>
+      <td style="vertical-align: top;">super<br>
+      </td>
+      <td style="vertical-align: top;">super<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">ComponentAdapter<br>
+      </td>
+      <td style="vertical-align: top;">columnName (String)</td>
+      <td style="vertical-align: top;">columnIdentifier (String)</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">JNTable<br>
+      </td>
+      <td style="vertical-align: top;">TableColumnExt getColumn(name)<br>
+column coordinates are identifiers only<br>
+      </td>
+      <td style="vertical-align: top;">na<br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+</body>
+</html>

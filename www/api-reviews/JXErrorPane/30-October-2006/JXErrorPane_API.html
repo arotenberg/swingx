@@ -1,0 +1,451 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>JXErrorPane_API.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.java-keywords {color: #000099; font-family: Monospaced; font-weight: bold}
+.java-layer-method {font-family: Monospaced; font-weight: bold}
+.java-block-comment {color: #737373}
+.java-string-literal {color: #99006b}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/Users/richardallenbair/Documents/Source/Projects/swingx-work/jxerrorpane/swingx/src/java/org/jdesktop/swingx/JXErrorPane_API.java</td></tr></table>
+<pre>
+<span class="java-block-comment">/*</span>
+<span class="java-block-comment"> * $Id: JXErrorPane_API.html 1530 2006-10-30 20:20:34Z rbair $</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * Copyright 2004 Sun Microsystems, Inc., 4150 Network Circle,</span>
+<span class="java-block-comment"> * Santa Clara, California 95054, U.S.A. All rights reserved.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * This library is free software; you can redistribute it and/or</span>
+<span class="java-block-comment"> * modify it under the terms of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License as published by the Free Software Foundation; either</span>
+<span class="java-block-comment"> * version 2.1 of the License, or (at your option) any later version.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * This library is distributed in the hope that it will be useful,</span>
+<span class="java-block-comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="java-block-comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span>
+<span class="java-block-comment"> * Lesser General Public License for more details.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * You should have received a copy of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License along with this library; if not, write to the Free Software</span>
+<span class="java-block-comment"> * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</span>
+<span class="java-block-comment"> */</span>
+
+<span class="java-keywords">package</span> org.jdesktop.swingx;
+
+<span class="java-keywords">import</span> java.awt.Component;
+<span class="java-keywords">import</span> java.lang.reflect.InvocationTargetException;
+<span class="java-keywords">import</span> javax.swing.Icon;
+<span class="java-keywords">import</span> javax.swing.JComponent;
+<span class="java-keywords">import</span> javax.swing.JDialog;
+<span class="java-keywords">import</span> javax.swing.JFrame;
+<span class="java-keywords">import</span> javax.swing.JInternalFrame;
+<span class="java-keywords">import</span> javax.swing.SwingUtilities;
+<span class="java-keywords">import</span> org.jdesktop.swingx.error.ErrorReporter;
+<span class="java-keywords">import</span> org.jdesktop.swingx.error.ErrorInfo;
+<span class="java-keywords">import</span> org.jdesktop.swingx.plaf.ErrorPaneUI;
+<span class="java-keywords">import</span> org.jdesktop.swingx.plaf.JXErrorPaneAddon;
+<span class="java-keywords">import</span> org.jdesktop.swingx.plaf.LookAndFeelAddons;
+
+<span class="java-block-comment">/**</span>
+<span class="java-block-comment"> * &lt;p&gt;JXErrorPane is a common error component suitable for displaying errors,</span>
+<span class="java-block-comment"> * warnings, and exceptional application behavior to users.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;User interaction with the &lt;code&gt;JXErrorPane&lt;/code&gt; includes the ability to</span>
+<span class="java-block-comment"> * view details associated with the error. This is the primary feature that differentiates</span>
+<span class="java-block-comment"> * &lt;code&gt;JXErrorPane&lt;/code&gt; from &lt;code&gt;JOptionPane&lt;/code&gt;. In addition,</span>
+<span class="java-block-comment"> * &lt;code&gt;JXErrorPane&lt;/code&gt; specializes in handling unrecoverable errors. If you</span>
+<span class="java-block-comment"> * need an error dialog that allows the user to take some action to recover</span>
+<span class="java-block-comment"> * from an error (such as &quot;Repair Disk&quot;, &quot;Replace All&quot;, etc) then you should</span>
+<span class="java-block-comment"> * use &lt;code&gt;JOptionPane&lt;/code&gt;.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;Data and application state associated with an error are encapsulated</span>
+<span class="java-block-comment"> * in the {@link ErrorInfo} class. The &lt;code&gt;JXErrorPane&lt;/code&gt; displays the</span>
+<span class="java-block-comment"> * data contained in the &lt;code&gt;ErrorInfo&lt;/code&gt;. In addition,</span>
+<span class="java-block-comment"> * &lt;code&gt;ErrorInfo&lt;/code&gt; is passed to the {@link ErrorReporter} if the user decides</span>
+<span class="java-block-comment"> * to report the incident.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;h2&gt;Basic Usage&lt;/h2&gt;</span>
+<span class="java-block-comment"> * &lt;p&gt;Typically, the &lt;code&gt;JXErrorPane&lt;/code&gt;</span>
+<span class="java-block-comment"> * is not created and displayed directly. Instead, one of the static showXXX methods</span>
+<span class="java-block-comment"> * are called that create and display the &lt;code&gt;JXErrorPane&lt;/code&gt; in a </span>
+<span class="java-block-comment"> * &lt;code&gt;JDialog&lt;/code&gt;, &lt;code&gt;JFrame&lt;/code&gt;, or &lt;code&gt;JInternalFrame&lt;/code&gt;.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;These static showXXX methods all follow the same pattern, namely (</span>
+<span class="java-block-comment"> * where XXX could be one of Dialog, Frame, or InternalFrame):</span>
+<span class="java-block-comment"> * &lt;ul&gt;</span>
+<span class="java-block-comment"> *  &lt;li&gt;&lt;b&gt;showXXX(Throwable e)&lt;/b&gt;: This usage allows you to show a default error</span>
+<span class="java-block-comment"> *      window, detailing the error&lt;/li&gt;</span>
+<span class="java-block-comment"> *  &lt;li&gt;&lt;b&gt;showXXX(Component owner, ErrorInfo info)&lt;/b&gt;: This usage shows an</span>
+<span class="java-block-comment"> *      error dialog based on the given &lt;code&gt;ErrorInfo&lt;/code&gt;. The component</span>
+<span class="java-block-comment"> *      argument is the component over which the dialog should be centered.&lt;/li&gt;</span>
+<span class="java-block-comment"> *  &lt;li&gt;&lt;b&gt;showXXX(Component owner, JXErrorPane pane)&lt;/b&gt;: This usage shows</span>
+<span class="java-block-comment"> *      an error dialog using the given error pane. This allows you to completely</span>
+<span class="java-block-comment"> *      modify the pane (perhaps installing a custom UI delegate, etc) to present</span>
+<span class="java-block-comment"> *      to the user&lt;/li&gt;</span>
+<span class="java-block-comment"> *  &lt;li&gt;&lt;b&gt;createXXX(Component owner, JXErrorPane pane)&lt;/b&gt;: Creates and returns</span>
+<span class="java-block-comment"> *      a dialog for presenting the given &lt;code&gt;JXErrorPane&lt;/code&gt;, but does not</span>
+<span class="java-block-comment"> *      show it. This allows the developer to modify properties of the dialog</span>
+<span class="java-block-comment"> *      prior to display&lt;/li&gt;</span>
+<span class="java-block-comment"> * &lt;/ul&gt;&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;Following are some examples and further discussion regarding some of these</span>
+<span class="java-block-comment"> * static methods. Example of the most basic usage:</span>
+<span class="java-block-comment"> * &lt;pre&gt;&lt;code&gt;</span>
+<span class="java-block-comment"> *      try {</span>
+<span class="java-block-comment"> *          //do stuff.... something throws an exception in here</span>
+<span class="java-block-comment"> *      } catch (Exception e) {</span>
+<span class="java-block-comment"> *          JXErrorPane.showDialog(e);</span>
+<span class="java-block-comment"> *      }</span>
+<span class="java-block-comment"> * &lt;/code&gt;&lt;/pre&gt;. Alternatively there are &lt;code&gt;showFrame&lt;/code&gt; and</span>
+<span class="java-block-comment"> * &lt;code&gt;showInternalFrame&lt;/code&gt; variants of each of the &lt;code&gt;showDialog&lt;/code&gt;</span>
+<span class="java-block-comment"> * methods described in this API.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;While this is the simplest usage, it is not the recommended approach for</span>
+<span class="java-block-comment"> * most errors since it yields the most difficult messages for users to understand.</span>
+<span class="java-block-comment"> * Instead it is recommended to provide a more useful message for users. For example:</span>
+<span class="java-block-comment"> * &lt;pre&gt;&lt;code&gt;</span>
+<span class="java-block-comment"> *      URL url = null;</span>
+<span class="java-block-comment"> *      try {</span>
+<span class="java-block-comment"> *          url = new URL(userSuppliedUrl);</span>
+<span class="java-block-comment"> *      } catch (MalformedURLException e) {</span>
+<span class="java-block-comment"> *          String msg = &quot;The web resource you entered is not formatted&quot;</span>
+<span class="java-block-comment"> *                      + &quot; correctly.&quot;;</span>
+<span class="java-block-comment"> *          String details = &quot;&amp;lt;html&amp;gt;Web resources should begin with \&quot;http://\&quot;&quot;</span>
+<span class="java-block-comment"> *                      + &quot; and cannot contain any spaces. Below are a few&quot;</span>
+<span class="java-block-comment"> *                      + &quot; more guidelines.&amp;lt;ul&amp;gt;&quot;</span>
+<span class="java-block-comment"> *                      + getURLGuidelines()</span>
+<span class="java-block-comment"> *                      + &quot;&amp;lt;/ul&amp;gt;&amp;lt;/html&amp;gt;&quot;;</span>
+<span class="java-block-comment"> *          JXErrorPane.showDialog(myWindow, &quot;Unknown Resource&quot;, msg, details, e);</span>
+<span class="java-block-comment"> *          return false;</span>
+<span class="java-block-comment"> *      }</span>
+<span class="java-block-comment"> * &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;Before showing the &lt;code&gt;JXErrorPane&lt;/code&gt; in a frame or dialog, you may modify</span>
+<span class="java-block-comment"> * the appearance and behavior of the &lt;code&gt;JXErrorPane&lt;/code&gt; by setting one or more of its bean</span>
+<span class="java-block-comment"> * properties. For example, to modify the icon shown with a particular</span>
+<span class="java-block-comment"> * instance of a &lt;code&gt;JXErrorPane&lt;/code&gt;, you might do the following:</span>
+<span class="java-block-comment"> * &lt;pre&gt;&lt;code&gt;</span>
+<span class="java-block-comment"> *      JXErrorPane pane = new JXErrorPane();</span>
+<span class="java-block-comment"> *      pane.setErrorIcon(myErrorIcon);</span>
+<span class="java-block-comment"> *      pane.setErrorInfo(new ErrorInfo(&quot;Fatal Error&quot;, exception));</span>
+<span class="java-block-comment"> *      JXErrorPane.showDialog(null, pane);</span>
+<span class="java-block-comment"> * &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;&lt;code&gt;JXErrorPane&lt;/code&gt; may also be configured with a &quot;Report&quot; button which allows</span>
+<span class="java-block-comment"> * the user to send a bug report, typically through email. This is done through</span>
+<span class="java-block-comment"> * the pluggable {@link ErrorReporter} class. Simply instantiate</span>
+<span class="java-block-comment"> * {@link EmailErrorReporter} or some custom</span>
+<span class="java-block-comment"> * subclass of &lt;code&gt;ErrorReporter&lt;/code&gt; and pass the instance into the</span>
+<span class="java-block-comment"> * {@link #setErrorReporter} method.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;&lt;code&gt;JXErrorPane&lt;/code&gt; can also be used for displaying fatal error messages to</span>
+<span class="java-block-comment"> * users. Fatal messages indicate a serious error in the application that cannot</span>
+<span class="java-block-comment"> * be corrected and that must result in the termination of the application. </span>
+<span class="java-block-comment"> * After the close of a fatal error dialog, the application should</span>
+<span class="java-block-comment"> * automatically exit. Fatal messages are identified by the &lt;code&gt;Level&lt;/code&gt;</span>
+<span class="java-block-comment"> * of the &lt;code&gt;ErrorInfo&lt;/code&gt; being {@link ErrorLevel}&lt;code&gt;.FATAL&lt;/code&gt;.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;By default, when Fatal error dialogs are closed the application exits with</span>
+<span class="java-block-comment"> * a code of &quot;1&quot;. In other words, &lt;code&gt;System.exit(1)&lt;/code&gt;. If you wish to implement</span>
+<span class="java-block-comment"> * custom handling, you can replace the default fatal action in the &lt;code&gt;ActionMap&lt;/code&gt;</span>
+<span class="java-block-comment"> * of the &lt;code&gt;JXErrorPane&lt;/code&gt; instance. If you specify a custom fatal </span>
+<span class="java-block-comment"> * action, then the default action of calling</span>
+<span class="java-block-comment"> * System.exit will not occur. You are therefore responsible for shutting down</span>
+<span class="java-block-comment"> * the application.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;h2&gt;UI Default Keys&lt;/h2&gt;</span>
+<span class="java-block-comment"> * &lt;p&gt;TODO&lt;/p&gt;</span>
+<span class="java-block-comment"> * JXErrorPane.errorIcon</span>
+<span class="java-block-comment"> *      or, if not specified, JOptionPane.errorIcon</span>
+<span class="java-block-comment"> * JXErrorPane.warningIcon</span>
+<span class="java-block-comment"> *      or, if not specified, JOptionPane.warningIcon</span>
+<span class="java-block-comment"> * JXErrorPane.details_contract_text (ignored on Mac OS X)</span>
+<span class="java-block-comment"> * JXErrorPane.details_expand_text (ignored on Mac OS X)</span>
+<span class="java-block-comment"> * JXErrorPane.mac.details_contract_text</span>
+<span class="java-block-comment"> * JXErrorPane.mac.details_expand_text</span>
+<span class="java-block-comment"> * Tree.expandedIcon (on Mac OS X)</span>
+<span class="java-block-comment"> * Tree.collapsedIcon (on Mac OS X)</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;h2&gt;Customizing the Look and Feel&lt;/h2&gt;</span>
+<span class="java-block-comment"> * &lt;p&gt;TODO&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * @author Richard Bair</span>
+<span class="java-block-comment"> * @author Alexander Zuev</span>
+<span class="java-block-comment"> * @author Shai Almog</span>
+<span class="java-block-comment"> */</span>
+<span class="java-keywords">public</span> <span class="java-keywords">class</span> JXErrorPane <span class="java-keywords">extends</span> JComponent {
+    <span class="java-block-comment">//---------------------------------------------------- static properties</span>
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Name of the Action used for reporting errors</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">final</span> String REPORT_ACTION = <span class="java-string-literal">&quot;report-action&quot;</span>;
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Name of the Action used for fatal errors</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">final</span> String FATAL_ACTION = <span class="java-string-literal">&quot;fatal-action&quot;</span>;
+    
+    <span class="java-block-comment">//--------------------------------------------------------- constructors</span>
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Create a new &lt;code&gt;JXErrorPane&lt;/code&gt;.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">JXErrorPane</span>();
+    
+    <span class="java-block-comment">//-------------------------------------------- public methods/properties</span>
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Sets the ErrorInfo for this dialog</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param info ErrorInfo that incorporates all the details about the error</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setErrorInfo</span>(ErrorInfo info);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Gets the &lt;code&gt;JXErrorPane&lt;/code&gt;&apos;s &lt;code&gt;ErrorInfo&lt;/code&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return &lt;code&gt;ErrorInfo&lt;/code&gt; assigned to this dialog</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> ErrorInfo <span class="java-layer-method">getErrorInfo</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Specifies the icon to use</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param icon the Icon to use. May be null.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setIcon</span>(Icon icon);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Returns the Icon used</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return the Icon</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Icon <span class="java-layer-method">getIcon</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Sets the {@link ErrorReporter} delegate to use. This delegate is called</span>
+<span class="java-block-comment">     * automatically when the report action is fired.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param reporter the ErrorReporter to use. If null, the report button will</span>
+<span class="java-block-comment">     *        not be shown in the error dialog.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setErrorReporter</span>(ErrorReporter reporter);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Gets the {@link ErrorReporter} delegate in use.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @return the ErrorReporter. May be null.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> ErrorReporter <span class="java-layer-method">getErrorReporter</span>();
+    
+    <span class="java-block-comment">//------------------------------------------------------- static methods</span>
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Constructs and shows the error dialog for the given exception.  The </span>
+<span class="java-block-comment">     * exceptions message will be the errorMessage, and the stacktrace will form </span>
+<span class="java-block-comment">     * the details for the error dialog.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt;This method may be called from any thread. It will actually show the error</span>
+<span class="java-block-comment">     * dialog on the AWT event dispatch thread. This method blocks. If called</span>
+<span class="java-block-comment">     * on the EDT, the dialog shown will be modal. Otherwise, this thread will</span>
+<span class="java-block-comment">     * block until the error dialog has been shown and hidden on the EDT.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param e Exception that contains information about the error cause and stack trace</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">void</span> <span class="java-layer-method">showDialog</span>(Throwable e);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Constructs and shows the error dialog, using the given</span>
+<span class="java-block-comment">     * &lt;code&gt;ErrorInfo&lt;/code&gt; to initialize the view.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt;This method may be called from any thread. It will actually show the error</span>
+<span class="java-block-comment">     * dialog on the AWT event dispatch thread. This method blocks. If called</span>
+<span class="java-block-comment">     * on the EDT, the dialog shown will be modal. Otherwise, this thread will</span>
+<span class="java-block-comment">     * block until the error dialog has been shown and hidden on the EDT.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param owner Owner of this error dialog. Determines the Window in which the dialog</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">is displayed; if the &lt;code&gt;owner&lt;/code&gt; has</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">no &lt;code&gt;Window&lt;/code&gt;, a default &lt;code&gt;Frame&lt;/code&gt; is used</span>
+<span class="java-block-comment">     * @param info &lt;code&gt;ErrorInfo&lt;/code&gt; that incorporates all the information about the error</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">void</span> <span class="java-layer-method">showDialog</span>(Component owner, ErrorInfo info);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Constructs and shows the error dialog, using the given</span>
+<span class="java-block-comment">     * &lt;code&gt;JXErrorPane&lt;/code&gt; for the view portion of the dialog.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt;This method may be called from any thread. It will actually show the error</span>
+<span class="java-block-comment">     * dialog on the AWT event dispatch thread. This method blocks. If called</span>
+<span class="java-block-comment">     * on the EDT, the dialog shown will be modal. Otherwise, this thread will</span>
+<span class="java-block-comment">     * block until the error dialog has been shown and hidden on the EDT.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param owner Owner of this error dialog. Determines the Window in which the dialog</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">is displayed; if the &lt;code&gt;owner&lt;/code&gt; has</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">no &lt;code&gt;Window&lt;/code&gt;, a default &lt;code&gt;Frame&lt;/code&gt; is used</span>
+<span class="java-block-comment">     * @param pane &lt;code&gt;JXErrorPane&lt;/code&gt; which will form the content area</span>
+<span class="java-block-comment">     *        of the dialog.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">void</span> <span class="java-layer-method">showDialog</span>(<span class="java-keywords">final</span> Component owner, <span class="java-keywords">final</span> JXErrorPane pane);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Constructs and returns an error dialog, using the given</span>
+<span class="java-block-comment">     * &lt;code&gt;JXErrorPane&lt;/code&gt; for the view portion of the dialog.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt;This method may be called from any thread. It does not block. The</span>
+<span class="java-block-comment">     * caller is responsible for ensuring that the dialog is shown and manipulated</span>
+<span class="java-block-comment">     * on the AWT event dispatch thread. A common way to do this is to use</span>
+<span class="java-block-comment">     * &lt;code&gt;SwingUtilities.invokeAndWait&lt;/code&gt; or </span>
+<span class="java-block-comment">     * &lt;code&gt;SwingUtilities.invokeLater()&lt;/code&gt;.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param owner Owner of this error dialog. Determines the Window in which the dialog</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">is displayed; if the &lt;code&gt;owner&lt;/code&gt; has</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">no &lt;code&gt;Window&lt;/code&gt;, a default &lt;code&gt;Frame&lt;/code&gt; is used</span>
+<span class="java-block-comment">     * @param pane &lt;code&gt;JXErrorPane&lt;/code&gt; which will form the content area</span>
+<span class="java-block-comment">     *        of the dialog.</span>
+<span class="java-block-comment">     * @return a &lt;code&gt;JDialog&lt;/code&gt; configured to display the error.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> JDialog <span class="java-layer-method">createDialog</span>(Component owner, JXErrorPane pane);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Constructs and shows the error frame for the given exception.  The </span>
+<span class="java-block-comment">     * exceptions message will be the errorMessage, and the stacktrace will form </span>
+<span class="java-block-comment">     * the details for the error dialog.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt;This method may be called from any thread. It will actually show the error</span>
+<span class="java-block-comment">     * dialog on the AWT event dispatch thread. This method blocks. If called</span>
+<span class="java-block-comment">     * on the EDT, the frame shown will be modal. Otherwise, this thread will</span>
+<span class="java-block-comment">     * block until the error frame has been shown and hidden on the EDT.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param e Exception that contains information about the error cause and stack trace</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">void</span> <span class="java-layer-method">showFrame</span>(Throwable e);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Constructs and shows the error frame, using the given</span>
+<span class="java-block-comment">     * &lt;code&gt;ErrorInfo&lt;/code&gt; to initialize the view.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt;This method may be called from any thread. It will actually show the error</span>
+<span class="java-block-comment">     * dialog on the AWT event dispatch thread. This method blocks. If called</span>
+<span class="java-block-comment">     * on the EDT, the frame shown will be modal. Otherwise, this thread will</span>
+<span class="java-block-comment">     * block until the error frame has been shown and hidden on the EDT.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param owner Owner of this error frame. Determines the Window in which the frame</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">is displayed; if the &lt;code&gt;owner&lt;/code&gt; has</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">no &lt;code&gt;Window&lt;/code&gt;, a default &lt;code&gt;Frame&lt;/code&gt; is used</span>
+<span class="java-block-comment">     * @param info &lt;code&gt;ErrorInfo&lt;/code&gt; that incorporates all the information about the error</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">void</span> <span class="java-layer-method">showFrame</span>(Component owner, ErrorInfo info);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Constructs and shows the error frame, using the given</span>
+<span class="java-block-comment">     * &lt;code&gt;JXErrorPane&lt;/code&gt; for the view portion of the frame.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt;This method may be called from any thread. It will actually show the error</span>
+<span class="java-block-comment">     * dialog on the AWT event dispatch thread. This method blocks. If called</span>
+<span class="java-block-comment">     * on the EDT, the frame shown will be modal. Otherwise, this thread will</span>
+<span class="java-block-comment">     * block until the error frame has been shown and hidden on the EDT.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param owner Owner of this error frame. Determines the Window in which the dialog</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">is displayed; if the &lt;code&gt;owner&lt;/code&gt; has</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">no &lt;code&gt;Window&lt;/code&gt;, a default &lt;code&gt;Frame&lt;/code&gt; is used</span>
+<span class="java-block-comment">     * @param pane &lt;code&gt;JXErrorPane&lt;/code&gt; which will form the content area</span>
+<span class="java-block-comment">     *        of the frame.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">void</span> <span class="java-layer-method">showFrame</span>(<span class="java-keywords">final</span> Component owner, <span class="java-keywords">final</span> JXErrorPane pane);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Constructs and returns an error frame, using the given</span>
+<span class="java-block-comment">     * &lt;code&gt;JXErrorPane&lt;/code&gt; for the view portion of the frame.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt;This method may be called from any thread. It does not block. The</span>
+<span class="java-block-comment">     * caller is responsible for ensuring that the frame is shown and manipulated</span>
+<span class="java-block-comment">     * on the AWT event dispatch thread. A common way to do this is to use</span>
+<span class="java-block-comment">     * &lt;code&gt;SwingUtilities.invokeAndWait&lt;/code&gt; or </span>
+<span class="java-block-comment">     * &lt;code&gt;SwingUtilities.invokeLater()&lt;/code&gt;.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param owner Owner of this error frame. Determines the Window in which the frame</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">is displayed; if the &lt;code&gt;owner&lt;/code&gt; has</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">no &lt;code&gt;Window&lt;/code&gt;, a default &lt;code&gt;Frame&lt;/code&gt; is used</span>
+<span class="java-block-comment">     * @param pane &lt;code&gt;JXErrorPane&lt;/code&gt; which will form the content area</span>
+<span class="java-block-comment">     *        of the frame.</span>
+<span class="java-block-comment">     * @return a &lt;code&gt;JFrame&lt;/code&gt; configured to display the error.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> JFrame <span class="java-layer-method">createFrame</span>(Component owner, JXErrorPane pane);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Constructs and shows the error frame for the given exception.  The </span>
+<span class="java-block-comment">     * exceptions message will be the errorMessage, and the stacktrace will form </span>
+<span class="java-block-comment">     * the details for the error dialog.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt;This method may be called from any thread. It will actually show the error</span>
+<span class="java-block-comment">     * dialog on the AWT event dispatch thread. This method blocks. If called</span>
+<span class="java-block-comment">     * on the EDT, the frame shown will be modal. Otherwise, this thread will</span>
+<span class="java-block-comment">     * block until the error frame has been shown and hidden on the EDT.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param e Exception that contains information about the error cause and stack trace</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">void</span> <span class="java-layer-method">showInternalFrame</span>(Throwable e);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Constructs and shows the error frame, using the given</span>
+<span class="java-block-comment">     * &lt;code&gt;ErrorInfo&lt;/code&gt; to initialize the view.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt;This method may be called from any thread. It will actually show the error</span>
+<span class="java-block-comment">     * dialog on the AWT event dispatch thread. This method blocks. If called</span>
+<span class="java-block-comment">     * on the EDT, the frame shown will be modal. Otherwise, this thread will</span>
+<span class="java-block-comment">     * block until the error frame has been shown and hidden on the EDT.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param owner Owner of this error frame. Determines the Window in which the frame</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">is displayed; if the &lt;code&gt;owner&lt;/code&gt; has</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">no &lt;code&gt;Window&lt;/code&gt;, a default &lt;code&gt;Frame&lt;/code&gt; is used</span>
+<span class="java-block-comment">     * @param info &lt;code&gt;ErrorInfo&lt;/code&gt; that incorporates all the information about the error</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">void</span> <span class="java-layer-method">showInternalFrame</span>(Component owner, ErrorInfo info);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Constructs and shows the error frame, using the given</span>
+<span class="java-block-comment">     * &lt;code&gt;JXErrorPane&lt;/code&gt; for the view portion of the frame.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt;This method may be called from any thread. It will actually show the error</span>
+<span class="java-block-comment">     * dialog on the AWT event dispatch thread. This method blocks. If called</span>
+<span class="java-block-comment">     * on the EDT, the frame shown will be modal. Otherwise, this thread will</span>
+<span class="java-block-comment">     * block until the error frame has been shown and hidden on the EDT.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param owner Owner of this error frame. Determines the Window in which the dialog</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">is displayed; if the &lt;code&gt;owner&lt;/code&gt; has</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">no &lt;code&gt;Window&lt;/code&gt;, a default &lt;code&gt;Frame&lt;/code&gt; is used</span>
+<span class="java-block-comment">     * @param pane &lt;code&gt;JXErrorPane&lt;/code&gt; which will form the content area</span>
+<span class="java-block-comment">     *        of the frame.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">void</span> <span class="java-layer-method">showInternalFrame</span>(<span class="java-keywords">final</span> Component owner, <span class="java-keywords">final</span> JXErrorPane pane);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Constructs and returns an error frame, using the given</span>
+<span class="java-block-comment">     * &lt;code&gt;JXErrorPane&lt;/code&gt; for the view portion of the frame.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt;This method may be called from any thread. It does not block. The</span>
+<span class="java-block-comment">     * caller is responsible for ensuring that the frame is shown and manipulated</span>
+<span class="java-block-comment">     * on the AWT event dispatch thread. A common way to do this is to use</span>
+<span class="java-block-comment">     * &lt;code&gt;SwingUtilities.invokeAndWait&lt;/code&gt; or </span>
+<span class="java-block-comment">     * &lt;code&gt;SwingUtilities.invokeLater()&lt;/code&gt;.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param owner Owner of this error frame. Determines the Window in which the frame</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">is displayed; if the &lt;code&gt;owner&lt;/code&gt; has</span>
+<span class="java-block-comment">     *</span>          <span class="java-block-comment">no &lt;code&gt;Window&lt;/code&gt;, a default &lt;code&gt;Frame&lt;/code&gt; is used</span>
+<span class="java-block-comment">     * @param pane &lt;code&gt;JXErrorPane&lt;/code&gt; which will form the content area</span>
+<span class="java-block-comment">     *        of the frame.</span>
+<span class="java-block-comment">     * @return a &lt;code&gt;JInternalFrame&lt;/code&gt; configured to display the error.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> JInternalFrame <span class="java-layer-method">createInternalFrame</span>(Component owner, JXErrorPane pane);
+}
+
+
+</pre></body>
+</html>

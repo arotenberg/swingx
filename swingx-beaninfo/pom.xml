@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>swingx-project</artifactId>
+    <groupId>org.swinglabs.swingx</groupId>
+    <version>1.6.6-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>swingx-beaninfo</artifactId>
+  <packaging>jar</packaging>
+  <name>SwingX BeanInfo</name>
+  <dependencies>
+    <dependency>
+      <groupId>${project.groupId}</groupId>
+      <artifactId>swingx-core</artifactId>
+      <version>${project.version}</version>
+      <optional>true</optional>
+    </dependency>
+    <dependency>
+    	<groupId>${project.groupId}</groupId>
+    	<artifactId>swingx-testsupport</artifactId>
+    	<version>${project.version}</version>
+    	<type>jar</type>
+    	<scope>test</scope>
+    </dependency>
+  </dependencies>
+</project>

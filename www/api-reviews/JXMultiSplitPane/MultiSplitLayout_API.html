@@ -1,0 +1,498 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>MultiSplitLayout_API.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.java-keywords {color: #000099; font-family: Monospaced; font-weight: bold}
+.java-layer-method {font-family: Monospaced; font-weight: bold}
+.java-block-comment {color: #737373}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/Users/richardallenbair/Documents/Source/Projects/nonsense/swingx/src/beaninfo/MultiSplitLayout_API.java</td></tr></table>
+<pre>
+<span class="java-block-comment">/*</span>
+<span class="java-block-comment"> * $Id: MultiSplitLayout_API.html 1352 2006-08-22 22:52:00Z rbair $</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * Copyright 2004 Sun Microsystems, Inc., 4150 Network Circle,</span>
+<span class="java-block-comment"> * Santa Clara, California 95054, U.S.A. All rights reserved.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * This library is free software; you can redistribute it and/or</span>
+<span class="java-block-comment"> * modify it under the terms of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License as published by the Free Software Foundation; either</span>
+<span class="java-block-comment"> * version 2.1 of the License, or (at your option) any later version.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * This library is distributed in the hope that it will be useful,</span>
+<span class="java-block-comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="java-block-comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span>
+<span class="java-block-comment"> * Lesser General Public License for more details.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * You should have received a copy of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License along with this library; if not, write to the Free Software</span>
+<span class="java-block-comment"> * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</span>
+<span class="java-block-comment"> */</span>
+
+<span class="java-keywords">package</span> org.jdesktop.swingx;
+
+<span class="java-keywords">import</span> java.awt.Component;
+<span class="java-keywords">import</span> java.awt.Container;
+<span class="java-keywords">import</span> java.awt.Dimension;
+<span class="java-keywords">import</span> java.awt.Insets;
+<span class="java-keywords">import</span> java.awt.LayoutManager;
+<span class="java-keywords">import</span> java.awt.Rectangle;
+<span class="java-keywords">import</span> java.beans.PropertyChangeListener;
+<span class="java-keywords">import</span> java.beans.PropertyChangeSupport;
+<span class="java-keywords">import</span> java.io.IOException;
+<span class="java-keywords">import</span> java.io.Reader;
+<span class="java-keywords">import</span> java.io.StreamTokenizer;
+<span class="java-keywords">import</span> java.io.StringReader;
+<span class="java-keywords">import</span> java.util.ArrayList;
+<span class="java-keywords">import</span> java.util.Collections;
+<span class="java-keywords">import</span> java.util.HashMap;
+<span class="java-keywords">import</span> java.util.Iterator;
+<span class="java-keywords">import</span> java.util.List;
+<span class="java-keywords">import</span> java.util.ListIterator;
+<span class="java-keywords">import</span> java.util.Map;
+<span class="java-keywords">import</span> javax.swing.UIManager;
+
+
+<span class="java-block-comment">/**</span>
+<span class="java-block-comment"> * The MultiSplitLayout layout manager recursively arranges its</span>
+<span class="java-block-comment"> * components in row and column groups called &quot;Splits&quot;.  Elements of</span>
+<span class="java-block-comment"> * the layout are separated by gaps called &quot;Dividers&quot;.  The overall</span>
+<span class="java-block-comment"> * layout is defined with a simple tree model whose nodes are </span>
+<span class="java-block-comment"> * instances of MultiSplitLayout.Split, MultiSplitLayout.Divider, </span>
+<span class="java-block-comment"> * and MultiSplitLayout.Leaf. Named Leaf nodes represent the space </span>
+<span class="java-block-comment"> * allocated to a component that was added with a constraint that</span>
+<span class="java-block-comment"> * matches the Leaf&apos;s name.  Extra space is distributed</span>
+<span class="java-block-comment"> * among row/column siblings according to their 0.0 to 1.0 weight.</span>
+<span class="java-block-comment"> * If no weights are specified then the last sibling always gets</span>
+<span class="java-block-comment"> * all of the extra space, or space reduction.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;</span>
+<span class="java-block-comment"> * Although MultiSplitLayout can be used with any Container, it&apos;s</span>
+<span class="java-block-comment"> * the default layout manager for JXMultiSplitPane.  JXMultiSplitPane</span>
+<span class="java-block-comment"> * supports interactively dragging the Dividers, accessibility, </span>
+<span class="java-block-comment"> * and other features associated with split panes.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;</span>
+<span class="java-block-comment"> * All properties in this class are bound: when a properties value</span>
+<span class="java-block-comment"> * is changed, all PropertyChangeListeners are fired.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * @author Hans Muller</span>
+<span class="java-block-comment"> * @see JXMultiSplitPane</span>
+<span class="java-block-comment"> */</span>
+
+<span class="java-keywords">public</span> <span class="java-keywords">class</span> MultiSplitLayout <span class="java-keywords">extends</span> JavaBean <span class="java-keywords">implements</span> LayoutManager {
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Create a MultiSplitLayout with a default model with a single</span>
+<span class="java-block-comment">     * Leaf node named &quot;default&quot;.  </span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * #see setModel</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">MultiSplitLayout</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Create a MultiSplitLayout with the specified model.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * #see setModel</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">MultiSplitLayout</span>(Node model);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Return the root of the tree of Split, Leaf, and Divider nodes</span>
+<span class="java-block-comment">     * that define this layout.  </span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @return the value of the model property</span>
+<span class="java-block-comment">     * @see #setModel</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Node <span class="java-layer-method">getModel</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Set the root of the tree of Split, Leaf, and Divider nodes</span>
+<span class="java-block-comment">     * that define this layout.  The model can be a Split node</span>
+<span class="java-block-comment">     * (the typical case) or a Leaf.  The default value of this</span>
+<span class="java-block-comment">     * property is a Leaf named &quot;default&quot;.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param model the root of the tree of Split, Leaf, and Divider node</span>
+<span class="java-block-comment">     * @throws IllegalArgumentException if model is a Divider or null</span>
+<span class="java-block-comment">     * @see #getModel</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setModel</span>(Node model);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Returns the width of Dividers in Split rows, and the height of </span>
+<span class="java-block-comment">     * Dividers in Split columns.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return the value of the dividerSize property</span>
+<span class="java-block-comment">     * @see #setDividerSize</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">int</span> <span class="java-layer-method">getDividerSize</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Sets the width of Dividers in Split rows, and the height of </span>
+<span class="java-block-comment">     * Dividers in Split columns.  The default value of this property</span>
+<span class="java-block-comment">     * is the same as for JSplitPane Dividers.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param dividerSize the size of dividers (pixels)</span>
+<span class="java-block-comment">     * @throws IllegalArgumentException if dividerSize &lt; 0</span>
+<span class="java-block-comment">     * @see #getDividerSize</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setDividerSize</span>(<span class="java-keywords">int</span> dividerSize);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * @return the value of the floatingDividers property</span>
+<span class="java-block-comment">     * @see #setFloatingDividers</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">boolean</span> <span class="java-layer-method">getFloatingDividers</span>();
+
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * If true, Leaf node bounds match the corresponding component&apos;s </span>
+<span class="java-block-comment">     * preferred size and Splits/Dividers are resized accordingly.  </span>
+<span class="java-block-comment">     * If false then the Dividers define the bounds of the adjacent</span>
+<span class="java-block-comment">     * Split and Leaf nodes.  Typically this property is set to false</span>
+<span class="java-block-comment">     * after the (MultiSplitPane) user has dragged a Divider.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @see #getFloatingDividers</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setFloatingDividers</span>(<span class="java-keywords">boolean</span> floatingDividers);
+
+
+    <span class="java-block-comment">/** </span>
+<span class="java-block-comment">     * Add a component to this MultiSplitLayout.  The</span>
+<span class="java-block-comment">     * &lt;code&gt;name&lt;/code&gt; should match the name property of the Leaf</span>
+<span class="java-block-comment">     * node that represents the bounds of &lt;code&gt;child&lt;/code&gt;.  After</span>
+<span class="java-block-comment">     * layoutContainer() recomputes the bounds of all of the nodes in</span>
+<span class="java-block-comment">     * the model, it will set this child&apos;s bounds to the bounds of the</span>
+<span class="java-block-comment">     * Leaf node with &lt;code&gt;name&lt;/code&gt;.  Note: if a component was already</span>
+<span class="java-block-comment">     * added with the same name, this method does not remove it from </span>
+<span class="java-block-comment">     * its parent.  </span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param name identifies the Leaf node that defines the child&apos;s bounds</span>
+<span class="java-block-comment">     * @param child the component to be added</span>
+<span class="java-block-comment">     * @see #removeLayoutComponent</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">addLayoutComponent</span>(String name, Component child);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Removes the specified component from the layout.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param child the component to be removed</span>
+<span class="java-block-comment">     * @see #addLayoutComponent</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">removeLayoutComponent</span>(Component child);
+
+    <span class="java-keywords">public</span> Dimension <span class="java-layer-method">preferredLayoutSize</span>(Container parent);
+
+    <span class="java-keywords">public</span> Dimension <span class="java-layer-method">minimumLayoutSize</span>(Container parent);
+
+    <span class="java-block-comment">/** </span>
+<span class="java-block-comment">     * The specified Node is either the wrong type or was configured</span>
+<span class="java-block-comment">     * incorrectly.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">class</span> InvalidLayoutException <span class="java-keywords">extends</span> RuntimeException {
+        <span class="java-keywords">public</span> <span class="java-layer-method">InvalidLayoutException</span> (String msg, Node node);
+        <span class="java-block-comment">/** </span>
+        <span class="java-block-comment"> * @return the invalid Node.</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> Node <span class="java-layer-method">getNode</span>();
+    }
+
+    <span class="java-block-comment">/** </span>
+<span class="java-block-comment">     * Compute the bounds of all of the Split/Divider/Leaf Nodes in </span>
+<span class="java-block-comment">     * the layout model, and then set the bounds of each child component</span>
+<span class="java-block-comment">     * with a matching Leaf Node.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">layoutContainer</span>(Container parent);
+
+    <span class="java-block-comment">/** </span>
+<span class="java-block-comment">     * Return the Divider whose bounds contain the specified</span>
+<span class="java-block-comment">     * point, or null if there isn&apos;t one.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param x x coordinate</span>
+<span class="java-block-comment">     * @param y y coordinate</span>
+<span class="java-block-comment">     * @return the Divider at x,y</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Divider <span class="java-layer-method">dividerAt</span>(<span class="java-keywords">int</span> x, <span class="java-keywords">int</span> y);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Return the Dividers whose bounds overlap the specified</span>
+<span class="java-block-comment">     * Rectangle.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param r target Rectangle</span>
+<span class="java-block-comment">     * @return the Dividers that overlap r</span>
+<span class="java-block-comment">     * @throws IllegalArgumentException if the Rectangle is null</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> List&lt;Divider&gt; <span class="java-layer-method">dividersThatOverlap</span>(Rectangle r);
+
+    <span class="java-block-comment">/** </span>
+<span class="java-block-comment">     * Base class for the nodes that model a MultiSplitLayout.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">abstract</span> <span class="java-keywords">class</span> Node {
+        <span class="java-block-comment">/** </span>
+        <span class="java-block-comment"> * Returns the Split parent of this Node, or null.</span>
+        <span class="java-block-comment"> *</span>
+        <span class="java-block-comment"> * @return the value of the parent property.</span>
+        <span class="java-block-comment"> * @see #setParent</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> Split <span class="java-layer-method">getParent</span>();
+
+        <span class="java-block-comment">/**</span>
+        <span class="java-block-comment"> * Set the value of this Node&apos;s parent property.  The default</span>
+        <span class="java-block-comment"> * value of this property is null.</span>
+        <span class="java-block-comment"> * </span>
+        <span class="java-block-comment"> * @param parent a Split or null</span>
+        <span class="java-block-comment"> * @see #getParent</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setParent</span>(Split parent);
+        
+        <span class="java-block-comment">/**</span>
+        <span class="java-block-comment"> * Returns the bounding Rectangle for this Node.</span>
+        <span class="java-block-comment"> * </span>
+        <span class="java-block-comment"> * @return the value of the bounds property.</span>
+        <span class="java-block-comment"> * @see #setBounds</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> Rectangle <span class="java-layer-method">getBounds</span>();
+
+        <span class="java-block-comment">/**</span>
+        <span class="java-block-comment"> * Set the bounding Rectangle for this node.  The value of </span>
+        <span class="java-block-comment"> * bounds may not be null.  The default value of bounds</span>
+        <span class="java-block-comment"> * is equal to &lt;code&gt;new Rectangle(0,0,0,0)&lt;/code&gt;.</span>
+        <span class="java-block-comment"> * </span>
+        <span class="java-block-comment"> * @param bounds the new value of the bounds property</span>
+        <span class="java-block-comment"> * @throws IllegalArgumentException if bounds is null</span>
+        <span class="java-block-comment"> * @see #getBounds</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setBounds</span>(Rectangle bounds);
+
+        <span class="java-block-comment">/** </span>
+        <span class="java-block-comment"> * Value between 0.0 and 1.0 used to compute how much space</span>
+        <span class="java-block-comment"> * to add to this sibling when the layout grows or how</span>
+        <span class="java-block-comment"> * much to reduce when the layout shrinks.</span>
+        <span class="java-block-comment"> * </span>
+        <span class="java-block-comment"> * @return the value of the weight property</span>
+        <span class="java-block-comment"> * @see #setWeight</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> <span class="java-keywords">double</span> <span class="java-layer-method">getWeight</span>();
+
+        <span class="java-block-comment">/** </span>
+        <span class="java-block-comment"> * The weight property is a between 0.0 and 1.0 used to</span>
+        <span class="java-block-comment"> * compute how much space to add to this sibling when the</span>
+        <span class="java-block-comment"> * layout grows or how much to reduce when the layout shrinks.</span>
+        <span class="java-block-comment"> * If rowLayout is true then this node&apos;s width grows</span>
+        <span class="java-block-comment"> * or shrinks by (extraSpace * weight).  If rowLayout is false,</span>
+        <span class="java-block-comment"> * then the node&apos;s height is changed.  The default value</span>
+        <span class="java-block-comment"> * of weight is 0.0.</span>
+        <span class="java-block-comment"> * </span>
+        <span class="java-block-comment"> * @param weight a double between 0.0 and 1.0</span>
+        <span class="java-block-comment"> * @see #getWeight</span>
+        <span class="java-block-comment"> * @see MultiSplitLayout#layoutContainer</span>
+        <span class="java-block-comment"> * @throws IllegalArgumentException if weight is not between 0.0 and 1.0</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setWeight</span>(<span class="java-keywords">double</span> weight);
+
+        <span class="java-block-comment">/** </span>
+        <span class="java-block-comment"> * Return the Node that comes after this one in the parent&apos;s</span>
+        <span class="java-block-comment"> * list of children, or null.  If this node&apos;s parent is null,</span>
+        <span class="java-block-comment"> * or if it&apos;s the last child, then return null.</span>
+        <span class="java-block-comment"> * </span>
+        <span class="java-block-comment"> * @return the Node that comes after this one in the parent&apos;s list of children.</span>
+        <span class="java-block-comment"> * @see #previousSibling</span>
+        <span class="java-block-comment"> * @see #getParent</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> Node <span class="java-layer-method">nextSibling</span>();
+
+        <span class="java-block-comment">/** </span>
+        <span class="java-block-comment"> * Return the Node that comes before this one in the parent&apos;s</span>
+        <span class="java-block-comment"> * list of children, or null.  If this node&apos;s parent is null,</span>
+        <span class="java-block-comment"> * or if it&apos;s the last child, then return null.</span>
+        <span class="java-block-comment"> * </span>
+        <span class="java-block-comment"> * @return the Node that comes before this one in the parent&apos;s list of children.</span>
+        <span class="java-block-comment"> * @see #nextSibling</span>
+        <span class="java-block-comment"> * @see #getParent</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> Node <span class="java-layer-method">previousSibling</span>();
+    }
+
+    <span class="java-block-comment">/** </span>
+<span class="java-block-comment">     * Defines a vertical or horizontal subdivision into two or more</span>
+<span class="java-block-comment">     * tiles.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">class</span> Split <span class="java-keywords">extends</span> Node {
+        <span class="java-block-comment">/**</span>
+        <span class="java-block-comment"> * Returns true if the this Split&apos;s children are to be </span>
+        <span class="java-block-comment"> * laid out in a row: all the same height, left edge</span>
+        <span class="java-block-comment"> * equal to the previous Node&apos;s right edge.  If false,</span>
+        <span class="java-block-comment"> * children are laid on in a column.</span>
+        <span class="java-block-comment"> * </span>
+        <span class="java-block-comment"> * @return the value of the rowLayout property.</span>
+        <span class="java-block-comment"> * @see #setRowLayout</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> <span class="java-keywords">boolean</span> <span class="java-layer-method">isRowLayout</span>();
+
+        <span class="java-block-comment">/**</span>
+        <span class="java-block-comment"> * Set the rowLayout property.  If true, all of this Split&apos;s</span>
+        <span class="java-block-comment"> * children are to be laid out in a row: all the same height,</span>
+        <span class="java-block-comment"> * each node&apos;s left edge equal to the previous Node&apos;s right</span>
+        <span class="java-block-comment"> * edge.  If false, children are laid on in a column.  Default</span>
+        <span class="java-block-comment"> * value is true.</span>
+        <span class="java-block-comment"> * </span>
+        <span class="java-block-comment"> * @param rowLayout true for horizontal row layout, false for column</span>
+        <span class="java-block-comment"> * @see #isRowLayout</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setRowLayout</span>(<span class="java-keywords">boolean</span> rowLayout);
+
+        <span class="java-block-comment">/** </span>
+        <span class="java-block-comment"> * Returns this Split node&apos;s children.  The returned value</span>
+        <span class="java-block-comment"> * is not a reference to the Split&apos;s internal list of children</span>
+        <span class="java-block-comment"> * </span>
+        <span class="java-block-comment"> * @return the value of the children property.</span>
+        <span class="java-block-comment"> * @see #setChildren</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> List&lt;Node&gt; <span class="java-layer-method">getChildren</span>();
+
+        <span class="java-block-comment">/**</span>
+        <span class="java-block-comment"> * Set&apos;s the children property of this Split node.  The parent</span>
+        <span class="java-block-comment"> * of each new child is set to this Split node, and the parent</span>
+        <span class="java-block-comment"> * of each old child (if any) is set to null.  This method</span>
+        <span class="java-block-comment"> * defensively copies the incoming List.  Default value is</span>
+        <span class="java-block-comment"> * an empty List.</span>
+        <span class="java-block-comment"> * </span>
+        <span class="java-block-comment"> * @param children List of children</span>
+        <span class="java-block-comment"> * @see #getChildren</span>
+        <span class="java-block-comment"> * @throws IllegalArgumentException if children is null</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setChildren</span>(List&lt;Node&gt; children);
+
+        <span class="java-block-comment">/**</span>
+        <span class="java-block-comment"> * Convenience method that returns the last child whose weight</span>
+        <span class="java-block-comment"> * is &gt; 0.0.</span>
+        <span class="java-block-comment"> * </span>
+        <span class="java-block-comment"> * @return the last child whose weight is &gt; 0.0.</span>
+        <span class="java-block-comment"> * @see #getChildren</span>
+        <span class="java-block-comment"> * @see Node#getWeight</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> <span class="java-keywords">final</span> Node <span class="java-layer-method">lastWeightedChild</span>();
+    }
+
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Models a java.awt Component child.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">class</span> Leaf <span class="java-keywords">extends</span> Node {
+        <span class="java-block-comment">/**</span>
+        <span class="java-block-comment"> * Create a Leaf node.  The default value of name is &quot;&quot;. </span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> <span class="java-layer-method">Leaf</span>();
+
+        <span class="java-block-comment">/**</span>
+        <span class="java-block-comment"> * Create a Leaf node with the specified name.  Name can not</span>
+        <span class="java-block-comment"> * be null.</span>
+        <span class="java-block-comment"> * </span>
+        <span class="java-block-comment"> * @param name value of the Leaf&apos;s name property</span>
+        <span class="java-block-comment"> * @throws IllegalArgumentException if name is null</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> <span class="java-layer-method">Leaf</span>(String name);
+
+        <span class="java-block-comment">/**</span>
+        <span class="java-block-comment"> * Return the Leaf&apos;s name.</span>
+        <span class="java-block-comment"> * </span>
+        <span class="java-block-comment"> * @return the value of the name property.</span>
+        <span class="java-block-comment"> * @see #setName</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> String <span class="java-layer-method">getName</span>();
+
+        <span class="java-block-comment">/**</span>
+        <span class="java-block-comment"> * Set the value of the name property.  Name may not be null.</span>
+        <span class="java-block-comment"> * </span>
+        <span class="java-block-comment"> * @param name value of the name property</span>
+        <span class="java-block-comment"> * @throws IllegalArgumentException if name is null</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setName</span>(String name);
+    }
+
+
+    <span class="java-block-comment">/** </span>
+<span class="java-block-comment">     * Models a single vertical/horiztonal divider.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">class</span> Divider <span class="java-keywords">extends</span> Node {
+        <span class="java-block-comment">/**</span>
+        <span class="java-block-comment"> * Convenience method, returns true if the Divider&apos;s parent</span>
+        <span class="java-block-comment"> * is a Split row (a Split with isRowLayout() true), false</span>
+        <span class="java-block-comment"> * otherwise. In other words if this Divider&apos;s major axis</span>
+        <span class="java-block-comment"> * is vertical, return true.</span>
+        <span class="java-block-comment"> * </span>
+        <span class="java-block-comment"> * @return true if this Divider is part of a Split row.</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> <span class="java-keywords">final</span> <span class="java-keywords">boolean</span> <span class="java-layer-method">isVertical</span>();
+
+        <span class="java-block-comment">/** </span>
+        <span class="java-block-comment"> * Dividers can&apos;t have a weight, they don&apos;t grow or shrink.</span>
+        <span class="java-block-comment"> * @throws UnsupportedOperationException</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setWeight</span>(<span class="java-keywords">double</span> weight);
+    }
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * A convenience method that converts a string to a </span>
+<span class="java-block-comment">     * MultiSplitLayout model (a tree of Nodes) using a </span>
+<span class="java-block-comment">     * a simple syntax.  Nodes are represented by </span>
+<span class="java-block-comment">     * parenthetical expressions whose first token </span>
+<span class="java-block-comment">     * is one of ROW/COLUMN/LEAF.  ROW and COLUMN specify</span>
+<span class="java-block-comment">     * horizontal and vertical Split nodes respectively, </span>
+<span class="java-block-comment">     * LEAF specifies a Leaf node.  A Leaf&apos;s name and </span>
+<span class="java-block-comment">     * weight can be specified with attributes, </span>
+<span class="java-block-comment">     * name=&lt;i&gt;myLeafName&lt;/i&gt; weight=&lt;i&gt;myLeafWeight&lt;/i&gt;.</span>
+<span class="java-block-comment">     * Similarly, a Split&apos;s weight can be specified with</span>
+<span class="java-block-comment">     * weight=&lt;i&gt;mySplitWeight&lt;/i&gt;.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt; For example, the following expression generates</span>
+<span class="java-block-comment">     * a horizontal Split node with three children:</span>
+<span class="java-block-comment">     * the Leafs named left and right, and a Divider in </span>
+<span class="java-block-comment">     * between:</span>
+<span class="java-block-comment">     * &lt;pre&gt;</span>
+<span class="java-block-comment">     * (ROW (LEAF name=left) (LEAF name=right weight=1.0))</span>
+<span class="java-block-comment">     * &lt;/pre&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt; Dividers should not be included in the string, </span>
+<span class="java-block-comment">     * they&apos;re added automatcially as needed.  Because </span>
+<span class="java-block-comment">     * Leaf nodes often only need to specify a name, one</span>
+<span class="java-block-comment">     * can specify a Leaf by just providing the name.</span>
+<span class="java-block-comment">     * The previous example can be written like this:</span>
+<span class="java-block-comment">     * &lt;pre&gt;</span>
+<span class="java-block-comment">     * (ROW left (LEAF name=right weight=1.0))</span>
+<span class="java-block-comment">     * &lt;/pre&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt;Here&apos;s a more complex example.  One row with</span>
+<span class="java-block-comment">     * three elements, the first and last of which are columns</span>
+<span class="java-block-comment">     * with two leaves each:</span>
+<span class="java-block-comment">     * &lt;pre&gt;</span>
+<span class="java-block-comment">     * (ROW (COLUMN weight=0.5 left.top left.bottom) </span>
+<span class="java-block-comment">     *      (LEAF name=middle)</span>
+<span class="java-block-comment">     *      (COLUMN weight=0.5 right.top right.bottom))</span>
+<span class="java-block-comment">     * &lt;/pre&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt; This syntax is not intended for archiving or </span>
+<span class="java-block-comment">     * configuration files. </span><span class="java-block-comment">It&apos;s just a convenience for</span>
+<span class="java-block-comment">     * examples and tests.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @return the Node root of a tree based on s.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> Node <span class="java-layer-method">parseModel</span>(String s);
+
+    <span class="java-block-comment">/** </span>
+<span class="java-block-comment">     * Print the tree with enough detail for simple debugging.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">void</span> <span class="java-layer-method">printModel</span>(Node root);
+}
+
+
+</pre></body>
+</html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <parent>
+    <artifactId>swingx-project</artifactId>
+    <groupId>org.swinglabs.swingx</groupId>
+    <version>1.6.3-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+  <artifactId>swingx-unused</artifactId>
+  <packaging>jar</packaging>
+  <name>SwingX Unused</name>
+  <description>Code that was removed from the codebase.  It lives on here in a pseudo-stable form.</description>
+  <dependencies>
+    <dependency>
+      <groupId>org.swinglabs</groupId>
+      <artifactId>swingx-core</artifactId>
+      <version>1.6.2-SNAPSHOT</version>
+    </dependency>
+  </dependencies>
+</project>

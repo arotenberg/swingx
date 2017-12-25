@@ -1,0 +1,92 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+
+  
+  <title>Transparent Highlighters</title>
+</head>
+
+
+<body>
+
+<h1>Experiments with&nbsp;Highlighters</h1>
+
+<br>
+
+<h2>Screenshot - Image</h2>
+
+<br>
+
+The idea is to decorate the cell with an Icon/Image which has a position relative to the cell content value.&nbsp;<br>
+
+<br>
+
+<img style="width: 624px; height: 430px;" alt="ImagePainter" src="image_highlighter.png"><br>
+
+<br>
+
+<br>
+
+<h2>Screenshots - transparent</h2>
+
+The idea is to have&nbsp;value-based gradient background highlighters.&nbsp;<br>
+
+<br>
+<h3>Distilled:&nbsp; PainterAwareLabel </h3>
+
+Conditional strategy in paintComponent depends on both opaqueness and custom painter available.<br>
+
+<br>
+<img style="width: 595px; height: 343px;" alt="striping plus transparent gradient" src="transparent_striping.png"><br>
+<br>
+<br>
+
+<h3>History/Evolution</h3>
+<h3>Core SwingX renderer state (17. Jan. 2007):</h3>
+
+Problem: selected overwrites the painter<br>
+
+<br>
+
+<img style="width: 599px; height: 343px;" alt="selected" src="transparent_highlighter_selected.png"><br>
+
+<br>
+
+<br>
+
+<h3>Experiments</h3>
+
+<br>
+
+A: adjust opaque with painter - problem: selected state invisible<br>
+
+<br>
+
+<img style="width: 597px; height: 340px;" alt="setopaque with painter" src="opaque_dependson_painter.png"><br>
+
+<br>
+
+<br>
+
+B: opaque independent on painter - selected state visible<br>
+
+<br>
+
+<img style="width: 597px; height: 340px;" alt="experimental" src="experimental_selected.png"><br>
+
+<br>
+
+<br>
+
+<br>
+<br>
+
+<br>
+
+<br>
+
+</body>
+</html>

@@ -1,0 +1,100 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+  <head>
+    <title>SwingX Documentation</title>
+    <!--<link rel="stylesheet" type="text/css" href="http://swinglabs.dev.java.net/css/swinglabs.css" />-->
+    <!--<link rel="stylesheet" type="text/css" href="file://c:/src/javanet/swinglabs/www/css/swinglabs.css" />-->
+  </head>
+  <body>
+    <h1>SwingX Documentation</h1>
+    <h2>Table of Contents</h2>
+    <table class="tableOfContents">
+        <tr class="headerRow"><th>Section</th><th>Description</th></tr>
+        <tr class="oddRow"><td class="primaryColumn"><a class="tableLink" href="#JXButtonPanel">JXButtonPanel</a></td><td>Smart panel for displaying buttons in OS specific &amp; local specific order</td></tr>
+        <tr class="evenRow"><td class="primaryColumn"><a class="tableLink" href="#JXComboBox">JXComboBox</a></td><td>Enhanced JComboBox supporting embedded tables, etc</td></tr>
+        <tr class="oddRow"><td class="primaryColumn"><a class="tableLink" href="#JXDatePicker">JXDatePicker</a></td><td>Standard date chooser component</td></tr>
+        <tr class="evenRow"><td class="primaryColumn"><a class="tableLink" href="#JXEditorPane">JXEditorPane</a></td><td>Enhancements to JEditorPane</td></tr>
+        <tr class="oddRow"><td class="primaryColumn"><a class="tableLink" href="#JXErrorDialog">JXErrorDialog</a></td><td>Enhanced standard error dialog</td></tr>
+        <tr class="evenRow"><td class="primaryColumn"><a class="tableLink" href="#JXFindDialog">JXFindDialog</a></td><td>Standard find dialog</td></tr>
+        <tr class="oddRow"><td class="primaryColumn"><a class="tableLink" href="#JXGlassBox">JXGlassBox</a></td><td>Dismiss on click & drop shadow functionality</td></tr>
+        <tr class="evenRow"><td class="primaryColumn"><a class="tableLink" href="#JXHyperlink">JXHyperlink</a></td><td>Extends AbstractButton, adds action listener support</td></tr>
+        <tr class="oddRow"><td class="primaryColumn"><a class="tableLink" href="#JXImagePanel">JXImagePanel</a></td><td>Displays an image</td></tr>
+        <tr class="evenRow"><td class="primaryColumn"><a class="tableLink" href="#JXList">JXList</a></td><td>Adds in place editing to JList</td></tr>
+        <tr class="oddRow"><td class="primaryColumn"><a class="tableLink" href="#JXLoginDialog">JXLoginDialog</a></td><td>Standard Login Dialog</td></tr>
+        <tr class="evenRow"><td class="primaryColumn"><a class="tableLink" href="#JXMonthView">JXMonthView</a></td><td>Displays a month calendar</td></tr>
+        <tr class="oddRow"><td class="primaryColumn"><a class="tableLink" href="#JXPanel">JXPanel</a></td><td>Adds translucency to the standard JPanel</td></tr>
+        <tr class="evenRow"><td class="primaryColumn"><a class="tableLink" href="#JXRadioGroup">JXRadioGroup</a></td><td>Simplifies dealing with ButtonGroup &amp; JRadioButton</td></tr>
+        <tr class="oddRow"><td class="primaryColumn"><a class="tableLink" href="#JXStatusBar">JXStatusBar</a></td><td>Enhanced status bar functionality</td></tr>
+        <tr class="evenRow"><td class="primaryColumn"><a class="tableLink" href="#JXTable">JXTable</a></td><td>Adds filtering/sorting/highlighting/column hiding to JTable</td></tr>
+        <tr class="oddRow"><td class="primaryColumn"><a class="tableLink" href="#JXTaskPane">JXTaskPane</a></td><td>Contains actions and hyperlinks, provides &quot;collapsing&quot functionality</td></tr>
+        <tr class="evenRow"><td class="primaryColumn"><a class="tableLink" href="#JXTitledPanel">JXTitledPanel</a></td><td>Title bar added to the JXPanel ala JGoodies</td></tr>
+        <tr class="oddRow"><td class="primaryColumn"><a class="tableLink" href="#JXTree">JXTree</a></td><td>Enhancements to JTree</td></tr>
+        <tr class="evenRow"><td class="primaryColumn"><a class="tableLink" href="#JXTreeTable">JXTreeTable</a></td><td>Combination of JTree & JTable</td></tr>
+    </table>
+    <h2><a name="JXButtonPanel">JXButtonPanel</h2>
+    <h2><a name="JXComboBox">JXComboBox</h2>
+        <p>This component extends JComboBox by allowing any JComponent to be embedded in the
+        popup. Some possible uses include an embedded JXTable, a color chooser popup, or some
+        custom image popup.</p>
+    <h2><a name="JXDatePicker">JXDatePicker</h2>
+        <p>A simple and very useful component that allows the user to either type in a date, or
+        pick one from a dropdown.</p>
+    <h2><a name="JXEditorPane">JXEditorPane</h2>
+        <p>The JXEditorPane contains several very interesting and useful extensions to it&apos;s
+        JEditorPane counterpart. First, it adds support for self closing tags. While not strictly
+        HTML 3.2 compliant, self closing tags (&lt;br/&gt;, for example) are common today. The
+        JXEditorPane correctly reads HTML that contains these kinds of tags. As part of this work,
+        it provides hooks to allow the developer to add logic to transform invalid HTML into valid
+        HTML. In addition, it also provides pluggable support for HTML extensions. For example,
+        one might create a special HTML tag &lt;myImageTag&gt; and have it associated with a
+        JXImagePanel. In this way, when parsing the HTML, the JXEditorPane will create and embed
+        a JXImagePanel in the document.</p>
+    <h2><a name="JXErrorDialog">JXErrorDialog</h2>
+    <h2><a name="JXFindDialog">JXFindDialog</h2>
+    <h2><a name="JXGlassBox">JXGlassBox</h2>
+    <h2><a name="JXHyperlink">JXHyperlink</h2>
+        <p>Though not novel, the JXHyperlink fills in an important gap for rich client applications.
+        Essentially, the JXHyperlink is a button that supports mouse-over feedback (an underline is shown)
+        and appears as a piece of text. The goal of this component is to look and feel like a hyperlink
+        on any webpage.</p>
+    <h2><a name="JXImagePanel">JXImagePanel</h2>
+        <p>While JLabel&apos;s and JButton&apos;s allow you to easily add images to your Swing applications,
+        the JXImagePanel makes it trivially easy to add any BufferedImage or Icon to your Swing applications.
+        If editable, it also provides a way for the user to change the image. In addition, the JXImagePanel
+        provides many built in effects out-of-the-box, including Tiling, Scaling, Rotating, Compositing,
+        and more</p>
+    <h2><a name="JXList">JXList</h2>
+    <h2><a name="JXLoginDialog">JXLoginDialog</h2>
+        <p>The JXLoginDialog and JXLoginPanel are easy to use components for creating and displaying
+        attractive, informational and useful login screens. The JXLoginDialog provides an out-of-the-box
+        login dialog that can be used with most applications. The JXLoginPanel is an embeddable component
+        that handles the actual login process by using the classes in the org.jdesktop.swingx.auth package.</p>
+    <h2><a name="JXMonthView">JXMonthView</h2>
+        <p>Perhaps one of the most novel and visually pleasing components in the SwingX toolkit, JXMonthView
+        is a component that displays one or more calendar months on a canvas. As the JXMonthView component
+        increases in size, more calendar months are displayed. This interesting component can be used in
+        a standalone manner, or as part of a date chooser component. In fact, the JXDatePicker component
+        uses the JXMonthView for it&apos;s drop down content.</p>
+    <h2><a name="JXPanel">JXPanel</h2>
+        <p>JXPanel adds translucency and gradients to the original Swing JPanel. It is designed (as all of the
+        SwingX components are) as a drop in replacement for existing JPanels. JXPanel is leveraged extensively
+        throughout the SwingX code base, and can be used to accomplish some very interesting visual effects.</p>
+    <h2><a name="JXRadioGroup">JXRadioGroup</h2>
+    <h2><a name="JXStatusBar">JXStatusBar</h2>
+    <h2><a name="JXTable">JXTable</h2>
+    <h2><a name="JXTaskPane">JXTaskPane</h2>
+    <h2><a name="JXTitledPanel">JXTitledPanel</h2>
+        <p>Titled panels are a common idiom in both rich client application development and in web development.
+        The original titled panels were essentially an etched border with a title that surrounded a set of
+        components. However, titled borders have a few drawbacks:
+        <ol>
+            <li>They are not as visually pleasing as their web-tier counterparts</li>
+            <li>They don't allow you to associate any other components with the title section</li>
+        </ol>
+        The JXTitledPanel component is designed...
+        </p>
+    <h2><a name="JXTree">JXTree</h2>
+    <h2><a name="JXTreeTable">JXTreeTable</h2>
+  </body>
+</html>

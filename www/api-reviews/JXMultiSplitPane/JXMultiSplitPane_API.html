@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>JXMultiSplitPane_API.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.java-keywords {color: #000099; font-family: Monospaced; font-weight: bold}
+.java-layer-method {font-family: Monospaced; font-weight: bold}
+.java-block-comment {color: #737373}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/Users/richardallenbair/Documents/Source/Projects/nonsense/swingx/src/beaninfo/JXMultiSplitPane_API.java</td></tr></table>
+<pre>
+<span class="java-block-comment">/*</span>
+<span class="java-block-comment"> * $Id: JXMultiSplitPane_API.html 1352 2006-08-22 22:52:00Z rbair $</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * Copyright 2004 Sun Microsystems, Inc., 4150 Network Circle,</span>
+<span class="java-block-comment"> * Santa Clara, California 95054, U.S.A. All rights reserved.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * This library is free software; you can redistribute it and/or</span>
+<span class="java-block-comment"> * modify it under the terms of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License as published by the Free Software Foundation; either</span>
+<span class="java-block-comment"> * version 2.1 of the License, or (at your option) any later version.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * This library is distributed in the hope that it will be useful,</span>
+<span class="java-block-comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="java-block-comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span>
+<span class="java-block-comment"> * Lesser General Public License for more details.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * You should have received a copy of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License along with this library; if not, write to the Free Software</span>
+<span class="java-block-comment"> * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</span>
+<span class="java-block-comment"> */</span>
+
+<span class="java-keywords">package</span> org.jdesktop.swingx;
+
+<span class="java-keywords">import</span> java.awt.Color;
+<span class="java-keywords">import</span> java.awt.Cursor;
+<span class="java-keywords">import</span> java.awt.Graphics;
+<span class="java-keywords">import</span> java.awt.Graphics2D;
+<span class="java-keywords">import</span> java.awt.Rectangle;
+<span class="java-keywords">import</span> java.awt.event.KeyEvent;
+<span class="java-keywords">import</span> java.awt.event.KeyListener;
+<span class="java-keywords">import</span> java.awt.event.MouseEvent;
+<span class="java-keywords">import</span> javax.accessibility.AccessibleContext;
+<span class="java-keywords">import</span> javax.accessibility.AccessibleRole;
+<span class="java-keywords">import</span> javax.swing.JPanel;
+<span class="java-keywords">import</span> javax.swing.event.MouseInputAdapter;
+<span class="java-keywords">import</span> org.jdesktop.swingx.MultiSplitLayout.Divider;
+<span class="java-keywords">import</span> org.jdesktop.swingx.MultiSplitLayout.Node;
+
+<span class="java-block-comment">/**</span>
+<span class="java-block-comment"> * &lt;p&gt;MultiSplitPane is a Swing container that supports a resizable tiled layout of </span>
+<span class="java-block-comment"> * arbitrary components. It&apos;s intended to be a generalization of the existing </span>
+<span class="java-block-comment"> * JSplitPane component, which only supports a pair of tiles. The </span>
+<span class="java-block-comment"> * MultiSplitLayout layout manager recursively arranges its components in row </span>
+<span class="java-block-comment"> * and column groups called &quot;splits.&quot; Elements of the layout are separated by </span>
+<span class="java-block-comment"> * gaps called &quot;dividers&quot; that can be moved by the user, in the same way as </span>
+<span class="java-block-comment"> * JSplitPane. The overall layout is defined with a simple tree-structured </span>
+<span class="java-block-comment"> * model that can be stored and retrieved to make the user&apos;s layout </span>
+<span class="java-block-comment"> * configuration persistent. The initial layout, before the user has intervened, </span>
+<span class="java-block-comment"> * is defined conventionally, in terms of the layout model and the component&apos;s </span>
+<span class="java-block-comment"> * preferred sizes.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;MultiSplitPane differs from components with similar capabilities in that </span>
+<span class="java-block-comment"> * complex dynamic layouts can be defined without nesting or composition. All </span>
+<span class="java-block-comment"> * of the children managed by a MultiSplitPane are arranged in their </span>
+<span class="java-block-comment"> * rows and columns (and rows within columns and columns within rows) end up </span>
+<span class="java-block-comment"> * separated by divider gaps, but not by extra layout-managing containers. </span>
+<span class="java-block-comment"> * MultiSplitPane&apos;s layout class, MultiSplitLayout, is also </span>
+<span class="java-block-comment"> * a little unusual in that it exposes a model of the complete layout.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;h2&gt;Basic Usage&lt;/h2&gt;</span>
+<span class="java-block-comment"> * &lt;p&gt;Using MultiSplitPane requires two steps. First, a tree model that </span>
+<span class="java-block-comment"> * specifies the layout is created using the MultiSplitLayout&apos;s </span>
+<span class="java-block-comment"> * Split, Divider, and Leaf classes. </span>
+<span class="java-block-comment"> * These classes are static inner classes of MultiSplitLayout, </span>
+<span class="java-block-comment"> * so they have names like MultiSplitLayout.Divider. Leaf nodes </span>
+<span class="java-block-comment"> * represent components, dividers represent the gaps between components that the </span>
+<span class="java-block-comment"> * user can drag around, and splits represent rows or columns. Components are </span>
+<span class="java-block-comment"> * added to the MultiSplitPane with a constraint that names the </span>
+<span class="java-block-comment"> * Leaf (leaf nodes have a name property) that will specify their bounds.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;Here&apos;s an example that creates the MultiSplitPane equivalent of </span>
+<span class="java-block-comment"> * JSplitPane. There are just two components, arranged in a row, with a </span>
+<span class="java-block-comment"> * Divider in between.</span>
+<span class="java-block-comment"> * &lt;pre&gt;&lt;code&gt;</span>
+<span class="java-block-comment"> *  List children = </span>
+<span class="java-block-comment"> *      Arrays.asList(new Leaf(&quot;left&quot;),</span>
+<span class="java-block-comment"> *          new Divider(), </span>
+<span class="java-block-comment"> *          new Leaf(&quot;right&quot;));</span>
+<span class="java-block-comment"> *  Split modelRoot = new Split();</span>
+<span class="java-block-comment"> *  modelRoot.setChildren(children);</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> *  MultiSplitPane multiSplitPane = new MultiSplitPane();</span>
+<span class="java-block-comment"> *  multiSplitPane.getMultiSplitLayout().setModel(modelRoot);</span>
+<span class="java-block-comment"> *  multiSplitPane.add(new JButton(&quot;Left Component&quot;), &quot;left&quot;);</span>
+<span class="java-block-comment"> *  multiSplitPane.add(new JButton(&quot;Right Component&quot;), &quot;right&quot;);</span>
+<span class="java-block-comment"> * &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;All properties in this class are bound: when a properties value</span>
+<span class="java-block-comment"> * is changed, all PropertyChangeListeners are fired.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * @see {@link http://today.java.net/pub/a/today/2006/03/23/multi-split-pane.html}</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * @author Hans Muller</span>
+<span class="java-block-comment"> */</span>
+<span class="java-keywords">public</span> <span class="java-keywords">class</span> JXMultiSplitPane <span class="java-keywords">extends</span> JXPanel {
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Creates a JXMultiSplitPane with it&apos;s LayoutManager set to </span>
+<span class="java-block-comment">     * an empty MultiSplitLayout.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">JXMultiSplitPane</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * A convenience method that returns the layout manager cast </span>
+<span class="java-block-comment">     * to MutliSplitLayout.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @return this JXMultiSplitPane&apos;s layout manager</span>
+<span class="java-block-comment">     * @see java.awt.Container#getLayout</span>
+<span class="java-block-comment">     * @see #setModel</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">final</span> MultiSplitLayout <span class="java-layer-method">getMultiSplitLayout</span>();
+
+    <span class="java-block-comment">/** </span>
+<span class="java-block-comment">     * A convenience method that sets the MultiSplitLayout model.</span>
+<span class="java-block-comment">     * Equivalent to &lt;code&gt;getMultiSplitLayout.setModel(model)&lt;/code&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param model the root of the MultiSplitLayout model</span>
+<span class="java-block-comment">     * @see #getMultiSplitLayout</span>
+<span class="java-block-comment">     * @see MultiSplitLayout#setModel</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">final</span> <span class="java-keywords">void</span> <span class="java-layer-method">setModel</span>(Node model);
+
+    <span class="java-block-comment">/** </span>
+<span class="java-block-comment">     * A convenience method that sets the MultiSplitLayout dividerSize</span>
+<span class="java-block-comment">     * property. Equivalent to </span>
+<span class="java-block-comment">     * &lt;code&gt;getMultiSplitLayout().setDividerSize(newDividerSize)&lt;/code&gt;.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param dividerSize the value of the dividerSize property</span>
+<span class="java-block-comment">     * @see #getMultiSplitLayout</span>
+<span class="java-block-comment">     * @see MultiSplitLayout#setDividerSize</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">final</span> <span class="java-keywords">void</span> <span class="java-layer-method">setDividerSize</span>(<span class="java-keywords">int</span> dividerSize);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Sets the value of the &lt;code&gt;continuousLayout&lt;/code&gt; property.</span>
+<span class="java-block-comment">     * If true, then the layout is revalidated continuously while</span>
+<span class="java-block-comment">     * a divider is being moved.  The default value of this property</span>
+<span class="java-block-comment">     * is true.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param continuousLayout value of the continuousLayout property</span>
+<span class="java-block-comment">     * @see #isContinuousLayout</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setContinuousLayout</span>(<span class="java-keywords">boolean</span> continuousLayout);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Returns true if dragging a divider only updates</span>
+<span class="java-block-comment">     * the layout when the drag gesture ends (typically, when the </span>
+<span class="java-block-comment">     * mouse button is released).</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return the value of the &lt;code&gt;continuousLayout&lt;/code&gt; property</span>
+<span class="java-block-comment">     * @see #setContinuousLayout</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">boolean</span> <span class="java-layer-method">isContinuousLayout</span>();
+
+    <span class="java-block-comment">/** </span>
+<span class="java-block-comment">     * Returns the Divider that&apos;s currently being moved, typically</span>
+<span class="java-block-comment">     * because the user is dragging it, or null.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @return the Divider that&apos;s being moved or null.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Divider <span class="java-layer-method">activeDivider</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Draws a single Divider.  Typically used to specialize the</span>
+<span class="java-block-comment">     * way the active Divider is painted.  </span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @see #getDividerPainter</span>
+<span class="java-block-comment">     * @see #setDividerPainter</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">abstract</span> <span class="java-keywords">class</span> DividerPainter {
+        <span class="java-block-comment">/**</span>
+        <span class="java-block-comment"> * Paint a single Divider.       </span>
+        <span class="java-block-comment"> * </span>
+        <span class="java-block-comment"> * @param g the Graphics object to paint with</span>
+        <span class="java-block-comment"> * @param divider the Divider to paint</span>
+        <span class="java-block-comment"> */</span>
+        <span class="java-keywords">public</span> <span class="java-keywords">abstract</span> <span class="java-keywords">void</span> <span class="java-layer-method">paint</span>(Graphics g, Divider divider);
+    }
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * The DividerPainter that&apos;s used to paint Dividers on this JXMultiSplitPane.</span>
+<span class="java-block-comment">     * This property may be null.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @return the value of the dividerPainter Property</span>
+<span class="java-block-comment">     * @see #setDividerPainter</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> DividerPainter <span class="java-layer-method">getDividerPainter</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Sets the DividerPainter that&apos;s used to paint Dividers on this </span>
+<span class="java-block-comment">     * JXMultiSplitPane.  The default DividerPainter only draws</span>
+<span class="java-block-comment">     * the activeDivider (if there is one) and then, only if </span>
+<span class="java-block-comment">     * continuousLayout is false.  The value of this property is </span>
+<span class="java-block-comment">     * used by the paintChildren method: Dividers are painted after</span>
+<span class="java-block-comment">     * the JXMultiSplitPane&apos;s children have been rendered so that </span>
+<span class="java-block-comment">     * the activeDivider can appear &quot;on top of&quot; the children.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param dividerPainter the value of the dividerPainter property, can be null</span>
+<span class="java-block-comment">     * @see #paintChildren</span>
+<span class="java-block-comment">     * @see #activeDivider</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setDividerPainter</span>(DividerPainter dividerPainter);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Uses the DividerPainter (if any) to paint each Divider that</span>
+<span class="java-block-comment">     * overlaps the clip Rectangle.  This is done after the call to</span>
+<span class="java-block-comment">     * &lt;code&gt;super.paintChildren()&lt;/code&gt; so that Dividers can be </span>
+<span class="java-block-comment">     * rendered &quot;on top of&quot; the children.</span>
+<span class="java-block-comment">     * &lt;p&gt;</span>
+<span class="java-block-comment">     * {@inheritDoc}</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">protected</span> <span class="java-keywords">void</span> <span class="java-layer-method">paintChildren</span>(Graphics g);
+}
+
+
+</pre></body>
+</html>

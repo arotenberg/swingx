@@ -1,0 +1,308 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>JXPanel_API.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.java-keywords {color: #000099; font-family: Monospaced; font-weight: bold}
+.java-layer-method {font-family: Monospaced; font-weight: bold}
+.java-block-comment {color: #737373}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/Users/richardallenbair/Documents/Source/Projects/nonsense/swingx/src/beaninfo/JXPanel_API.java</td></tr></table>
+<pre>
+<span class="java-block-comment">/*</span>
+<span class="java-block-comment"> * $Id: JXPanel_API.html 1351 2006-08-22 22:09:30Z rbair $</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * Copyright 2004 Sun Microsystems, Inc., 4150 Network Circle,</span>
+<span class="java-block-comment"> * Santa Clara, California 95054, U.S.A. All rights reserved.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * This library is free software; you can redistribute it and/or</span>
+<span class="java-block-comment"> * modify it under the terms of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License as published by the Free Software Foundation; either</span>
+<span class="java-block-comment"> * version 2.1 of the License, or (at your option) any later version.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * This library is distributed in the hope that it will be useful,</span>
+<span class="java-block-comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="java-block-comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span>
+<span class="java-block-comment"> * Lesser General Public License for more details.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * You should have received a copy of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License along with this library; if not, write to the Free Software</span>
+<span class="java-block-comment"> * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</span>
+<span class="java-block-comment"> */</span>
+
+<span class="java-keywords">package</span> org.jdesktop.swingx;
+
+<span class="java-keywords">import</span> java.awt.AlphaComposite;
+<span class="java-keywords">import</span> java.awt.Color;
+<span class="java-keywords">import</span> java.awt.Component;
+<span class="java-keywords">import</span> java.awt.Composite;
+<span class="java-keywords">import</span> java.awt.Dimension;
+<span class="java-keywords">import</span> java.awt.GradientPaint;
+<span class="java-keywords">import</span> java.awt.Graphics;
+<span class="java-keywords">import</span> java.awt.Graphics2D;
+<span class="java-keywords">import</span> java.awt.Insets;
+<span class="java-keywords">import</span> java.awt.LayoutManager;
+<span class="java-keywords">import</span> java.awt.Rectangle;
+<span class="java-keywords">import</span> java.awt.image.BufferedImage;
+
+<span class="java-keywords">import</span> javax.swing.JPanel;
+<span class="java-keywords">import</span> javax.swing.RepaintManager;
+<span class="java-keywords">import</span> javax.swing.Scrollable;
+<span class="java-keywords">import</span> org.jdesktop.swingx.painter.Painter;
+
+<span class="java-block-comment">/**</span>
+<span class="java-block-comment"> * &lt;p&gt;&lt;code&gt;JXPanel&lt;/code&gt; is a simple extension of {@link JPanel} adding transparency</span>
+<span class="java-block-comment"> * support, custom painting through delegation, and the ability to use the</span>
+<span class="java-block-comment"> * &lt;code&gt;JXPanel&lt;/code&gt; in a {@link JScrollPane}.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;h2&gt;Transparency&lt;/h2&gt;</span>
+<span class="java-block-comment"> * &lt;p&gt;The &lt;code&gt;JXPanel&lt;/code&gt;&apos;s &lt;code&gt;alpha&lt;/code&gt; property is used to set the</span>
+<span class="java-block-comment"> * level of transparency. A value of &quot;.1&quot; means 10% visible. A value of &quot;1&quot; means</span>
+<span class="java-block-comment"> * 100% visible, or fully opaque. A value of &quot;0&quot; means 0% visible, or fully hidden.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;Note that &lt;i&gt;opacity&lt;/i&gt; is different from &lt;i&gt;transparency&lt;/i&gt;. Swing components</span>
+<span class="java-block-comment"> * declare themselves as opaque if they will paint every pixel within their bounds</span>
+<span class="java-block-comment"> * as a solid (non transparent) color. Therefore, a transparent component &lt;em&gt;must&lt;/em&gt;</span>
+<span class="java-block-comment"> * be non-opaque. Further, a fully &quot;shown&quot; component with an alpha of 1 may still</span>
+<span class="java-block-comment"> * be non-opaque.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;When a &lt;code&gt;JXPanel&lt;/code&gt; has an alpha of &lt; 1, it will always report</span>
+<span class="java-block-comment"> * &lt;code&gt;false&lt;/code&gt; to &lt;code&gt;isOpaque()&lt;/code&gt;. When the &lt;code&gt;JXPanel&lt;/code&gt;</span>
+<span class="java-block-comment"> * has an alpha of 1, it will report the value of the opaque property in the</span>
+<span class="java-block-comment"> * &lt;code&gt;isOpaque()&lt;/code&gt; call.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;When an &lt;code&gt;alpha&lt;/code&gt; level is set for a &lt;code&gt;JXPanel&lt;/code&gt;, it is</span>
+<span class="java-block-comment"> * honored by all of the child Components as well. For example, a</span>
+<span class="java-block-comment"> * &lt;code&gt;JXPanel&lt;/code&gt; containing a &lt;code&gt;JButton&lt;/code&gt; would show both the</span>
+<span class="java-block-comment"> * panel and the button as transparent, based on the alpha level of the panel.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;Sometimes you may not want all components to have the alpha applied. To</span>
+<span class="java-block-comment"> * facilitate this, &lt;code&gt;JXPanel&lt;/code&gt; has the &lt;code&gt;inheritAlpha&lt;/code&gt; property.</span>
+<span class="java-block-comment"> * This property allows the &lt;code&gt;JXPanel&lt;/code&gt; to decide whether it will honor</span>
+<span class="java-block-comment"> * the alpha property of any parent &lt;code&gt;JXPanel&lt;/code&gt;s. By default this value is</span>
+<span class="java-block-comment"> * &lt;code&gt;true&lt;/code&gt;.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;To determine the alpha value that will be applied when painted, the</span>
+<span class="java-block-comment"> * {@link #getEffectiveAlpha} method may be called.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;In order for transparent painting to always work, it is necessary to install</span>
+<span class="java-block-comment"> * a custom {@link RepaintManager}. This &lt;code&gt;RepaintManager&lt;/code&gt; is reponsible</span>
+<span class="java-block-comment"> * for ensuring that the alpha value gets set on the Graphics2D used for painting.</span>
+<span class="java-block-comment"> * Since you may be using a custom &lt;code&gt;RepaintManager&lt;/code&gt;,</span>
+<span class="java-block-comment"> * &lt;code&gt;JXPanel&lt;/code&gt; only installs the {@link RepaintManagerX} if another</span>
+<span class="java-block-comment"> * &lt;code&gt;RepaintManager&lt;/code&gt; with the {@link TranslucentRepaintManager} annotation</span>
+<span class="java-block-comment"> * is not currently installed.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;h2&gt;Custom Painting Delegates&lt;/h2&gt;</span>
+<span class="java-block-comment"> * &lt;p&gt;The &lt;code&gt;JXPanel&lt;/code&gt; supports custom painting delegates called</span>
+<span class="java-block-comment"> * {@link Painter}s. Call {@link #setBackgroundPainter(Painter)} to set this</span>
+<span class="java-block-comment"> * delegate. Because a &lt;code&gt;Painter&lt;/code&gt; may not be opaque, setting a background</span>
+<span class="java-block-comment"> * painter will cause the opaque property to be set to &lt;code&gt;false&lt;/code&gt;.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;In addition, if a background &lt;code&gt;Painter&lt;/code&gt; is specified, it will do</span>
+<span class="java-block-comment"> * all of the painting for the panel. Otherwise, the panel falls back onto the</span>
+<span class="java-block-comment"> * normal painting algorithm based on the current look and feel.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;Using the background &lt;code&gt;Painter&lt;/code&gt; mechanism is &lt;strong&gt;not&lt;/strong&gt;</span>
+<span class="java-block-comment"> * intended as a replacement for using a look and feel UI delegate. Rather, it is</span>
+<span class="java-block-comment"> * intended for situations where previously you would have had to subclass</span>
+<span class="java-block-comment"> * &lt;code&gt;JPanel&lt;/code&gt; and overridden the &lt;code&gt;paintComponent&lt;/code&gt; method.</span>
+<span class="java-block-comment"> * See {@link Painter} and {@link AbstractPainter} for more information.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;h2&gt;JScrollPane Support&lt;/h2&gt;</span>
+<span class="java-block-comment"> * &lt;p&gt;&lt;code&gt;JXPanel&lt;/code&gt; supports being embedded directly in a &lt;code&gt;JScrollPane&lt;/code&gt;</span>
+<span class="java-block-comment"> * by implementing the &lt;code&gt;Scrollable&lt;/code&gt; interface. &lt;code&gt;Scrollable&lt;/code&gt;</span>
+<span class="java-block-comment"> * defines the following methods:</span>
+<span class="java-block-comment"> * &lt;ul&gt;</span>
+<span class="java-block-comment"> *  &lt;li&gt;getPreferredScrollableViewportSize()&lt;/li&gt;</span>
+<span class="java-block-comment"> *  &lt;li&gt;getScrollableBlockIncrement(...)&lt;/li&gt;</span>
+<span class="java-block-comment"> *  &lt;li&gt;getScrollableTracksViewportHeight()&lt;/li&gt;</span>
+<span class="java-block-comment"> *  &lt;li&gt;getScrollableTracksViewportWidth()&lt;/li&gt;</span>
+<span class="java-block-comment"> *  &lt;li&gt;getScrollableUnitIncrement(...)&lt;/li&gt;</span>
+<span class="java-block-comment"> * &lt;/ul&gt;&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;&lt;code&gt;JXPanel simply implements these methods, and provides corrosponding setter</span>
+<span class="java-block-comment"> * methods so developers can specify how the panel should behave in the</span>
+<span class="java-block-comment"> * &lt;code&gt;JScrollPane&lt;/code&gt;. Both &lt;code&gt;getScrollableBlockIncrement&lt;/code&gt; and</span>
+<span class="java-block-comment"> * &lt;code&gt;getScrollableUnitIncrement&lt;/code&gt; are not Java Bean methods because they</span>
+<span class="java-block-comment"> * require parameters. For these, bean setter methods have also been created.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;One exception is the &lt;code&gt;getPreferredScrollableViewportSize&lt;/code&gt; method. This</span>
+<span class="java-block-comment"> * will return the preferred size of the &lt;code&gt;JXPanel&lt;/code&gt;.&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;For example, to specify the scrollable block increment:</span>
+<span class="java-block-comment"> * &lt;pre&gt;&lt;code&gt;</span>
+<span class="java-block-comment"> *      JXPanel panel = new JXPanel();</span>
+<span class="java-block-comment"> *      panel.setScrollableBlockIncrement(50);</span>
+<span class="java-block-comment"> *      System.out.println(panel.getScrollableBlockIncrement()); //prints out &quot;50&quot;</span>
+<span class="java-block-comment"> *      System.out.println(panel.getScrollableBlockIncrement(rect, SwingConstants.VERTICAL, 1)); //prints out &quot;50&quot; </span>
+<span class="java-block-comment"> * &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * @author rbair</span>
+<span class="java-block-comment"> */</span>
+<span class="java-keywords">public</span> <span class="java-keywords">class</span> JXPanel <span class="java-keywords">extends</span> JPanel <span class="java-keywords">implements</span> Scrollable {
+    <span class="java-block-comment">/** </span>
+<span class="java-block-comment">     * Creates a new instance of JXPanel</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">JXPanel</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * @param isDoubleBuffered</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">JXPanel</span>(<span class="java-keywords">boolean</span> isDoubleBuffered);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * @param layout</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">JXPanel</span>(LayoutManager layout);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * @param layout</span>
+<span class="java-block-comment">     * @param isDoubleBuffered</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">JXPanel</span>(LayoutManager layout, <span class="java-keywords">boolean</span> isDoubleBuffered);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Set the transparency level for this component. This automatically</span>
+<span class="java-block-comment">     * causes a repaint of the component. A value of &quot;.1&quot; means &quot;10% visible&quot;.</span>
+<span class="java-block-comment">     * Values are specified between 0 and 1 inclusive.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param alpha must be a value between 0 and 1 inclusive.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setAlpha</span>(<span class="java-keywords">float</span> alpha);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * @return the transparency level for this component. This will be</span>
+<span class="java-block-comment">     * a value between 0 and 1, inclusive.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">float</span> <span class="java-layer-method">getAlpha</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Returns the alpha to use when painting.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * Unlike other properties, alpha can be set on a component, or on one of</span>
+<span class="java-block-comment">     * its parents. If the alpha of a parent component is .4, and the alpha on</span>
+<span class="java-block-comment">     * this component is .5, effectively the alpha for this component is .4</span>
+<span class="java-block-comment">     * because the lowest alpha in the heirarchy &amp;quot;wins&amp;quot;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @return the alpha value to use when painting.</span>
+<span class="java-block-comment">     */</span> 
+    <span class="java-keywords">public</span> <span class="java-keywords">float</span> <span class="java-layer-method">getEffectiveAlpha</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Gets whether to inherit the alpha value from a parent &lt;code&gt;JXPanel&lt;/code&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @return inheritAlpha property</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">boolean</span> <span class="java-layer-method">isInheritAlpha</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Sets whether to inherit the alpha value from a parent.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param val</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setInheritAlpha</span>(<span class="java-keywords">boolean</span> val);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * @inheritDoc</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">boolean</span> <span class="java-layer-method">getScrollableTracksViewportHeight</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Sets whether a viewport should always force the height of this </span>
+<span class="java-block-comment">     * &lt;code&gt;JXPanel&lt;/code&gt; to match the height of the viewport. If true, vertical</span>
+<span class="java-block-comment">     * scrolling is essentially disabled.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param scrollableTracksViewportHeight The scrollableTracksViewportHeight to set.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setScrollableTracksViewportHeight</span>(<span class="java-keywords">boolean</span> scrollableTracksViewportHeight);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * @inheritDoc</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">boolean</span> <span class="java-layer-method">getScrollableTracksViewportWidth</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Sets whether a viewport should always force the width of this </span>
+<span class="java-block-comment">     * &lt;code&gt;JXPanel&lt;/code&gt; to match the width of the viewport. If true, horizontal</span>
+<span class="java-block-comment">     * scrolling is essentially disabled.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param scrollableTracksViewportWidth The scrollableTracksViewportWidth to set.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setScrollableTracksViewportWidth</span>(<span class="java-keywords">boolean</span> scrollableTracksViewportWidth);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * @inheritDoc</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Dimension <span class="java-layer-method">getPreferredScrollableViewportSize</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * @inheritDoc</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">int</span> <span class="java-layer-method">getScrollableBlockIncrement</span>(Rectangle visibleRect, <span class="java-keywords">int</span> orientation, <span class="java-keywords">int</span> direction);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Gets the amount to move the scroll pane for one &quot;block&quot;. In a text document,</span>
+<span class="java-block-comment">     * this might represent a page of text.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @return the amount to scroll by a block</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">int</span> <span class="java-layer-method">getScrollableBlockIncrement</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Sets the amount to move the scroll pane for one &quot;block&quot;. In a text document,</span>
+<span class="java-block-comment">     * this might represent a page of text.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param increment amount to move one &quot;block&quot;. Negative values are permissible,</span>
+<span class="java-block-comment">     *        though extremely uncommon.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setScrollableBlockIncrement</span>(<span class="java-keywords">int</span> increment);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * @inheritDoc</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">int</span> <span class="java-layer-method">getScrollableUnitIncrement</span>(Rectangle visibleRect, <span class="java-keywords">int</span> orientation, <span class="java-keywords">int</span> direction);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Gets the minimum amount to scroll by. This is in pixels.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @return the minimum amount to scroll by</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">int</span> <span class="java-layer-method">getScrollableUnitIncrement</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Sets the minimum amount to scroll by in pixels.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param increment the minimum increment to scroll by, in pixels.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setScrollableUnitIncrement</span>(<span class="java-keywords">int</span> increment);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Specifies a Painter to use to paint the background of this JXPanel.</span>
+<span class="java-block-comment">     * If &lt;code&gt;p&lt;/code&gt; is not null, then setOpaque(false) will be called</span>
+<span class="java-block-comment">     * as a side effect. A component should not be opaque if painters are</span>
+<span class="java-block-comment">     * being used, because Painters may paint transparent pixels or not</span>
+<span class="java-block-comment">     * paint certain pixels, such as around the border insets.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param p the &lt;code&gt;Painter&lt;/code&gt; to use. May be null.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setBackgroundPainter</span>(Painter p);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Gets the &lt;code&gt;Painter&lt;/code&gt; to use for painting the panel&apos;s background.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @return the &lt;code&gt;Painter&lt;/code&gt; to use for the background. May be null.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Painter <span class="java-layer-method">getBackgroundPainter</span>();
+}
+
+
+</pre></body>
+</html>

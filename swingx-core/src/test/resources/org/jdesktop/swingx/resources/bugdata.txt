@@ -1,0 +1,1275 @@
+4127936	4	5	null	Fri Apr 10 14:12:00 PDT 1998	27	JTable Horizontal Scrollbar doesn't work	committed
+4833667	4	4	joutwate	Mon Mar 17 15:32:00 PST 2003	0	Deiconizing a JInternalFrame with double-click moves focus	evaluated
+4419748	4	3	sdv@sparc.spb.su	Tue Feb 27 17:47:00 PST 2001	5	JEditorPane CSS not supporting borders properly	evaluated
+4851246	4	4	joutwate	Sun Apr 20 23:25:00 PDT 2003	0	RFE: Potential speed improvement in JProgressBar	evaluated
+4765280	4	5	shannonh	Fri Oct 18 11:55:00 PDT 2002	0	RFE: Cannot drag out of a JFileChooser without first selecting a file	accepted
+4501166	4	4	kyuka	Sun Sep 09 21:48:00 PDT 2001	1	Win32: JFileChooser doesn't display drives/volumes correctly in RtoL	accepted
+4845362	4	5	zpm@sparc.spb.su	Tue Apr 08 18:44:00 PDT 2003	0	HTML renderer fails on empty cellpadding value and chars before title tag	evaluated
+4846388	3	3	bchristi	Thu Apr 10 11:09:00 PDT 2003	1	XP JFileChooser shows gray smudge for "create folder" icon	committed
+4230443	4	5	kyuka	Fri Apr 16 13:17:00 PDT 1999	1	ComponentOrientation has no effect on editable JComboBox	accepted
+4660820	4	3	dalem	Mon Apr 01 00:24:00 PST 2002	0	JList does not show visual focus with initial Tab	accepted
+4263904	4	5	idk	Thu Aug 19 10:41:00 PDT 1999	181	JTextPane:  Paragraphs with Justified Attributes Appear Centered	evaluated
+4865510	4	4	leif	Fri May 16 00:29:00 PDT 2003	0	Win L&F: JFileChooser:  keyboard navigation is different	evaluated
+4826791	4	5	leif	Mon Mar 03 21:22:00 PST 2003	0	Large font sizes not used in filedialog	committed
+4673852	4	3	naa@sparc.spb.su	Wed Apr 24 11:31:00 PDT 2002	1	Entering HTML hard-break in JEditorPane does not update cursor correctly	accepted
+4850101	4	4	shannonh	Thu Apr 17 10:49:00 PDT 2003	0	Setting mnemonic to VK_F4 underlines the letter S in a button.	accepted
+4776306	3	2	davidson@eng	Fri Nov 08 00:52:00 PST 2002	0	property change-notification should lazily construct copies of properties	committed
+4406437	4	5	shannonh	Fri Jan 19 15:17:00 PST 2001	0	JEditorPane.getEditorKit() should call kit.install()	evaluated
+4838135	4	4	davidson@eng	Wed Mar 26 14:06:00 PST 2003	0	Request javax.swing.Action.MNEMONIC_INDEX_KEY	committed
+4837565	4	3	shannonh	Tue Mar 25 17:15:00 PST 2003	0	Selection error by an empty JTable	accepted
+4853944	3	3	idk	Thu Apr 24 21:25:00 PDT 2003	1	Images disappear in JEditorPane w/HTML	evaluated
+4766050	4	4	leif	Mon Oct 21 00:14:00 PDT 2002	0	Look&Feel :  Cannot select the other mode after selecting Windows.	evaluated
+4231307	4	5	joutwate	Tue Apr 20 14:00:00 PDT 1999	3	JTabbedPane switching panel focus	evaluated
+4559032	4	4	leif	Fri Dec 07 15:38:00 PST 2001	0	JFileChooser does not refresh directory listing when typing F5	evaluated
+4765276	4	4	joutwate	Fri Oct 18 11:53:00 PDT 2002	0	Keystroke lost after displaying dialog from InputVerifier	accepted
+4672878	4	4	sdv@sparc.spb.su	Tue Apr 23 04:00:00 PDT 2002	0	Difference's found in t-bullets.PNG in AutoWeevil.	evaluated
+4833517	2	2	leif	Mon Mar 17 11:37:00 PST 2003	0	GTK L&F: Support for general Metacity skins in XML	committed
+4758890	3	3	leif	Mon Oct 07 10:32:00 PDT 2002	1	REGRESSION: Focus not painted in JToolBar with Windows PLAF	evaluated
+4781707	4	3	leif	Wed Nov 20 05:33:00 PST 2002	0	JFileChooser must contain goto last folder option	evaluated
+4748359	4	4	shannonh	Mon Sep 16 19:58:00 PDT 2002	3	Click in JTableHeader cancels Cell Editor changes	evaluated
+4825182	4	4	joutwate	Thu Feb 27 14:17:00 PST 2003	0	DefaultBoundedRangeModel.setMinimum() changes extent unnecessarily	evaluated
+4126679	4	5	zpm@sparc.spb.su	Tue Apr 07 16:31:00 PDT 1998	2	JRadioButtons with Icons don't size themselves correctly.	evaluated
+4417096	4	5	joutwate	Tue Feb 20 14:24:00 PST 2001	1	JSlider: add label components to containment hierarchy	evaluated
+4822403	5	5	sky	Fri Feb 21 17:34:00 PST 2003	0	RFE: Look and Feel classes are poorly designed and hostile to subclassing	accepted
+4295357	4	4	naoto	Tue Nov 30 05:50:00 PST 1999	0	RTL only implicit, left aligned JTExtPane does not change text alignment	accepted
+4855256	4	5	sky	Mon Apr 28 17:55:00 PDT 2003	0	RFE: JTree does not handle renaming its UserObject as well as other things	accepted
+4365538	4	1	null	Thu Aug 24 13:15:00 PDT 2000	1	Use of deprecated Date constructor in JTable	evaluated
+4870636	5	5	joutwate	Wed May 28 11:08:00 PDT 2003	0	RFE: Option to have close(x) button on JTabbedPane	evaluated
+4781716	3	2	leif	Wed Nov 20 05:56:00 PST 2002	0	JFileChooser must respond as usual to floppy drive selection	committed
+4781696	4	3	joutwate	Wed Nov 20 05:10:00 PST 2002	0	XP L&F: Scroll bars do not change color on mouse over	evaluated
+4144344	4	4	sky	Mon Jun 01 08:46:00 PDT 1998	0	DefaultTreeCellEditor TextField should grow, in width, as necessary	evaluated
+4130798	4	5	shannonh	Mon Apr 20 15:24:00 PDT 1998	0	MotifRadioButtonUI: paintFocus() method needs more careful logic	evaluated
+4515236	4	3	dalem	Tue Oct 16 00:16:00 PDT 2001	4	DefaultTableColumnModel causes OOB exception when header row event triggered	accepted
+4765253	4	4	shannonh	Fri Oct 18 11:34:00 PDT 2002	0	Method javax.swwing.JLabel.getPreferredSize() return wrong value!	evaluated
+4532590	4	4	zpm@sparc.spb.su	Wed Nov 28 17:25:00 PST 2001	12	JTextPane jTextPane.setHighlighter(null) doesn't disable highlighter.	accepted
+4840405	5	5	joutwate	Mon Mar 31 17:44:00 PST 2003	0	JInternalFrame does not animate maximize/minimize in Windows L&F	evaluated
+4724077	4	3	idk	Wed Jul 31 16:54:00 PDT 2002	2	Problems with text where visual content doesn't start at model position 0	accepted
+4327306	4	5	leif	Mon Apr 03 13:42:00 PDT 2000	1	JFileChooser.setToolTipText() only partially effective	accepted
+4699955	4	3	sky	Mon Jun 10 15:33:00 PDT 2002	2	JSpinner focusGained(...) listener does not allow selectAll functionality	committed
+4844444	4	4	shannonh	Mon Apr 07 15:08:00 PDT 2003	1	Bluecurve theme is named Wonderland in some distributions	committed
+4230387	4	2	kyuka	Fri Apr 16 11:25:00 PDT 1999	1	RFE: JProgressBar does not create international percent done strings	evaluated
+4788785	4	5	shannonh	Wed Dec 04 18:00:00 PST 2002	0	OverlayLayout refuses to put a JPanel over a JSplitpane	accepted
+4871085	4	3	leif	Thu May 29 01:44:00 PDT 2003	0	Tooltip for JInternalFrame behaves incorrectly	dispatched
+4713475	4	4	sky	Thu Jul 11 11:11:00 PDT 2002	0	KeyListener pieces of BasicListUI should be made public or protected	accepted
+4286743	4	5	sky	Mon Nov 01 00:56:00 PST 1999	2	Allow JScrollPane to setEnable(false)	evaluated
+4712086	4	5	leif	Tue Jul 09 09:06:00 PDT 2002	0	JFileChooser: Home button inconsistencies in Metal Look and Feel	evaluated
+4304521	4	5	idk	Thu Jan 13 09:56:00 PST 2000	11	Document with TabStop Attributes not written correctly into RTF File	accepted
+4164958	4	5	idk	Mon Aug 10 06:41:00 PDT 1998	1	StyledEditorKit, RTFEditorKit and HTMLEditor missing fields	evaluated
+4869033	4	5	joutwate	Fri May 23 00:14:00 PDT 2003	0	GTK L&F: Radio buttons don't look like native	incomplete
+4419012	4	5	leif	Mon Feb 26 00:22:00 PST 2001	0	JToolBar buttons should have requestFocusEnabled = false	evaluated
+4683301	4	3	zav@sparc.spb.su	Fri May 10 15:09:00 PDT 2002	0	BasicPopupMenuUI should use AWTEventListener vs MouseListeners on all components	accepted
+4724001	4	3	joutwate	Wed Jul 31 15:19:00 PDT 2002	0	The private class Page in JTabbedPane prevents extendability	accepted
+4297788	4	5	naoto	Wed Dec 08 10:35:00 PST 1999	3	Cursor loops in JTextArea when editing English text in RTL mode and vice versa	evaluated
+4339222	4	5	null	Thu May 18 00:50:00 PDT 2000	0	System.out.println throws NullPointerException when toString() returns null	evaluated
+4254546	4	5	null	Thu Jul 15 17:19:00 PDT 1999	0	Bizarre behavior when firing JTable update with bad values.	evaluated
+4692565	4	3	moa@sparc.spb.su	Tue May 28 15:23:00 PDT 2002	0	TabbedPaneScrollLayout is private	accepted
+4844479	5	5	sky	Mon Apr 07 15:52:00 PDT 2003	0	RFE: LinkLabel, similar to Label except it can display a hyperlink	accepted
+4759422	4	5	shannonh	Mon Oct 07 20:35:00 PDT 2002	0	RFE: The anchor should not be the same as the focus in a JTable	accepted
+4799354	4	3	shannonh	Mon Jan 06 16:15:00 PST 2003	0	In JLabel, etc., setText does not update properly with HTML object tag	accepted
+4760448	4	3	leif	Wed Oct 09 10:11:00 PDT 2002	2	MetalFileChooserUI should allow user to bypass ShellFolder methods	accepted
+4871450	3	3	zav@sparc.spb.su	Thu May 29 15:40:00 PDT 2003	0	Toggling of mnemonics visibility state inconsistent on WinXP platforms	dispatched
+4870112	4	3	zav@sparc.spb.su	Tue May 27 14:44:00 PDT 2003	0	JMenu is not extensible	dispatched
+4425358	4	5	naa@sparc.spb.su	Tue Mar 13 19:17:00 PST 2001	3	Reopen 4214992: JTextField Always Right-Justifies Oversized Strings	accepted
+4139692	4	5	joutwate	Mon May 18 16:44:00 PDT 1998	245	JOptionPane.showInternalMessageDialog() does not create a modal dialog	accepted
+4723745	3	4	leif	Wed Jul 31 11:56:00 PDT 2002	2	1.4 REGRESSION: Metal & Windows FileChooserUI classes cannot be used without She	committed
+4769783	4	4	sky	Mon Oct 28 11:11:00 PST 2002	0	Adding a mouselistener to JScrollPanes viewport causes the pane to lose tooltip	evaluated
+4807159	4	5	sky	Thu Jan 23 00:02:00 PST 2003	0	RFE: Bad implementation of constructor FontUIResource(Font font)	accepted
+4869098	5	5	sky	Fri May 23 13:57:00 PDT 2003	0	GTK L&F:  ColorChooser: Field/Spin Boxes Larger than platform version	accepted
+4859197	4	3	bchristi	Tue May 06 14:16:00 PDT 2003	1	JFileChooser (WLF) line spacing too large in detailed view	evaluated
+4759090	4	4	joutwate	Mon Oct 07 14:29:00 PDT 2002	0	RFE: Ability for Non-Standard JSlider tick placement	accepted
+4325865	4	4	naoto	Tue Mar 28 23:54:00 PST 2000	0	Motif LAF, Cursor does not change direction when leaving RTL into LTR and vice v	accepted
+4179560	4	3	shannonh	Wed Oct 07 13:16:00 PDT 1998	2	AbstractButton.setVerticalTextPosition mispositions text.	evaluated
+4722419	4	3	sky	Mon Jul 29 15:22:00 PDT 2002	0	MaskFormatter should provide a minimum match length	accepted
+4801292	4	4	sky	Thu Jan 09 18:36:00 PST 2003	0	Repainting errors in AbstractColorChooserPanel.updateChooser()	committed
+4203912	4	5	idk	Mon Jan 18 17:22:00 PST 1999	88	JTextArea uses too much memory (if large byte array passed to cto=	evaluated
+4386259	4	4	null	Mon Nov 06 05:05:00 PST 2000	2	JList, Spacebar functionality to select and deselect JList items is broken	accepted
+4510854	4	4	leif	Thu Oct 04 10:33:00 PDT 2001	0	JColorChooser demo(SwingSet2) not getting painted well on WindowsXP platform.	evaluated
+4548788	5	3	sky	Wed Dec 05 10:26:00 PST 2001	1	JTree should toggle for all even-numbered clicks	evaluated
+4624483	4	3	shannonh	Wed Jan 16 08:52:00 PST 2002	10	JTable incorrectly consumes Esc key	committed
+4760407	4	5	idk	Wed Oct 09 09:38:00 PDT 2002	0	WrappedPlainView should have selectors for (un)selected color	committed
+4811073	4	3	sky	Thu Jan 30 20:34:00 PST 2003	0	GTK L&F quality	evaluated
+4410888	4	5	leif	Thu Feb 01 00:45:00 PST 2001	0	TitledBorder spacing gaps should be adjustable (Bug and RFE)	evaluated
+4623272	5	5	joutwate	Mon Jan 14 11:38:00 PST 2002	0	RFE: JTabbedPane: provide popup menu when scrollable tabs aren't shown.	accepted
+4788378	4	5	sky	Wed Dec 04 10:09:00 PST 2002	0	JFormattedTextField should allow multiple formats to match	accepted
+4428752	4	2	sky	Wed Mar 21 19:58:00 PST 2001	0	Apple Aqua: Need drawing bounds independent of layout bounds (outsets)	evaluated
+4269592	4	2	naoto	Tue Sep 07 16:54:00 PDT 1999	0	SwingSet: Unexpected results when entering text with Right to Left Orientation	accepted
+4288630	4	3	zpm@sparc.spb.su	Fri Nov 05 16:48:00 PST 1999	0	tooltip on tabbed panel prevents clicking on tab	accepted
+4835498	5	5	bchristi	Thu Mar 20 15:01:00 PST 2003	0	JFileChooser/WinL&F:"My Computer" sidebar button should become deselected	accepted
+4855121	3	3	leif	Mon Apr 28 15:21:00 PDT 2003	0	XP L&F: Table Header does not have rollover effect	committed
+4835466	5	5	bchristi	Thu Mar 20 14:30:00 PST 2003	0	JFileChooser/Windows L&F: border drawn differently when renaming a file	accepted
+4808567	3	5	sky	Mon Jan 27 10:45:00 PST 2003	2	RFE: Swing Windows L&F should honour desktop font smoothing settings.	committed
+4614616	4	4	dalem	Mon Dec 17 11:55:00 PST 2001	1	Overriding getColumnClass in DefaultTableModel causes Exc if it return interface	accepted
+4615411	4	3	joutwate	Tue Dec 18 00:58:00 PST 2001	4	REGRESSION: JOptionPane.showConfirmDialog has wrong focus	accepted
+4424160	4	5	leif	Fri Mar 09 18:36:00 PST 2001	0	Floating toolbar unduly re-docked on uninstallUI	evaluated
+4307597	4	4	leif	Thu Jan 27 02:56:00 PST 2000	9	Kestrel,FileChooser Warning Msg."No Disk In Drive" is not available in Win98/95	accepted
+4865918	3	3	aep@sparc.spb.su	Mon May 19 02:09:00 PDT 2003	0	REGRESSION: JCK1.4a-runtime api/javax_swing/interactive/JScrollBarTests.html#JSc	evaluated
+4741029	4	4	shannonh	Tue Sep 03 16:50:00 PDT 2002	0	JTable: <TAB> doesn't move the focus to all columns of selected region	evaluated
+4532517	4	5	joutwate	Wed Nov 28 15:53:00 PST 2001	26	shouldYieldFocus does not allow side effects in 1.4	committed
+4798817	4	3	leif	Fri Jan 03 14:48:00 PST 2003	0	"My Documents" button is always selected when opening a JFileChooser in Win2K	evaluated
+4825416	4	5	leif	Thu Feb 27 21:53:00 PST 2003	0	XP L&F: JToolBar grip is not centered	evaluated
+4804485	4	4	kyuka	Thu Jan 16 15:41:00 PST 2003	1	TableColumnModel getColumnIndexAtX wrong value in RIGHT_TO_LEFT orientation	committed
+4760053	4	4	shannonh	Tue Oct 08 17:09:00 PDT 2002	1	(MANDRAKE 8.1) Clipboard data provided in wrong format	accepted
+4664642	4	4	leif	Mon Apr 08 15:25:00 PDT 2002	0	JToolBar should have the ability to allow them to only DOCK on certain sides	accepted
+4867054	4	4	leif	Tue May 20 16:45:00 PDT 2003	0	Not following Windows XP style in Swing components	committed
+4358053	5	5	joutwate	Mon Jul 31 16:46:00 PDT 2000	2	new ImageIcon(null,"someDescription") causes the image fetching thread to fail	evaluated
+4729632	4	5	idk	Fri Aug 09 17:26:00 PDT 2002	0	RFE: Make javax.swing.text.html.FrameView public	accepted
+4735839	4	3	idk	Thu Aug 22 19:44:00 PDT 2002	2	RTFEditorKit wrongly parses RTF while reading /writing  to stream/document	committed
+4839739	3	2	idk	Fri Mar 28 18:45:00 PST 2003	0	JEditorPane has 508 problems if there are comments in the HTML	evaluated
+4337584	4	4	leif	Thu May 11 15:45:00 PDT 2000	4	general problems with JFileChooser and rfe's	evaluated
+4742686	4	4	leif	Thu Sep 05 17:32:00 PDT 2002	4	1.4 REGRESSION: WindowsLookAndFeel not using control property	evaluated
+4428370	4	5	zav@sparc.spb.su	Wed Mar 21 00:15:00 PST 2001	0	Problem using JMenu/JMenuItem's with Icon only	evaluated
+4799305	5	4	naa@sparc.spb.su	Mon Jan 06 15:03:00 PST 2003	1	RFE: Decouple selection from cursor behaviour in javax.swing.text	committed
+4815339	4	3	kyuka	Fri Feb 07 17:40:00 PST 2003	0	JComboBox drop-down list orientation is changed after the L&F is changed	committed
+4515838	4	3	zav@sparc.spb.su	Wed Oct 17 00:44:00 PDT 2001	0	Can't change the border of a JComboBox	committed
+4751229	4	3	idk	Fri Sep 20 18:03:00 PDT 2002	3	Iterator returned by HTMLDocument.getIterator() is incorrectly empty	accepted
+4133790	4	5	shannonh	Wed Apr 29 18:27:00 PDT 1998	0	Motif L+F JCheckBoxMenuItems don't align the text properly	evaluated
+4765387	5	5	naa@sparc.spb.su	Fri Oct 18 13:16:00 PDT 2002	1	Unexpected behaviour of HTMLEditorKit Class	evaluated
+4173836	4	5	zav@sparc.spb.su	Tue Sep 15 11:57:00 PDT 1998	7	RFE: setListData in JComboBox	committed
+4628023	4	4	sky	Thu Jan 24 00:26:00 PST 2002	1	Make treeNodesChanged indicate children may have been reordered	accepted
+4545951	4	3	joutwate	Mon Dec 03 14:22:00 PST 2001	4	JOptionPane.showMessageDialog does not size dialog properly	accepted
+4733552	4	4	joutwate	Mon Aug 19 15:01:00 PDT 2002	0	JScrollBar fires event for both mouse down and mouse up	evaluated
+4393423	3	5	shannonh	Wed Nov 29 00:01:00 PST 2000	11	JTable.getSelectedRow incorrect with empty table, after ENTER is pressed.	committed
+4344938	4	5	leif	Mon Jun 12 14:44:00 PDT 2000	0	Badly named classes	accepted
+4496323	4	4	zav@sparc.spb.su	Fri Aug 24 15:00:00 PDT 2001	0	Metal L&F does not handle changing of JMenuBar objects	accepted
+4684090	4	3	shannonh	Mon May 13 13:36:00 PDT 2002	10	Tab on editable JComboBox inside JTable transfers focus outside JTable	accepted
+4310381	4	4	moa@sparc.spb.su	Sun Feb 06 18:51:00 PST 2000	1	Text in multi-row/col JTabbedPane tabs can be truncated/clipped	committed
+4865506	4	4	leif	Fri May 16 00:27:00 PDT 2003	0	Win L&F: JFileChooser:  Java version does not have go back (history) button	evaluated
+4465516	4	5	sky	Sun Jun 03 16:16:00 PDT 2001	4	Need to suppress clipped text behavior	evaluated
+4424571	4	5	joutwate	Mon Mar 12 13:27:00 PST 2001	0	JTable highlights incorrect row when using input verfier	accepted
+4696827	5	5	sky	Tue Jun 04 08:53:00 PDT 2002	0	Investigate adding ComponentUI.getXXXSize(JComponent, Dimension)	accepted
+4870644	3	3	zav@sparc.spb.su	Wed May 28 11:15:00 PDT 2003	0	Default button responds to CTRL-ENTER while popup menu is active.	accepted
+4505116	5	5	sky	Thu Sep 20 10:57:00 PDT 2001	0	SpringLayout default behavior	evaluated
+4865853	3	3	leif	Sun May 18 13:38:00 PDT 2003	0	JInternalFrame title bar does not scale to or ignore titleFont size with XP L&F	committed
+4851758	4	5	idk	Mon Apr 21 20:16:00 PDT 2003	0	Uneditable text components should inherit their parent's cursor.	evaluated
+4765334	4	5	joutwate	Fri Oct 18 00:33:00 PDT 2002	0	Desktop Icon for JInternalFrame goes behind an existing icon	accepted
+4870674	4	5	aep@sparc.spb.su	Wed May 28 11:50:00 PDT 2003	0	JSplitPane's one-touch buttons should deal with resized split panes better	dispatched
+4423439	4	5	leif	Thu Mar 08 14:03:00 PST 2001	8	JFileChooser - can't change the language other than the OS language	accepted
+4765327	5	5	sky	Fri Oct 18 00:28:00 PDT 2002	1	RFE: There should be a isSingleSelectionEvent(MouseEvent) in BasicTreeUI	accepted
+4735546	3	3	shannonh	Thu Aug 22 13:00:00 PDT 2002	0	NPE in BasicTableUI during Swing drag and drop	evaluated
+4861977	4	5	joutwate	Fri May 09 17:10:00 PDT 2003	2	JOptionPane.showInternalConfirmDialog does not respect the JDesktopPane viewport	evaluated
+4809958	4	4	zav@sparc.spb.su	Wed Jan 29 10:08:00 PST 2003	0	REGRESSION:overlappedByOwnedWindow() fails to check if windows are visible	committed
+4649181	3	3	joutwate	Thu Mar 07 16:13:00 PST 2002	4	JFrames and JDialogs do not raise or resize properly in Linux	committed
+4458089	4	5	shannonh	Sun May 13 18:29:00 PDT 2001	5	JOptionPane.setFont() does not affect font used by its message and buttons	accepted
+4836420	5	5	naa@sparc.spb.su	Sun Mar 23 19:03:00 PST 2003	0	demo/jfc/Stylepad text properties should be 2-state controls	accepted
+4844503	5	5	zav@sparc.spb.su	Mon Apr 07 16:23:00 PDT 2003	0	Swingset2: LAF reported incorrectly if changed using popup menu	evaluated
+4390321	4	3	leif	Fri Nov 17 08:52:00 PST 2000	0	JFileChooser.setSelectedFile(File) method throws NPE	committed
+4487493	4	4	leif	Thu Aug 02 00:05:00 PDT 2001	0	Merlinb73:FileChsrDemo:Folder icon Label inconsistent with Win2K native filedial	evaluated
+4848156	4	5	idk	Mon Apr 14 15:35:00 PDT 2003	0	VerticalPageAction does not use Scrollable.getScrollableBlockIncrement()	evaluated
+4724980	3	3	shannonh	Thu Aug 01 17:08:00 PDT 2002	14	JTable: Add API to control what happens to edits when table loses focus.	evaluated
+4469061	4	3	null	Tue Jun 12 16:59:00 PDT 2001	0	TableColumnModel selection model and notification	accepted
+4521993	4	4	idk	Thu Nov 01 13:50:00 PST 2001	2	JEditorPane will not allow pasting directly into a HTML Table cell	accepted
+4860722	4	5	leif	Thu May 08 15:15:00 PDT 2003	0	Win L&F: Does not have resize graphic on bottom RH corner	accepted
+4836162	4	4	naa@sparc.spb.su	Fri Mar 21 15:32:00 PST 2003	0	Selection and Caret are drawn incorrectly when JTextField is Scaled	accepted
+4626900	4	3	idk	Tue Jan 22 17:12:00 PST 2002	1	StrikeThrough attribute not generated in document	accepted
+4799266	3	3	zav@sparc.spb.su	Mon Jan 06 14:15:00 PST 2003	5	REGRESSION: JComboBox doesn't work in JPopupMenu	evaluated
+4767071	4	5	leif	Tue Oct 22 19:02:00 PDT 2002	0	No Autocomplete for JFileChooser file selection using keyboard	evaluated
+4760436	4	5	shannonh	Wed Oct 09 10:05:00 PDT 2002	0	ButtonGroup.getSelection() does not return a user-known ButtonModel.	evaluated
+4409239	4	5	null	Mon Jan 29 11:34:00 PST 2001	8	Printing in JTable clips cell contents	accepted
+4856343	3	3	idk	Wed Apr 30 10:31:00 PDT 2003	0	Problem with applet interaction with system selection clipboard	evaluated
+4130825	5	4	joutwate	Mon Apr 20 15:51:00 PDT 1998	12	Cascade and Tile functionality missing from JDesktopPane	evaluated
+4634626	4	5	zav@sparc.spb.su	Thu Feb 07 05:16:00 PST 2002	8	Implement context popup menus for components	committed
+4105948	4	5	joutwate	Thu Jan 22 10:46:00 PST 1998	9	JOptionPane REALLY Needs Conditional Dismissal	evaluated
+4847362	4	3	leif	Fri Apr 11 14:51:00 PDT 2003	0	Windows XP style L&F can paint two buttons as "rollover"	committed
+4347815	4	5	null	Fri Jun 23 00:31:00 PDT 2000	21	JTable.setCellSelectionEnabled(boolean) implementation bug	committed
+4765240	3	3	zpm@sparc.spb.su	Fri Oct 18 11:23:00 PDT 2002	2	Cannot paste from MS-Word into HTMLEditorKit	evaluated
+4337898	4	5	null	Fri May 12 14:51:00 PDT 2000	0	Serializing DefaultTableCellRenderer changes colors.	accepted
+4759922	3	3	kve@sparc.spb.su	Tue Oct 08 14:48:00 PDT 2002	0	JFileChooser.rescanCurrentDirectory() crashes with an AIOBE	committed
+4834298	4	5	leif	Tue Mar 18 15:15:00 PST 2003	0	JFileChooser.getSelectedFiles() failed with multi-selection and double-click	evaluated
+4760088	4	5	sky	Tue Oct 08 17:43:00 PDT 2002	0	JSpinner(or it's editor) does not fire KeyEvent	accepted
+4322989	4	5	leif	Fri Mar 17 15:53:00 PST 2000	3	Need Directory Chooser dialog	evaluated
+4846692	5	5	kve@sparc.spb.su	Thu Apr 10 15:49:00 PDT 2003	1	Problem displaying text of JOptionPane with Solaris 8 and OpenWindows Desktop	evaluated
+4424708	4	4	naa@sparc.spb.su	Mon Mar 12 16:00:00 PST 2001	9	JPasswordField cursor placed incorrectly after setText("")	evaluated
+4819695	3	2	zav@sparc.spb.su	Tue Feb 18 01:41:00 PST 2003	0	Regression javax/swing/JPopupMenu/PopupTest/PopupTester.java is failing	evaluated
+4192122	4	5	shannonh	Mon Nov 23 05:55:00 PST 1998	1	Bottom of focus outline not drawn with Empty Border	evaluated
+4791070	4	3	kyuka	Mon Dec 09 19:02:00 PST 2002	0	ComponentOrientation:JOptionPane's focus traversal does not respect RTL.	committed
+4490754	4	4	shannonh	Fri Aug 10 00:44:00 PDT 2001	6	RFE: JTextField doesn't contain getActionCommand (only setActionCommand)	evaluated
+4820833	4	4	shannonh	Wed Feb 19 15:21:00 PST 2003	0	JTable: Selection anchor (and lead) not updated when inserting or deleting rows.	accepted
+4760478	5	5	kve@sparc.spb.su	Wed Oct 09 10:29:00 PDT 2002	0	JColorChooser construction is slow	accepted
+4478765	5	5	sky	Wed Jul 11 14:34:00 PDT 2001	1	EOU:   Make subclassing JViewport easier	accepted
+4503727	4	4	zav@sparc.spb.su	Mon Sep 17 15:05:00 PDT 2001	8	RFE Use of Scroll carets on JMenu when they span beyond the depth of the screen	evaluated
+4841767	5	5	idk	Wed Apr 02 15:06:00 PST 2003	1	Copy and Paste in JTextArea for unsigned Applet	accepted
+4871404	4	4	sky	Thu May 29 14:50:00 PDT 2003	0	Swing JTable key bindings seem wrong (incomplete)	accepted
+4132585	5	5	zpm@sparc.spb.su	Fri Apr 24 17:51:00 PDT 1998	0	JButtons have ugly Frames when changing Background	evaluated
+4510123	3	2	zpm@sparc.spb.su	Tue Oct 02 20:50:00 PDT 2001	0	JTextArea.setWrapStyleWord() cannot handle the composed string properly	evaluated
+4232637	4	3	joutwate	Fri Apr 23 17:43:00 PDT 1999	1	Can not use requestDefaultFocus with CardLayout JPanel to set a focus	accepted
+4140209	4	5	joutwate	Tue May 19 17:31:00 PDT 1998	1	Regarding Swing Demo as an applet. Applet does not have the focus at start up.	evaluated
+4768338	4	3	zav@sparc.spb.su	Thu Oct 24 00:51:00 PDT 2002	0	Height of JMenuBar not adjusted when wrapping occurs	committed
+4454866	4	5	joutwate	Fri May 04 17:22:00 PDT 2001	0	internal frames leave garbage behind when dragged over edge in multimon (win32)	evaluated
+4686138	3	2	sky	Thu May 16 00:44:00 PDT 2002	0	1.4 REGRESSION: Letter like (y,g) truncated in TableCellEditor, char '_' not vsb	committed
+4322996	4	5	zav@sparc.spb.su	Fri Mar 17 16:08:00 PST 2000	3	Add BasicComboBoxEditor constructor that accepts a JTextField	evaluated
+4133141	4	5	davidson@eng	Tue Apr 28 11:32:00 PDT 1998	26	Extend Action interface to handle toggles	committed
+4807140	3	3	joutwate	Thu Jan 23 11:37:00 PST 2003	0	Bug ID:4221012 is not fixed for MotifLookAndFeel	committed
+4765300	3	3	sky	Fri Oct 18 00:10:00 PDT 2002	5	Use of JSpinners w/JTables & losing focus doesn't commit, but is supposed to	committed
+4765309	5	5	joutwate	Fri Oct 18 00:15:00 PDT 2002	0	JSlider.setForeground has no visible effect when L&F set to Windows	accepted
+4401437	4	4	leif	Wed Jan 03 11:12:00 PST 2001	0	JFileChooser doesn't validate [characters in] filenames	accepted
+4843244	4	3	sky	Fri Apr 04 15:03:00 PST 2003	3	GTK L&F : Galaxy engine is not supported	accepted
+4676022	4	3	sky	Fri Apr 26 19:25:00 PDT 2002	1	commitEdit() on JFormattedTextField changes Value type	accepted
+4768318	4	4	leif	Thu Oct 24 00:32:00 PDT 2002	1	JFileChooser.setApproveButtonMnemonic() doesn't work	evaluated
+4853783	4	5	sky	Thu Apr 24 17:29:00 PDT 2003	0	SwingSet2 as an applet deadlocks on startup on Solaris	accepted
+4305614	5	5	sky	Wed Jan 19 10:10:00 PST 2000	1	RepaintManager should maintain Window mapping too	evaluated
+4687405	4	3	idk	Fri May 17 15:21:00 PDT 2002	0	HTMLDocument defaultRoot inserts extra paragraph tag	accepted
+4449310	4	5	leif	Mon Apr 23 11:01:00 PDT 2001	0	Accelerator not displayed in HTML tool tip (Metal L&F)	evaluated
+4421177	4	4	shannonh	Fri Mar 02 00:45:00 PST 2001	0	SwingSet2: JTable headers do not update with L&F change	accepted
+4634555	4	1	shannonh	Thu Feb 07 00:52:00 PST 2002	0	Can't reorder or resize JTable columns from the keyboard	evaluated
+4203754	4	5	joutwate	Sun Jan 17 19:36:00 PST 1999	0	Labels in a JSlider don't diable or enable with the slider	evaluated
+4189224	4	5	null	Wed Nov 11 15:13:00 PST 1998	7	BoxLayout constructor - why it needs Container as parameter?	evaluated
+4799919	5	4	moa@sparc.spb.su	Tue Jan 07 17:47:00 PST 2003	0	RFE: Make BasicTabbedPaneUI.requestFocusForVisibleComponent protected	committed
+4850475	3	3	idk	Thu Apr 17 19:02:00 PDT 2003	1	REGRESSION: PlainDocument with textfield (i.e., custom maskfield) doesn't work	evaluated
+4284162	4	3	sdv@sparc.spb.su	Fri Oct 22 17:28:00 PDT 1999	4	add support for the css text-indent attribute	evaluated
+4869215	4	3	sky	Fri May 23 16:28:00 PDT 2003	0	GTK L&F:  Application Icons as well as stock icons need to respond to theme chan	accepted
+4789491	3	2	sharonz	Thu Dec 05 16:57:00 PST 2002	0	JFileChooser, how to make it select directories?	committed
+4154409	4	4	joutwate	Thu Jul 02 15:08:00 PDT 1998	0	Solaris: initial focus is not set to any focusable subcomponent.	evaluated
+4860128	3	3	aep@sparc.spb.su	Wed May 07 18:38:00 PDT 2003	0	REGRESSION: JTree does not paint "focused" node correctly, yellow border missing	evaluated
+4865499	4	4	leif	Fri May 16 00:24:00 PDT 2003	0	Win L&F: JFileChooser: Context Help not  consistent with XP	evaluated
+4624680	5	5	sky	Wed Jan 16 14:14:00 PST 2002	0	Useless error reporting from UIDefaults.getUI and undoc'd null return	accepted
+4818934	3	3	idk	Fri Feb 14 13:14:00 PST 2003	0	Excessive painting in text components when editing	evaluated
+4870281	2	2	idk	Tue May 27 18:17:00 PDT 2003	0	nsk test nsk/stress/jck12a/jck12a017 hangs with tiger rt_baseline	accepted
+4703711	4	4	shannonh	Tue Jun 18 04:10:00 PDT 2002	0	RFE: Need JOptionPane.WORKING_MESSAGE message type	evaluated
+4839061	4	5	shannonh	Thu Mar 27 17:36:00 PST 2003	0	no JTable renderer support for primitive type wrappers	evaluated
+4338140	4	5	null	Mon May 15 11:02:00 PDT 2000	2	DefaultListSelectionModel.insertIndexInterval() should update lead/anchorIndex.	evaluated
+4288818	4	4	sherman@japan	Mon Nov 08 00:39:00 PST 1999	0	JEditorPane has strange characters in Chinese Windows 98	accepted
+4521954	4	3	naa@sparc.spb.su	Thu Nov 01 00:55:00 PST 2001	0	Text selection via double click should optionally highlight trailing space	evaluated
+4861684	4	3	sky	Fri May 09 11:49:00 PDT 2003	0	Using new release, my application turns strange colors.	incomplete
+4408327	4	5	leif	Thu Jan 25 14:21:00 PST 2001	2	"Drive Empty" dialog not getting disposed on clicking "Ignore" or "Abort buttons	accepted
+4260730	4	5	leif	Sat Aug 07 14:37:00 PDT 1999	0	MetalFileChooserUI can't override private createSingleClickListener	evaluated
+4223515	4	4	shannonh	Wed Mar 24 09:51:00 PST 1999	0	Add subimage capability to ImageIcon to allow use of image sheets	evaluated
+4222821	4	4	joutwate	Mon Mar 22 18:01:00 PST 1999	11	Iconifying a JInternalFrame causes its GlassPane to lose state	accepted
+4701238	3	3	naoto	Wed Jun 12 00:39:00 PDT 2002	25	REGRESSION: Bidirectional text not working in JTextComponents	committed
+4694944	3	3	leif	Thu May 30 18:59:00 PDT 2002	14	1.4 REGRESSION: JFileChooser no longer works for virtual filesystems	committed
+4765314	5	5	sky	Fri Oct 18 00:19:00 PDT 2002	1	JWindow behaves differently than JWindow	accepted
+4854803	4	3	shannonh	Mon Apr 28 06:13:00 PDT 2003	0	Resize cursor shown all over the table header in some cases	accepted
+4846272	4	5	leif	Thu Apr 10 07:38:00 PDT 2003	0	Focus lost from Windows LAF JFileChooser on changing to Windows HighContrast set	evaluated
+4765286	4	5	sky	Fri Oct 18 11:59:00 PDT 2002	0	JTree keep on calling TreeModel.getChild()	accepted
+4677184	4	4	zav@sparc.spb.su	Tue Apr 30 10:14:00 PDT 2002	0	RFE: JMenu.setMenuLocation(int x, int y) should accept Point arg	evaluated
+4465792	4	4	null	Mon Jun 04 10:54:00 PDT 2001	0	javax.swing.JTable.isColumnSelected() does not throw IAE	accepted
+4710695	4	5	zav@sparc.spb.su	Wed Jul 03 04:10:00 PDT 2002	1	JMenu focus listener change from 1.3 to 1.4	accepted
+4811071	3	3	sky	Thu Jan 30 20:30:00 PST 2003	0	Gnome L&F / Windowmanager Support	committed
+4158988	4	5	joutwate	Mon Jul 20 16:48:00 PDT 1998	25	2-click on upper left corner can't close JInternalFrame	evaluated
+4860674	4	5	leif	Thu May 08 14:25:00 PDT 2003	0	XP L&F: Some components not updating correctly when switching theme	committed
+4639981	4	5	sky	Tue Feb 19 16:42:00 PST 2002	0	Cannot set button as default until it has been added to root pane	accepted
+4765379	5	5	shannonh	Fri Oct 18 13:11:00 PDT 2002	0	Lack of support for event generation from JTable cell selection	accepted
+4692568	4	3	leif	Tue May 28 15:23:00 PDT 2002	0	The Cancel button on JFileChooser shouldn't have an access key Alt-C.	evaluated
+4726740	4	5	kyuka	Tue Aug 06 00:04:00 PDT 2002	0	JTabbedPane(SCROLL_TAB_LAYOUT) doesn't work properly in right-to-left mode.	committed
+4725009	3	3	shannonh	Thu Aug 01 17:42:00 PDT 2002	0	1.4.0 REGRESSION: Moving last column of JTable causes invalid selection events	committed
+4795415	3	2	joutwate	Tue Dec 17 20:22:00 PST 2002	0	GTK+ L&F bugs uncovered with special BSOD test theme	committed
+4622863	4	5	idk	Fri Jan 11 17:57:00 PST 2002	1	Improve performance of Swing HTML renderer	committed
+4780662	4	4	kyuka	Mon Nov 18 15:17:00 PST 2002	0	Motif L&F:the image icon is on the left side of JOptionPane when the RTL is set	committed
+4842577	5	5	leif	Thu Apr 03 16:25:00 PST 2003	0	JFileChooser does not immediately clear the file list upon change of directory	accepted
+4765282	5	5	joutwate	Fri Oct 18 11:56:00 PDT 2002	1	Scrollbars for JScrollPane receive focus when used with JTextArea	accepted
+4855133	3	3	leif	Mon Apr 28 15:29:00 PDT 2003	0	XP L&F: Checkbox should not be surrounded by dashed box with focus	incomplete
+4337600	5	5	leif	Thu May 11 16:19:00 PDT 2000	0	JCheckBoxMenuItem Documentation for Key Assignments in Incomplete	evaluated
+4812854	5	5	sky	Tue Feb 04 15:28:00 PST 2003	0	Image component for displaying/resizing images	accepted
+4240860	4	4	zpm@sparc.spb.su	Mon May 24 19:09:00 PDT 1999	0	JToolBar.ActionChangedListener not persistant	accepted
+4855867	4	5	idk	Tue Apr 29 15:43:00 PDT 2003	0	DefaultCaret does not use TransferHandler when exporting selected text	evaluated
+4801246	4	4	sky	Thu Jan 09 17:37:00 PST 2003	2	JTree should fire selection change notice on mouse up	evaluated
+4810151	3	3	leif	Wed Jan 29 14:54:00 PST 2003	0	JFileChooser details view uses wrong (possibly unreadable) text color	evaluated
+4416811	4	5	zpm@sparc.spb.su	Mon Feb 19 17:02:00 PST 2001	1	getToolTipText(MouseEvent event) of JComboBox is never called	accepted
+4484778	4	4	naa@sparc.spb.su	Thu Jul 26 00:16:00 PDT 2001	1	HTMLWriter fails to write out object tag correctly	accepted
+4847375	4	4	bchristi	Fri Apr 11 15:05:00 PDT 2003	5	JFileChooser Create New Folder button is disabled incorrectly	committed
+4708978	4	4	sky	Thu Jun 27 09:32:00 PDT 2002	0	Ability for parent Containers *Listeners to be notified even if event consumed	accepted
+4841152	4	3	idk	Tue Apr 01 17:09:00 PST 2003	0	StyleConstants/JTextPane should support the Default alignment to support Locale	accepted
+4298777	4	5	leif	Sun Dec 12 11:52:00 PST 1999	1	JFileChooser's behaviour on Win95 (win32)	accepted
+4222508	4	3	davidson@eng	Mon Mar 22 09:19:00 PST 1999	1	JColorChooser ignores setEnabled() function call	accepted
+4408424	4	5	null	Thu Jan 25 17:00:00 PST 2001	0	getLocation() and getLocationOnScreen() broken for JTableHeader children	accepted
+4197909	4	3	shannonh	Wed Dec 16 10:01:00 PST 1998	1	Support drag selection of ranges in lists.	evaluated
+4713930	4	5	shannonh	Fri Jul 12 02:59:00 PDT 2002	0	Swing: setMultiClickThreshhold issue, related to bug 4367718	evaluated
+4835791	4	5	joutwate	Fri Mar 21 02:55:00 PST 2003	0	demo/jfc/SwingSet2  doesn't work as expected	evaluated
+4870187	4	4	shannonh	Tue May 27 15:56:00 PDT 2003	0	RFE: customize JLabel text-truncation property	evaluated
+4848179	4	5	idk	Mon Apr 14 16:00:00 PDT 2003	1	If all children are removed from javax.swing.text.View no new child can be added	evaluated
+4813436	4	5	kwalrath	Wed Feb 05 00:01:00 PST 2003	1	JOptionPane.showOptionDialog does not return if "options" is JButton[]	evaluated
+4311584	4	5	idk	Thu Feb 10 11:46:00 PST 2000	1	Scrolling on hsviewer using arrow keys is slow (2 - 3s until scrolling begins)	accepted
+4492274	4	3	sdv@sparc.spb.su	Wed Aug 15 10:33:00 PDT 2001	6	JEditorPane.setPage(URL)-the URL treated as immutable object	evaluated
+4154399	4	4	joutwate	Thu Jul 02 14:56:00 PDT 1998	5	Initial focus is not set to the "first" focusable component.	evaluated
+4700643	4	3	null	Tue Jun 11 14:17:00 PDT 2002	6	JTable selection misbehaves when a row is inserted at position 0	accepted
+4140481	4	5	shannonh	Wed May 20 00:38:00 PDT 1998	9	BoxLayout Not sizing or aligning correctly	committed
+4625667	4	5	joutwate	Fri Jan 18 02:33:00 PST 2002	5	Strange FOCUS_GAINED event is sent to application	accepted
+4403550	4	5	shannonh	Wed Jan 10 11:59:00 PST 2001	6	JTextField.setVisible(boolean b) does not work correctly.	evaluated
+4809663	4	4	shannonh	Tue Jan 28 18:21:00 PST 2003	0	RFE: JOptionPane with Yes-Yes to all-No-No to all-Cancel	evaluated
+4474804	4	4	joutwate	Tue Jun 26 14:35:00 PDT 2001	0	JInternalFrames size with both mouse buttons	evaluated
+4686092	4	4	aep@sparc.spb.su	Wed May 15 20:37:00 PDT 2002	0	SwingSet2 Content Alignment feature not working in Hopper 1.4.1-B11	committed
+4391936	4	4	null	Wed Nov 22 13:11:00 PST 2000	1	Swing's text measurement should not use Toolkit font metrics	accepted
+4760482	4	4	joutwate	Wed Oct 09 10:31:00 PDT 2002	0	Maximized JInternalFrames in Windows LaF get bogus activated events	accepted
+4769772	4	4	joutwate	Mon Oct 28 11:01:00 PST 2002	2	JInternalFrame.setIcon(true) before JDesktopPane.add(JIF) causes wrong state	evaluated
+4761990	3	3	naa@sparc.spb.su	Fri Oct 11 00:00:00 PDT 2002	4	1.4 REGRESSION: Highlighting Color Behavior has changed	committed
+4231737	4	5	shannonh	Wed Apr 21 00:56:00 PDT 1999	0	JDialogs not placed correctly when invoked from JPopups	accepted
+4774166	4	3	joutwate	Tue Nov 05 14:52:00 PST 2002	0	InputVerifier not called after a window loses then regains focus	committed
+4790683	4	4	idk	Mon Dec 09 11:11:00 PST 2002	1	JPasswordField should have a char[] constructor	committed
+4592902	4	4	leif	Tue Dec 11 10:41:00 PST 2001	0	tooltips do not immediately hide when moving out of window	accepted
+4442981	4	3	kve@sparc.spb.su	Thu Apr 12 17:38:00 PDT 2001	0	Win2000/XP L&F: Resizing JFileChooser: Does not have a minimum limit	evaluated
+4871932	4	4	shannonh	Fri May 30 00:26:00 PDT 2003	0	MouseMotionListener on JTable disappears when Look And Feel (LAF) changes	dispatched
+4141524	4	2	sky	Fri May 22 18:44:00 PDT 1998	2	UndoManager doesn't help you keep your GUI up to date	evaluated
+4871936	4	4	sky	Fri May 30 00:30:00 PDT 2003	0	RFE: provide a JFontChooser	accepted
+4782243	4	4	leif	Wed Nov 20 17:33:00 PST 2002	0	setVisible on JToolBar does not hide the floating window	evaluated
+4336757	5	5	joutwate	Tue May 09 13:32:00 PDT 2000	0	Regression 1.2.2 to 1.3: was setPreviousBounds() is now setNormalBounds()	evaluated
+4181978	4	4	sharonz	Fri Oct 16 03:59:00 PDT 1998	0	There is no spec for DebugGraphics draw methods	accepted
+4838730	3	3	idk	Thu Mar 27 11:03:00 PST 2003	1	REGRESSION: In JTextArea setEditable(...) breaks focus traversal keys	evaluated
+4777616	3	4	joutwate	Tue Nov 12 00:50:00 PST 2002	0	setDefaultLookAndFeelDecorated(true) and Java Web Start don't mix well	committed
+4765362	5	5	shannonh	Fri Oct 18 00:54:00 PDT 2002	0	SetFont() in DefaultTableCellRenderer doesn't work	accepted
+4851010	4	4	idk	Fri Apr 18 16:37:00 PDT 2003	0	RFE: In ComponentView.java, please change setComponentParent to public final	accepted
+4811015	5	5	davidson@eng	Thu Jan 30 19:42:00 PST 2003	0	Reopen 4528403: JList checks ListModel equality incorrectly	accepted
+4252173	4	4	davidson@eng	Wed Jul 07 11:22:00 PDT 1999	0	Inability to reuse the HorizontalSliderThumbIcon	evaluated
+4292346	4	5	joutwate	Wed Nov 17 11:52:00 PST 1999	5	loading animated gifs throws mediaTracker.ABORTED error	evaluated
+4331767	4	5	sky	Wed Apr 19 14:12:00 PDT 2000	1	Can't make swing use your own UIDefaults class to override getUIError	evaluated
+4203039	3	5	leif	Thu Jan 14 06:19:00 PST 1999	2	JToolBar needs API to limit docking to a particular orientation	committed
+4870668	5	5	joutwate	Wed May 28 11:44:00 PDT 2003	0	RFE: Refactor MetalRootPaneUI to be more flexible	accepted
+4501171	4	5	leif	Sun Sep 09 23:33:00 PDT 2001	0	setHolizontalAlignment() in Windows L&F JFileChooser doesn't work.	accepted
+4403207	4	4	leif	Tue Jan 09 14:40:00 PST 2001	0	setFont does not work for JFileChooser	accepted
+4782077	4	5	naa@sparc.spb.su	Wed Nov 20 14:37:00 PST 2002	1	CTRL-H menu item accelerator also causes text removal with text components	committed
+4466930	4	3	null	Wed Jun 06 15:26:00 PDT 2001	0	JTable.selectAll boundary handling	accepted
+4850092	3	3	leif	Thu Apr 17 10:24:00 PDT 2003	0	REGRESSION: call to updateUI() on a JButton changes the size of the button	committed
+4647551	3	3	joutwate	Tue Mar 05 14:26:00 PST 2002	7	REGRESSION: KeyListener for JFrame doesn't work after click in JInternalFrame	committed
+4614926	4	5	null	Mon Dec 17 16:46:00 PST 2001	7	Native rendering into Swing components	committed
+4282679	4	3	idk	Tue Oct 19 15:22:00 PDT 1999	0	JEditorPane: Using different style tags is producing weird results	evaluated
+4763807	4	3	zav@sparc.spb.su	Wed Oct 16 09:25:00 PDT 2002	1	JComboBox does not fire any mouse events with Metal L&F	accepted
+4716484	4	4	aim	Wed Jul 17 17:31:00 PDT 2002	1	Swing classes don't use getBorderInsets(Component,Insets) to save on object inst	committed
+4346610	4	5	leif	Mon Jun 19 16:42:00 PDT 2000	3	Adding JSeparator to JToolBar "pushes" buttons added after separator to edge	evaluated
+4480696	5	5	leif	Tue Jul 17 10:57:00 PDT 2001	2	Comments On The Swing GUI MS Windows	accepted
+4753342	4	4	sky	Wed Sep 25 15:40:00 PDT 2002	0	JFrame, JWindow and JDialog should redirect add/remove methods to ContentPane	accepted
+4822127	4	3	leif	Fri Feb 21 00:18:00 PST 2003	0	misc swing problems with WinXP L&F	evaluated
+4800753	3	4	leif	Thu Jan 09 03:38:00 PST 2003	0	Missing generic way to change ToolTipManagers and also the shared instance.	accepted
+4801190	4	5	kve@sparc.spb.su	Thu Jan 09 16:05:00 PST 2003	2	JFileChooser does not show registered extensions under Windows with Metal	evaluated
+4337815	4	2	idk	Fri May 12 11:06:00 PDT 2000	0	Make the constructor of javax.swing.text.html.StyleSheet.ListPainter public	evaluated
+4469678	5	4	leif	Wed Jun 13 17:25:00 PDT 2001	0	JFileChooser's new default layout breaks application that works in JDK1.3	accepted
+4705104	3	4	idk	Thu Jun 20 02:03:00 PDT 2002	3	Notepad hangs up when open uigur text in gb18030 locale.	committed
+4525475	4	3	leif	Fri Nov 09 00:45:00 PST 2001	1	Cannot prevent file-system modification in JFileChooser	evaluated
+4795413	3	2	joutwate	Tue Dec 17 20:07:00 PST 2002	0	GTK+ L&F not fully reflecting GNOME High contrast large print theme	committed
+4623275	5	5	moa@sparc.spb.su	Mon Jan 14 11:44:00 PST 2002	3	RFE: JTabbedPane: Provide option to display tab names vertically	accepted
+4819544	4	5	joutwate	Mon Feb 17 10:32:00 PST 2003	0	SwingSet2 JTable Demo throws NullPointerException	evaluated
+4592978	4	4	dalem	Tue Dec 11 13:03:00 PST 2001	0	The ScrollBar Up Button can't bring you completely up if JList has a border	accepted
+4618607	5	5	zpm@sparc.spb.su	Wed Jan 02 11:16:00 PST 2002	7	RFE: Popups for narrow JComboBox are too narrow	accepted
+4847161	3	3	zav@sparc.spb.su	Fri Apr 11 10:30:00 PDT 2003	0	REGRESSION: RegTest-cte CTE_REGTEST/Generic/4683300/Test4683300.java failed	committed
+4199622	4	5	zav@sparc.spb.su	Wed Dec 23 11:54:00 PST 1998	26	RFE: JComboBox shouldn't sending ActionEvents for keyboard navigation	committed
+4515765	4	4	leif	Wed Oct 17 11:04:00 PDT 2001	0	Win L&F: Disabled menu items should show highlight	committed
+4710678	4	5	sky	Wed Jul 03 03:15:00 PDT 2002	0	SwingApplet demo does not print properly	accepted
+4858524	4	3	aep@sparc.spb.su	Mon May 05 13:02:00 PDT 2003	1	JSpinner does not respect editor (JFormattedTextField) margin	evaluated
+4528786	4	3	idk	Sat Nov 17 16:19:00 PST 2001	0	Can't write "^" in Swing GUI Components with Swedish keyboard	accepted
+4830695	4	3	shannonh	Tue Mar 11 14:49:00 PST 2003	0	Require ability to add data import ability on top of existing TransferHandler	accepted
+4485588	4	3	joutwate	Fri Jul 27 17:31:00 PDT 2001	2	default button characteristics are lost for multiple internal frames	evaluated
+4778542	4	4	shannonh	Wed Nov 13 17:48:00 PST 2002	0	property "terminateEditOnFocusLost" results in distorted cell when editing table	committed
+4744971	4	4	leif	Tue Sep 10 15:25:00 PDT 2002	1	ToolTips not changing when JTable cells have same Tooltip Text	evaluated
+4486794	4	4	idk	Wed Aug 01 05:48:00 PDT 2001	5	"ctrl+shft+o" causes textcomponent crash after Inserting numbers and spaces	evaluated
+4265389	4	4	kyuka	Tue Aug 24 16:28:00 PDT 1999	0	JSplitPane does not support ComponentOrientation	committed
+4138768	4	5	zav@sparc.spb.su	Thu May 14 17:41:00 PDT 1998	0	JMenuItem: Setting Mnemonic to VK_HELP displays as "help"	evaluated
+4503816	4	3	joutwate	Mon Sep 17 16:40:00 PDT 2001	4	setNextFocusableComponent no longer backward compatible	accepted
+4623505	4	3	dalem	Mon Jan 14 16:44:00 PST 2002	3	ArrayIndexOutOfBoundsException due to bad update in DefaultListSelectionModel	accepted
+4189256	4	5	joutwate	Wed Nov 11 16:02:00 PST 1998	1	JDesktopPane disregards opacity setting	evaluated
+4795987	4	5	shannonh	Wed Dec 18 16:58:00 PST 2002	1	DefaultTableCellRenderer does not honor 'isEnabled'	accepted
+4850450	4	5	sky	Thu Apr 17 18:26:00 PDT 2003	0	Inconsistent JFormattedTextField selection behavior at FocusGained	accepted
+4501167	4	3	leif	Sun Sep 09 21:58:00 PDT 2001	0	Arabic date string displayed in a wrong format in JFileChooser	accepted
+4848868	4	5	idk	Tue Apr 15 15:19:00 PDT 2003	0	BoxLayout expands components with HTML and it shouldn't	evaluated
+4203556	4	5	sky	Fri Jan 15 00:08:00 PST 1999	7	registerKeyboardAction does not always mean getting the event	evaluated
+4803767	4	4	joutwate	Wed Jan 15 14:40:00 PST 2003	2	RFE : Ability to set OUTLINE DRAGGING in JFrame	committed
+4151536	4	3	leif	Tue Jun 23 10:47:00 PDT 1998	6	JFileChooser should allow traversable but unacceptable directories	accepted
+4486499	5	5	naa@sparc.spb.su	Tue Jul 31 14:10:00 PDT 2001	4	javax.swing.text.html.HTMLWriter is badly written and needs rewriting	evaluated
+4773496	4	3	leif	Mon Nov 04 15:16:00 PST 2002	0	XP L&F: not enough padding in JComboBox	committed
+4337267	4	3	naoto	Wed May 10 18:59:00 PDT 2000	1	Arabic Numeral Shaping	evaluated
+4256525	4	3	joutwate	Thu Jul 22 18:52:00 PDT 1999	1	JInternalFrame Activation should be cheaper	committed
+4140808	4	5	idk	Thu May 21 10:57:00 PDT 1998	4	AbstractDocument must not assume that its Content object is empty	evaluated
+4418620	4	5	leif	Fri Feb 23 14:58:00 PST 2001	1	Shared JToolTip loses border	evaluated
+4865915	3	3	aep@sparc.spb.su	Mon May 19 01:57:00 PDT 2003	0	JCK1.4a-runtime api/javax_swing/interactive/JScrollBarTests.html#JScrollBar	evaluated
+4801274	4	5	shannonh	Thu Jan 09 18:16:00 PST 2003	0	Tab key selects a non-existent row in an empty JTable	accepted
+4421314	4	5	shannonh	Fri Mar 02 15:59:00 PST 2001	0	JOptionPane.showInputDialog gets wrong choice with dup. text	evaluated
+4292342	4	3	joutwate	Wed Nov 17 11:49:00 PST 1999	7	Clicking in an inactive JInternalFrame can cause a begin-drag (96845)	evaluated
+4783442	4	4	sky	Fri Nov 22 11:57:00 PST 2002	1	JPopupMenu drawn underneath JInternalFrame contents in fullscreen mode	evaluated
+4440338	4	5	leif	Wed Apr 11 16:48:00 PDT 2001	2	Redundant file loading threads using JFileChooser; deadlock	accepted
+4730390	4	5	leif	Mon Aug 12 17:15:00 PDT 2002	0	Get system level information about non-existing file names/extensions.	accepted
+4820794	4	5	shannonh	Wed Feb 19 14:35:00 PST 2003	0	Pressing Caps Lock key starts cell editor in JTable	accepted
+4760425	3	3	sky	Wed Oct 09 09:59:00 PDT 2002	9	Erroneous Behaviors When Accessing System Clipboard in Swing Applets	evaluated
+4767393	4	3	zav@sparc.spb.su	Wed Oct 23 10:54:00 PDT 2002	0	Disabled JMenu is selectable via mnemonic	committed
+4366725	4	5	leif	Tue Aug 29 00:06:00 PDT 2000	1	JFileChooser.setOpaque(false) does not work fully	accepted
+4857299	5	5	aep@sparc.spb.su	Thu May 01 16:11:00 PDT 2003	0	RFE: in JTree, expandPath should respect scrollsOnExpand	accepted
+4849941	4	2	rm108251	Thu Apr 17 03:08:00 PDT 2003	0	Right border missing in JTable	dispatched
+4313120	4	5	sky	Wed Feb 16 11:54:00 PST 2000	5	ColorUIResource:  add Alpha channel support (plus another request)	evaluated
+4238847	4	3	sky	Mon May 17 13:38:00 PDT 1999	0	Visibility in Extending UndoManager	evaluated
+4812585	3	3	zav@sparc.spb.su	Tue Feb 04 09:47:00 PST 2003	0	BasicComboBoxUI.FocusHandler doesn't hide popup menu when focus is lost	committed
+4745771	4	3	shannonh	Wed Sep 11 15:32:00 PDT 2002	9	JVM hangs after using ownerless JDialog	evaluated
+4851443	3	3	shannonh	Mon Apr 21 00:28:00 PDT 2003	0	1.4.0 Regression: Animated GIFS stop animating on JButtons and JLabels	committed
+4847998	4	4	sky	Mon Apr 14 11:45:00 PDT 2003	0	RFE: Please include TableLayout	accepted
+4765288	4	3	zpm@sparc.spb.su	Fri Oct 18 00:02:00 PDT 2002	0	HTMLDocument inserts HTML with <BR> tag incorrectly	accepted
+4520587	4	3	sky	Mon Oct 29 00:15:00 PST 2001	13	RFE: Need a JSpinner.reformat() method as a JSpinner.commitEdit()'s complement	evaluated
+4834918	2	3	joutwate	Wed Mar 19 18:13:00 PST 2003	22	Win L&F: JInternalFrame should merge with JMenuBar when maximized	committed
+4783248	3	2	leif	Fri Nov 22 05:54:00 PST 2002	0	Win XP L&F : Slider leaves trail when dragged	evaluated
+4626632	5	5	davidson@eng	Tue Jan 22 11:33:00 PST 2002	1	Various containers for Action throw NPE when PropChgEvent has null newValue	accepted
+4793790	4	4	shannonh	Fri Dec 13 15:37:00 PST 2002	0	checkbox table cell editor doesn't work properly	evaluated
+4765256	4	4	joutwate	Fri Oct 18 11:36:00 PDT 2002	5	REGRESSION: Icons in JDesktopPane not repositioned when pane is resized	accepted
+4486577	5	4	idk	Tue Jul 31 16:01:00 PDT 2001	0	Wasteful use of getBounds() in interface Shape	evaluated
+4209604	4	5	joutwate	Mon Feb 08 08:04:00 PST 1999	0	ProgressMonitorInputStream updates ProgressMonitor outside event thread	evaluated
+4665225	4	4	aep@sparc.spb.su	Tue Apr 09 14:10:00 PDT 2002	0	swing isn't coalescing some mouse drag events on scrollbars.	evaluated
+4487510	5	5	shannonh	Thu Aug 02 00:34:00 PDT 2001	1	RFE: Need ability to set the disabledBackground for a JTextField or JTextArea	evaluated
+4137343	4	3	leif	Tue May 12 00:33:00 PDT 1998	2	Toolbar and menubar layout managers don't wrap	evaluated
+4825653	4	5	idk	Fri Feb 28 11:46:00 PST 2003	0	JEditorPane getStream and setPage interdependency problem	evaluated
+4855171	4	3	sky	Mon Apr 28 16:11:00 PDT 2003	1	Cannot set a document to JFormattedTextField got from JSpinner's editor	accepted
+4678300	4	4	joutwate	Wed May 01 17:56:00 PDT 2002	21	SwingSet2 and other demos should use setJMenuBar()	committed
+4185305	4	5	joutwate	Wed Oct 28 17:57:00 PST 1998	1	JProgressBar Metal PLAF overwrites empty borders	evaluated
+4465504	5	3	idk	Sun Jun 03 13:48:00 PDT 2001	2	Add getEditorKit() to JTextComponent	evaluated
+4749645	3	3	leif	Wed Sep 18 14:17:00 PDT 2002	2	WindowsLAF: Tooltip on bottommost menu item hides this menu item	evaluated
+4628641	4	5	idk	Fri Jan 25 10:52:00 PST 2002	0	Make Segment implement CharSequence	accepted
+4765292	3	4	joutwate	Fri Oct 18 00:05:00 PDT 2002	0	REGRESSION: WindowsLookAndFeel causes need for JInternalFrame revalidation	evaluated
+4148068	4	5	idk	Thu Jun 11 17:35:00 PDT 1998	2	can't get all Properties from swing.text.Document	evaluated
+4232728	4	4	zav@sparc.spb.su	Sun Apr 25 20:27:00 PDT 1999	1	No method to manipulate Scroll Button or ComboBox Button	evaluated
+4508646	4	4	leif	Fri Sep 28 00:17:00 PDT 2001	10	Tooltip generated by JToolBar.add(Action) wrong	accepted
+4869855	2	3	zav@sparc.spb.su	Tue May 27 08:54:00 PDT 2003	0	method MenuSelectionManager.setSelectedPath() throws NPE	evaluated
+4164323	4	4	davidson@eng	Thu Aug 06 18:45:00 PDT 1998	3	AppletBeanInfo not defined, bound properties reported incorrectly	evaluated
+4622251	5	5	sky	Thu Jan 10 19:45:00 PST 2002	5	RFE: JSpinner wrapping from minimum to maximum or maximum to minimum.	accepted
+4523840	4	3	joutwate	Tue Nov 06 15:56:00 PST 2001	1	inactive internal frames and propogation of mouse events	accepted
+4716471	4	3	idk	Wed Jul 17 17:13:00 PDT 2002	0	extendible EditorKits	accepted
+4469726	4	5	davidson@eng	Wed Jun 13 18:50:00 PDT 2001	0	identification and use of non-client fonts in win32 desktop properties	accepted
+4835479	5	4	bchristi	Thu Mar 20 14:47:00 PST 2003	0	JFileChooser/WindowsL&F: show hidden files if set in native Folder Options	accepted
+4494156	5	5	sdv@sparc.spb.su	Mon Aug 20 18:30:00 PDT 2001	2	JEditorPane hyperlinks activate only when mouse is motionless	accepted
+4865103	4	5	aep@sparc.spb.su	Thu May 15 18:22:00 PDT 2003	0	JScrollPane in GridBagLayout resizes incorrectly	evaluated
+4614558	5	3	sky	Mon Dec 17 10:15:00 PST 2001	1	JTree setting Focus on JTextPane seems impossible	accepted
+4368790	4	5	shannonh	Wed Sep 06 13:50:00 PDT 2000	13	JButton stays pressed when focus stolen	evaluated
+4793741	4	4	leif	Fri Dec 13 14:45:00 PST 2002	0	setDefaultLookAndFeelDecorated Hint is ignored for JToolbar	evaluated
+4669384	5	3	joutwate	Tue Apr 16 14:42:00 PDT 2002	0	Problems with keyboard navigation in SwingSet2 List Demo	evaluated
+4765296	4	5	shannonh	Fri Oct 18 00:08:00 PDT 2002	0	No focus rectangle on checkbox with html-formatted text	accepted
+4849062	4	5	sky	Tue Apr 15 20:10:00 PDT 2003	1	JTable and JList have incompatible definitions of cellFocus for renderers.	accepted
+4487456	4	4	zav@sparc.spb.su	Thu Aug 02 11:08:00 PDT 2001	0	JComboBox generates mouseRelease events for certain LAF only	committed
+4482128	4	4	joutwate	Thu Jul 19 17:52:00 PDT 2001	1	REGRESSION: Editable JComboBox as a TableCellEditor doesn't render the selection	evaluated
+4871520	3	3	sky	Thu May 29 17:08:00 PDT 2003	0	PopupFactory.setSharedInstance refers to undefined "AppContext"	committed
+4676790	4	3	zav@sparc.spb.su	Mon Apr 29 17:23:00 PDT 2002	1	The Short-cut keys for the Menus has focus level Issues.	accepted
+4825409	3	4	leif	Thu Feb 27 21:10:00 PST 2003	0	XP L&F: JFileChooser navigation button sizing problem	committed
+4462415	4	3	joutwate	Wed May 23 14:50:00 PDT 2001	0	Splash screen replace SwingSet demo panel in SwingSet2 due to race condition	evaluated
+4792192	5	5	joutwate	Wed Dec 11 00:11:00 PST 2002	0	RFE: Need an event-free programmatic means of changing a JComboBox selection	evaluated
+4161616	4	5	leif	Wed Jul 29 11:58:00 PDT 1998	21	Make tool bars more like MS toolbars	evaluated
+4652910	4	5	shannonh	Thu Mar 14 00:35:00 PST 2002	0	JPI Exception dialog - OK accelerator key missing (PIT02:[03/11/02] )	evaluated
+4422795	4	5	leif	Wed Mar 07 00:04:00 PST 2001	0	MetalBorders.TableHeaderBorder: not a UIResource, wrong Insets	evaluated
+4303294	4	5	shannonh	Fri Jan 07 13:23:00 PST 2000	6	Implement discontinuous selection from the keyboard for list-like components	committed
+4480327	4	4	leif	Mon Jul 16 14:59:00 PDT 2001	44	1.4's JFileChooser extremely slow for remote folders	accepted
+4222732	4	3	null	Mon Mar 22 15:18:00 PST 1999	1	JTable setBorder overwrites data in first row (ie bad inset layout)	accepted
+4817131	4	5	kyuka	Tue Feb 11 19:59:00 PST 2003	0	JScrollPane.setComponentOrientation() doesn't change corner components.	committed
+4835483	5	5	bchristi	Thu Mar 20 14:51:00 PST 2003	0	JFileChooser/WindowsL&F:Details view column headings should be left-justified	accepted
+4688783	4	3	zav@sparc.spb.su	Tue May 21 11:54:00 PDT 2002	0	JPopupMenu hardcoded i JMenu	evaluated
+4349334	4	5	null	Wed Jun 28 18:11:00 PDT 2000	1	Column headers are cut off in JTable for Windows L&F	accepted
+4508191	4	3	joutwate	Thu Sep 27 15:25:00 PDT 2001	3	JOptionPane.showInternalOptionDialog blocks after its enclosing JFrame is closed	accepted
+4777579	3	3	zpm@sparc.spb.su	Tue Nov 12 11:56:00 PST 2002	0	1.4 REGRESSION: Redo with HTMLEditorKit causes NullPointerException	committed
+4104906	4	5	joutwate	Mon Jan 19 00:20:00 PST 1998	20	JOptionPane should wordwrap message text	evaluated
+4792249	4	4	sky	Wed Dec 11 13:21:00 PST 2002	0	MaskFormatter bugs with valueToString() and stringToValue()	evaluated
+4836762	4	4	sharonz	Mon Mar 24 14:14:00 PST 2003	0	Documentation typo in javax.swing.text.Document	committed
+4667991	4	5	dalem	Sun Apr 14 04:26:00 PDT 2002	1	built-in support for sorting table	accepted
+4855750	5	5	bchristi	Tue Apr 29 13:36:00 PDT 2003	0	JFileChooser doesn't allow to remove disabled Help Button	evaluated
+4762915	4	4	zav@sparc.spb.su	Mon Oct 14 18:06:00 PDT 2002	2	JComboBox:prototypeDisplayValue not passed to internal lists PrototypeCellValue	evaluated
+4214395	4	5	joutwate	Wed Feb 24 08:01:00 PST 1999	5	JOptionPane's createInternalFrame() method doesn't allow JInternalFrame subclass	evaluated
+4525465	4	4	joutwate	Fri Nov 09 00:34:00 PST 2001	0	SwingSet2/BezierAnimationCurve demo needs to be updated	accepted
+4777756	4	3	shannonh	Tue Nov 12 16:19:00 PST 2002	1	JTable doesn't remove active CellEditor when TableModel changes	evaluated
+4640081	4	3	zav@sparc.spb.su	Tue Feb 19 18:48:00 PST 2002	4	JPopupMenu.show() does not display JPopup if previously hidden	accepted
+4466892	4	3	joutwate	Wed Jun 06 14:32:00 PDT 2001	1	Enhance SwingSet2 demo to use flat-button JToolBar under Win L&F	evaluated
+4801152	4	4	joutwate	Thu Jan 09 15:20:00 PST 2003	3	Various Focus problems with JInternalFrame	committed
+4625388	4	4	naa@sparc.spb.su	Thu Jan 17 15:32:00 PST 2002	2	JEditorPane read method does not work with Changed Char set and doc w/o url	accepted
+4723012	3	4	shannonh	Tue Jul 30 14:36:00 PDT 2002	0	1.4.0 REGRESSION: JTable column header is not properly centered.	committed
+4714318	3	3	kve@sparc.spb.su	Fri Jul 12 14:46:00 PDT 2002	0	1.4.0 REGRESSION: Multi Selection JFileChooser throws ArrayIndexOutOfBoundsExcep	committed
+4522861	4	2	zpm@sparc.spb.su	Mon Nov 05 08:11:00 PST 2001	4	JEditor HTMLEditorKit spacing regression to 1.3.x	evaluated
+4865494	4	4	leif	Fri May 16 00:22:00 PDT 2003	0	Win L&F: JFileChooser: View As Options not  consistent with XP	committed
+4324692	4	4	naoto	Fri Mar 24 05:12:00 PST 2000	2	Cursor loops infinitely in multiline JTextPane	evaluated
+4129691	4	5	shannonh	Thu Apr 16 13:48:00 PDT 1998	0	Motif,JButton:If paintBorder is false focus not painting though paintfocus true	evaluated
+4501652	4	5	leif	Tue Sep 11 00:07:00 PDT 2001	1	Attributes of columns should not depend on the position. (JFileChooser)	accepted
+4849177	4	4	joutwate	Wed Apr 16 03:47:00 PDT 2003	0	NPE thrown in Table Demo of SwingSet2	accepted
+4155103	4	2	sky	Tue Jul 07 11:32:00 PDT 1998	8	JFrame, JDialog, JWindow, and JApplet don't use RepaintManager	evaluated
+4103946	4	4	joutwate	Wed Jan 14 13:20:00 PST 1998	0	Motif scrollbars keyboard navigation not working properly	evaluated
+4273817	4	5	shannonh	Mon Sep 20 19:01:00 PDT 1999	0	Add a forcedPaintFocus property to JCheckBox	evaluated
+4789550	5	5	shannonh	Thu Dec 05 17:57:00 PST 2002	1	RFE: Need showMessageDialog with only one parameter in javax.swing.JOptionPane	committed
+4776403	4	3	zav@sparc.spb.su	Fri Nov 08 15:00:00 PST 2002	0	setRolloverEnabled(true) not working for JMenuItem	committed
+4745084	4	5	sky	Tue Sep 10 17:17:00 PDT 2002	1	Make it easier to have custom icons for tree cell renderers and editors	accepted
+4482545	4	4	joutwate	Fri Jul 20 14:36:00 PDT 2001	1	JInternalFrame.isPalette should be supported in Window LAF	evaluated
+4318634	4	4	sky	Fri Mar 03 10:49:00 PST 2000	1	Request improved dirty region tracking in javax.swing.RepaintManager	evaluated
+4691083	4	4	joutwate	Thu May 23 22:08:00 PDT 2002	1	RFE: Add a constructor to ProgressMonitor to specify a JProgressBar	evaluated
+4615021	4	5	mca	Mon Dec 17 18:32:00 PST 2001	0	Improve Swing icons	committed
+4533820	4	3	joutwate	Fri Nov 30 16:11:00 PST 2001	76	Extend InputVerifiers to keep events from firing on target components.	evaluated
+4417601	5	5	zpm@sparc.spb.su	Wed Feb 21 14:44:00 PST 2001	0	JMenus with no items paint a tiny menu.	evaluated
+4783623	4	4	joutwate	Fri Nov 22 15:04:00 PST 2002	0	non-active JInternalFrame won't call COMPONENT_RESIZED when maximized	accepted
+4368107	4	4	kyuka	Sun Sep 03 07:49:00 PDT 2000	0	JTable cell text is parttialy or totally hidden when cells are double clicked	accepted
+4497885	4	4	leif	Wed Aug 29 15:25:00 PDT 2001	3	Etched- and TitledBorder in Swing with Windows L&F don't use system colors.	accepted
+4832239	4	4	shannonh	Thu Mar 13 14:41:00 PST 2003	3	RFE: JOptionPane using initialValue when options is null	accepted
+4765307	4	5	shannonh	Fri Oct 18 00:13:00 PDT 2002	0	REGRESSION: Accelerator vs. TransferHandler	committed
+4471450	4	5	idk	Mon Jun 18 18:34:00 PDT 2001	5	Add support for floating boxes to swing text framework	evaluated
+4130812	4	5	shannonh	Mon Apr 20 15:34:00 PDT 1998	0	Motif JToggleButton: painting focus is not handled well	evaluated
+4798542	4	4	shannonh	Thu Jan 02 17:35:00 PST 2003	1	Mnemonics not working when ALT key is released before character key	evaluated
+4830281	3	3	joutwate	Mon Mar 10 20:48:00 PST 2003	0	DPI setting not supported in GTK L&F	committed
+4465512	4	5	zav@sparc.spb.su	Sun Jun 03 15:44:00 PDT 2001	2	New 1.4 focus rework for popup menus isn't ignoring menu accelerators	accepted
+4675781	4	4	sky	Fri Apr 26 15:12:00 PDT 2002	1	javax.swing.Timer does not safely handle negative delays	accepted
+4801162	4	4	idk	Thu Jan 09 15:29:00 PST 2003	1	RFE: Make javax.swing.JTextPane.replaceSelection at least protected	committed
+4794439	4	4	idk	Mon Dec 16 14:37:00 PST 2002	0	ListCellRenderer in JList rendering HTML text calculates it own size wrong	evaluated
+4262543	4	3	sky	Sat Aug 14 14:53:00 PDT 1999	2	DebugGraphics extends Graphics, not Graphics2D	evaluated
+4858534	4	4	joutwate	Mon May 05 13:21:00 PDT 2003	0	JSlider does not resize after JInternalFrame it's in is maximized, iconified	evaluated
+4684300	4	4	leif	Mon May 13 16:57:00 PDT 2002	0	Swing tooltips don't dissapear when the mouse moves over them	accepted
+4274423	4	5	shannonh	Wed Sep 22 11:30:00 PDT 1999	0	JOptionPane.getMaxCharactersPerLineCount needs a setMaxCharactersPerLineCount	evaluated
+4632500	5	4	leif	Sat Feb 02 19:32:00 PST 2002	2	Application icon (teacup) appears on jfilechooser in java windows l&f	accepted
+4793728	5	5	shannonh	Fri Dec 13 14:24:00 PST 2002	1	RFE: JRadioButton( JComponent component) would be nice	accepted
+4371409	4	5	leif	Fri Sep 15 06:22:00 PDT 2000	0	TEST_BUG: the test JColorChooser/JCC_setSelectionModel is invalid	accepted
+4346941	4	5	shannonh	Tue Jun 20 15:55:00 PDT 2000	7	JRadioButton objects lose ther opaque settings after updateComponentTree()	evaluated
+4424085	4	5	sky	Fri Mar 09 16:21:00 PST 2001	0	Several Swing problems	accepted
+4765382	5	5	leif	Fri Oct 18 13:13:00 PDT 2002	0	JFileChooser - focus problem	accepted
+4765323	5	5	shannonh	Fri Oct 18 00:26:00 PDT 2002	3	JTable.setAutoResizeMode(AUTO_RESIZE_ALL_COLUMNS) doesn't resize proportionally	accepted
+4826493	5	5	leif	Mon Mar 03 13:40:00 PST 2003	0	Remove/Disable Files of Type List Item in the Directory only JFileChooser	evaluated
+4165217	4	4	kve@sparc.spb.su	Mon Aug 10 15:39:00 PDT 1998	1	JColorChooser is not serialized	evaluated
+4802583	4	5	moa@sparc.spb.su	Mon Jan 13 16:37:00 PST 2003	0	JTabbedPane paints components from unselected tabs	committed
+4767065	4	4	joutwate	Tue Oct 22 18:50:00 PDT 2002	0	Strange Focus behavior of JInternalFrames on JDesktopPane	evaluated
+4735107	4	3	shannonh	Wed Aug 21 18:32:00 PDT 2002	3	Architecture of JTable and TableModel	evaluated
+4765310	5	5	sky	Fri Oct 18 00:16:00 PDT 2002	1	javax.swing.JSpinner$DateEditor(JSpinner, DateFormat) should be public.d	accepted
+4524271	4	3	naoto	Wed Nov 07 00:14:00 PST 2001	0	RFE: Thai WTT 2.0 editing support in JTextComponent	accepted
+4641856	3	3	zpm@sparc.spb.su	Fri Feb 22 11:36:00 PST 2002	0	Swing popup menus get clipped when a browser is sized smaller than the applet	evaluated
+4645049	5	5	joutwate	Thu Feb 28 14:23:00 PST 2002	0	minor iconify/restore/close buttons windows L&F inconsistent	accepted
+4527482	4	4	sky	Wed Nov 14 18:56:00 PST 2001	5	JTextField and JLabel do not display correct font under Windows L&F in 1.4beta3	accepted
+4833645	5	5	kve@sparc.spb.su	Mon Mar 17 15:01:00 PST 2003	0	BoxLayout does not respect components preferred widths	evaluated
+4684067	4	3	naa@sparc.spb.su	Mon May 13 13:31:00 PDT 2002	2	HTMLEditor Kit, Can't delete list items	accepted
+4263171	4	5	leif	Tue Aug 17 15:29:00 PDT 1999	0	JToolBar doesn't draw properly when dragged	evaluated
+4765319	4	3	zav@sparc.spb.su	Fri Oct 18 00:23:00 PDT 2002	0	1.4 REGRESSION: Alt-Up/Down doens't open combo in WinLAF	accepted
+4244395	4	4	zpm@sparc.spb.su	Mon Jun 07 11:19:00 PDT 1999	0	Drawing bugs when using emptyBorder with button classes	accepted
+4486151	4	2	sky	Mon Jul 30 17:36:00 PDT 2001	1	SpringLayout does not support ComponentOrientation	incomplete
+4727901	4	3	sky	Wed Aug 07 14:35:00 PDT 2002	0	Add a SortedListModel class	evaluated
+4854950	4	4	joutwate	Mon Apr 28 11:35:00 PDT 2003	0	JFrame's decorated root pane doesn't like MouseListeners	accepted
+4624567	4	4	dalem	Wed Jan 16 11:41:00 PST 2002	0	REGRESSION: JTable in JInternalFrame won't initially drag scroll	evaluated
+4109871	4	4	shannonh	Thu Feb 05 13:56:00 PST 1998	20	JComboBox is not fully accessible in JTable.	committed
+4296022	4	5	idk	Wed Dec 01 16:23:00 PST 1999	69	Displaying XML within a JEditorPane	evaluated
+4721224	4	5	aep@sparc.spb.su	Fri Jul 26 03:03:00 PDT 2002	2	JApplet shouldn't be a focus cycle root	evaluated
+4295363	4	4	kyuka	Tue Nov 30 06:11:00 PST 1999	4	Component Orientation for JTable Cells does not work	accepted
+4202392	4	5	leif	Tue Jan 12 08:55:00 PST 1999	3	add propertyChangeListener support to TitledBorder	evaluated
+4533778	4	4	shannonh	Fri Nov 30 15:25:00 PST 2001	3	isSelectionEmpty() returns false in empty JTable 1.3.1, 1.4beta3	committed
+4665233	4	4	sky	Tue Apr 09 14:18:00 PDT 2002	2	swing RepaintManager is not optimal for some JTable update scenarios	accepted
+4825408	3	4	leif	Thu Feb 27 21:05:00 PST 2003	0	XP L&F: JFileChooser resizing problems	committed
+4765299	5	5	sky	Fri Oct 18 00:10:00 PDT 2002	0	componentResized() not always called with nested JSplitPanes	accepted
+4471760	4	2	sky	Tue Jun 19 13:10:00 PDT 2001	0	JLabel has shaggy text when disabled	accepted
+4459137	4	4	leif	Tue May 15 18:05:00 PDT 2001	0	Displaying position is wrong for BorderFactorytest	evaluated
+4860345	4	3	leif	Thu May 08 06:00:00 PDT 2003	0	JTree folder icon in WinXP LAF is not similar to WinXP	committed
+4765241	3	3	joutwate	Fri Oct 18 11:25:00 PDT 2002	0	1.4 REGRESSION: ContainerOrderFocusTraversal prevents InputVerifier.verify()	evaluated
+4707457	4	4	zav@sparc.spb.su	Mon Jun 24 21:17:00 PDT 2002	10	focusGained and focusLost methods under FcousListener in 1.4 do not work as 1.3	accepted
+4835327	4	3	joutwate	Thu Mar 20 00:09:00 PST 2003	0	componentShown only received for first doc in MDI	evaluated
+4803478	4	3	leif	Wed Jan 15 06:45:00 PST 2003	0	Regression .../JComboBox/4465533/bug4465533.java fails on WinXP	committed
+4430777	4	4	idk	Tue Mar 27 15:25:00 PST 2001	0	GlyphPainter2 requires AbstractDocument	evaluated
+4226243	4	2	shannonh	Thu Apr 01 18:13:00 PST 1999	9	Can't navigate within a radio button group using arrow keys	evaluated
+4778281	4	4	joutwate	Wed Nov 13 00:06:00 PST 2002	0	Alt-Tab while resizing JInternalFrame results in wrong cursor	committed
+4861002	4	4	bchristi	Fri May 09 02:04:00 PDT 2003	0	JFileChosser does not have resize restrictions as in native XP	evaluated
+4311805	4	5	leif	Thu Feb 10 20:57:00 PST 2000	0	Dragged out JToolBar ocupates unexpected position on screen	accepted
+4804690	3	3	joutwate	Thu Jan 16 22:55:00 PST 2003	0	SwingSet2/JInternalFrame/GTK:the background of the generator has a problem	committed
+4431395	4	4	idk	Wed Mar 28 17:20:00 PST 2001	2	JTextPane in JScrollPanel with large component not drawn properly	accepted
+4825949	4	5	leif	Fri Feb 28 17:46:00 PST 2003	3	JToolTip in JApplet will place tooltip in wrong monitor	evaluated
+4473401	5	5	sdv@sparc.spb.su	Fri Jun 22 10:34:00 PDT 2001	1	Forms should generate a hyperlink event, not directly post/get the data	evaluated
+4520228	4	4	sky	Fri Oct 26 18:01:00 PDT 2001	27	Lightweight swing containers do not print their nested (child) components	accepted
+4671612	5	5	dalem	Fri Apr 19 00:08:00 PDT 2002	6	JTable reporting invalid selected row count	accepted
+4862834	2	3	monsanto	Mon May 12 22:19:00 PDT 2003	0	REGRESSION: api/javax_swing/JMenuBar/AccessibleJMenuBar/index.html#AccessibleSel	dispatched
+4642061	5	5	sky	Fri Feb 22 16:11:00 PST 2002	29	JTreeTable	evaluated
+4759312	3	3	joutwate	Mon Oct 07 17:52:00 PDT 2002	1	JInternalFrame Not Being Finalized After Closing	evaluated
+4869885	4	5	idk	Tue May 27 09:47:00 PDT 2003	0	JEditorPane can't detect &lt in HTML if it is followed by a character	dispatched
+4398733	4	3	joutwate	Fri Dec 15 16:06:00 PST 2000	11	MouseClicked event not delivered when switched between  2 Internal frames	evaluated
+4706813	3	4	leif	Sun Jun 23 06:50:00 PDT 2002	0	jdk1.4.1-b14, JFileChooser fails to display contents of "My Computer" under XP	committed
+4472830	4	5	shannonh	Thu Jun 21 11:30:00 PDT 2001	2	Drag sensitivity should be adjustable	accepted
+4480335	4	3	shannonh	Mon Jul 16 15:10:00 PDT 2001	0	editable JComboBox changes newlines into spaces	accepted
+4486496	4	4	idk	Tue Jul 31 14:08:00 PDT 2001	4	ParserDelegator().parse() gives tags out of order	accepted
+4486741	4	5	naoto	Tue Jul 31 21:32:00 PDT 2001	0	Swing text components don't store the attributes of input method committed text	accepted
+4859570	4	5	aep@sparc.spb.su	Wed May 07 04:14:00 PDT 2003	0	SwingUtilities.sharedOwnerFrame is never disposed	evaluated
+4207472	4	3	naa@sparc.spb.su	Sun Jan 31 11:39:00 PST 1999	6	Space added after named anchors	evaluated
+4479363	4	3	sky	Thu Jul 12 17:34:00 PDT 2001	14	Swing does not handle fractional font metrics correctly	accepted
+4678049	5	4	leif	Wed May 01 13:14:00 PDT 2002	1	Selecting a new filter causes the filename field to blank out in JFileChooser	accepted
+4787979	4	4	sky	Tue Dec 03 17:02:00 PST 2002	0	JComboBox getToolTipLocation does not work	evaluated
+4853739	5	5	shannonh	Thu Apr 24 16:39:00 PDT 2003	0	In JOptionPane, selectInitialValue() is not called when first focusing dialog	accepted
+4740419	3	3	moa@sparc.spb.su	Mon Sep 02 08:13:00 PDT 2002	1	Selecting unselected tab doesn't get the focus, under some condition.	committed
+4301200	4	2	null	Wed Dec 22 04:16:00 PST 1999	0	Text widths are calculated incorrect	accepted
+4733651	4	4	leif	Mon Aug 19 16:43:00 PDT 2002	1	File[] returned by FileSystemView.getRoots() should never be modifed on Win32	evaluated
+4865503	5	5	leif	Fri May 16 00:26:00 PDT 2003	0	Win L&F: JFileChooser:  Save In label alignment not  consistent with XP	committed
+4826627	5	5	joutwate	Mon Mar 03 16:30:00 PST 2003	0	swingset: canceling InputDialog should not produce response	accepted
+4674040	3	3	sky	Wed Apr 24 15:20:00 PDT 2002	0	JComponent exposes internal Dimension data with setPreferredSize() and friends	committed
+4711996	3	3	kve@sparc.spb.su	Tue Jul 09 04:16:00 PDT 2002	0	IllegalArgumentException when updating color chooser ui	committed
+4760481	4	5	sky	Wed Oct 09 10:30:00 PDT 2002	2	DefaultTreeCellRenderer icons and colors aren't updated in updateUI()	accepted
+4861969	4	5	aep@sparc.spb.su	Fri May 09 16:59:00 PDT 2003	1	JSplitPane within another disabled JSplitPane does not display cursor	accepted
+4783068	5	5	idk	Thu Nov 21 19:14:00 PST 2002	4	Components with HTML text should gray out the text when disabled	accepted
+4760102	4	4	leif	Tue Oct 08 18:00:00 PDT 2002	0	Request JFileChooser allow dislay of files but selection only of directories	accepted
+4488581	4	2	zpm@sparc.spb.su	Mon Aug 06 11:50:00 PDT 2001	1	JPopupMenu.setVisible throws NullPointerException	evaluated
+4621323	4	2	joutwate	Wed Jan 09 13:41:00 PST 2002	0	Some Swing "constants" aren't constant	committed
+4195955	4	5	leif	Tue Dec 08 18:07:00 PST 1998	2	FileChooser needs to react to Exceptions thrown by alternate FileSystem(View)	accepted
+4867005	3	3	joutwate	Tue May 20 16:01:00 PDT 2003	3	When removing a JPanel, child JButton gets a FOCUS_GAINED	dispatched
+4449362	4	4	kyuka	Mon Apr 23 00:53:00 PDT 2001	0	Box doesn't support ComponentOrientation	committed
+4837807	3	3	leif	Wed Mar 26 01:23:00 PST 2003	0	JCK1.4a api/javax_swing/interactive/JFileChooserTests.html#JFileChooser fails	evaluated
+4279934	4	5	joutwate	Mon Oct 11 09:55:00 PDT 1999	0	Add alt. form of  InputVerifier.shouldYieldFocus() with "to" comp as 2nd param	evaluated
+4354925	4	5	leif	Thu Jul 20 11:49:00 PDT 2000	0	JMenu/JMenuItem UI (JLF/Metal) does not comply with JLF specification	evaluated
+4769773	4	4	joutwate	Mon Oct 28 11:04:00 PST 2002	1	JInternalFrame.setMaximum(true) before adding it to JDesktopPane causes NPE	evaluated
+4108708	4	5	joutwate	Mon Feb 02 11:12:00 PST 1998	5	ImageIcon(...) is incredibly slow	evaluated
+4871413	4	4	leif	Thu May 29 14:56:00 PDT 2003	0	ToolTipManager.setEnabled(...) doc. refers to unknown tooltip	dispatched
+4311629	4	4	naoto	Thu Feb 10 00:59:00 PST 2000	1	Text components should allow for contextual component orientation	evaluated
+4291881	4	5	joutwate	Tue Nov 16 10:23:00 PST 1999	2	Add JInternalDialog, and add public 'setModal' method to JIntrnlFrame	evaluated
+4785269	4	5	leif	Tue Nov 26 16:40:00 PST 2002	1	JFileChooser filter problem when using wildcards	evaluated
+4761529	4	3	leif	Thu Oct 10 16:47:00 PDT 2002	0	Folder Icon disappears while renaming it in the details view of JFileChooser	evaluated
+4736918	4	5	davidson@eng	Mon Aug 26 14:17:00 PDT 2002	0	WindowsUtils is redundant and should be removed	accepted
+4705698	4	3	joutwate	Thu Jun 20 16:35:00 PDT 2002	1	Cursor not correctly being reset when entering/exiting JInternalFrame	accepted
+4760089	3	4	leif	Tue Oct 08 17:44:00 PDT 2002	6	1.4 REGRESSION: Compound TitledBorder not opaque	evaluated
+4676748	4	3	zav@sparc.spb.su	Mon Apr 29 16:42:00 PDT 2002	3	A JTextArea inside a heavyweight JPopupMenu can't get focus if outside of Frame	committed
+4479990	4	3	idk	Sat Jul 14 13:24:00 PDT 2001	2	RTFReader saves tab stops to attribute set incorrectly	accepted
+4855377	2	3	leif	Tue Apr 29 01:43:00 PDT 2003	0	JCK1.4a-runtime api/javax_swing/interactive/JFileChooserTests.html#JFileChooser	committed
+4844477	4	5	joutwate	Mon Apr 07 15:49:00 PDT 2003	0	RFE: Necessary extensibility method in BasicProgressBarUI is private	committed
+4668615	3	3	zpm@sparc.spb.su	Mon Apr 15 18:54:00 PDT 2002	0	HopperB08:SwingSet2 Demo:IllegalArgumentException in FileChooser and Table demos	evaluated
+4760098	3	3	sky	Tue Oct 08 17:56:00 PDT 2002	1	JTable fails with large tables: more and more CPU time consumed as table grows	committed
+4801840	4	5	joutwate	Fri Jan 10 15:38:00 PST 2003	0	JInternalFrame should have setLocationRelativeTo method	committed
+4315196	4	4	shannonh	Thu Feb 24 09:32:00 PST 2000	15	AbstractButton.setModel() doesn't remove ItemListener from old model	accepted
+4829588	3	2	shannonh	Sun Mar 09 19:54:00 PST 2003	0	showConfirmDialog behavior of 1.4.X is diff. from 1.3.1 with long text string	evaluated
+4748757	3	3	joutwate	Tue Sep 17 11:46:00 PDT 2002	0	1.4.1 REGRESSION: JInternalFrame does not always minimize with CTRL+F9	evaluated
+4631925	3	4	shannonh	Fri Feb 01 11:07:00 PST 2002	0	JColor Chooser is not fully accessible	committed
+4806485	4	4	leif	Wed Jan 22 00:28:00 PST 2003	0	The JFileChooser sees a binary file format as a directory	evaluated
+4151338	4	5	null	Mon Jun 22 17:02:00 PDT 1998	24	Row oriented JTable	evaluated
+4724061	4	3	idk	Wed Jul 31 16:26:00 PDT 2002	11	Misspacing in Printer Output of Styled Text	accepted
+4395097	4	5	joutwate	Tue Dec 05 11:31:00 PST 2000	0	Modification of getDesktipPane() and show() in JinternalFrame	evaluated
+4479139	4	3	leif	Thu Jul 12 11:10:00 PDT 2001	4	Canceling JFileChooser "freezes" keyboard input in chooser and other JComponents	accepted
+4697065	3	4	joutwate	Tue Jun 04 14:30:00 PDT 2002	0	Selected Tab in JTabbedPane often gets painted twice	accepted
+4486554	5	5	null	Tue Jul 31 15:19:00 PDT 2001	0	RFE:  Allow single selection models to be used with JList	evaluated
+4779930	4	3	aim	Fri Nov 15 16:22:00 PST 2002	0	windows look&feel: scrollbar arrows are off by one pixel	committed
+4267065	4	5	sky	Mon Aug 30 16:43:00 PDT 1999	23	JTreeTable and related classes included with official Swing release	evaluated
+4753150	4	3	leif	Wed Sep 25 00:14:00 PDT 2002	0	No error on renaming a folder to blank/duplicate folder name in JFileChooser	accepted
+4438933	4	4	leif	Tue Apr 10 21:18:00 PDT 2001	0	JFileChooser Windows Look & Feel is not consistent with the native platform	accepted
+4758891	4	3	aep@sparc.spb.su	Mon Oct 07 10:35:00 PDT 2002	0	RFE: Want to use German characters (Ñ,î,Å,·) as mnemonics	evaluated
+4304287	4	5	sky	Wed Jan 12 14:51:00 PST 2000	13	Swing components should require the use of Collections and not Vectors	evaluated
+4869239	3	5	sky	Fri May 23 17:00:00 PDT 2003	0	GTK L&F:  stock icons need to pick up the same graphics as gtk/gnome stock icons	evaluated
+4151155	4	5	null	Mon Jun 22 11:20:00 PDT 1998	0	Default Table Model setEditable()	accepted
+4249570	4	3	sherman@japan	Thu Jun 24 19:35:00 PDT 1999	0	JEditorPane can not display correctly	accepted
+4633159	4	5	joutwate	Mon Feb 04 20:19:00 PST 2002	0	BasicTabbedPaneUI.requestFocusForVisibleComponent causes NPE	evaluated
+4667614	5	4	leif	Fri Apr 12 14:14:00 PDT 2002	3	Slider in JColorChooser's HSB tab looks strange in Windows Look & Feel	evaluated
+4346256	5	5	sky	Fri Jun 16 16:36:00 PDT 2000	3	Provide an AbstractTreeModel for the TreeModel hierarchy	committed
+4652898	4	3	naa@sparc.spb.su	Thu Mar 14 00:15:00 PST 2002	6	Impossible to disable HTML Rendering in a JLabel	accepted
+4688168	5	3	sky	Mon May 20 14:30:00 PDT 2002	0	AuxiliaryLAF test fails in Linux_ia64 as "java.lang.NumberFormatException"	committed
+4865016	4	5	aep@sparc.spb.su	Thu May 15 16:39:00 PDT 2003	0	RFE: JSplitPane default divider size too big using Metal LNF	evaluated
+4432398	4	4	joutwate	Fri Mar 30 15:25:00 PST 2001	1	Keyboard navigation doesn't respond in certain cases for Internal Frames	evaluated
+4466993	4	4	leif	Wed Jun 06 16:30:00 PDT 2001	1	getAbsolutePath() returns incorrect path on Windows special folders	evaluated
+4503658	4	5	idk	Mon Sep 17 13:04:00 PDT 2001	0	rfe: tweak height of text components for fonts with zero leading	evaluated
+4715271	4	4	joutwate	Mon Jul 15 22:22:00 PDT 2002	1	Focus problem in MDI when using the right mouse button	committed
+4782925	5	4	idk	Thu Nov 21 15:48:00 PST 2002	3	RFE: Can't override HTMLReader used for insertBeforeStart, insertAfterEnd, etc.	accepted
+4841188	4	4	idk	Tue Apr 01 17:47:00 PST 2003	0	The caret is displayed on the character after the bold Japanese text.	evaluated
+4673850	4	4	shannonh	Wed Apr 24 11:28:00 PDT 2002	0	Painting of MotifRadioButton (and other radio buttons) is faulty.	accepted
+4781412	4	3	shannonh	Tue Nov 19 16:40:00 PST 2002	1	JSlider does not honor JLabels mnemonics	accepted
+4752713	4	4	leif	Tue Sep 24 18:20:00 PDT 2002	11	Cannot sort on properties displayed on JFileChooser detailed view	evaluated
+4518448	4	4	leif	Tue Oct 23 17:14:00 PDT 2001	0	JFileChooser: ShellFolder returns wrong volumeID after changing CDs	accepted
+4370709	4	5	joutwate	Wed Sep 13 00:05:00 PDT 2000	0	JTabbedPane: add "visible" property to individual tabs	evaluated
+4737788	3	3	joutwate	Tue Aug 27 17:23:00 PDT 2002	1	jframe undecorated cover taskbar when maximized	evaluated
+4203899	4	5	zav@sparc.spb.su	Mon Jan 18 15:36:00 PST 1999	5	can't left-justify icons in a JMenuItem (need setDefaultTextIconGap()...)	accepted
+4776296	4	3	idk	Fri Nov 08 00:40:00 PST 2002	0	Right justified text in JLabel prints badly aligned	accepted
+4166185	4	5	shannonh	Thu Aug 13 09:59:00 PDT 1998	0	Metal: JRadioButton and JCheckBox has wrong border style	evaluated
+4822401	4	4	zav@sparc.spb.su	Fri Feb 21 17:31:00 PST 2003	0	Disabled JMenuItem appearance is incorrect under Windows Look and Feel	evaluated
+4821426	4	4	kve@sparc.spb.su	Thu Feb 20 11:57:00 PST 2003	1	JColorChooser doesn't pass "X" to cancel ActionListener	accepted
+4525630	4	4	dalem	Fri Nov 09 16:15:00 PST 2001	0	Rename JTable get/setSurrenderFocusOnKeystroke	accepted
+4104452	4	5	shannonh	Thu Jan 15 18:04:00 PST 1998	4	Proper keyboard navigation must be verified on JRadioButton for Windows LAF	evaluated
+4870789	4	4	sky	Wed May 28 14:32:00 PDT 2003	0	RFE: UIDefaults.getUIError() hides real error	accepted
+4779988	4	4	aim	Fri Nov 15 17:06:00 PST 2002	1	windows look&feel: standard button size is wrong	committed
+4778462	4	5	shannonh	Wed Nov 13 16:06:00 PST 2002	3	RFE: JOptionPane.showConfirmDialog missing parameter for changing initialValue	accepted
+4745048	4	5	sky	Tue Sep 10 16:33:00 PDT 2002	1	RFE: JFormattedTextField should allow null value/empty text	accepted
+4804458	3	3	joutwate	Thu Jan 16 14:57:00 PST 2003	4	REGRESSION: Cancel doesn't work on ProgressMonitor started from Modal Dialog	committed
+4760077	4	3	sky	Tue Oct 08 17:34:00 PDT 2002	0	Font sizes in JDK1.4 differ in table cells for editing and rendering	committed
+4469554	4	3	davidson@eng	Wed Jun 13 15:05:00 PDT 2001	2	Toolbar Icon Buttons in 1.4 are too large	committed
+4292228	4	4	naoto	Wed Nov 17 03:30:00 PST 1999	1	Hebrew and Arabic diacritical marks can not be edited in JTextComponents	accepted
+4839979	4	5	zpm@sparc.spb.su	Mon Mar 31 04:34:00 PST 2003	0	TEST_BUG: RegTest javax/swing/text/View/4353673/bug4353673.java failed, Win32	evaluated
+4866279	4	3	leif	Mon May 19 14:50:00 PDT 2003	0	JInternalFrame XP L&F title bar height not machine OS settings	committed
+4820080	4	5	aep@sparc.spb.su	Tue Feb 18 15:28:00 PST 2003	0	RFE: Cannot Change the JSplitPane Divider Color while dragging	accepted
+4513261	4	4	sky	Wed Oct 10 17:48:00 PDT 2001	0	TreePath is inefficient and cannot be subclassed because ...	evaluated
+4191211	4	5	null	Wed Nov 18 17:27:00 PST 1998	3	Allow editable JTable headers (e.g., to support database queries)	evaluated
+4194883	4	5	joutwate	Thu Dec 03 19:17:00 PST 1998	4	Need API for setting default button for JOptionPane.show[Internal]ConfirmDialog	evaluated
+4456912	4	4	joutwate	Thu May 10 05:33:00 PDT 2001	0	Demo SwingApplet failed to reload when the option start is choosed from the menu	accepted
+4778988	4	5	leif	Thu Nov 14 11:59:00 PST 2002	0	CompoundBorder.isBorderOpaque() has incorrect documentation.	evaluated
+4481516	5	5	null	Wed Jul 18 17:28:00 PDT 2001	16	RFE:  JTable should have Excel's "Freeze Panes" feature	evaluated
+4816960	4	4	idk	Tue Feb 11 15:47:00 PST 2003	0	1.3.0 Regression: BasicTextUI should check return value of getVisibleEditorRect	committed
+4730415	4	4	joutwate	Mon Aug 12 17:49:00 PDT 2002	0	ProgressMonitor does not work properly when negative minimum is used	evaluated
+4863860	4	5	bchristi	Wed May 14 10:38:00 PDT 2003	0	Windows LAF label foreground color is wrong	accepted
+4773488	4	3	leif	Mon Nov 04 15:11:00 PST 2002	0	XP L&F: No hover effects for scrollbar controls	committed
+4802640	4	3	kyuka	Mon Jan 13 17:34:00 PST 2003	2	JComboBox inconsistent with RIGHT_TO_LEFT Component Orientation	committed
+4765271	4	4	sdv@sparc.spb.su	Fri Oct 18 11:47:00 PDT 2002	15	JEditorPane displays text larger than it should	accepted
+4783472	4	4	zpm@sparc.spb.su	Fri Nov 22 00:30:00 PST 2002	0	HTMLEditorKit.read() uses the wrong parser	accepted
+4593054	4	5	dalem	Tue Dec 11 14:42:00 PST 2001	7	dragging column in JTable should force scroll if needed	accepted
+4843574	3	3	leif	Sun Apr 06 22:59:00 PDT 2003	0	GTK+ JFileChooser doesn't open multiple files	evaluated
+4298770	4	4	idk	Sun Dec 12 03:01:00 PST 1999	2	RTFEditorKit.write(OutputStream, Document, int, int) works wrong for Cp037	accepted
+4508043	4	3	joutwate	Thu Sep 27 11:26:00 PDT 2001	5	cannot access JInternalFrame system menu via keyboard	evaluated
+4860100	3	3	bchristi	Wed May 07 17:58:00 PDT 2003	0	XP L&F: Navigation bar icon spacing issues in JFileChooser	evaluated
+4855671	3	4	idk	Tue Apr 29 00:10:00 PDT 2003	0	REGRESSION 1.4: Incorrect layout in JOptionPane when using custom component	evaluated
+4523678	4	4	dalem	Tue Nov 06 00:32:00 PST 2001	2	Shared TableColumnModel resizing is faulty.	accepted
+4145308	4	5	null	Wed Jun 03 00:11:00 PDT 1998	6	JTable hide/show columns	evaluated
+4723743	4	5	sky	Wed Jul 31 11:52:00 PDT 2002	6	Java (Metal) Look And Feel Needs Makeover	accepted
+4852316	4	5	aep@sparc.spb.su	Tue Apr 22 17:29:00 PDT 2003	0	JTree with DefaultTreeModel, asksAllowsChildren = true, expands root on updateUI	evaluated
+4549174	4	4	sky	Wed Dec 05 18:38:00 PST 2001	2	RFE: DefaultListModel should have an addAll(Collection c)	accepted
+4202291	4	5	idk	Mon Jan 11 18:38:00 PST 1999	40	long lines in wrapped JTextArea causes severe performance degradation	evaluated
+4486185	4	3	idk	Mon Jul 30 18:49:00 PDT 2001	7	Provide method to return number of soft lines in JTextArea	evaluated
+4855860	4	5	idk	Tue Apr 29 15:34:00 PDT 2003	1	JTextPane returns too large preferredSize in some specific cases	evaluated
+4760426	4	3	shannonh	Wed Oct 09 10:00:00 PDT 2002	3	JTree DnD conflicts with JTree.setUI(..)	committed
+4702175	4	3	sky	Thu Jun 13 19:11:00 PDT 2002	0	JScrollBar provide no focus feedback	committed
+4804344	4	5	sky	Thu Jan 16 00:17:00 PST 2003	0	JTree should support + and - to expand and collapse nodes.	committed
+4526194	4	3	dalem	Mon Nov 12 15:50:00 PST 2001	0	In JTable, Write headers vertically as well as multiline.	evaluated
+4841881	3	4	zav@sparc.spb.su	Wed Apr 02 17:34:00 PST 2003	2	Alt tab with Windows L&F moves focus to the application menubar	committed
+4176095	4	5	moa@sparc.spb.su	Thu Sep 24 09:34:00 PDT 1998	1	Clarification that no 2 Tabs in JTabbedPane can have same component	evaluated
+4127926	4	5	null	Fri Apr 10 14:04:00 PDT 1998	14	Multi Line Column Headers in JTable	evaluated
+4315039	4	4	kyuka	Wed Feb 23 17:46:00 PST 2000	1	Component Orientation: Text in textfield and list in combobox not right-to-left	accepted
+4286037	4	3	zpm@sparc.spb.su	Thu Oct 28 17:54:00 PDT 1999	9	add styled text system clipboard support	evaluated
+4801881	3	3	shannonh	Fri Jan 10 16:20:00 PST 2003	0	RFE: JTable can't (apparently) have varying CellEditors in a column	evaluated
+4826789	3	3	leif	Mon Mar 03 21:10:00 PST 2003	0	Swing problems in supporting XPs DPI scaling	committed
+4202002	4	5	sky	Sun Jan 10 17:19:00 PST 1999	15	JScrollPane: row header autoscrolling not reflected in content	evaluated
+4516633	4	4	shannonh	Thu Oct 18 15:54:00 PDT 2001	0	Merlinb83: Metalworks Demo: Text not visible in Charcoal theme	evaluated
+4715176	4	5	sky	Mon Jul 15 18:39:00 PDT 2002	0	RFE: PopupFactory difficult to customize, it has a bad interface	accepted
+4340338	5	5	joutwate	Tue May 23 09:34:00 PDT 2000	0	rebuild of Swingset2 Demo performs un needed steps	accepted
+4682386	4	4	davidson@eng	Thu May 09 10:41:00 PDT 2002	0	SwingPropertyChangeSupport and PropertyChangeSupport refactor project	committed
+4809538	3	3	zav@sparc.spb.su	Tue Jan 28 16:09:00 PST 2003	3	Editable JComboBox may require two Enter keys to fire default button	committed
+4678007	4	3	sky	Wed May 01 00:26:00 PDT 2002	10	JFormattedTextField with NumberFormatter - Backspace not working properly	accepted
+4835500	4	4	bchristi	Thu Mar 20 15:06:00 PST 2003	0	JFileChooser/WindowsL&F: Enter key behaves incorrectly in Details view	accepted
+4079882	4	4	shannonh	Wed Sep 17 15:32:00 PDT 1997	12	Request for JTristateCheckbox implementation	evaluated
+4765360	4	4	zav@sparc.spb.su	Fri Oct 18 00:51:00 PDT 2002	10	JMenuItem.add(Action) does not handle Action.SHORT_DESCRIPTION properly	committed
+4404754	4	5	null	Mon Jan 15 15:16:00 PST 2001	2	JTableHeader can incorrectly determine its height	accepted
+4799813	4	4	naa@sparc.spb.su	Tue Jan 07 15:05:00 PST 2003	3	Leading HTML entities cause JEditorPane to eat following whitespace	committed
+4192877	4	5	joutwate	Wed Nov 25 09:48:00 PST 1998	7	Solaris JDialog initial FOCUS prob...(was "setDefaultButton() won't work")	evaluated
+4404456	5	2	leif	Fri Jan 12 15:27:00 PST 2001	0	Merlinb46:JFileChsr:In WinL&F File/Folder icon disappers when you try to rename	evaluated
+4860986	4	4	leif	Thu May 08 23:33:00 PDT 2003	0	XP L&F: JTable headers are not showing roll over effect unlike native XP	evaluated
+4448318	4	5	joutwate	Thu Apr 19 15:36:00 PDT 2001	0	ProgressMonitor does not make use of new JProgressBar indeterminate capability	evaluated
+4242649	4	3	shannonh	Sun May 30 23:50:00 PDT 1999	0	Specify component used for JOptionPane.showInputDialog	evaluated
+4750270	4	3	shannonh	Thu Sep 19 00:07:00 PDT 2002	0	1.4.0 REGRESSION: Action/Mouse event was lost after right-click popup menu	committed
+4469098	4	2	sky	Tue Jun 12 17:45:00 PDT 2001	1	JOption pane does not provide HELP option	evaluated
+4487462	4	3	joutwate	Thu Aug 02 11:17:00 PDT 2001	1	undocked JToolBar is not internal with JDesktop	accepted
+4275635	4	5	zpm@sparc.spb.su	Sun Sep 26 16:27:00 PDT 1999	0	MenuDragMouseListener doesn't fire "exit" if drag moves to a JMenu	accepted
+4286335	4	4	kyuka	Fri Oct 29 14:52:00 PDT 1999	1	TreeView in a ComboBox appears only as list in Right-to-Left orientation	accepted
+4849188	4	4	joutwate	Wed Apr 16 04:11:00 PDT 2003	0	Tab traversing and selection border in GTK are not proper in SwingSet2	committed
+4066394	4	5	shannonh	Tue Jul 22 13:01:00 PDT 1997	5	ButtonGroup - cannot reset the model to the initial unselected state	evaluated
+4765246	5	5	sky	Fri Oct 18 11:29:00 PDT 2002	1	JSpinner needs better ChangeEvent or better Event handling	accepted
+4406598	4	5	shannonh	Sun Jan 21 13:00:00 PST 2001	7	Background attribute in JTextPane is not resolved to the parent style	accepted
+4811532	4	5	leif	Fri Jan 31 16:27:00 PST 2003	0	The scrollbar width is not read in XP L&F	committed
+4791649	4	3	idk	Tue Dec 10 15:35:00 PST 2002	0	Text components need printing support	committed
+4484185	5	5	joutwate	Wed Jul 25 00:42:00 PDT 2001	0	ProgressMonitor popup won't back up, revisited	accepted
+4394642	4	3	zav@sparc.spb.su	Mon Dec 04 08:35:00 PST 2000	0	JPopupMenu should implement isShowing() method	committed
+4757624	4	3	joutwate	Thu Oct 03 15:25:00 PDT 2002	1	fonts truncated in multi line tabbed panel (windows & motif  lnf)	evaluated
+4128116	4	5	null	Sat Apr 11 00:11:00 PDT 1998	9	There is no JTable.ensureCellIsVisible analog	evaluated
+4131119	4	5	idk	Tue Apr 21 11:58:00 PDT 1998	36	Add option to turn off/on word wrap in JTextPane	evaluated
+4799336	3	4	zav@sparc.spb.su	Mon Jan 06 15:54:00 PST 2003	0	REGRESSION: JPopupMenu focus bug, inconsistent behaviour	committed
+4150635	4	3	davidson@eng	Fri Jun 19 08:33:00 PDT 1998	0	Multiple problems with Separator in dynamic GUI environment	evaluated
+4298479	4	3	naoto	Thu Dec 09 23:30:00 PST 1999	0	JEditorPane needs to by sync'd with other text fixes	accepted
+4310721	4	4	null	Mon Feb 07 19:05:00 PST 2000	2	ViewportLayout does not stretch components, search: JTable background color	accepted
+4250070	4	3	naa@sparc.spb.su	Mon Jun 28 09:53:00 PDT 1999	4	javax.swing.DefaultCaret's private API makes it very difficult to extend	evaluated
+4870679	4	4	sky	Wed May 28 11:55:00 PDT 2003	0	JScrollPane w/ embedded JPanel and Graphics2D paintComponent	accepted
+4776221	4	4	shannonh	Fri Nov 08 10:58:00 PST 2002	0	AbstractButton performance/footprint bugs	accepted
+4446468	4	5	joutwate	Tue Apr 17 11:36:00 PDT 2001	2	Moving JInternalFrame over JDesktopPane's border in JScrollPane shows PixelTrash	accepted
+4712284	4	3	joutwate	Tue Jul 09 15:05:00 PDT 2002	0	MouseListeners excited white moving frame with JDesktopPane OUTLINE_DRAG	evaluated
+4723782	4	4	joutwate	Wed Jul 31 00:32:00 PDT 2002	0	JDesktopPane consumes every ESCAPE KeyEvent	committed
+4798757	4	4	zav@sparc.spb.su	Fri Jan 03 00:23:00 PST 2003	0	Proposal for AbstractComboBoxModel	committed
+4337119	4	5	null	Wed May 10 14:39:00 PDT 2000	0	SelectAll and RemoveAll in Jlist alters anchor and lead	evaluated
+4481910	4	4	leif	Thu Jul 19 00:48:00 PDT 2001	0	Merlinb71:FileChooserDemo:Problem in "Files of Type" combobox	evaluated
+4473075	4	5	null	Thu Jun 21 17:12:00 PDT 2001	12	JTable header rendering problem (after setting preferred size)	accepted
+4768841	3	3	joutwate	Fri Oct 25 06:47:00 PDT 2002	1	Internal Frames are not operable via keyboard operations	committed
+4518295	4	3	zpm@sparc.spb.su	Tue Oct 23 14:19:00 PDT 2001	5	JMenu not displayed correctly when number of JMenuItems is huge	accepted
+4690120	4	3	leif	Wed May 22 16:26:00 PDT 2002	0	Network Access denied if there is a password protection	accepted
+4348167	4	5	leif	Mon Jun 26 00:09:00 PDT 2000	0	Adding a JButton to a JToolBar sets RolloverEnabed to false.	accepted
+4674172	4	3	joutwate	Wed Apr 24 17:39:00 PDT 2002	0	JDesktopPane icon layering does not persist correctly	accepted
+4684488	4	5	kyuka	Mon May 13 21:35:00 PDT 2002	0	Some mnemonics in JColorChooser and JFileChooser can't be localized.	committed
+4804925	4	5	idk	Fri Jan 17 00:20:00 PST 2003	0	RFE: DocumentEvent should subclass EventObject	evaluated
+4285225	4	5	joutwate	Tue Oct 26 21:23:00 PDT 1999	7	Regression: JInternalFrame not activated on mouse clicks if glassPane replaced	evaluated
+4780631	4	3	sky	Mon Nov 18 14:21:00 PST 2002	0	GTKLookAndFeel does not reverse buttons in JOptionPane with a RTL orientation	committed
+4664885	3	3	sharonz	Mon Apr 08 23:21:00 PDT 2002	0	JCK1.4,interactive: api/javax_swing/interactive/BorderFactoryTests.html#BorderFa	committed
+4810921	4	5	gafter	Thu Jan 30 17:35:00 PST 2003	0	in Tiger(1.5), enum is a keyword	committed
+4847025	3	5	zpm@sparc.spb.su	Fri Apr 11 05:00:00 PDT 2003	0	RegTest-test javax/swing/JTextArea/4697612/bug4697612.java failed	committed
+4139092	4	5	joutwate	Fri May 15 14:35:00 PDT 1998	0	Windows L&F: "move" & "size" in JInternalFrame-Icon-PopupMenu always disabled	evaluated
+4491591	5	5	sky	Tue Aug 14 01:00:00 PDT 2001	0	Java2D Demo - Arcs_Curves - Choice box is not painted correctly (Solsparc)	evaluated
+4712078	4	5	leif	Tue Jul 09 08:54:00 PDT 2002	0	JFileChooser: Truncation in Windows Look and Feel	evaluated
+4869035	5	5	sky	Fri May 23 00:16:00 PDT 2003	0	GTK L&F: Some colors which make up a wiget are not the same color as the platfor	accepted
+4172008	4	3	zav@sparc.spb.su	Tue Sep 08 13:17:00 PDT 1998	0	getLocation() for first menu item overlaps menu header	evaluated
+4624069	4	4	zpm@sparc.spb.su	Tue Jan 15 15:41:00 PST 2002	0	JLabel with HTML text uses improper line spacing.	accepted
+4335575	4	2	zav@sparc.spb.su	Wed May 03 19:17:00 PDT 2000	0	Set unlisted item in JComboBox does not work for Windows L&F	evaluated
+4823912	4	4	sdv@sparc.spb.su	Tue Feb 25 17:57:00 PST 2003	0	JTextPane getText() discards embedded HTML Stylesheet information	evaluated
+4466014	4	4	sky	Mon Jun 04 16:09:00 PDT 2001	1	BasicUI delegates explicitly mention BasicLookAndFeel	evaluated
+4478121	4	4	dalem	Tue Jul 10 10:44:00 PDT 2001	0	Descenders get cut off by DefaultCellEditor	accepted
+4607161	4	3	leif	Thu Dec 13 11:59:00 PST 2001	0	File system level information not available through the ShellFolder class	evaluated
+4869100	5	5	sky	Fri May 23 13:58:00 PDT 2003	0	GTK L&F:  ColorChooser: Java PLAF does not have &quot;paint dropper&quot;	accepted
+4214074	4	5	joutwate	Tue Feb 23 00:29:00 PST 1999	1	JInternalFrame not closable in Windows L&F doesn't look right	evaluated
+4836639	2	2	joutwate	Mon Mar 24 11:10:00 PST 2003	0	Creating components in XP L&F throws OutOfMemoryError.	committed
+4817453	4	5	shannonh	Wed Feb 12 00:13:00 PST 2003	0	Selecting all rows in JTable using mouse is inconsistent	evaluated
+4326639	4	5	leif	Thu Mar 30 18:53:00 PST 2000	4	JFileChooser does not handle Security Exceptions on Windows platform	accepted
+4700552	5	4	sky	Tue Jun 11 00:01:00 PDT 2002	0	RFE: Can't inherit the icons of a LookAndFeel for a custom LookAndFeel	evaluated
+4813403	4	5	sky	Wed Feb 05 11:16:00 PST 2003	0	Enter key binding not working for JTree	evaluated
+4410401	4	5	zav@sparc.spb.su	Wed Jan 31 14:08:00 PST 2001	1	JComboBox: ListCellRenderer and the KeySelectionManager must use the same values	evaluated
+4129681	4	5	leif	Thu Apr 16 13:27:00 PDT 1998	2	Cannot get a title border to display its label as disabled	evaluated
+4475576	4	4	zav@sparc.spb.su	Wed Jun 27 18:11:00 PDT 2001	5	PopupMenuUI.isPopupTrigger() does not behave in a L&F dependant way	accepted
+4811528	4	3	leif	Fri Jan 31 16:25:00 PST 2003	0	Sorting support in swing filedialog	evaluated
+4732198	4	4	zav@sparc.spb.su	Thu Aug 15 11:54:00 PDT 2002	1	Extra MouseDrag Events cause JPopupMenu flicker	committed
+4778929	4	4	leif	Thu Nov 14 10:48:00 PST 2002	1	javax.swing.ToolTipManager memory leak.	accepted
+4811075	4	3	sky	Thu Jan 30 20:39:00 PST 2003	0	Optimize swing UI latency	accepted
+4863821	4	4	kwalrath	Wed May 14 09:53:00 PDT 2003	0	Documentation for "MetalTheme" class is inaccurate	committed
+4748141	4	4	joutwate	Mon Sep 16 14:47:00 PDT 2002	15	First JInternalFrame added to a JDesktop causes memory leak	evaluated
+4693132	5	4	leif	Wed May 29 11:38:00 PDT 2002	0	RFE: Add functionality to show invisible elements of Toolbar	accepted
+4499556	5	5	joutwate	Tue Sep 04 15:41:00 PDT 2001	37	Use arbitrary (J)Components as JTabbedPane tab labels.	evaluated
+4774895	4	3	naa@sparc.spb.su	Wed Nov 06 14:51:00 PST 2002	1	Adding whitespace when displaying arabic characters with HTML tag	evaluated
+4222149	4	4	null	Fri Mar 19 13:23:00 PST 1999	5	JTable :  starting to type should overwrite cell contents	evaluated
+4243496	4	3	idk	Wed Jun 02 19:28:00 PDT 1999	0	JTextComponent  margin is bound to components border	accepted
+4765367	3	3	bchristi	Fri Oct 18 13:00:00 PDT 2002	0	Crash in JFileChooser when twice show after setCurrentDirectory not canonical	evaluated
+4683398	4	4	joutwate	Fri May 10 16:41:00 PDT 2002	2	WindowsDesktopManager mantains a strong reference to currentFrame	evaluated
+4737210	4	3	zav@sparc.spb.su	Tue Aug 27 00:59:00 PDT 2002	0	Wrong Menu Behavior on Solaris	evaluated
+4636235	4	3	idk	Mon Feb 11 16:14:00 PST 2002	2	HTMLEditorKit.create() cannot handle some element types.	accepted
+4147468	4	5	zav@sparc.spb.su	Wed Jun 10 00:48:00 PDT 1998	0	Combo-box with no drop-down entries should disable the drop-down control	evaluated
+4616052	4	4	dalem	Wed Dec 19 11:09:00 PST 2001	0	JListGetVisibleIndexTest.java, Last visible index is not calculated correctly	accepted
+4760463	4	4	zav@sparc.spb.su	Wed Oct 09 10:20:00 PDT 2002	0	MetalComboBoxUI computes wrong sizes if user-defined ArrowButton is used.	accepted
+4697750	4	3	naa@sparc.spb.su	Wed Jun 05 15:16:00 PDT 2002	0	HTMLEditorKit: Caret doesn't move into table when using BS just outside the end	accepted
+4531811	4	3	joutwate	Tue Nov 27 00:12:00 PST 2001	4	JInternalFrame.setFrameIcon() mis-positions/sizes icons in Win L&F	accepted
+4860691	4	4	leif	Thu May 08 14:39:00 PDT 2003	0	Win L&F: Focus cursor doesn't dim on JTree nodes when tree loses focus with Win	evaluated
+4730041	4	3	sky	Mon Aug 12 10:22:00 PDT 2002	1	Request a Date Selector or DateChooser feature that works like JColorChooser.	evaluated
+4242016	4	4	idk	Thu May 27 16:16:00 PDT 1999	0	the UndoAction (undo) in the Notepad.java not work well	evaluated
+4821584	4	4	sky	Thu Feb 20 14:56:00 PST 2003	0	javax.swing.UIDefaults does not comply with Collection API	accepted
+4855131	3	3	leif	Mon Apr 28 15:28:00 PDT 2003	0	XP L&F: JSlider should not be surrounded by dashed box with focus	committed
+4774766	4	5	joutwate	Wed Nov 06 11:50:00 PST 2002	0	Ability to register event handler for tabpane's header, add buttons, components	accepted
+4212722	4	5	idk	Thu Feb 18 00:16:00 PST 1999	13	Swing JEditorPane + HTMLEditorKit bombs on complex layouts	accepted
+4868032	3	5	zpm@sparc.spb.su	Wed May 21 21:37:00 PDT 2003	0	TEST_BUG: RegTest-test javax/swing/JPopupMenu/PopupTest/MenuTester.java fails	evaluated
+4527906	4	2	dalem	Thu Nov 15 16:07:00 PST 2001	0	JList: Page-up/Page-down scrolling of JFileChooser: not even close...	evaluated
+4767368	4	4	sky	Wed Oct 23 10:29:00 PDT 2002	0	RFE: javax.swing.DefaultListModel lacks toArray(Object[])	accepted
+4154448	4	5	joutwate	Thu Jul 02 16:46:00 PDT 1998	106	JInternalFrame needs Heavy Implementation	evaluated
+4488430	4	4	kyuka	Mon Aug 06 01:23:00 PDT 2001	0	JList.getLastVisibleIndex() returns -1 for a HORIZONTAL_WRAP list	accepted
+4188876	4	2	joutwate	Tue Nov 10 16:48:00 PST 1998	0	Command buttons are centered at bottom of JL&F dialogs	evaluated
+4135408	4	3	sky	Tue May 05 16:56:00 PDT 1998	0	Should be able to suppress undo/redo temporarily	evaluated
+4816922	4	4	shannonh	Tue Feb 11 14:58:00 PST 2003	2	No way to set drag icon: TransferHandler.getVisualRepresentation() is not used	evaluated
+4615460	3	5	leif	Tue Dec 18 14:25:00 PST 2001	1	Enhancements to Swing/JFileChooser for IDE tools	committed
+4760086	4	3	sky	Tue Oct 08 17:41:00 PDT 2002	0	Navigation restrictions in JFormattedTextField are ignored by Home key	accepted
+4736167	5	5	idk	Fri Aug 23 00:07:00 PDT 2002	0	RFE: DefaultEditorKit should expose nested class for select-all action	accepted
+4225831	4	4	sky	Wed Mar 31 17:41:00 PST 1999	1	The JTree and JTable ActionEvent	evaluated
+4519335	5	5	zpm@sparc.spb.su	Thu Oct 25 11:09:00 PDT 2001	0	JPopupMenu api needs getItemCount() and getItem(int) as in JMenu	accepted
+4706304	3	4	zav@sparc.spb.su	Fri Jun 21 00:19:00 PDT 2002	0	REGRESSION: JPopupMenu doesn't highlight selection on initial click	evaluated
+4519482	4	4	idk	Thu Oct 25 14:26:00 PDT 2001	10	RFE: Enhancement to TableView in HTMLEditorKit by subclassing	evaluated
+4199382	4	3	zpm@sparc.spb.su	Tue Dec 22 14:27:00 PST 1998	9	Swing Menus - text/icon/checkmark alignment schemes severely broken	evaluated
+4756152	4	4	leif	Tue Oct 01 11:58:00 PDT 2002	0	JFileChooser Does trim() Only for Single Selection Mode	evaluated
+4860982	4	4	leif	Thu May 08 23:16:00 PDT 2003	0	XP L&F: tool tip does not show the fading effect as native	evaluated
+4302560	4	5	naa@sparc.spb.su	Tue Jan 04 14:13:00 PST 2000	1	AsynchronousMovement property of DefaultCaret not accessible	evaluated
+4273479	4	5	idk	Mon Sep 20 10:16:00 PDT 1999	1	Make TagElement members and default constructor protected	evaluated
+4717365	4	3	leif	Fri Jul 19 02:34:00 PDT 2002	0	JVM Crashes during stressed file access	evaluated
+4765238	5	5	sky	Fri Oct 18 11:21:00 PDT 2002	0	SingleSelectionModel as JList selection model	accepted
+4841760	4	4	idk	Wed Apr 02 15:00:00 PST 2003	0	No HTML tags shown for StyleEditorKit.ForegroundAction() in JTextPane output.	accepted
+4607364	3	5	sky	Thu Dec 13 15:53:00 PST 2001	3	Improve default L&F of Swing.	committed
+4786415	3	3	zav@sparc.spb.su	Thu Nov 28 23:33:00 PST 2002	0	JCK1.4a-runtime api/javax_swing/interactive/JPMenuTests.html#JPMenuTests fails	evaluated
+4722445	4	5	sky	Mon Jul 29 15:56:00 PDT 2002	1	RFE: Ability to specify constraints on center of components in a SpringLayout	accepted
+4198130	4	5	null	Wed Dec 16 22:16:00 PST 1998	8	JTable selection model	accepted
+4779001	4	4	sky	Thu Nov 14 00:15:00 PST 2002	0	Unexpected behavior of javax.swing.Spring.max()	evaluated
+4239028	4	2	kyuka	Mon May 17 22:01:00 PDT 1999	10	setMnemonic(char) must support non-english characters	evaluated
+4862398	4	4	shannonh	Mon May 12 10:24:00 PDT 2003	3	RFE: New ways for specifying table column width in JTable	evaluated
+4175150	4	4	leif	Mon Sep 21 13:11:00 PDT 1998	0	api/javax_swing/border/BevelBorder/index.html#Ctor fails on MP in runtime "K"	accepted
+4843282	3	3	sky	Fri Apr 04 15:57:00 PST 2003	1	UIManager.getInstalledLookAndFeels() returns bogus info on Linux.	committed
+4795374	4	4	sky	Tue Dec 17 19:29:00 PST 2002	0	GTK+ L&F doesn't change on-the-fly	committed
+4358979	4	5	davidson@eng	Wed Aug 02 18:33:00 PDT 2000	0	javax.swing.border should have a DashedBorder	evaluated
+4425860	4	5	idk	Wed Mar 14 18:35:00 PST 2001	1	RFE: please make TextLayoutStrategy, GlyphPainter2 public or protected	evaluated
+4459452	4	5	null	Wed May 16 11:03:00 PDT 2001	0	SizeRequirements.calculateTiledPositions() overflows allocated space	accepted
+4362633	4	5	leif	Tue Aug 15 08:16:00 PDT 2000	0	Frame window overrides dropped down menu, when gets the focus.	accepted
+4722579	4	4	shannonh	Mon Jul 29 18:18:00 PDT 2002	1	Autoscroll during drag-and-drop sometimes does not scroll.	committed
+4772326	4	3	sky	Thu Oct 31 16:40:00 PST 2002	0	copy to clipboard from JList fails	committed
+4792931	4	4	joutwate	Thu Dec 12 11:23:00 PST 2002	0	First key press not being recognized with InputVerifier, JOptionPane, and Tab	committed
+4198272	5	5	sky	Thu Dec 17 10:48:00 PST 1998	6	JScrollPane has setColumnHeader but not a setColumnFooter	evaluated
+4400417	4	4	zav@sparc.spb.su	Thu Dec 21 20:21:00 PST 2000	0	JComboBox in the table has some strange behavior	evaluated
+4863833	4	5	zav@sparc.spb.su	Wed May 14 10:08:00 PDT 2003	1	JComboBox loses focus when change to HighContrast mode	evaluated
+4790519	4	3	shannonh	Mon Dec 09 04:47:00 PST 2002	0	GTK L&F : Table Column Headers do not show rollover effects	evaluated
+4802383	4	4	leif	Mon Jan 13 00:03:00 PST 2003	0	JFileChooser makes unecessary security checks	accepted
+4846416	4	5	sky	Thu Apr 10 11:47:00 PDT 2003	0	RFE: Provide UIDefault for a PLAF's Menu Shortcut mask	accepted
+4413530	4	4	joutwate	Thu Feb 08 15:24:00 PST 2001	0	Merlinb50:SwingSet2 Demo:Maximizable, Iconifiable checkboxes missing in MotifL&F	evaluated
+4852215	5	5	shannonh	Tue Apr 22 15:34:00 PDT 2003	0	NullPointerException inside of TableCellEditor.stopCellEditing	evaluated
+4736666	4	5	idk	Mon Aug 26 06:29:00 PDT 2002	0	RFE: Improvements to javax.swing.text.html.parser	accepted
+4419001	4	5	leif	Mon Feb 26 00:10:00 PST 2001	4	ToolTip should not _always_ be on top	evaluated
+4531899	4	4	joutwate	Tue Nov 27 14:54:00 PST 2001	0	JInternalFrame changes size first time an element is added to a list	accepted
+4681682	4	4	sky	Wed May 08 11:32:00 PDT 2002	0	RFE: Include SwingWorker with the JDK	evaluated
+4748383	4	4	leif	Mon Sep 16 20:04:00 PDT 2002	2	Selecting "My Computer" in the JFileChooser fails if no disk in Zip Drive	accepted
+4737751	4	2	leif	Tue Aug 27 16:40:00 PDT 2002	1	jfilechooser should ask for cdrom	evaluated
+4806616	4	4	sky	Wed Jan 22 14:45:00 PST 2003	0	No documentation for MetalLookAndFeel.setCurrentTheme()	committed
+4479072	4	3	idk	Thu Jul 12 08:48:00 PDT 2001	1	HTMLEditorKit uses always default editor kit for rendering of frames	evaluated
+4732785	4	4	sky	Fri Aug 16 11:51:00 PDT 2002	1	RFE: provide implementation for StateEdit.isSignificant()	accepted
+4223089	4	1	idk	Tue Mar 23 00:28:00 PST 1999	10	Add ability to print a multi-page HTML document from an off-screen JEditorPane	committed
+4749723	4	4	sky	Wed Sep 18 15:48:00 PDT 2002	1	The javax.swing.Spring class needs a "scale" operator to make centering easier.	accepted
+4836615	4	4	sky	Mon Mar 24 10:28:00 PST 2003	0	JRootPane.getGlassPane.getName() returns null.glassPane instead of null	accepted
+4869029	5	5	leif	Fri May 23 00:08:00 PDT 2003	0	GTK L&F: Internal Frames Crux graphics do not match platforms graphics	committed
+4351798	4	5	leif	Mon Jul 10 00:57:00 PDT 2000	0	print a panel on more than one page i.e(clipping the panel)	evaluated
+4703127	4	5	zpm@sparc.spb.su	Mon Jun 17 06:11:00 PDT 2002	0	1.4.0 REGRESSION: JEditorPane does not work as expected	evaluated
+4857700	3	4	leif	Fri May 02 10:04:00 PDT 2003	0	JFileChooser: Not showing some folders in "Look In:" combo box after L&F change	committed
+4468566	4	5	shannonh	Mon Jun 11 18:09:00 PDT 2001	6	Swing DnD should not use selection to show drop location	evaluated
+4760082	4	3	naa@sparc.spb.su	Tue Oct 08 17:38:00 PDT 2002	13	AbstractDocument.remove(int,int) breaks HTMLDocument structure	evaluated
+4862115	4	3	leif	Sun May 11 05:00:00 PDT 2003	0	No title shown on minimized JInternalFrame - GTK LAF	evaluated
+4862679	3	3	leif	Mon May 12 16:31:00 PDT 2003	0	XP L&F: JTabbedPane selected tab background color is wrong	committed
+4651849	4	3	dalem	Tue Mar 12 18:51:00 PST 2002	3	After Clicking in JComboBox Table Cell, Arrow and Enter Key cannot select.	accepted
+4727030	5	5	joutwate	Tue Aug 06 00:00:00 PDT 2002	0	RFE: Provide Scrollbar without Buttons	accepted
+4775789	3	3	sky	Thu Nov 07 16:38:00 PST 2002	1	REGRESSION: JTable rendering/editing problem with JComboBox	committed
+4841903	4	3	shannonh	Wed Apr 02 17:58:00 PST 2003	0	JTable.setEnabled(false) does not alter its visual representation	accepted
+4512626	4	3	shannonh	Tue Oct 09 16:20:00 PDT 2001	1	Non-editable JTextArea provides no visual indication of keyboard focus	committed
+4220821	4	3	null	Tue Mar 16 00:05:00 PST 1999	0	table keyboard focus uses incorrect color in JLF	evaluated
+4487103	4	3	joutwate	Wed Aug 01 16:21:00 PDT 2001	6	Focus issues with JInternalframe	accepted
+4765316	4	5	leif	Fri Oct 18 00:21:00 PDT 2002	0	REGRESSION: FileSystemView.getFiles() no longer works with relative paths	evaluated
+4860104	3	3	joutwate	Wed May 07 18:06:00 PDT 2003	1	REGRESSION: JInternalFrame icons not resized correctly in Windows LAF	evaluated
+4354065	4	5	leif	Tue Jul 18 00:25:00 PDT 2000	12	JFileChooser multifile selection behaves incorrectly	accepted
+4690812	4	3	sdv@sparc.spb.su	Thu May 23 15:53:00 PDT 2002	0	poor formatting of complex pages by JEditorPane, e.g. java.sun.com	accepted
+4530474	4	3	sdv@sparc.spb.su	Wed Nov 21 13:47:00 PST 2001	0	background-color CSS attribute in HTML font tag works in style but not class	accepted
+4713905	4	2	naoto	Thu Jul 11 23:56:00 PDT 2002	0	Cannot display some strings in JTextField in RTL component orientation.	accepted
+4861882	3	5	leif	Fri May 09 15:34:00 PDT 2003	0	JFileChooser UI code cleanup	committed
+4866958	5	5	joutwate	Tue May 20 15:08:00 PDT 2003	0	Focus bug with JList in a scrollpane	accepted
+4498679	4	4	leif	Fri Aug 31 09:11:00 PDT 2001	2	Separator line between JMenu and JToolBar displays incorrect in Windows L&F	accepted
+4854826	4	3	sky	Mon Apr 28 07:26:00 PDT 2003	0	Painting - Border, ContentAreaFill, Focus cannot be supressed in GTK - Button	evaluated
+4715510	4	3	shannonh	Tue Jul 16 11:38:00 PDT 2002	0	DefaultTableColumnModel#propertyChange() should use String.equals() not ==	evaluated
+4859578	4	5	bchristi	Wed May 07 04:37:00 PDT 2003	0	Enter key does not work for JFileChooser buttons	accepted
+4395239	5	5	leif	Tue Dec 05 15:24:00 PST 2000	2	JFileChooser setup performance bad	evaluated
+4710675	4	5	kyuka	Wed Jul 03 03:01:00 PDT 2002	0	JTextArea.setComponentOrientation does not work with correct timing	accepted
+4799833	4	4	sharonz	Tue Jan 07 15:25:00 PST 2003	0	JOptionPane show dialog methods have bad doc for first parameter	evaluated
+4412522	4	3	sdv@sparc.spb.su	Tue Feb 06 17:17:00 PST 2001	0	HTML that has comments inside of tables is not rendered correctly	evaluated
+4138755	4	5	null	Thu May 14 17:21:00 PDT 1998	14	No focus lost event in JTable when editing	evaluated
+4696824	5	5	sky	Tue Jun 04 08:47:00 PDT 2002	0	In MetalLookAndFeel Button.focusInputMap, CheckBox.focusInputMap ... are same	accepted
+4413412	4	5	leif	Thu Feb 08 00:27:00 PST 2001	6	Mouse Events intercepted by Tooltip	accepted
+4823064	4	4	sky	Mon Feb 24 14:30:00 PST 2003	1	RFE: Additional Constructor for AbstractUndoableEdit to allow for undone edits.	accepted
+4760078	4	5	zav@sparc.spb.su	Tue Oct 08 17:35:00 PDT 2002	0	JComboBox with empty item list generates spurious ActionEvent when focus lost	accepted
+4673445	4	4	zav@sparc.spb.su	Tue Apr 23 18:02:00 PDT 2002	0	No scroll bar in menu if there are more than 30 menu items	accepted
+4665148	3	4	sky	Tue Apr 09 00:27:00 PDT 2002	0	JavaDoc for JScrollPane.isValidateRoot is wrong.	committed
+4811086	4	4	leif	Thu Jan 30 21:48:00 PST 2003	1	Support use of native Filedialogs in Swing	evaluated
+4103470	5	4	leif	Mon Jan 12 16:20:00 PST 1998	7	JToolBar should control visibility of Labels/Icons/Tooltips of contained buttons	evaluated
+4853604	4	5	sky	Thu Apr 24 13:43:00 PDT 2003	0	Add IconFactory to Swing	accepted
+4770133	4	4	leif	Mon Oct 28 17:36:00 PST 2002	0	JFileChooser.addChoosableFileFilter documentation should mention multithreading	evaluated
+4463508	4	4	leif	Sun May 27 03:06:00 PDT 2001	0	JToolTip fails to execute under WindowsLookAndFeel if .pack() method is used	evaluated
+4267730	4	5	mca	Wed Sep 01 11:55:00 PDT 1999	0	lack of cross platform general icons	evaluated
+4144757	4	5	shannonh	Tue Jun 02 06:48:00 PDT 1998	4	Dialog dismissing by Escape key	evaluated
+4819813	4	5	joutwate	Tue Feb 18 09:51:00 PST 2003	0	JLF window decorations are focusable (bad for InputVerifier)	accepted
+4250999	4	5	leif	Wed Jun 30 17:19:00 PDT 1999	3	Capability to disable directory traversal in JFileChooser	evaluated
+4869950	3	3	leif	Tue May 27 11:07:00 PDT 2003	0	NPE if JFileChooser.setCurrentDirectory() called twice with non-canonical file	evaluated
+4711700	4	4	leif	Mon Jul 08 15:54:00 PDT 2002	2	NullPointerException in JFileChooser when accessing system level icons	evaluated
+4334733	4	4	leif	Mon May 01 15:34:00 PDT 2000	0	Incomplete API Documentation for JToolbar Drag Properties	accepted
+4502804	5	5	shannonh	Thu Sep 13 15:51:00 PDT 2001	1	FontSmoothing/AntiAlias not utilized by default despite OS setting	committed
+4752911	3	3	joutwate	Wed Sep 25 05:43:00 PDT 2002	0	JInternalFrame's controlling buttons are not exposed	committed
+4526682	5	5	shannonh	Tue Nov 13 13:12:00 PST 2001	0	Add two showInternalInputDialog() convenience methods to JOptionPane	evaluated
+4143856	4	5	sky	Fri May 29 10:25:00 PDT 1998	26	JList does not have cell editors	committed
+4479331	4	3	idk	Thu Jul 12 16:30:00 PDT 2001	0	Swing JTextComponents not clearing primary clipboard after text deselection	evaluated
+4729669	3	3	zav@sparc.spb.su	Fri Aug 09 18:06:00 PDT 2002	0	1.4 REGRESSION: Text edge of different types of JMenuItems are not aligned	committed
+4663490	5	5	sky	Fri Apr 05 00:43:00 PST 2002	0	Swing's .properties files should be written in better way for L10N engineers.	accepted
+4812431	3	3	zav@sparc.spb.su	Mon Feb 03 23:57:00 PST 2003	0	REGRESSION: Metal JMenuItem text rendered with wrong color	evaluated
+4857254	4	4	bchristi	Thu May 01 15:29:00 PDT 2003	0	REGRESSION: JFileChooser: ListSelectionModel displays wrong selection	accepted
+4365952	4	5	leif	Fri Aug 25 14:17:00 PDT 2000	0	Cannot disable JFileChooser	accepted
+4760081	3	3	sky	Tue Oct 08 17:37:00 PDT 2002	1	1.4 REGRESSION: JTree, JTable: rowHeight is too small to fit large fonts.	committed
+4845945	4	3	kyuka	Wed Apr 09 16:28:00 PDT 2003	0	JScrollPane does not layout properly with RTL (RIGHT_TO_LEFT)	committed
+4302970	4	5	joutwate	Thu Jan 06 09:30:00 PST 2000	1	WindowsDesktopManager does not look and feel like Windows	evaluated
+4865071	3	2	leif	Thu May 15 17:51:00 PDT 2003	1	XP L&F: REGRESSION: setBackground has no effect on JTextField in Windows XP	committed
+4310802	4	4	idk	Tue Feb 08 06:27:00 PST 2000	1	HTMLEditorKit does not parse TAGs for Cp037 character encoding	accepted
+4751990	5	4	zav@sparc.spb.su	Mon Sep 23 18:52:00 PDT 2002	0	PopupMenuListener.popupMenuCancelled refactoring	accepted
+4760094	4	4	shannonh	Tue Oct 08 17:54:00 PDT 2002	3	JTable-AUTO_RESIZE_ LAST_COLUMN works only for fixed table width	accepted
+4715272	4	4	joutwate	Mon Jul 15 22:30:00 PDT 2002	2	Focus problem when poping up a menu and selecting a JInternalFrame	committed
+4287891	4	4	kyuka	Thu Nov 04 02:17:00 PST 1999	0	JFileChooser fails to identify RTL encoded directory name	accepted
+4765336	4	4	joutwate	Fri Oct 18 00:34:00 PDT 2002	1	JDesktopPane.getSelectedFrame() should return null after removing selected frame	committed
+4854174	5	3	bchristi	Fri Apr 25 11:30:00 PDT 2003	0	FileSystemView.getSystemIcon throws NPE for bad soft links	evaluated
+4866977	3	3	idk	Tue May 20 15:33:00 PDT 2003	0	RTL HTML Table fails under JDK1.4.1 and JDK1.4.2, DIR TAG is not supported	dispatched
+4794122	3	2	joutwate	Mon Dec 16 04:14:00 PST 2002	0	GTK L&F : Minimized internal Frames do not have title border	evaluated
+4738983	4	5	shannonh	Thu Aug 29 09:46:00 PDT 2002	0	JMenuItem.setIconTextGap does nothing	accepted
+4860669	4	3	naoto	Thu May 08 14:22:00 PDT 2003	0	Bugs with \n and \t characters when committing composed text	evaluated
+4864304	3	3	sky	Wed May 14 18:08:00 PDT 2003	0	Improve memory consumption of Swing apps	committed
+4831322	5	5	joutwate	Wed Mar 12 11:21:00 PST 2003	0	JDesktopPane.setDesktopManager should update the desktop manager at the UI.	accepted
+4859017	2	1	zav@sparc.spb.su	Tue May 06 08:31:00 PDT 2003	0	JMenu.add now requires AWTPermission listenToAllAWTEvents	dispatched
+4840271	4	5	leif	Mon Mar 31 14:20:00 PST 2003	0	TitledBorder Bug of API Documentation or Bug of Specification	evaluated
+4138555	4	3	shannonh	Thu May 14 00:04:00 PDT 1998	1	JDK1.2Beta4-F,Win95,window look: buttons not painting focus	evaluated
+4519484	4	3	shannonh	Thu Oct 25 14:27:00 PDT 2001	1	please allow setting a TransferHandler for a JFrame	evaluated
+4644241	4	4	idk	Wed Feb 27 14:32:00 PST 2002	0	Need API to set BreakIterator of JTextComponent	accepted
+4180963	4	5	zav@sparc.spb.su	Tue Oct 13 08:19:00 PDT 1998	0	DefaultComboBoxModel enhancements	evaluated
+4805829	4	4	joutwate	Tue Jan 21 11:54:00 PST 2003	0	Tabbing from single focusable field doesn't trigger verify	committed
+4834399	4	4	naa@sparc.spb.su	Tue Mar 18 19:20:00 PST 2003	0	invokeLater causes JScrollPane to scroll to bottom at creation	committed
+4465795	4	4	null	Mon Jun 04 10:57:00 PDT 2001	0	javax.swing.JTable.isRowSelected() does not throw IAE	accepted
+4835469	4	4	bchristi	Thu Mar 20 14:38:00 PST 2003	0	JFileChooser/Windows L&F: Newly created directories should appear at end of list	accepted
+4200554	4	5	joutwate	Mon Jan 04 17:27:00 PST 1999	1	Please make canceled property of ProgressMonitor bound	accepted
+4208273	4	3	null	Wed Feb 03 01:33:00 PST 1999	5	JTable.getScrollableUnitIncrement(...) returns incorrect value	accepted
+4491747	4	4	davidson@eng	Tue Aug 14 11:02:00 PDT 2001	3	RFE: Use of Action still needs work	committed
+4045249	4	4	idk	Tue Apr 15 14:07:00 PDT 1997	5	rfe: JTextArea should be capable of printing entire contents by default	evaluated
+4743544	4	4	naoto	Sun Sep 08 20:33:00 PDT 2002	1	Paste with mouse button to JTextField during converiosn causes Exception.	committed
+4850302	4	4	idk	Thu Apr 17 14:49:00 PDT 2003	0	JEditorPane fails on HTML Frames with java.lang.ArrayIndexOutOfBoundsException	accepted
+4580622	5	4	joutwate	Sun Dec 09 18:02:00 PST 2001	0	JSlider has "getInverted"method instead of "isInverted"	evaluated
+4714237	4	5	shannonh	Fri Jul 12 00:15:00 PDT 2002	7	RFE:  Ability to set row height in a JTable to zero	evaluated
+4133566	5	5	aep@sparc.spb.su	Wed Apr 29 00:10:00 PDT 1998	6	DefaultListSelectionModel: buggy insertIndexInterval()	accepted
+4622892	4	4	leif	Fri Jan 11 18:21:00 PST 2002	9	FileSystemView.getSystemIcon crashes Windows	accepted
+4865605	4	5	leif	Fri May 16 14:49:00 PDT 2003	0	XP L&F: Java Tooltips and Menus do not have drop shadow	evaluated
+4833524	4	4	aep@sparc.spb.su	Mon Mar 17 11:49:00 PST 2003	19	BasicTreeUI.isToggleSelectionEvent() does not properly handle popup triggers	accepted
+4858661	4	5	bchristi	Mon May 05 16:35:00 PDT 2003	0	JFileChooser cant select drives with FILES_AND_DIRECTORIES mode	accepted
+4836408	4	5	sharonz	Sun Mar 23 17:51:00 PST 2003	0	Incorrect description in demo/jfc/TableExample/README.txt	committed
+4449413	4	3	shannonh	Mon Apr 23 14:31:00 PDT 2001	10	JCheckBox can't show check when the background color is black	accepted
+4860546	2	3	leif	Thu May 08 00:06:00 PDT 2003	0	Swing Bug with JToolBar and focus	committed
+4465732	4	4	null	Mon Jun 04 09:09:00 PDT 2001	0	javax.swing.JTable.isCellSelected() does not throw IAE	accepted
+4509382	4	3	zav@sparc.spb.su	Mon Oct 01 16:51:00 PDT 2001	0	up/down arrow selection doesn't work for options menu on alarm tab	accepted
+4711979	4	4	katakai	Tue Jul 09 03:36:00 PDT 2002	0	Cannot select a multibyte character in the right hand side of the line.	evaluated
+4765279	4	3	shannonh	Fri Oct 18 11:54:00 PDT 2002	1	DefaultTableCellRenderer.getTableCellRendererComponent() throws NullPointerExc.	accepted
+4429033	4	5	leif	Thu Mar 22 00:57:00 PST 2001	2	ToolTip location stipulation requested (JComponent.setToolTipLocation(Point))	evaluated
+4486696	4	2	sky	Tue Jul 31 19:44:00 PDT 2001	2	JViewport does not scroll diagonally efficiently	accepted
+4706356	4	5	sky	Fri Jun 21 13:09:00 PDT 2002	0	DefaultTableCellRenderer should override more methods	accepted
+4850870	4	4	aep@sparc.spb.su	Fri Apr 18 13:09:00 PDT 2003	0	Apparent bug in Box layout	accepted
+4784677	3	2	joutwate	Tue Nov 26 01:05:00 PST 2002	0	XP L&F: JSliders do not show rollover and drag effects	evaluated
+4716935	3	3	sky	Thu Jul 18 11:20:00 PDT 2002	0	JLayeredPane should override removeAll to avoid leak	committed
+4521075	4	4	shannonh	Tue Oct 30 11:19:00 PST 2001	117	Drag gesture in JAVA different from Windows	committed
+4298811	4	5	shannonh	Sun Dec 12 22:26:00 PST 1999	0	Improve JOptionPane's layout when adding a resizable Component	evaluated
+4685800	4	3	joutwate	Wed May 15 16:07:00 PDT 2002	8	JTabbedPane.setOpaque(false) does not follow opacity rules	evaluated
+4740942	4	4	zav@sparc.spb.su	Tue Sep 03 15:17:00 PDT 2002	1	First MenuItem on JPopupMenu is Highlighted	accepted
+4760512	4	4	zav@sparc.spb.su	Wed Oct 09 11:05:00 PDT 2002	1	JComboBox.KeySelectionManager should not register a shift key	evaluated
+4318672	4	4	leif	Fri Mar 03 00:12:00 PST 2000	1	double clicking on directory entries occasionally opens the directory as a file	accepted
+4802656	4	4	zav@sparc.spb.su	Mon Jan 13 18:02:00 PST 2003	0	Problem with keyboard navigation in JMenus JMenuItems if setVisible(false)	committed
+4203037	4	5	leif	Thu Jan 14 06:14:00 PST 1999	0	JToolBar drag operation must support <Esc> key for cancelling drag	evaluated
+4856008	4	4	aep@sparc.spb.su	Tue Apr 29 19:06:00 PDT 2003	0	Metal LAF borders should return copies when asked for BorderInsets.	accepted
+4781723	4	3	leif	Wed Nov 20 06:46:00 PST 2002	0	XP L&F: JTabbedPane does not change color on Mouse Over	evaluated
+4316829	4	5	joutwate	Sun Feb 27 00:46:00 PST 2000	1	JDesktopPane.setSelectedFrame should fire PropertyChangeEvent	evaluated
+4676880	4	3	sky	Mon Apr 29 19:20:00 PDT 2002	2	JFormattedtextField setValue(Double) getValue()->Long	accepted
+4548873	3	4	kve@sparc.spb.su	Wed Dec 05 00:04:00 PST 2001	1	Mismatches in JFileChooser behavior in accessing remote machines on Windows	committed
+4850631	3	3	aa121308	Fri Apr 18 06:38:00 PDT 2003	0	1.3.1_07 REGRESSION: Tooltip on JFileChooser is not displayed correctly	committed
+4495331	4	3	joutwate	Wed Aug 22 18:06:00 PDT 2001	0	Swing and swing demos should not use default version of InputStreamReader()	evaluated
+4607516	5	3	joutwate	Thu Dec 13 18:50:00 PST 2001	6	Japanese strings in JOptionPane are not wrapped.	accepted
+4844422	4	5	leif	Mon Apr 07 14:44:00 PDT 2003	0	XP L&F: JOptionpane uses wrong icons with XP L&F	committed
+4172937	4	5	leif	Fri Sep 11 06:07:00 PDT 1998	11	JToolBar features that would be nice	evaluated
+4292511	4	3	null	Wed Nov 17 16:54:00 PST 1999	8	JTableHeader height determined by first column given HTML text	accepted
+4488439	4	4	leif	Mon Aug 06 02:31:00 PDT 2001	0	There have some space square box when drag the JToolBar	accepted
+4746835	3	3	zpm@sparc.spb.su	Thu Sep 12 20:42:00 PDT 2002	3	REGRESSION: In SDK1.4.1, pasting into JEditorPane creates a new paragraph	evaluated
+4820053	4	5	shannonh	Tue Feb 18 15:09:00 PST 2003	0	getDisabledIcon() only works for ImageIcons	evaluated
+4260723	4	5	joutwate	Sat Aug 07 14:21:00 PDT 1999	1	JTabbedPane does unnecessary layout work	evaluated
+4741545	4	5	shannonh	Wed Sep 04 11:58:00 PDT 2002	0	EOU: BasicTransferable is package protected so not extensible	accepted
+4795368	3	4	sky	Tue Dec 17 19:20:00 PST 2002	0	GTK+ theme keynav for JTree expand/collapse doesn't confirm with GTK+2 standard	committed
+4853984	5	5	naa@sparc.spb.su	Fri Apr 25 01:11:00 PDT 2003	0	1.5b04 REGRESSION: caret doesn't flash in Motif LAF text	evaluated
+4762705	4	3	leif	Mon Oct 14 13:25:00 PDT 2002	1	Tooltip Flickers and Doesn't Show	evaluated
+4793761	3	2	idk	Fri Dec 13 15:15:00 PST 2002	0	Password in JPasswordField can be copied and pasted via middle mouse button	evaluated
+4623342	4	3	idk	Mon Jan 14 13:22:00 PST 2002	2	InlineView causes extra spacing around images in JTable	accepted
+4821959	3	2	sky	Fri Feb 21 04:52:00 PST 2003	0	GTK LAF : Int Frame in Motif not proper	committed
+4172022	4	5	null	Tue Sep 08 13:47:00 PDT 1998	14	Need JTable Option to Set Column Widths Based On Width of Contents	evaluated
+4137653	4	5	leif	Tue May 12 15:40:00 PDT 1998	2	JFileChooser: can't use delete key to delete files and directories	evaluated
+4144274	4	5	zpm@sparc.spb.su	Mon Jun 01 02:12:00 PDT 1998	3	RowHeader/ColumnHeader has not the same height/width as JScrollPa=	evaluated
+4864718	3	3	joutwate	Thu May 15 10:54:00 PDT 2003	1	After minimizing all JInternalFrames the Menu can't be activated by F10	evaluated
+4723383	4	3	idk	Tue Jul 30 19:43:00 PDT 2002	7	Incomplete RTF support in javax.swing.text.rtf.RTFEditorKit	accepted
+4656461	4	4	dalem	Thu Mar 21 15:35:00 PST 2002	0	Cannot Ctrl-Shift-Click to create disjoint selection interval in list	accepted
+4389730	4	5	leif	Wed Nov 15 17:56:00 PST 2000	0	In JFileChooser, the Save button should disable when no filename is selected	accepted
+4307147	4	5	null	Tue Jan 25 16:12:00 PST 2000	5	Programmatically TAB within a JTable	evaluated
+4205410	4	5	null	Sun Jan 24 16:11:00 PST 1999	3	Need setSelectedRow() method in JTable	evaluated
+4130823	4	5	shannonh	Mon Apr 20 15:50:00 PDT 1998	0	Not painting focus when the radio button has only icon	evaluated
+4128979	4	5	shannonh	Tue Apr 14 19:41:00 PDT 1998	0	JToggleButton with lineBorder doesn't show hilight in Windows L&F	evaluated
+4811291	4	3	leif	Fri Jan 31 10:30:00 PST 2003	0	Windows L&F quality	committed
+4765357	4	5	leif	Fri Oct 18 00:49:00 PDT 2002	0	BasicToolBarUI throws NPE on first call to setFloating(false,..)	accepted
+4138111	4	5	null	Wed May 13 15:14:00 PDT 1998	21	JTable selection model should allow multiple selection of any cells	evaluated
+4846660	5	5	moa@sparc.spb.su	Thu Apr 10 15:19:00 PDT 2003	15	JTabbedPane - Tabs have wider margins under 1.4	incomplete
+4816146	4	3	shannonh	Mon Feb 10 15:02:00 PST 2003	1	1.4.0 REGRESSION: JTable - Sharing TableColumnModels disables resizing of column	accepted
+4296946	4	5	sky	Sat Dec 04 17:11:00 PST 1999	9	TreeModel insertNodeInto/removeNodeFromParent shouldn't chg tree's expand state	evaluated
+4464167	4	4	null	Wed May 30 10:25:00 PDT 2001	0	JTable.editCellAt() methods does not throw IllegalArgumentException	accepted
+4235976	4	3	leif	Thu May 06 10:49:00 PDT 1999	7	JFileChooser:  let files be listed before directories?	evaluated
+4738541	3	3	shannonh	Wed Aug 28 17:31:00 PDT 2002	0	1.4.0 REGRESSION: NullPointerException in WindowsRadioButtonUI.getPreferredSize(	committed
+4866320	4	4	idk	Mon May 19 15:35:00 PDT 2003	0	JTextPane insertIcon doesn't insert if setEditable(false)	dispatched
+4860985	4	4	leif	Thu May 08 23:26:00 PDT 2003	0	Win L&F: tool tip appears even if the windows has no focus	evaluated
+4782216	4	3	leif	Wed Nov 20 16:57:00 PST 2002	1	JToolBar remains floating due to mouse click	evaluated
+4486444	4	4	null	Tue Jul 31 00:34:00 PDT 2001	6	Enter key causes change in JTable row selection	accepted
+4718657	4	4	shannonh	Mon Jul 22 16:54:00 PDT 2002	0	RFE: JOptionPane should provide showPasswordDialog()	evaluated
+4747079	3	5	shannonh	Fri Sep 13 10:16:00 PDT 2002	3	Add sorting ability to JTable	committed
+4822786	3	4	kve@sparc.spb.su	Mon Feb 24 06:33:00 PST 2003	0	ArrayIndexOutOfBounds exception caused by MetalFileChooserUI.setFileSelected()	evaluated
+4499528	4	3	shannonh	Tue Sep 04 14:50:00 PDT 2001	0	JTabbedPane should recognize DnD by default	evaluated
+4675786	4	3	sky	Fri Apr 26 15:21:00 PDT 2002	2	getPreferredSize() in BasicListUI reporting stale size	accepted
+4765245	4	4	shannonh	Fri Oct 18 11:28:00 PDT 2002	0	sizeWidthToFit() isn't sensitive to table header font size	accepted
+4730055	4	3	shannonh	Mon Aug 12 10:40:00 PDT 2002	11	getSelectedRows return non-existing rows in JTable	accepted
+4489252	4	4	null	Tue Aug 07 14:44:00 PDT 2001	1	Box with glue has alignment, repaint problems	accepted
+4253171	4	5	moa@sparc.spb.su	Sat Jul 10 17:19:00 PDT 1999	4	white JTabbedPane on a white JPanel in windows L&F does not paint correctly	evaluated
+4865948	4	3	bchristi	Mon May 19 03:51:00 PDT 2003	0	jdk1.5.0/sparc/demo/jfc/FileChooserDemo doesn't work as expected w/ Motif L&F	accepted
+4463500	4	3	joutwate	Sat May 26 18:57:00 PDT 2001	0	ColorChooser Demo in the SwingSet 2 Demo does not repaint correctly on Dual CPUs	accepted
+4353669	4	4	null	Mon Jul 17 11:51:00 PDT 2000	9	JTable.processKeyBinding does pass KeyEvent to editCellAt handler	evaluated
+4760072	4	4	leif	Tue Oct 08 17:31:00 PDT 2002	0	JFileChooser Icon placement does not match native OS	accepted
+4498704	4	4	dalem	Fri Aug 31 10:13:00 PDT 2001	10	JTable.tableChanged rebuilds columns when header changes.	accepted
+4386783	4	5	null	Tue Nov 07 11:31:00 PST 2000	18	Add setSelectedColumns/Rows(int[]) to JTable	committed
+4723742	3	3	shannonh	Wed Jul 31 11:52:00 PDT 2002	2	1.4.0 REGRESSION: setIntercellSpacing affects the JTable header appearance	committed
+4687245	4	4	sky	Fri May 17 11:51:00 PDT 2002	1	On TAB, JSpinner first turns focus, then calls ChangeListener	accepted
+4243389	4	4	joutwate	Wed Jun 02 14:55:00 PDT 1999	0	Should Swing 1.1.1X JDesktopPane dragMode - faster use outline resizing?#4193162	evaluated
+4302764	4	1	joutwate	Wed Jan 05 14:15:00 PST 2000	17	focus is not set in JInternalFrame	committed
+4753366	4	4	joutwate	Wed Sep 25 16:05:00 PDT 2002	2	JInternalFrame Navigation: F6 and CTRL+F10  versus open or minimized state	evaluated
+4527633	4	4	zpm@sparc.spb.su	Thu Nov 15 09:33:00 PST 2001	1	No way to get JPopupMenu location	accepted
+4765347	4	3	zav@sparc.spb.su	Fri Oct 18 00:40:00 PDT 2002	0	JPopupMenu invoker slot prevents UI objects being GC'd	committed
+4502744	4	4	leif	Thu Sep 13 14:30:00 PDT 2001	0	ToolTip is completly white on mouse over from initial display	accepted
+4825411	3	4	leif	Thu Feb 27 21:20:00 PST 2003	0	JFileChooser issues in details view	committed
+4618201	4	5	joutwate	Thu Dec 27 04:15:00 PST 2001	0	Metalworks demo under OpenWin windows manager for Sol-IA8 doesn't work properly	accepted
+4630761	4	3	naa@sparc.spb.su	Wed Jan 30 13:58:00 PST 2002	0	HTMLDocument not serializable	accepted
+4160465	4	5	leif	Fri Jul 24 00:02:00 PDT 1998	2	javax.swing.filechooser.FileFilter should implement java.io.FileFilter	evaluated
+4849868	4	4	idk	Wed Apr 16 20:34:00 PDT 2003	0	JTextArea.getSelectionEnd does not work correctly	evaluated
+4708165	4	4	zpm@sparc.spb.su	Wed Jun 26 02:34:00 PDT 2002	0	Swing text editor pane: problems for line distance when resize font size	evaluated
+4269913	4	3	joutwate	Wed Sep 08 15:24:00 PDT 1999	3	Ctrl-Tab sequence should change JInternalFrame focus w/in JDesktopPane	evaluated
+4765342	3	3	leif	Fri Oct 18 00:38:00 PDT 2002	0	NPE in Win32ShellFolder when disconnected from Network	evaluated
+4492484	4	4	null	Wed Aug 15 15:44:00 PDT 2001	5	JTable fails to draw header containing empty string under Windows Look-and-Feel	accepted
+4515027	4	3	shannonh	Tue Oct 16 02:35:00 PDT 2001	1	JOptionPane a11y problems	committed
+4834223	2	3	aep@sparc.spb.su	Tue Mar 18 13:26:00 PST 2003	0	Win L&F: JList highlighting and pick area do not match native	committed
+4803145	4	3	sdv@sparc.spb.su	Tue Jan 14 14:53:00 PST 2003	0	Bullets for HTML <ul> on the wrong side for Arabic and Hebrew in JEditorPane	evaluated
+4164177	4	5	pkorn	Thu Aug 06 14:09:00 PDT 1998	0	Not all visible changes to components are tracked with the accessibility api	evaluated
+4291560	5	4	null	Mon Nov 15 14:06:00 PST 1999	0	JTable.editCellAt(-1,-1) should throw IllegalArgumentException not AIOB	accepted
+4864918	4	5	shannonh	Thu May 15 15:11:00 PDT 2003	1	Boxlayout lays out incorrectly if faced with very large preferred sizes	accepted
+4749308	2	3	null	Wed Sep 18 06:48:00 PDT 2002	0	doClick on BasicArrowButton causes flash but no action	committed
+4735828	3	3	sky	Thu Aug 22 19:12:00 PDT 2002	0	1.4 REGRESSION: Swing Transparency Problem-user defined ColorUIResource getRGB()	evaluated
+4334792	4	5	null	Mon May 01 17:39:00 PDT 2000	3	Lead Index in DefaultListSelectionModel will never return to -1	evaluated
+4622200	5	5	sky	Thu Jan 10 18:07:00 PST 2002	3	RFE: option for JSplitPane one-touch button to respect min pane size	accepted
+4822120	5	5	leif	Fri Feb 21 00:13:00 PST 2003	0	Swing problems with WaterColor themes(StyleXP style)	evaluated
+4621951	4	4	sky	Thu Jan 10 00:36:00 PST 2002	10	Problem using input masks in JFormattedTextField.	accepted
+4829622	4	4	idk	Mon Mar 10 01:49:00 PST 2003	0	TabSet class does not override equals	committed
+4871518	4	4	sky	Thu May 29 17:05:00 PDT 2003	0	doc. says getLeadSelectionIndex does return setLeadSelectionselection's index	accepted
+4848175	4	4	shannonh	Mon Apr 14 15:50:00 PDT 2003	0	JTable.getSelectedRow() fails with TableCellRenderer	accepted
+4803953	4	4	joutwate	Wed Jan 15 19:02:00 PST 2003	0	Motif L&F: Double-clicking text of iconified JInternalFrame has bug	committed
+4516654	4	5	joutwate	Thu Oct 18 16:16:00 PDT 2001	0	Merlinb83: Metalworks Demo: Window title not displayed fully in Low Vision Theme	evaluated
+4694008	3	2	shannonh	Thu May 30 11:42:00 PDT 2002	10	1.4.0 REGRESSION: NPE in preferred size for button with two labels in Windows LA	committed
+4708614	5	4	joutwate	Wed Jun 26 16:12:00 PDT 2002	0	JTabbedPane should allow arbitrary component as tab	accepted
+4795384	4	4	leif	Tue Dec 17 19:47:00 PST 2002	0	GTK+ JFileChooser butons should have mnemonics	accepted
+4796200	5	5	naa@sparc.spb.su	Thu Dec 19 06:15:00 PST 2002	0	HTMLWriter sometimes doesn't output indent	evaluated
+4472857	4	5	dalem	Thu Jun 21 00:10:00 PDT 2001	1	Add a DefaultCellEditor constructor that takes a JSpinner	evaluated
+4869745	3	3	null	Tue May 27 04:53:00 PDT 2003	0	RegTest-cte CTE_REGTEST/Generic/4531693/DialogTest.java fails	dispatched
+4796588	4	5	shannonh	Thu Dec 19 16:46:00 PST 2002	1	RFE: tableChanged() in JTable calls for repainting for variable row height	accepted
+4765254	5	5	sdv@sparc.spb.su	Fri Oct 18 11:35:00 PDT 2002	4	javax.swing.text.html.StyleSheet.BoxPainter needs a protected or public ctor	accepted
+4765325	5	5	leif	Fri Oct 18 00:27:00 PDT 2002	1	FileSystemView.getSystemTypeDescription() returns empy string	accepted
+4379768	4	5	leif	Mon Oct 16 17:00:00 PDT 2000	1	Toolbar window gets stuck when clicking another mousebutton while dragging	evaluated
+4823083	4	4	kve@sparc.spb.su	Mon Feb 24 14:58:00 PST 2003	0	javax.swing.colorchooser.SyntheticImage.RemoveConsumer() breaks linked list	incomplete
+4252164	4	5	leif	Wed Jul 07 11:01:00 PDT 1999	1	Rounded Line Borders Don't Render Properly (fix included)	accepted
+4726410	4	3	shannonh	Mon Aug 05 14:58:00 PDT 2002	0	Investigate adding LINK support to Swing DnD	evaluated
+4867294	2	2	zav@sparc.spb.su	Wed May 21 01:40:00 PDT 2003	0	GTK L&F on RH8.0: JComboBox Item dissappears when one of the item is selected	incomplete
+4712756	4	4	joutwate	Wed Jul 10 11:34:00 PDT 2002	1	ProgressMonitor unusable (by specification)	evaluated
+4863668	3	3	leif	Wed May 14 03:28:00 PDT 2003	0	REGRESSION: RegTest-cte CTE_REGTEST/Generic/4832671/ToolTipTest.java fails	dispatched
+4403182	4	5	joutwate	Tue Jan 09 13:36:00 PST 2001	0	InputVerifier failed on JTabbedPane & JMenuBar	accepted
+4678019	4	3	zav@sparc.spb.su	Wed May 01 00:38:00 PDT 2002	5	JMenuItems added directly added JMenuBar cannot be keyboard navigated	accepted
+4224414	4	5	joutwate	Fri Mar 26 09:26:00 PST 1999	1	BasicSliderUI hardcodes tick color to Color.black	evaluated
+4710684	4	5	leif	Wed Jul 03 03:31:00 PDT 2002	0	"High Contrast Black" Windows LaF inconsistencies	accepted
+4315095	4	3	sky	Wed Feb 23 22:45:00 PST 2000	1	JScrollPane.setViewportBorder() affects col. header differently in kestrel	committed
+4717180	3	3	sky	Thu Jul 18 17:31:00 PDT 2002	0	Swing should document that UIs may change visual properties when installed	evaluated
+4424581	4	5	joutwate	Mon Mar 12 13:44:00 PST 2001	0	JTable calls verify within InputVerifier for cell, but allows cell to lose focus	accepted
+4870129	4	4	sky	Tue May 27 14:56:00 PDT 2003	0	Select in JFormattedTextField selects from start of text	accepted
+4696825	5	5	joutwate	Tue Jun 04 08:48:00 PDT 2002	0	BasicTabbedPaneUI paints selected tab twice	accepted
+4853056	3	3	aep@sparc.spb.su	Wed Apr 23 19:29:00 PDT 2003	0	REGRESSION: SpringLayout bug appears in 1.4.1_02	evaluated
+4696632	4	3	sky	Mon Jun 03 19:48:00 PDT 2002	7	Inconsistent drawString when an AffineTransform is set in paintComponent	accepted
+4845561	3	5	zav@sparc.spb.su	Wed Apr 09 06:06:00 PDT 2003	0	RegTest-test javax/swing/JPopupMenu/4791569/bug4791569.java failed	accepted
+4869043	4	2	sky	Fri May 23 00:23:00 PDT 2003	0	GTK L&F: Java and GNOME have different button ordering for command buttons	accepted
+4231294	4	4	kyuka	Tue Apr 20 13:41:00 PDT 1999	0	RFE: JSlider does not format standard labels correctly	evaluated
+4839118	4	4	idk	Thu Mar 27 19:15:00 PST 2003	1	JEditorPane.getPreferredSize() behaves inconsistently	evaluated
+4847241	5	5	davidson@eng	Fri Apr 11 00:17:00 PDT 2003	0	RFE: Documentation lacks Info that ButtonModel could perform the task of Action	accepted
+4446522	4	5	idk	Tue Apr 17 00:44:00 PDT 2001	17	JTextArea.getPreferredSize() incorrect when line wrapping is used	accepted
+4465207	4	2	kve@sparc.spb.su	Fri Jun 01 13:51:00 PDT 2001	0	Custom AbstractButton implementation still fails with Metal L&F	evaluated
+4632213	4	5	null	Fri Feb 01 15:48:00 PST 2002	3	Swing printing support	committed
+4613933	5	5	leif	Fri Dec 14 11:46:00 PST 2001	10	need better way to control detachable JToolBar	accepted
+4842445	4	5	sky	Thu Apr 03 14:26:00 PST 2003	0	ClassCastException in BasicComboboxUI using Multi-UI	accepted
+4549183	4	4	dalem	Wed Dec 05 18:44:00 PST 2001	0	JTable cell's display order is changed after double clicking	accepted
+4607091	4	3	shannonh	Thu Dec 13 10:06:00 PST 2001	1	"getMultiClickThreshhold" & "setMultiClickThreshhold" methods are misspelled	accepted
+4861986	4	5	kyuka	Fri May 09 17:16:00 PDT 2003	0	JTree with RTL (RIGHT_TO_LEFT) orientation doesn't layout Borders properly	committed
+4196964	4	5	sky	Fri Dec 11 13:12:00 PST 1998	7	Lazy Scrolling: repaint only when the knob on the scrollbar is released	evaluated
+4694575	4	3	sky	Thu May 30 18:03:00 PDT 2002	1	JList with horizontal layout orientation cannot scroll up	accepted
+4834404	4	4	sky	Tue Mar 18 19:26:00 PST 2003	1	UIDefaults can't find resource bundles from app classloader	evaluated
+4817463	4	4	idk	Wed Feb 12 00:25:00 PST 2003	3	Inserting Components adjacently into DefaultStyledDocument isn't visible.	evaluated
+4314200	4	5	leif	Sat Feb 19 13:44:00 PST 2000	1	RFE:  JToolBar suggestions: dockable, additional separators, scrollable	evaluated
+4777125	4	4	zav@sparc.spb.su	Mon Nov 11 15:57:00 PST 2002	2	Focused JMenu prevents other components of gaining focus.	committed
+4527791	4	2	zav@sparc.spb.su	Thu Nov 15 13:26:00 PST 2001	3	Popup menu from JComboBox disppears behind the main window on scrolling	accepted
+4513164	4	2	dalem	Wed Oct 10 15:17:00 PDT 2001	0	Problem with cursor and focus in table editors based on JTextField	evaluated
+4237657	4	3	zav@sparc.spb.su	Wed May 12 13:41:00 PDT 1999	0	Jmenu.isTearOff not yet implemented	evaluated
+4484781	4	4	joutwate	Thu Jul 26 00:20:00 PDT 2001	0	Cursor wrong on PLAF decorated JFrame	evaluated
+4760087	4	3	zav@sparc.spb.su	Tue Oct 08 17:42:00 PDT 2002	1	1.4 REGRESSION: JComboBox incorrectly comparing data from DataModel	accepted
+4129109	4	5	joutwate	Wed Apr 15 10:28:00 PDT 1998	5	JDesktopPane does not implements Scrollable interface.	evaluated
+4850369	4	4	joutwate	Thu Apr 17 16:23:00 PDT 2003	0	JInternalFrame setDefaultCloseOperation  ignored under Motif look-and-feel.	committed
+4765262	4	3	sky	Fri Oct 18 11:40:00 PDT 2002	2	JDialog with one JLabel paints very slow (5 sec+) depending on label text	accepted
+4444978	4	3	leif	Fri Apr 13 00:10:00 PDT 2001	0	Win2000 L&F: JFileChooser: High-lighting	evaluated
+4714674	4	4	idk	Mon Jul 15 04:06:00 PDT 2002	0	JEditorPane.setPage(url) blocks AWT thread when HTTP protocol is used	committed
+4346879	4	5	joutwate	Tue Jun 20 13:48:00 PDT 2000	1	JInternalFrame don't hide JMenuItem when setVisible(false)	accepted
+4712055	4	5	leif	Tue Jul 09 08:16:00 PDT 2002	0	FileSystemView.getSystemTypeDescription() not working	evaluated
+4860977	4	4	leif	Thu May 08 23:07:00 PDT 2003	0	Win L&F: Menu Color on focus lost in XP LAf is not same as native	evaluated
+4464864	4	3	shannonh	Thu May 31 20:35:00 PDT 2001	3	Have JTree, JTable, and JList implement the Autoscroll interface	evaluated
+4846435	4	4	leif	Thu Apr 10 00:09:00 PDT 2003	0	Mnemonics not showing for JLabel in Windows LAF (Look and Feel)	committed
+4810702	4	4	leif	Thu Jan 30 00:43:00 PST 2003	0	JFileChooser bug 4300582 was unfixed by the fix for 4307925.	evaluated
+4644020	4	3	zav@sparc.spb.su	Wed Feb 27 10:52:00 PST 2002	28	EOU: Hierarchical Menu Behavior - Allow Diagonal Drag	evaluated
+4420539	4	3	leif	Thu Mar 01 10:43:00 PST 2001	0	JLF Sounds should be down-sampled	evaluated
+4391093	4	3	joutwate	Mon Nov 20 17:45:00 PST 2000	0	Win2000 LookandFeel: InternalFrame minimize not working	evaluated
+4791553	4	5	zav@sparc.spb.su	Tue Dec 10 13:54:00 PST 2002	1	A JComboBox not entirely contained in the screen systematically pops upward.	evaluated
+4795372	4	4	leif	Tue Dec 17 19:26:00 PST 2002	0	GTK+ L&F File Choosers don't look quite like GTK+; button sizes off, other thing	accepted
+4785160	4	4	naa@sparc.spb.su	Tue Nov 26 14:58:00 PST 2002	1	It's possible to make cursor invisible when typing in JTextArea with JScrollBar	committed
+4849202	4	4	joutwate	Wed Apr 16 05:05:00 PDT 2003	0	The Table header seperator and table column seperator are not aligned properly	committed
+4087846	4	4	zav@sparc.spb.su	Wed Oct 22 04:30:00 PDT 1997	28	JMenuBar.setHelpMenu() => "not yet implemented"	committed
+4772271	4	4	leif	Thu Oct 31 15:31:00 PST 2002	3	Application crashes when dialog is repeatedly opened	evaluated
+4491372	4	3	joutwate	Mon Aug 13 13:40:00 PDT 2001	0	ProgressMonitor.setNote() method doesn't support "\n"	evaluated
+4855126	3	3	leif	Mon Apr 28 15:25:00 PDT 2003	0	XP L&F TitledBorder: Checkbox, RadioButton do not look like XP equivalent	committed
+4760435	3	4	naa@sparc.spb.su	Wed Oct 09 10:05:00 PDT 2002	2	1.4 REGRESSION: HtmlEditorKit array index out of bounds	committed
+4404534	4	4	naoto	Fri Jan 12 17:57:00 PST 2001	0	Selecting Styles before typing doesn't work on Japanese.	accepted
+4759741	4	5	leif	Tue Oct 08 11:40:00 PDT 2002	0	RFE: Allow JToolBar to be hosted on JFrame when detached	accepted
+4662254	3	3	joutwate	Wed Apr 03 11:14:00 PST 2002	0	Nothing happens when click a push button owned by an non-actived internal frame	committed
+4763202	4	4	zav@sparc.spb.su	Tue Oct 15 10:30:00 PDT 2002	1	RFE: JMenu is difficult to extend	accepted
+4751971	4	5	shannonh	Mon Sep 23 18:24:00 PDT 2002	1	RFE: problems with AbstractButton.configurePropertiesFromAction()	accepted
+4374402	4	4	naoto	Wed Sep 27 08:00:00 PDT 2000	5	Mnemonics Orientation is broken in RTL and Bidi enabled JMenu and JMenuItem	accepted
+4790514	3	1	leif	Mon Dec 09 04:21:00 PST 2002	0	GTK L&F (Windows): JFileChooser is not displayed like native	committed
+4629935	4	3	naoto	Tue Jan 29 10:38:00 PST 2002	0	BiDi text layout is not correct in JTextField.	accepted
+4839464	3	3	zav@sparc.spb.su	Fri Mar 28 00:16:00 PST 2003	0	Shortcoming in the way JMenuItem handles 'propertyChange()' events.	committed
+4813448	4	4	sky	Wed Feb 05 00:13:00 PST 2003	0	UIDefaults Map interface is broken	evaluated
+4461866	4	5	leif	Tue May 22 15:27:00 PDT 2001	3	need a replacement for JToolBar.add(Action) method	evaluated
+4356160	4	5	leif	Tue Jul 25 00:11:00 PDT 2000	12	JFileChooser doesn't support shortcuts (.lnk files)	evaluated
+4760104	4	5	leif	Tue Oct 08 18:03:00 PDT 2002	0	JFileChooser makes unnecessary calls to FileView	accepted
+4813590	4	5	idk	Wed Feb 05 14:27:00 PST 2003	1	RFE: javax.swing.JEditorPane isn't smart enough with newline characters	evaluated
+4215140	4	4	leif	Thu Feb 25 15:17:00 PST 1999	1	add width parameter to BevelBorder to constructor	evaluated
+4813953	3	4	shannonh	Thu Feb 06 00:51:00 PST 2003	0	GTK L&F causes warnings: Binding specification is unsupported, ignoring	committed
+4628105	5	5	idk	Thu Jan 24 14:11:00 PST 2002	0	Can't extend WrappedLine in WrappedPlainView	accepted
+4686178	3	2	null	Thu May 16 03:30:00 PDT 2002	1	Accessibility bugs for tiger	committed
+4744019	4	5	aep@sparc.spb.su	Mon Sep 09 14:06:00 PDT 2002	0	RFE: Implement JViewport.setViewRect() (not equal to setViewPos + setViewSize)	accepted
+4486460	5	4	null	Tue Jul 31 00:56:00 PDT 2001	1	Add TableColumnModelEvent.getTableColumn() to determine which column affected	evaluated
+4512186	4	4	sky	Mon Oct 08 18:06:00 PDT 2001	0	Bad Code in javax.swing.text.DefaultFormatterFactory	accepted
+4711713	4	5	leif	Mon Jul 08 16:06:00 PDT 2002	0	Tooltips obscured by Windows taskbar	evaluated
+4488436	4	4	joutwate	Mon Aug 06 02:14:00 PDT 2001	0	The JInternalFrame's(CDE/Motif Look) is not correct when set as RIGHT to LEFT	evaluated
+4707111	4	3	sky	Mon Jun 24 00:44:00 PDT 2002	3	JPopupMenus in JFileChooser() don't display properly when added to a glass Pane	evaluated
+4280944	4	2	idk	Wed Oct 13 17:21:00 PDT 1999	4	Attributes on last newline character cause undesirable extra spacing.	evaluated
+4529206	4	3	kve@sparc.spb.su	Mon Nov 19 13:54:00 PST 2001	4	JToolBar - setFloating does not work correctly	accepted
+4305789	4	5	leif	Wed Jan 19 17:55:00 PST 2000	0	BasicToolBarUI: Request conversion of private instance variable	evaluated
+4820262	4	4	idk	Tue Feb 18 18:55:00 PST 2003	0	Element is not being Compared Correctly if its Serialized	committed
+4512968	5	5	dalem	Wed Oct 10 10:46:00 PDT 2001	1	Desire built-in sorting support for JList/DefaultListModel	evaluated
+4262955	4	4	zav@sparc.spb.su	Tue Aug 17 02:33:00 PDT 1999	0	The em of Ja Hiragana can't be selected from the choicebox by the keyboard input	accepted
+4838579	4	5	joutwate	Thu Mar 27 06:27:00 PST 2003	0	Not all key strokes listed in the API for JInternalFrame (all LAFs) are implemen	evaluated
+4761612	3	4	naoto	Thu Oct 10 18:35:00 PDT 2002	1	cursor problems in bidi text	committed
+4745231	4	5	sky	Tue Sep 10 19:42:00 PDT 2002	1	RFE: Anti-aliasing should be globally setable	accepted
+4783448	4	4	sky	Fri Nov 22 00:01:00 PST 2002	0	JPopupMenu with sub-menus does not redraw properly in fullscreen mode	evaluated
+4776197	3	2	leif	Fri Nov 08 10:07:00 PST 2002	0	JFileChooser has an easy-to-fix but serious performance bug	evaluated
+4639965	4	5	joutwate	Tue Feb 19 16:30:00 PST 2002	0	Windows L&F iconify/maximize/close buttons are slightly incompatible	evaluated
+4201999	4	5	naa@sparc.spb.su	Sun Jan 10 17:00:00 PST 1999	140	JTextArea's don't automatically scroll when appending() to them.	accepted
+4431408	4	5	sky	Wed Mar 28 17:50:00 PST 2001	0	ease of use withBasicTreeUI + FixedHeightLayoutCache / VariableHeightLayoutCache	evaluated
+4385478	4	5	null	Thu Nov 02 00:14:00 PST 2000	5	Focus problems with JList and JTable	accepted
+4871297	4	4	leif	Thu May 29 00:01:00 PDT 2003	0	XP Look and Feel does not show ClearType anti-aliasing	dispatched
+4793752	4	4	joutwate	Fri Dec 13 15:00:00 PST 2002	4	Closing a JInternalFrame won't properly give focus to the next JInternalFrame	committed
+4788058	4	4	idk	Tue Dec 03 18:55:00 PST 2002	0	When dragging an Icon on a JTextPane, it disappears	committed
+4163989	4	3	sky	Thu Aug 06 05:32:00 PDT 1998	1	UndoManager.indexOfNextAdd should be protected, not package local.	evaluated
+4671888	4	3	shannonh	Fri Apr 19 17:47:00 PDT 2002	0	Refactoring JOptionPane to allow easier customization	evaluated
+4623407	4	3	joutwate	Mon Jan 14 15:11:00 PST 2002	1	REGRESSION:JButton problematic in nested JInternalFrames	committed
+4654927	4	5	zav@sparc.spb.su	Tue Mar 19 00:05:00 PST 2002	0	Clicking on Greyed Menuitems closes the Menubar Dropdown	accepted
+4508914	5	4	dalem	Sat Sep 29 02:01:00 PDT 2001	0	the swing UI will dead when set as windows style	accepted
+4665863	5	4	leif	Wed Apr 10 10:52:00 PDT 2002	0	JToolBar should have a setDefaultLightWeightToolBarEnabled(boolean) method.	accepted
+4485900	5	5	idk	Mon Jul 30 11:39:00 PDT 2001	13	Cannot display embedded image in an RTF file	accepted
+4318227	4	5	leif	Thu Mar 02 11:04:00 PST 2000	2	Can't extend JToolbar property handling	accepted
+4285336	4	2	naoto	Wed Oct 27 09:55:00 PDT 1999	0	Need consistent API for explicit bidi base direction ctl for all Swing classes	evaluated
+4676027	5	4	kyuka	Fri Apr 26 19:34:00 PDT 2002	0	German Localization Bug in Windows L&F	evaluated
+4688560	3	3	naa@sparc.spb.su	Tue May 21 03:46:00 PDT 2002	1	1.4.0 REGRESSION: DefaultCaret calls back into View hierachy du	evaluated
+4167187	4	3	leif	Tue Aug 18 10:52:00 PDT 1998	2	Allow hooks to manage and unmanage individual JFileChooser components.	evaluated
+4870781	4	5	aep@sparc.spb.su	Wed May 28 14:25:00 PDT 2003	0	Right click mouse events not propagated up container hierarchy	dispatched
+4190383	4	4	idk	Mon Nov 16 16:49:00 PST 1998	1	<p> tag doesn't work correctly in <ol> and <ul> lists	evaluated
+4807155	4	4	leif	Thu Jan 23 11:54:00 PST 2003	0	Tooltips appear misplaced when moving from one component to another	evaluated
+4829215	4	5	idk	Fri Mar 07 14:30:00 PST 2003	0	BasicTextUI.getMinimumSize needs to be speced out	committed
+4842658	5	5	sky	Thu Apr 03 18:04:00 PST 2003	0	DefaultListModel and DefaultComboBoxModel should support addAll (Collection c)	accepted
+4366518	5	5	null	Mon Aug 28 17:46:00 PDT 2000	0	Make the paintCell() method in BasicTableHeaderUI protected	evaluated
+4813724	4	3	shannonh	Wed Feb 05 16:26:00 PST 2003	2	JSpinner fails when using it has a cell editor	evaluated
+4808764	4	5	sky	Mon Jan 27 14:18:00 PST 2003	0	Autoscroller performance improvements	committed
+4197272	4	5	sky	Mon Dec 14 11:19:00 PST 1998	0	Allow custom placement of vertical scrollbar for JScrollPane	evaluated
+4849159	4	4	zav@sparc.spb.su	Wed Apr 16 02:41:00 PDT 2003	0	ComboBox demo drop down in SwingSet2 overlaps over any obscuring window app	evaluated
+4279654	4	5	shannonh	Fri Oct 08 15:51:00 PDT 1999	3	Background color of the JOptionPane	evaluated
+4199394	4	3	sky	Tue Dec 22 14:43:00 PST 1998	2	JScrollPane - scrollbars + headers should not leave gaps	evaluated
+4725599	4	4	idk	Fri Aug 02 15:16:00 PDT 2002	0	FormTagAction is private in javax.swing.text.html.HTMLDocument.HTMLReader	accepted
+4852305	5	5	shannonh	Tue Apr 22 17:08:00 PDT 2003	0	JTable.processKeyBinding method: delivery of null EventObject at editCellAt	accepted
+4766979	4	4	idk	Tue Oct 22 17:02:00 PDT 2002	0	HTML Parser no longer handles form tags right after table tags	accepted
+4459231	4	5	moa@sparc.spb.su	Tue May 15 20:53:00 PDT 2001	0	Focus of JTabbedPane(with Scrollable tablayout) changes on change in LookAndFeel	evaluated
+4330950	4	5	null	Mon Apr 17 00:00:00 PDT 2000	78	lost newly entered data in the cell when resizing column width	evaluated
+4765285	4	4	sky	Fri Oct 18 11:59:00 PDT 2002	0	Set Maximum Width of JEditorPane	accepted
+4794369	3	4	leif	Mon Dec 16 00:35:00 PST 2002	0	GTK L&F: JFileChooser lists don't repaint when choosing empty folder.	evaluated
+4626512	4	5	idk	Tue Jan 22 06:26:00 PST 2002	0	select all and copy buttons don't work for Show Commands	accepted
+4509657	4	3	zav@sparc.spb.su	Tue Oct 02 09:13:00 PDT 2001	0	up/down arrow selection doesn't work for Choose log file type	committed
+4743225	4	4	zav@sparc.spb.su	Fri Sep 06 14:05:00 PDT 2002	35	Size of JComboBox list is wrong when list is populated via PopupMenuListener	evaluated
+4760073	4	5	shannonh	Tue Oct 08 17:32:00 PDT 2002	3	Table combox cell does not handle mouse click consistently.	accepted
+4290780	4	4	idk	Thu Nov 11 19:03:00 PST 1999	0	printing empty pages using Book and hidden JTextPane	accepted
+4415809	4	5	null	Thu Feb 15 13:31:00 PST 2001	0	javax.swing.SizeSequence shoul have a getLength() method	evaluated
+4506887	4	3	joutwate	Tue Sep 25 14:21:00 PDT 2001	0	BasicProgressBarUI painting is extremely slow	evaluated
+4794457	4	4	joutwate	Mon Dec 16 15:14:00 PST 2002	0	RFE: javax.swing.ProgressMonitor should have getProgress() method	evaluated
+4476714	4	5	naa@sparc.spb.su	Fri Jun 29 17:21:00 PDT 2001	0	DefaultCaret causes spurious scrolling in multi-line text components	committed
+4819538	4	5	shannonh	Mon Feb 17 09:55:00 PST 2003	2	JTable default boolean renderer does not visually show the focus	evaluated
+4806463	5	5	zpm@sparc.spb.su	Wed Jan 22 11:48:00 PST 2003	3	Self-closing tags incorrectly parsed by javax.swing.text.html.parser.Parser	evaluated
+4342008	4	5	zav@sparc.spb.su	Tue May 30 00:38:00 PDT 2000	0	JComboBox SEGV on Solaris	accepted
+4141525	4	4	sky	Fri May 22 18:54:00 PDT 1998	1	UndoManager is too opaque	evaluated
+4830308	3	3	joutwate	Tue Mar 11 00:03:00 PST 2003	0	JCK1.4a api/javax_swing/interactive/JInternalFrameTests.html#JInternalFrame fail	evaluated
+4804502	4	5	sky	Thu Jan 16 15:57:00 PST 2003	0	All Metal ScrollBars have same colors even if in diffferent AppContexts	evaluated
+4673885	4	3	shannonh	Wed Apr 24 00:03:00 PDT 2002	3	JCheckBoxes in drag-enabled JTables do not react on every mouse-click	accepted
+4712345	4	4	leif	Tue Jul 09 16:29:00 PDT 2002	4	(Multi, Multiple) selection JFileChooser scrolls current selection offscreen	evaluated
+4863616	2	3	leif	Tue May 13 22:09:00 PDT 2003	0	JCK1.4a-runtime api/javax_swing/interactive/JToolBarTests.html#JToolBar fails	committed
+4813831	4	3	idk	Wed Feb 05 17:59:00 PST 2003	1	HTML in JEditorPane - contents of table cells do not wrap correctly	evaluated
+4546692	4	4	sky	Tue Dec 04 16:35:00 PST 2001	2	DefaultMutableTreeNode causes JTree to crash if UserObject is null	accepted
+4871730	2	3	davidson@eng	Fri May 30 04:29:00 PDT 2003	0	REGRESSION: RegTest-test javax/swing/JComboBox/4515752/DefaultButtonTest.java	dispatched
+4260746	4	5	leif	Sat Aug 07 15:08:00 PDT 1999	1	JFileChooser-dialog wait for timeout if there is no access to connected client	evaluated
+4352983	4	2	idk	Thu Jul 13 15:00:00 PDT 2000	156	Clipping of text when printing	evaluated
+4760095	4	5	zav@sparc.spb.su	Tue Oct 08 17:55:00 PDT 2002	0	JMenuItem selection problems if also used on PopupMenu	accepted
+4800473	3	3	kve@sparc.spb.su	Wed Jan 08 17:08:00 PST 2003	0	RFE: JFileChooser needs DefaultFileFilter class	accepted
+4679045	5	4	leif	Thu May 02 18:29:00 PDT 2002	1	JFileChooser should make "New Folder" editable under Metal LAF	accepted
+4200535	4	5	aep@sparc.spb.su	Mon Jan 04 16:21:00 PST 1999	1	setCursor on InernalFrame not working b/c of BasicInternalFramUI$BorderListener	evaluated
+4633691	4	5	shannonh	Tue Feb 05 18:13:00 PST 2002	0	unable using arrow keys to navigate between buttons with JOptionPane	accepted
+4188362	4	2	shannonh	Mon Nov 09 00:16:00 PST 1998	0	toggle button radio set has incorrect appearance	accepted
+4751776	4	3	shannonh	Mon Sep 23 14:50:00 PDT 2002	0	javax.swing.Action shoud support displayedMnemonicIndex	accepted
+4194023	4	5	idk	Tue Dec 01 17:06:00 PST 1998	1	JEditorPane presents selection problems when anti-aliasing is turned on	evaluated
+4832979	4	3	shannonh	Fri Mar 14 15:04:00 PST 2003	1	Cursor does not appear in JTable cell editor component when setDragEnabled(true)	accepted
+4803316	4	4	shannonh	Tue Jan 14 18:08:00 PST 2003	1	JRadioButton that uses HTML does not show focus border	evaluated
+4546053	5	5	zpm@sparc.spb.su	Mon Dec 03 16:23:00 PST 2001	0	RFE: Editable JComboBox behaves incorrectly when selecting item from the popup	accepted
+4201045	4	5	leif	Wed Jan 06 11:23:00 PST 1999	5	Swing TitledBorder needs option to prevent "text cropping"	evaluated
+4728896	4	5	idk	Thu Aug 08 18:16:00 PDT 2002	0	some private fields/methods in ImageView should be protected	committed
+4861707	4	4	aep@sparc.spb.su	Fri May 09 00:06:00 PDT 2003	0	JSplitPane prevents focus traversal keys other than default from being used	evaluated
+4386981	4	5	null	Tue Nov 07 18:15:00 PST 2000	3	Box class should implement setAlignmentX/Y()	evaluated
+4330327	4	3	naoto	Thu Apr 13 15:51:00 PDT 2000	2	Caret not shown in composed text using JTextPane components	accepted
+4855207	4	4	idk	Mon Apr 28 16:48:00 PDT 2003	1	Fix for 4250864: Low performance in JTextPane when paragraph has a lot of text	evaluated
+4196518	4	5	zav@sparc.spb.su	Thu Dec 10 11:26:00 PST 1998	2	Windows L&F JInternalFrame menus Disabled system menu items should get focus	evaluated
+4337186	4	4	kyuka	Wed May 10 16:22:00 PDT 2000	6	ComponentOrientation management	evaluated
+4765313	5	5	shannonh	Fri Oct 18 00:17:00 PDT 2002	0	RFE: TableColumn.firePropertyChange methods should be protected.	accepted
+4474364	5	3	leif	Mon Jun 25 17:36:00 PDT 2001	0	Windows Look&Feel in JFileChoser can't do Windows-like file manipulations	evaluated
+4233870	4	3	leif	Wed Apr 28 19:19:00 PDT 1999	2	JFileChooser.getSelectedFile() returns wrong file for Windows L&F	accepted
+4859366	5	5	bchristi	Tue May 06 17:14:00 PDT 2003	0	JFileChooser/WindowsL&F doesn't draw focus rect around deselected file	accepted
+4675772	4	3	sky	Fri Apr 26 15:03:00 PDT 2002	0	UIDefaults too aggressive re. caching of Class instances; gets classloader wrong	accepted
+4822283	4	3	idk	Fri Feb 21 15:18:00 PST 2003	6	RFTReader Bombs on Microsoft Word 2002 RTF files	accepted
+4774963	3	3	kve@sparc.spb.su	Wed Nov 06 15:58:00 PST 2002	0	JColorChooser causes Memory Leak if updateUI called	committed
+4310483	4	4	leif	Mon Feb 07 10:05:00 PST 2000	11	JFileChooser: dbl-click on dir, then on subdir @ same (x,y) fails to open subdir	accepted
+4710329	4	3	zpm@sparc.spb.su	Mon Jul 01 16:39:00 PDT 2002	0	JEditorPane includes "noframes" html as part of text.	evaluated
+4776303	4	4	shannonh	Fri Nov 08 00:49:00 PST 2002	0	Changing JTableHeader after a JTable has been created will not show the header	accepted

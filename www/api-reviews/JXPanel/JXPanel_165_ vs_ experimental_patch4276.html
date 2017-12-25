@@ -1,0 +1,67 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html><head>
+<meta content="text/html; charset=ISO-8859-1" http-equiv="content-type"><title>JXPanel painting 1.6.5 vs. experimental patch</title></head><body>
+<h1>Comparison 1.6.5 vs. patch (+4276)</h1>
+<br>
+The images are screenshots showing the results of running
+JXPanelVisualCheck.interactiveBackgroundAlphaToggleOpaque. In each, we
+have three panels side-by-side, its setup hinted at by the text of the
+titled borders:<br>
+<br>
+<ol>
+  <li>- core JPanel with semi-transparent background color (for comparison)</li>
+  <li>- JXPanel with semi-transparent background color</li>
+  <li>- JXPanel with solid background color and container transparency</li>
+</ol>
+<br>
+The text of the contained label shows the return value of isOpaque.<br>
+<br>
+The screenshots show the visuals after:<br>
+<br>
+<ol>
+  <li>initial (default opaque is true)</li>
+  <li>after toggling opaque off</li>
+  <li>after toggling opaque on again</li>
+  <li>after resizing (to get rid of artefacts)</li>
+</ol>
+Sequence is left-to-right, then down and left to right again.<br>
+<h2>Release 1.6.5</h2>
+<h3>The screenshots (taken for Metal)</h3>
+<br>
+<br>
+<img src="165-inital.png" style="width: 400px; height: 400px;" alt="165-initial"><img src="165-opaque-off.png" style="width: 400px; height: 400px;" alt="165-opaque-off"><br>
+<img src="165-opaque-on-again.png" style="width: 400px; height: 400px;" alt="165-opaque-on-again"><img src="165-opaque-on-again-resized.png" style="width: 403px; height: 400px;" alt="165-opaque-on-again-resized"><br>
+<br>
+<br>
+<h3>The issues</h3>
+<ul>
+  <li>toggling opaque off paints the background color (should not)</li>
+  <li>toggling opaque on again has painting artefacts in core (expected) and x (should be handled) with transparent background </li>
+  <li>after resizing (to get rid of artefacts): the panel with
+container transparency is fully opaque, that is we can't get easily
+back to initial</li>
+</ul>
+<br>
+<h2>Patch</h2>
+<h3>The screenshots</h3>
+<br>
+<img style="width: 400px; height: 400px;" alt="patch-initial" src="patch-initial.png"><img style="width: 400px; height: 400px;" alt="patch-opaque-off" src="patch-opaque-off.png"><br>
+<img style="width: 400px; height: 400px;" alt="patch-opaque-on-again" src="patch-opaque-on-again.png"><img style="width: 410px; height: 400px;" alt="patch-resized" src="patch-opaque-on-again-resized.png"><br>
+<br>
+<h3>The Issues</h3>
+are solved :-) <br>
+<br>
+<ul>
+  <li>the container-transparent panel does not paint the background if opaque off</li>
+  <li>not painting artefacts (in xpanel) when toggling back to opacity</li>
+  <li>container transparency retained</li>
+</ul><br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+
+
+</body></html>

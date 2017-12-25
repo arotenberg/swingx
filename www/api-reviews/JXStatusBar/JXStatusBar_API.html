@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>JXStatusBar_API.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.java-keywords {color: #000099; font-family: Monospaced; font-weight: bold}
+.java-layer-method {font-family: Monospaced; font-weight: bold}
+.java-block-comment {color: #737373}
+.java-annotation {color: #006f00}
+.java-string-literal {color: #99006b}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/Users/richardallenbair/Documents/Source/Projects/nonsense/swingx/src/beaninfo/JXStatusBar_API.java</td></tr></table>
+<pre>
+<span class="java-block-comment">/*</span>
+<span class="java-block-comment"> * $Id: JXStatusBar_API.html 1344 2006-08-22 17:40:35Z rbair $</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * Copyright 2004 Sun Microsystems, Inc., 4150 Network Circle,</span>
+<span class="java-block-comment"> * Santa Clara, California 95054, U.S.A. All rights reserved.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * This library is free software; you can redistribute it and/or</span>
+<span class="java-block-comment"> * modify it under the terms of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License as published by the Free Software Foundation; either</span>
+<span class="java-block-comment"> * version 2.1 of the License, or (at your option) any later version.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * This library is distributed in the hope that it will be useful,</span>
+<span class="java-block-comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="java-block-comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span>
+<span class="java-block-comment"> * Lesser General Public License f</span><span class="java-block-comment">or more details.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * You should have received a copy of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License along with this library; if not, write to the Free Software</span>
+<span class="java-block-comment"> * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</span>
+<span class="java-block-comment"> */</span>
+
+<span class="java-keywords">package</span> org.jdesktop.swingx;
+
+
+<span class="java-keywords">import</span> java.awt.Component;
+<span class="java-keywords">import</span> java.awt.Container;
+<span class="java-keywords">import</span> java.awt.Dimension;
+<span class="java-keywords">import</span> java.awt.Insets;
+<span class="java-keywords">import</span> java.awt.LayoutManager2;
+<span class="java-keywords">import</span> java.util.HashMap;
+<span class="java-keywords">import</span> java.util.Map;
+<span class="java-keywords">import</span> javax.swing.JSeparator;
+<span class="java-keywords">import</span> javax.swing.SwingConstants;
+<span class="java-keywords">import</span> org.jdesktop.swingx.plaf.JXStatusBarAddon;
+<span class="java-keywords">import</span> org.jdesktop.swingx.plaf.LookAndFeelAddons;
+<span class="java-keywords">import</span> org.jdesktop.swingx.plaf.StatusBarUI;
+
+<span class="java-block-comment">/**</span>
+<span class="java-block-comment"> * &lt;p&gt;A container for {@link javax.swing.JComponent}s that is typically placed at</span>
+<span class="java-block-comment"> * the bottom of a form and runs the entire width of the form. There are 3</span>
+<span class="java-block-comment"> * important functions that &lt;code&gt;JXStatusBar&lt;/code&gt; provides.</span>
+<span class="java-block-comment"> * First, &lt;code&gt;JXStatusBar&lt;/code&gt; provides a hook for a pluggable look.</span>
+<span class="java-block-comment"> * There is a definite look associated with status bars on windows, for instance.</span>
+<span class="java-block-comment"> * By implementing a subclass of {@link JComponent}, we provide a way for the</span>
+<span class="java-block-comment"> * pluggable look and feel system to modify the look of the status bar.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;Second, &lt;code&gt;JXStatusBar&lt;/code&gt; comes with its own layout manager. Each item is added to</span>
+<span class="java-block-comment"> * the &lt;code&gt;JXStatusBar&lt;/code&gt; with a &lt;code&gt;JXStatusBar.Constraint&lt;/code&gt;</span>
+<span class="java-block-comment"> * as the constraint argument. The &lt;code&gt;JXStatusBar.Constraint&lt;/code&gt; contains </span>
+<span class="java-block-comment"> * an &lt;code&gt;Insets&lt;/code&gt; object, as well as a &quot;weight&quot;. The weight</span>
+<span class="java-block-comment"> * is used the same as the &lt;code&gt;GridBagLayout&lt;/code&gt;. All the weights of each</span>
+<span class="java-block-comment"> * constraint is added together to form a total weight. Each individual weight then</span>
+<span class="java-block-comment"> * is used as a percentage of the whole. For example:</span>
+<span class="java-block-comment"> * &lt;pre&gt;&lt;code&gt;</span>
+<span class="java-block-comment"> *  //a will get 30% of the free space because .3 + .3 + .4 = 1.0 and 1.0 * .3 = 30%</span>
+<span class="java-block-comment"> *  bar.add(a, new JXStatusBar.Constraints(.3));</span>
+<span class="java-block-comment"> *  //b will get 30% of the free space because .3 + .3 + .4 = 1.0 and 1.0 * .3 = 30%</span>
+<span class="java-block-comment"> *  bar.add(b, new JXStatusBar.Constraints(.3));</span>
+<span class="java-block-comment"> *  //c will get 40% of the free space because .3 + .3 + .4 = 1.0 and 1.0 * .4 = 40%</span>
+<span class="java-block-comment"> *  bar.add(c, new JXStatusBar.Constraints(.4));</span>
+<span class="java-block-comment"> * &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;Constructing a &lt;code&gt;JXStatusBar&lt;/code&gt; is very straitforward:</span>
+<span class="java-block-comment"> * &lt;pre&gt;&lt;code&gt;</span>
+<span class="java-block-comment"> *      JXStatusBar bar = new JXStatusBar();</span>
+<span class="java-block-comment"> *      JLabel statusLabel = new JLabel(&quot;Ready&quot;);</span>
+<span class="java-block-comment"> *      bar.add(statusLabel, new JXStatusBar.Constraints(1.0); //weight of 0.0 and no insets</span>
+<span class="java-block-comment"> *      JProgressBar pbar = new JProgressBar();</span>
+<span class="java-block-comment"> *      bar.add(pbar); //weight of 0.0 and no insets</span>
+<span class="java-block-comment"> * &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;Two common use cases for status bars include tracking application status and</span>
+<span class="java-block-comment"> * progress. &lt;code&gt;JXStatusBar&lt;/code&gt; does not manage these tasks, but instead special components</span>
+<span class="java-block-comment"> * exist or can be created that do manage these tasks. For example, if your application</span>
+<span class="java-block-comment"> * has a TaskManager or some other repository of currently running jobs, you could</span>
+<span class="java-block-comment"> * easily create a TaskManagerProgressBar that tracks those jobs. This component</span>
+<span class="java-block-comment"> * could then be added to the &lt;code&gt;JXStatusBar&lt;/code&gt; like any other component.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * @author pdoubleya</span>
+<span class="java-block-comment"> * @author rbair</span>
+<span class="java-block-comment"> */</span>
+<span class="java-keywords">public</span> <span class="java-keywords">class</span> JXStatusBar_API <span class="java-keywords">extends</span> JXPanel {
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * @see #getUIClassID</span>
+<span class="java-block-comment">     * @see #readObject</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">final</span> String uiClassID = <span class="java-string-literal">&quot;StatusBarUI&quot;</span>;
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Creates a new JXStatusBar</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">JXStatusBar</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Returns the look and feel (L&amp;F) object that renders this component.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @return the StatusBarUI object that renders this component</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-annotation">@</span>Override
+    <span class="java-keywords">public</span> StatusBarUI <span class="java-layer-method">getUI</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Sets the look and feel (L&amp;F) object that renders this component.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param ui</span>
+<span class="java-block-comment">     *            the StatusBarUI L&amp;F object</span>
+<span class="java-block-comment">     * @see javax.swing.UIDefaults#getUI</span>
+<span class="java-block-comment">     * @beaninfo bound: true hidden: true attribute: visualUpdate true</span>
+<span class="java-block-comment">     *           description: The UI object that implements the Component&apos;s</span>
+<span class="java-block-comment">     *           LookAndFeel.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setUI</span>(StatusBarUI ui);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Returns a string that specifies the name of the L&amp;F class that renders</span>
+<span class="java-block-comment">     * this component.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @return &quot;StatusBarUI&quot;</span>
+<span class="java-block-comment">     * @see javax.swing.JComponent#getUIClassID</span>
+<span class="java-block-comment">     * @see javax.swing.UIDefaults#getUI</span>
+<span class="java-block-comment">     * @beaninfo expert: true description: A string that specifies the name of</span>
+<span class="java-block-comment">     *           the L&amp;F class.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-annotation">@</span>Override
+    <span class="java-keywords">public</span> String <span class="java-layer-method">getUIClassID</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Notification from the &lt;code&gt;UIManager&lt;/code&gt; that the L&amp;F has changed.</span>
+<span class="java-block-comment">     * Replaces the current UI object with the latest version from the</span>
+<span class="java-block-comment">     * &lt;code&gt;UIManager&lt;/code&gt;.</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @see javax.swing.JComponent#updateUI</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-annotation">@</span>Override
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">updateUI</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Adds a {@link JSeparator} component. The component will be configured</span>
+<span class="java-block-comment">     * properly based on the look and feel.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">addSeparator</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * The constraint object to be used with the &lt;code&gt;JXStatusBar&lt;/code&gt;. It takes</span>
+<span class="java-block-comment">     * both a weight and Insets. @see JXStatusBar class documentation.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">class</span> Constraint {
+        <span class="java-block-comment">/**</span>
+<span class="java-block-comment">         * Creates a new Constraint with no weight and no insets.</span>
+<span class="java-block-comment">         */</span>
+        <span class="java-keywords">public</span> <span class="java-layer-method">Constraint</span>();
+        
+        <span class="java-block-comment">/**</span>
+<span class="java-block-comment">         * Creates a new Constraint with no weight and the given insets</span>
+<span class="java-block-comment">         * </span>
+<span class="java-block-comment">         * @param insets may be null. If null, an Insets with 0 values will be used.</span>
+<span class="java-block-comment">         */</span>
+        <span class="java-keywords">public</span> <span class="java-layer-method">Constraint</span>(Insets insets);
+        
+        <span class="java-block-comment">/**</span>
+<span class="java-block-comment">         * Creats a new Constraint with the given weight and no insets</span>
+<span class="java-block-comment">         * </span>
+<span class="java-block-comment">         * @param weight must be &gt;= 0</span>
+<span class="java-block-comment">         */</span>
+        <span class="java-keywords">public</span> <span class="java-layer-method">Constraint</span>(<span class="java-keywords">double</span> weight);
+        
+        <span class="java-block-comment">/**</span>
+<span class="java-block-comment">         * Creates a new Constraint with the specified weight and insets.</span>
+<span class="java-block-comment">         * </span>
+<span class="java-block-comment">         * @param weight must be &gt;= 0</span>
+<span class="java-block-comment">         * @param insets may be null. If null, an Insets with 0 values will be used.</span>
+<span class="java-block-comment">         */</span>
+        <span class="java-keywords">public</span> <span class="java-layer-method">Constraint</span>(<span class="java-keywords">double</span> weight, Insets insets);
+        
+        <span class="java-block-comment">/**</span>
+<span class="java-block-comment">         * Returns the weight.</span>
+<span class="java-block-comment">         * </span>
+<span class="java-block-comment">         * @return weight</span>
+<span class="java-block-comment">         */</span>
+        <span class="java-keywords">public</span> <span class="java-keywords">double</span> <span class="java-layer-method">getWeight</span>();
+        
+        <span class="java-block-comment">/**</span>
+<span class="java-block-comment">         * Returns the insets.</span>
+<span class="java-block-comment">         * </span>
+<span class="java-block-comment">         * @return insets</span>
+<span class="java-block-comment">         */</span>
+        <span class="java-keywords">public</span> Insets <span class="java-layer-method">getInsets</span>();
+    }
+}
+
+</pre></body>
+</html>

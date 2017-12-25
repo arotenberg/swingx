@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>EmailErrorReporter_API.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.java-keywords {color: #000099; font-family: Monospaced; font-weight: bold}
+.java-block-comment {color: #737373}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/Users/richardallenbair/Documents/Source/Projects/nonsense/swingx/src/beaninfo/EmailErrorReporter_API.java</td></tr></table>
+<pre>
+<span class="java-block-comment">/*</span>
+<span class="java-block-comment"> * $Id: EmailErrorReporter_API.html 1362 2006-08-24 20:06:25Z rbair $</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * Copyright 2004 Sun Microsystems, Inc., 4150 Network Circle,</span>
+<span class="java-block-comment"> * Santa Clara, California 95054, U.S.A. All rights reserved.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * This library is free software; you can redistribute it and/or</span>
+<span class="java-block-comment"> * modify it under the terms of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License as published by the Free Software Foundation; either</span>
+<span class="java-block-comment"> * version 2.1 of the License, or (at your option) any later version.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * This library is distributed in the hope that it will be useful,</span>
+<span class="java-block-comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="java-block-comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span>
+<span class="java-block-comment"> * Lesser General Public License for more details.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * You should have received a copy of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License along with this library; if not, write to the Free Software</span>
+<span class="java-block-comment"> * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</span>
+<span class="java-block-comment"> */</span>
+
+<span class="java-keywords">package</span> org.jdesktop.swingx.error;
+
+<span class="java-keywords">import</span> com.sun.mail.smtp.SMTPMessage;
+<span class="java-keywords">import</span> java.io.PrintWriter;
+<span class="java-keywords">import</span> java.io.StringWriter;
+<span class="java-keywords">import</span> java.util.Date;
+<span class="java-keywords">import</span> java.util.Properties;
+<span class="java-keywords">import</span> java.util.logging.Level;
+<span class="java-keywords">import</span> java.util.logging.Logger;
+<span class="java-keywords">import</span> javax.mail.Message;
+<span class="java-keywords">import</span> javax.mail.Multipart;
+<span class="java-keywords">import</span> javax.mail.Session;
+<span class="java-keywords">import</span> javax.mail.Transport;
+<span class="java-keywords">import</span> javax.mail.internet.InternetAddress;
+<span class="java-keywords">import</span> javax.mail.internet.MimeBodyPart;
+<span class="java-keywords">import</span> javax.mail.internet.MimeMultipart;
+<span class="java-keywords">import</span> org.jdesktop.swingx.*;
+<span class="java-keywords">import</span> org.jdesktop.swingx.util.SwingWorker;
+
+
+<span class="java-block-comment">/**</span>
+<span class="java-block-comment"> * &lt;p&gt;An {@link ErrorReporter} that reports application errors using SMTP.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;em&gt;This class requires the optional mail.jar and activation.jar libraries&lt;/em&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * @author Alexander Zuev</span>
+<span class="java-block-comment"> * @author rbair</span>
+<span class="java-block-comment"> * @version 1.1</span>
+<span class="java-block-comment"> */</span>
+<span class="java-keywords">public</span> <span class="java-keywords">class</span> EmailErrorReporter <span class="java-keywords">extends</span> JavaBean <span class="java-keywords">implements</span> ErrorReporter {
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Creates a new &lt;code&gt;EmailErrorReporter&lt;/code&gt;.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> EmailErrorReporter();
+    
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> setToAddresses(String... addresses);
+    <span class="java-keywords">public</span> String[] getToAddresses();
+    
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> setCcAddresses(String... addresses);
+    <span class="java-keywords">public</span> String[] getCcAddresses();
+
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> setBccAddresses(String... addresses);
+    <span class="java-keywords">public</span> String[] getBccAddresses();
+    
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> setAttachments(Object... attachments);
+    <span class="java-keywords">public</span> Object[] getAttachments();
+    
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> setSubject(String subject);
+    <span class="java-keywords">public</span> String getSubject();
+    
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> setBody(String body);
+    <span class="java-keywords">public</span> String getBody();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * @inheritDoc</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> reportError(ErrorInfo info);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Compose and send message</span>
+<span class="java-block-comment">     * @param info</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">protected</span> <span class="java-keywords">void</span> sendMessage(ErrorInfo info);
+}
+
+</pre></body>
+</html>

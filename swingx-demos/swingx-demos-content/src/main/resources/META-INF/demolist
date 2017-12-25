@@ -1,0 +1,77 @@
+# Intro
+org.jdesktop.swingxset.IntroPanelDemo
+
+# functionality
+org.jdesktop.swingx.demos.search.SearchDemo
+org.jdesktop.swingx.demos.autocomplete.AutoCompleteDemo
+org.jdesktop.swingx.demos.highlighter.HighlighterDemo
+org.jdesktop.swingx.demos.highlighterext.HighlighterExtDemo
+org.jdesktop.swingx.demos.prompt.PromptSupportDemo
+#org.jdesktop.swingx.demos.decorator.DecoratorDemo
+
+#Data
+org.jdesktop.swingx.demos.table.XTableDemo
+org.jdesktop.swingx.demos.xlist.XListDemo
+org.jdesktop.swingx.demos.tree.XTreeDemo
+# temporarily removed - broken, see Issue #22-demos
+org.jdesktop.swingx.demos.treetable.TreeTableDemo
+
+#Top-Level Containers
+#com.sun.swingset3.demos.dialog.DialogDemo
+#org.jdesktop.swingx.demos.xdialog.XDialogDemo
+#com.sun.swingset3.demos.frame.FrameDemo
+#org.jdesktop.swingx.demos.xframe.XFrameDemo
+
+#Containers
+org.jdesktop.swingx.demos.collapsiblepane.CollapsiblePaneDemo
+org.jdesktop.swingx.demos.taskpane.TaskPaneDemo
+org.jdesktop.swingx.demos.multisplitpane.MultiSplitPaneDemo
+org.jdesktop.swingx.demos.xpanel.XPanelDemo
+org.jdesktop.swingx.demos.tipoftheday.TipOfTheDayDemo
+org.jdesktop.swingx.demos.titledpanel.TitledPanelDemo
+
+
+#Controls
+org.jdesktop.swingx.demos.errorpane.ErrorPaneDemo
+org.jdesktop.swingx.demos.loginpane.LoginPaneDemo
+org.jdesktop.swingx.demos.hyperlink.HyperlinkDemo
+org.jdesktop.swingx.demos.datepicker.DatePickerDemo
+org.jdesktop.swingx.demos.monthview.MonthViewDemo
+org.jdesktop.swingx.demos.monthviewext.MonthViewExtDemo
+#org.jdesktop.swingx.demos.xbutton.XButtonDemo
+org.jdesktop.swingx.demos.xlabel.XLabelDemo
+org.jdesktop.swingx.demos.imagepanel.ImagePanelDemo
+org.jdesktop.swingx.demos.imageview.ImageViewDemo
+#org.jdesktop.swingx.demos.multithumbslider.MultiThumbSliderDemo
+#org.jdesktop.swingx.demos.radiogroup.RadioGroupDemo
+
+#Text
+org.jdesktop.swingx.demos.xeditorpane.XEditorPaneDemo
+
+
+# Visual Decorations
+org.jdesktop.swingx.demos.busylabel.BusyLabelDemo
+org.jdesktop.swingx.demos.titledseparator.TitledSeparatorDemo
+org.jdesktop.swingx.demos.painter.PainterDemo
+
+# Graphics
+org.jdesktop.swingx.demos.blendcomposite.BlendCompositeDemo
+
+#Choosers
+org.jdesktop.swingx.demos.gradientchooser.GradientChooserDemo
+
+# Visualization (PENDING: unmaintained ..)
+org.jdesktop.swingx.demos.graph.GraphDemo
+
+#UNIMPLEMENTED SwingX Components (with comments)
+#this component is of debatable quality
+#org.jdesktop.swingx.demos.colorselectionbutton.ColorSelectionButtonDemo
+
+#should these find components be done together? in a search section?
+#org.jdesktop.swingx.demos.findbar.FindBarDemo
+#org.jdesktop.swingx.demos.findpanel.FindPanelDemo
+#org.jdesktop.swingx.demos.searchpanel.SearchPanelDemo
+
+#todo
+#org.jdesktop.swingx.demos.header.HeaderDemo
+

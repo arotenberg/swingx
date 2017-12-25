@@ -1,0 +1,231 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>JXColorSelectionButton.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.java-numeric-literals {color: #780000}
+.java-keywords {color: #000099; font-family: Monospaced; font-weight: bold}
+.java-layer-method {font-family: Monospaced; font-weight: bold}
+.java-block-comment {color: #737373}
+.line-number {background-color: #e9e8e2}
+.java-string-literal {color: #99006b}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/Users/joshy/projects/current/swingx/src/java/org/jdesktop/swingx/JXColorSelectionButton.java</td></tr></table>
+<pre>
+<span class="line-number">  1</span> <span class="java-block-comment">/*</span>
+<span class="line-number">  2</span> <span class="java-block-comment"> * $Id: JXColorSelectionButton.html 1460 2006-10-09 20:51:39Z joshy $</span>
+<span class="line-number">  3</span> <span class="java-block-comment"> *</span>
+<span class="line-number">  4</span> <span class="java-block-comment"> * Copyright 2006 Sun Microsystems, Inc., 4150 Network Circle,</span>
+<span class="line-number">  5</span> <span class="java-block-comment"> * Santa Clara, California 95054, U.S.A. All rights reserved.</span>
+<span class="line-number">  6</span> <span class="java-block-comment"> *</span>
+<span class="line-number">  7</span> <span class="java-block-comment"> * This library is free software; you can redistribute it and/or</span>
+<span class="line-number">  8</span> <span class="java-block-comment"> * modify it under the terms of the GNU Lesser General Public</span>
+<span class="line-number">  9</span> <span class="java-block-comment"> * License as published by the Free Software Foundation; either</span>
+<span class="line-number"> 10</span> <span class="java-block-comment"> * version 2.1 of the License, or (at your option) any later version.</span>
+<span class="line-number"> 11</span> <span class="java-block-comment"> *</span>
+<span class="line-number"> 12</span> <span class="java-block-comment"> * This library is distributed in the hope that it will be useful,</span>
+<span class="line-number"> 13</span> <span class="java-block-comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="line-number"> 14</span> <span class="java-block-comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span>
+<span class="line-number"> 15</span> <span class="java-block-comment"> * Lesser General Public License for more details.</span>
+<span class="line-number"> 16</span> <span class="java-block-comment"> *</span>
+<span class="line-number"> 17</span> <span class="java-block-comment"> * You should have received a copy of the GNU Lesser General Public</span>
+<span class="line-number"> 18</span> <span class="java-block-comment"> * License along with this library; if not, write to the Free Software</span>
+<span class="line-number"> 19</span> <span class="java-block-comment"> * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</span>
+<span class="line-number"> 20</span> <span class="java-block-comment"> */</span>
+<span class="line-number"> 21</span> 
+<span class="line-number"> 22</span> <span class="java-keywords">package</span> org.jdesktop.swingx;
+<span class="line-number"> 23</span> 
+<span class="line-number"> 24</span> <span class="java-keywords">import</span> java.awt.Color;
+<span class="line-number"> 25</span> <span class="java-keywords">import</span> java.awt.Graphics;
+<span class="line-number"> 26</span> <span class="java-keywords">import</span> java.awt.Insets;
+<span class="line-number"> 27</span> <span class="java-keywords">import</span> java.awt.event.ActionEvent;
+<span class="line-number"> 28</span> <span class="java-keywords">import</span> java.awt.event.ActionListener;
+<span class="line-number"> 29</span> <span class="java-keywords">import</span> java.awt.image.BufferedImage;
+<span class="line-number"> 30</span> <span class="java-keywords">import</span> javax.imageio.ImageIO;
+<span class="line-number"> 31</span> <span class="java-keywords">import</span> javax.swing.JButton;
+<span class="line-number"> 32</span> <span class="java-keywords">import</span> javax.swing.JColorChooser;
+<span class="line-number"> 33</span> <span class="java-keywords">import</span> javax.swing.JComponent;
+<span class="line-number"> 34</span> <span class="java-keywords">import</span> javax.swing.JDialog;
+<span class="line-number"> 35</span> <span class="java-keywords">import</span> javax.swing.JFrame;
+<span class="line-number"> 36</span> <span class="java-keywords">import</span> javax.swing.JLabel;
+<span class="line-number"> 37</span> <span class="java-keywords">import</span> javax.swing.JPanel;
+<span class="line-number"> 38</span> <span class="java-keywords">import</span> javax.swing.event.ChangeEvent;
+<span class="line-number"> 39</span> <span class="java-keywords">import</span> javax.swing.event.ChangeListener;
+<span class="line-number"> 40</span> <span class="java-keywords">import</span> org.jdesktop.swingx.color.*;
+<span class="line-number"> 41</span> 
+<span class="line-number"> 42</span> <span class="java-block-comment">/**</span>
+<span class="line-number"> 43</span> <span class="java-block-comment"> * A button which allows the user to select a single color. The button has a platform</span>
+<span class="line-number"> 44</span> <span class="java-block-comment"> * specific look. Ex: on Mac OS X it will mimic an NSColorWell. When the user</span>
+<span class="line-number"> 45</span> <span class="java-block-comment"> * clicks the button it will open a color chooser set to the current background</span>
+<span class="line-number"> 46</span> <span class="java-block-comment"> * color of the button. The new selected color will be stored in the background</span>
+<span class="line-number"> 47</span> <span class="java-block-comment"> * property and can be retrieved using the getBackground() method. As the user is</span>
+<span class="line-number"> 48</span> <span class="java-block-comment"> * choosing colors within the color chooser the background property will be updated.</span>
+<span class="line-number"> 49</span> <span class="java-block-comment"> * By listening to this property developers can make other parts of their programs</span>
+<span class="line-number"> 50</span> <span class="java-block-comment"> * update.</span>
+<span class="line-number"> 51</span> <span class="java-block-comment"> *</span>
+<span class="line-number"> 52</span> <span class="java-block-comment"> * @author joshua@marinacci.org</span>
+<span class="line-number"> 53</span> <span class="java-block-comment"> */</span>
+<span class="line-number"> 54</span> <span class="java-keywords">public</span> <span class="java-keywords">class</span> JXColorSelectionButton <span class="java-keywords">extends</span> JButton {
+<span class="line-number"> 55</span>     <span class="java-keywords">private</span> BufferedImage colorwell;
+<span class="line-number"> 56</span>     <span class="java-keywords">private</span> JDialog dialog = <span class="java-keywords">null</span>;
+<span class="line-number"> 57</span>     <span class="java-keywords">private</span> JColorChooser chooser = <span class="java-keywords">null</span>;
+<span class="line-number"> 58</span>     
+<span class="line-number"> 59</span>     <span class="java-block-comment">/**</span>
+<span class="line-number"> 60</span> <span class="java-block-comment">     * Creates a new instance of JXColorSelectionButton</span>
+<span class="line-number"> 61</span> <span class="java-block-comment">     */</span>
+<span class="line-number"> 62</span>     <span class="java-keywords">public</span> <span class="java-layer-method">JXColorSelectionButton</span>() {
+<span class="line-number"> 63</span>         <span class="java-keywords">this</span>(Color.red);
+<span class="line-number"> 64</span>     }
+<span class="line-number"> 65</span>     
+<span class="line-number"> 66</span>     <span class="java-block-comment">/**</span>
+<span class="line-number"> 67</span> <span class="java-block-comment">     * Creates a new instance of JXColorSelectionButton set to the specified color.</span>
+<span class="line-number"> 68</span> <span class="java-block-comment">     * @param col The default color</span>
+<span class="line-number"> 69</span> <span class="java-block-comment">     */</span>
+<span class="line-number"> 70</span>     <span class="java-keywords">public</span> <span class="java-layer-method">JXColorSelectionButton</span>(Color col) {
+<span class="line-number"> 71</span>         <span class="java-layer-method">setBackground</span>(col);
+<span class="line-number"> 72</span>         <span class="java-keywords">this</span>.<span class="java-layer-method">addActionListener</span>(<span class="java-keywords">new</span> <span class="java-layer-method">ActionHandler</span>());
+<span class="line-number"> 73</span>         <span class="java-keywords">this</span>.<span class="java-layer-method">setContentAreaFilled</span>(<span class="java-keywords">false</span>);
+<span class="line-number"> 74</span>         <span class="java-keywords">this</span>.<span class="java-layer-method">setOpaque</span>(<span class="java-keywords">false</span>);
+<span class="line-number"> 75</span>         
+<span class="line-number"> 76</span>         <span class="java-keywords">try</span> {
+<span class="line-number"> 77</span>             colorwell = ImageIO.<span class="java-layer-method">read</span>(<span class="java-keywords">this</span>.<span class="java-layer-method">getClass</span>().<span class="java-layer-method">getResourceAsStream</span>(<span class="java-string-literal">&quot;/org/jdesktop/swingx/color/colorwell.png&quot;</span>));
+<span class="line-number"> 78</span>         } <span class="java-keywords">catch</span> (Exception ex) {
+<span class="line-number"> 79</span>             ex.<span class="java-layer-method">printStackTrace</span>();
+<span class="line-number"> 80</span>         }
+<span class="line-number"> 81</span>     }
+<span class="line-number"> 82</span>     
+<span class="line-number"> 83</span>     
+<span class="line-number"> 84</span>     <span class="java-block-comment">/**</span>
+<span class="line-number"> 85</span> <span class="java-block-comment">     * A listener class to update the button&apos;s background when the selected</span>
+<span class="line-number"> 86</span> <span class="java-block-comment">     * color changes.</span>
+<span class="line-number"> 87</span> <span class="java-block-comment">     */</span>
+<span class="line-number"> 88</span>     <span class="java-keywords">private</span> <span class="java-keywords">class</span> ColorChangeListener <span class="java-keywords">implements</span> ChangeListener {
+<span class="line-number"> 89</span>         <span class="java-keywords">public</span> JXColorSelectionButton button;
+<span class="line-number"> 90</span>         <span class="java-keywords">public</span> <span class="java-layer-method">ColorChangeListener</span>(JXColorSelectionButton button) {
+<span class="line-number"> 91</span>             <span class="java-keywords">this</span>.button = button;
+<span class="line-number"> 92</span>         }
+<span class="line-number"> 93</span>         <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">stateChanged</span>(ChangeEvent changeEvent) {
+<span class="line-number"> 94</span>             button.<span class="java-layer-method">setBackground</span>(button.<span class="java-layer-method">getChooser</span>().<span class="java-layer-method">getColor</span>());
+<span class="line-number"> 95</span>         }
+<span class="line-number"> 96</span>     }
+<span class="line-number"> 97</span>     
+<span class="line-number"> 98</span>     <span class="java-block-comment">/**</span>
+<span class="line-number"> 99</span> <span class="java-block-comment">     * {@inheritDoc}</span>
+<span class="line-number">100</span> <span class="java-block-comment">     */</span>
+<span class="line-number">101</span>     <span class="java-keywords">protected</span> <span class="java-keywords">void</span> <span class="java-layer-method">paintComponent</span>(Graphics g) {
+<span class="line-number">102</span>         <span class="java-block-comment">// draw the colorwell image (should only be on OSX)</span>
+<span class="line-number">103</span>         Insets ins = <span class="java-keywords">new</span> <span class="java-layer-method">Insets</span>(<span class="java-numeric-literals">5</span>,<span class="java-numeric-literals">5</span>,<span class="java-numeric-literals">5</span>,<span class="java-numeric-literals">5</span>);
+<span class="line-number">104</span>         <span class="java-keywords">if</span>(colorwell != <span class="java-keywords">null</span>) {
+<span class="line-number">105</span>             ColorUtil.<span class="java-layer-method">tileStretchPaint</span>(g, <span class="java-keywords">this</span>, colorwell, ins);
+<span class="line-number">106</span>         }
+<span class="line-number">107</span>         
+<span class="line-number">108</span>         <span class="java-block-comment">// fill in the color area</span>
+<span class="line-number">109</span>         g.<span class="java-layer-method">setColor</span>(ColorUtil.<span class="java-layer-method">removeAlpha</span>(<span class="java-layer-method">getBackground</span>()));
+<span class="line-number">110</span>         g.<span class="java-layer-method">fillRect</span>(ins.left, ins.top,
+<span class="line-number">111</span>                 <span class="java-layer-method">getWidth</span>()  - ins.left - ins.right,
+<span class="line-number">112</span>                 <span class="java-layer-method">getHeight</span>() - ins.top - ins.bottom);
+<span class="line-number">113</span>         <span class="java-block-comment">// draw the borders</span>
+<span class="line-number">114</span>         g.<span class="java-layer-method">setColor</span>(ColorUtil.<span class="java-layer-method">setBrightness</span>(<span class="java-layer-method">getBackground</span>(),<span class="java-numeric-literals">0.85f</span>));
+<span class="line-number">115</span>         g.<span class="java-layer-method">drawRect</span>(ins.left, ins.top,
+<span class="line-number">116</span>                 <span class="java-layer-method">getWidth</span>() - ins.left - ins.right - <span class="java-numeric-literals">1</span>,
+<span class="line-number">117</span>                 <span class="java-layer-method">getHeight</span>() - ins.top - ins.bottom - <span class="java-numeric-literals">1</span>);
+<span class="line-number">118</span>         g.<span class="java-layer-method">drawRect</span>(ins.left + <span class="java-numeric-literals">1</span>, ins.top + <span class="java-numeric-literals">1</span>,
+<span class="line-number">119</span>                 <span class="java-layer-method">getWidth</span>() - ins.left - ins.right - <span class="java-numeric-literals">3</span>,
+<span class="line-number">120</span>                 <span class="java-layer-method">getHeight</span>() - ins.top - ins.bottom - <span class="java-numeric-literals">3</span>);
+<span class="line-number">121</span>     }
+<span class="line-number">122</span>     
+<span class="line-number">123</span>     
+<span class="line-number">124</span>     <span class="java-block-comment">/**</span>
+<span class="line-number">125</span> <span class="java-block-comment">     * Sample usage of JXColorSelectionButton</span>
+<span class="line-number">126</span> <span class="java-block-comment">     * @param args not used</span>
+<span class="line-number">127</span> <span class="java-block-comment">     */</span>
+<span class="line-number">128</span>     <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">void</span> <span class="java-layer-method">main</span>(String[] args) {
+<span class="line-number">129</span>         JFrame frame = <span class="java-keywords">new</span> <span class="java-layer-method">JFrame</span>(<span class="java-string-literal">&quot;Color Button Test&quot;</span>);
+<span class="line-number">130</span>         frame.<span class="java-layer-method">setDefaultCloseOperation</span>(JFrame.EXIT_ON_CLOSE);
+<span class="line-number">131</span>         JPanel panel = <span class="java-keywords">new</span> <span class="java-layer-method">JPanel</span>();
+<span class="line-number">132</span>         panel.<span class="java-layer-method">add</span>(<span class="java-keywords">new</span> <span class="java-layer-method">JXColorSelectionButton</span>());
+<span class="line-number">133</span>         panel.<span class="java-layer-method">add</span>(<span class="java-keywords">new</span> <span class="java-layer-method">JLabel</span>(<span class="java-string-literal">&quot;ColorSelectionButton test&quot;</span>));
+<span class="line-number">134</span>         
+<span class="line-number">135</span>         frame.<span class="java-layer-method">add</span>(panel);
+<span class="line-number">136</span>         frame.<span class="java-layer-method">pack</span>();
+<span class="line-number">137</span>         frame.<span class="java-layer-method">setVisible</span>(<span class="java-keywords">true</span>);
+<span class="line-number">138</span>     }
+<span class="line-number">139</span>     
+<span class="line-number">140</span>     <span class="java-block-comment">/**</span>
+<span class="line-number">141</span> <span class="java-block-comment">     * Conditionally create and show the color chooser dialog.</span>
+<span class="line-number">142</span> <span class="java-block-comment">     */</span>
+<span class="line-number">143</span>     <span class="java-keywords">private</span> <span class="java-keywords">void</span> <span class="java-layer-method">showDialog</span>() {
+<span class="line-number">144</span>         <span class="java-keywords">if</span> (dialog == <span class="java-keywords">null</span>) {
+<span class="line-number">145</span>             dialog = JColorChooser.<span class="java-layer-method">createDialog</span>(JXColorSelectionButton.<span class="java-keywords">this</span>,
+<span class="line-number">146</span>                     <span class="java-string-literal">&quot;Choose a color&quot;</span>, <span class="java-keywords">true</span>, <span class="java-layer-method">getChooser</span>(),
+<span class="line-number">147</span>                     <span class="java-keywords">new</span> <span class="java-layer-method">ActionListener</span>() {
+<span class="line-number">148</span>                         <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">actionPerformed</span>(ActionEvent actionEvent) {
+<span class="line-number">149</span>                         }
+<span class="line-number">150</span>                     },
+<span class="line-number">151</span>                     <span class="java-keywords">new</span> <span class="java-layer-method">ActionListener</span>() {
+<span class="line-number">152</span>                         <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">actionPerformed</span>(ActionEvent actionEvent) {
+<span class="line-number">153</span>                     }
+<span class="line-number">154</span>                 });
+<span class="line-number">155</span>             dialog.<span class="java-layer-method">getContentPane</span>().<span class="java-layer-method">add</span>(<span class="java-layer-method">getChooser</span>());
+<span class="line-number">156</span>             <span class="java-layer-method">getChooser</span>().<span class="java-layer-method">getSelectionModel</span>().<span class="java-layer-method">addChangeListener</span>(
+<span class="line-number">157</span>                     <span class="java-keywords">new</span> <span class="java-layer-method">ColorChangeListener</span>(JXColorSelectionButton.<span class="java-keywords">this</span>));
+<span class="line-number">158</span>         }
+<span class="line-number">159</span>         dialog.<span class="java-layer-method">setVisible</span>(<span class="java-keywords">true</span>);
+<span class="line-number">160</span>         Color color = <span class="java-layer-method">getChooser</span>().<span class="java-layer-method">getColor</span>();
+<span class="line-number">161</span>         <span class="java-keywords">if</span> (color != <span class="java-keywords">null</span>) {
+<span class="line-number">162</span>             <span class="java-layer-method">setBackground</span>(color);
+<span class="line-number">163</span>         }
+<span class="line-number">164</span>     }
+<span class="line-number">165</span>     
+<span class="line-number">166</span>     <span class="java-block-comment">/**</span>
+<span class="line-number">167</span> <span class="java-block-comment">     * Get the JColorChooser that is used by this JXColorSelectionButton. This</span>
+<span class="line-number">168</span> <span class="java-block-comment">     * chooser instance is shared between all invocations of the chooser, but is unique to</span>
+<span class="line-number">169</span> <span class="java-block-comment">     * this instance of JXColorSelectionButton.</span>
+<span class="line-number">170</span> <span class="java-block-comment">     * @return the JColorChooser used by this JXColorSelectionButton</span>
+<span class="line-number">171</span> <span class="java-block-comment">     */</span>
+<span class="line-number">172</span>     <span class="java-keywords">public</span> JColorChooser <span class="java-layer-method">getChooser</span>() {
+<span class="line-number">173</span>         <span class="java-keywords">if</span>(chooser == <span class="java-keywords">null</span>) {
+<span class="line-number">174</span>             chooser = <span class="java-keywords">new</span> <span class="java-layer-method">JColorChooser</span>();
+<span class="line-number">175</span>             <span class="java-block-comment">// add the eyedropper color chooser panel</span>
+<span class="line-number">176</span>             chooser.<span class="java-layer-method">addChooserPanel</span>(<span class="java-keywords">new</span> <span class="java-layer-method">EyeDropperColorChooserPanel</span>());
+<span class="line-number">177</span>         }
+<span class="line-number">178</span>         <span class="java-keywords">return</span> chooser;
+<span class="line-number">179</span>     }
+<span class="line-number">180</span>     
+<span class="line-number">181</span>     <span class="java-block-comment">/**</span>
+<span class="line-number">182</span> <span class="java-block-comment">     * Set the JColorChooser that is used by this JXColorSelectionButton.</span>
+<span class="line-number">183</span> <span class="java-block-comment">     * chooser instance is shared between all invocations of the chooser,</span>
+<span class="line-number">184</span> <span class="java-block-comment">     * but is unique to</span>
+<span class="line-number">185</span> <span class="java-block-comment">     * this instance of JXColorSelectionButton.</span>
+<span class="line-number">186</span> <span class="java-block-comment">     * @param chooser The new JColorChooser to use.</span>
+<span class="line-number">187</span> <span class="java-block-comment">     */</span>
+<span class="line-number">188</span>     <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setChooser</span>(JColorChooser chooser) {
+<span class="line-number">189</span>         JColorChooser oldChooser = <span class="java-layer-method">getChooser</span>();
+<span class="line-number">190</span>         <span class="java-keywords">this</span>.chooser = chooser;
+<span class="line-number">191</span>         <span class="java-layer-method">firePropertyChange</span>(<span class="java-string-literal">&quot;chooser&quot;</span>,oldChooser,chooser);
+<span class="line-number">192</span>     }
+<span class="line-number">193</span>     
+<span class="line-number">194</span>     <span class="java-block-comment">/**</span>
+<span class="line-number">195</span> <span class="java-block-comment">     * A private class to conditionally create and show the color chooser</span>
+<span class="line-number">196</span> <span class="java-block-comment">     * dialog.</span>
+<span class="line-number">197</span> <span class="java-block-comment">     */</span>
+<span class="line-number">198</span>     <span class="java-keywords">private</span> <span class="java-keywords">class</span> ActionHandler <span class="java-keywords">implements</span> ActionListener {
+<span class="line-number">199</span>         
+<span class="line-number">200</span>         <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">actionPerformed</span>(ActionEvent actionEvent) {
+<span class="line-number">201</span>             <span class="java-layer-method">showDialog</span>();
+<span class="line-number">202</span>         }
+<span class="line-number">203</span>     }
+<span class="line-number">204</span>     
+<span class="line-number">205</span>     
+<span class="line-number">206</span> }
+<span class="line-number">207</span> 
+
+</pre></body>
+</html>

@@ -1,0 +1,21 @@
+^/\*\s*$
+^ \* \$.*\s*$
+^ \*\s*$
+^ \* Copyright 20\d\d Sun Microsystems, Inc\., 4150 Network Circle,\s*$
+^ \* Santa Clara, California 95054, U\.S\.A\. All rights reserved\.\s*$
+^ \*\s*$
+^ \* This library is free software; you can redistribute it and/or\s*$
+^ \* modify it under the terms of the GNU Lesser General Public\s*$
+^ \* License as published by the Free Software Foundation; either\s*$
+^ \* version 2\.1 of the License, or \(at your option\) any later version\.\s*$
+^ \*\s*$
+^ \* This library is distributed in the hope that it will be useful,\s*$
+^ \* but WITHOUT ANY WARRANTY; without even the implied warranty of\s*$
+^ \* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE\.  See the GNU\s*$
+^ \* Lesser General Public License for more details\.\s*$
+^ \*\s*$
+^ \* You should have received a copy of the GNU Lesser General Public\s*$
+^ \* License along with this library; if not, write to the Free Software\s*$
+^ \* Foundation, Inc\., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA\s*$
+^ \*/\s*$
+

@@ -1,0 +1,57 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>LogErrorReporter_API.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.java-layer-method {font-family: Monospaced; font-weight: bold}
+.java-keywords {color: #000099; font-family: Monospaced; font-weight: bold}
+.java-block-comment {color: #737373}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/Users/richardallenbair/Documents/Source/Projects/nonsense/swingx/src/beaninfo/LogErrorReporter_API.java</td></tr></table>
+<pre>
+<span class="java-keywords">package</span> org.jdesktop.swingx.error;
+
+<span class="java-block-comment">/**</span>
+<span class="java-block-comment"> * &lt;p&gt;A simple {@link ErrorReporter} that sends errors to a log file, using the</span>
+<span class="java-block-comment"> * standard logging facility. This allows the user to decide which errors are</span>
+<span class="java-block-comment"> * worth logging, and which aren&apos;t. It is anticipated that this class will</span>
+<span class="java-block-comment"> * prove more useful in admin or power user applications, as opposed to consumer</span>
+<span class="java-block-comment"> * oriented applications. However, if combined with some other error reporter</span>
+<span class="java-block-comment"> * such as {@link JavaMailErrorReporter}, this class may prove useful even</span>
+<span class="java-block-comment"> * in consumer applications.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * @author rbair</span>
+<span class="java-block-comment"> */</span>
+<span class="java-keywords">public</span> <span class="java-keywords">class</span> LogErrorReporter <span class="java-keywords">extends</span> JavaBean <span class="java-keywords">implements</span> ErrorReporter {
+    <span class="java-block-comment">/** Creates a new instance of &lt;code&gt;LogErrorReporter&lt;/code&gt; */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">LogErrorReporter</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Sets the &lt;code&gt;Logger&lt;/code&gt; to log error reports to.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param log the &lt;code&gt;Logger&lt;/code&gt; which will receive error reports</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setLog</span>(Logger log);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Gets the log.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return the &lt;code&gt;Logger&lt;/code&gt; which will receive error reports</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Logger <span class="java-layer-method">getLogger</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * @inheritDoc</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">reportIncident</span>(IncidentInfo info);
+}
+
+</pre></body>
+</html>

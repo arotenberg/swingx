@@ -1,0 +1,3696 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+
+
+  
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type">
+
+
+  
+  
+  <title>SwingX - 1.0 Release Planning</title>
+</head>
+
+
+<body>
+
+
+<h1>SwingX - 1.0 Release Planning</h1>
+
+
+<h2>TOC</h2>
+
+
+<div style="margin-left: 40px;"><a href="#components">Components</a><br>
+
+
+<div style="margin-left: 40px;"><a href="#Collection_Views_and_Helpers">"Collection
+Views" and Helpers</a><br>
+
+
+<a href="#Divers">Divers </a><br>
+
+
+<a href="#Common_Input_PanelsDialogs">Common Input Components</a><br>
+
+
+</div>
+
+
+&nbsp;<a href="#Infrastructure">Infrastructure</a><br>
+
+
+<div style="margin-left: 40px;"><a href="#FilteringSorting">Filtering/Sorting</a><br>
+
+
+<a href="#Searching">Searching</a><br>
+
+
+<a href="#Autocomplete">Auto-complete</a><br>
+
+
+<a href="#LookAndFeel">LookAndFeel</a><br>
+
+
+<a href="#Context-dependent_Popup_Support">Context Popups</a><br>
+
+
+<a href="#I18n">I18n</a><br>
+
+
+<a href="#Accessability">Accessability</a><br>
+
+
+<a href="#Build">Build Process</a><br>
+
+
+</div>
+
+
+<div style="margin-left: 40px;"><br>
+
+
+<br>
+
+
+<br>
+
+
+</div>
+
+
+</div>
+
+
+<br>
+
+
+<h2><a name="components"></a>Components</h2>
+
+
+<h3><a name="Collection_Views_and_Helpers"></a>"Collection Views" and
+Helpers</h3>
+
+
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <th style="vertical-align: top; width: 15%;">Name<br>
+
+
+      </th>
+
+
+      <th style="vertical-align: top; width: 60%;">Features<br>
+
+
+      </th>
+
+
+      <th style="vertical-align: top; width: 25%;">Status<br>
+
+
+      </th>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td colspan="1" rowspan="5" style="vertical-align: top; width: 15%;">JXList<br>
+
+
+      <br>
+
+
+      <br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">Highlight Decoration
+(including Rollover)<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">Sort/Filter
+Decoration<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">Searchable<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"> activateable Link
+(todo: activate by keybinding as well) </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">in-place
+editing<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">postponed<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="9" colspan="1">JXTable<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">Highlight Decoration
+(including Rollover)<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">Sort/Filter
+Decoration</td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top;">configurable "sortable" per
+table / column / on-update<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;">done / postponed / not yet
+started<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">Searchable <br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"> activateable Link
+(todo: activate by keybinding as well) - don't use editability<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">Interactive Column
+configuration: hide/show, "pack"<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">Interactive Table
+configuration: hide/show horizontal scrollbar<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top;">ColumnControl - respect R-to-L
+componenent orientation <br>
+supporting dynamic orientation switches is JScrollPane's responsibility
+(#4817131) - anyway, solved by manual re-configuring scrollPane's corners in setCO<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top;">support hidden columns
+conceptually<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;">done (but need feedback)<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="5" colspan="1">JXTree<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">Highlight Decoration
+(including Rollover)</td>
+
+
+      <td style="vertical-align: top; width: 25%;">started<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">Sort/Filter
+Decoration</td>
+
+
+      <td style="vertical-align: top; width: 25%;">postponed<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">Searchable</td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"> activateable Link
+(todo: activate by keybinding as well)</td>
+
+
+      <td style="vertical-align: top; width: 25%;">not yet started<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">per-tree default
+node icons<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="7" colspan="1">JXTreeTable<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">Highlight Decoration
+(including Rollover)</td>
+
+
+      <td style="vertical-align: top; width: 25%;">done (inherited
+JXTable)<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">Sort/Filter
+Decoration (currently disabled) </td>
+
+
+      <td style="vertical-align: top; width: 25%;">postponed<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">Searchable </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">activateable Link
+(todo: activate by keybinding as well)<br>
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done (inherited JXTable)<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">Interactive Column
+configuration: hide/show, "pack"</td>
+
+
+      <td style="vertical-align: top; width: 25%;">done (inherited
+JXTable)<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">Interactive Table
+configuration: hide/show horizontal scrollbar</td>
+
+
+      <td style="vertical-align: top; width: 25%;">done (inherited
+JXTable)<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top;">per-tree default node icons</td>
+
+
+      <td style="vertical-align: top;">done (inherited JXTree)<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="3" colspan="1">JXTableHeader<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">toggle/reset sort
+column on mouse clicked<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">auto-resize ("pack")
+column on mouse-clicked in resize region<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">use header renderer
+with sort icon<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="3" colspan="1">ColumnControlButton<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">interactive
+hide/show columns<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">auto-add additional
+actions from table<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+      <td>bidi compliant (still open: #168-swingx)</td>
+      <td>(mostly) done&nbsp;</td>
+    </tr>
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="3" colspan="1">ColumnHeaderRenderer</td>
+
+
+      <td style="vertical-align: top; width: 60%;">renderer with sort
+icon<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">sort icon LF specific<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+      <td>bidi compliant</td>
+      <td>done</td>
+    </tr>
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="4" colspan="1">JXTaskPane<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">how to<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">not yet started </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">bidi compliant<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="4" colspan="1">JXTaskPaneContainer<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+  
+  
+  </tbody>
+</table>
+
+
+<br>
+
+
+<br>
+
+
+<br>
+
+
+<h3><a name="Divers"></a>Divers<br>
+
+
+</h3>
+
+
+<br>
+
+
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <th style="vertical-align: top; width: 15%;">Name<br>
+
+
+      </th>
+
+
+      <th style="vertical-align: top; width: 60%;">Features<br>
+
+
+      </th>
+
+
+      <th style="vertical-align: top; width: 25%;">Status<br>
+
+
+      </th>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="3" colspan="1">JXCollapsiblePane<br>
+
+
+      <br>
+
+
+      <br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">property:
+collapsed/expanded state of content area<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">animation effect on
+change of content area state<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">fade-in/out<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="3" colspan="1">JXDatePicker<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">Issue 51 - Rename
+the multiple selection mode to range<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">Issue 77 - Add year
+selector drop down<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">Issue 67-69 -
+Renderers<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="2" colspan="1">JXMonthView<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">Issue 23 -
+JXMonthView keyboard accessibility<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">Issue 49 -
+Discontiguous selection<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="5" colspan="1">JXEditorPane<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">Searchable (overhaul implementation: backwards, incremental)<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">Undo/Redo<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">Simple Html/ plain
+text editing<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">started<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="3" colspan="1">JXFrame<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">crazy behaviour:
+exit-on-close must not be default <br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">enforce minimum size
+("snap back") - implemented as utility method in WindowUtils (Patrick)<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">"blocking hourglass"
+- meant for short-term waiting<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">not yet started<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="4" colspan="1">JXGlassBox<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">remove!<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="4" colspan="1">JXHyperlink<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">"classical"
+Hyperlink view visited property<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">bidi compliant<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="4" colspan="1">JXImagePanel<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">tile, zoom<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">??<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="4" colspan="1">JXPanel<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">translucency <br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">gradient paint
+(problems when resizing)<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">started<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">scrollable<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="4" colspan="1">JXRadioGroup<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">manage a collection
+of JRadioButtons<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="4" colspan="1">JXRootPane<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">support for toolbars
+and statusbar<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">auto-registration of
+contained components as message-source<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top;" rowspan="3" colspan="1">JXStatusBar<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;">? add simple status beans
+(Patrick? Amy? or postpone)<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="5" colspan="1">JXTitledPanel<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">panel with title
+bar: gradient background, Title, left/right decorating components<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">LF dependent title
+font, colors<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">started<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">respect R-to-L
+component orientation (open: gradient, see #157-swingx)<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">started<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top;">(?) border unpleasing <br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;">not yet started<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">extract
+JXTitleBar <br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">postponed<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+  
+  
+  </tbody>
+</table>
+
+
+<br>
+
+
+<br>
+
+
+<br>
+
+
+<h3><a name="Common_Input_PanelsDialogs"></a>Common Input Panels/Dialogs</h3>
+
+
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <th style="vertical-align: top; width: 15%;">Name<br>
+
+
+      </th>
+
+
+      <th style="vertical-align: top; width: 60%;">Features<br>
+
+
+      </th>
+
+
+      <th style="vertical-align: top; width: 25%;">Status<br>
+
+
+      </th>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="5" colspan="1">JXErrorDialog<br>
+
+
+      <br>
+
+
+      <br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">?? todo - Alex ??<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="4" colspan="1">JXFindPanel<br>
+
+JXFindBar<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">&nbsp;use
+PatternModel, (support customizing model properties?)<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">use resources from
+UIManager<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">use BoundAction <br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">support incremental search<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+    </tr>
+
+    <tr>
+
+      <td style="text-align: left; vertical-align: top;" colspan="1" rowspan="2">JXDialog</td>
+
+      <td>extract common
+dialog behaviour: close, cancel </td>
+
+      <td>started</td>
+
+    </tr>
+
+    <tr>
+
+      <td></td>
+
+      <td></td>
+
+    </tr>
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="4" colspan="1">JXLoginDialog<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">todo - Shai (starting Nov)<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="3" colspan="1">JXLoginPanel<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">todo -&nbsp;Shai (starting Nov)</td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="4" colspan="1">JXSearchPanel<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">use
+PatternModel, support customizing model properties<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">use resources from
+UIManager<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">use BoundAction<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">support per-column match? (in example)<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">started<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+      <td></td>
+
+      <td></td>
+
+      <td></td>
+
+    </tr>
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;" rowspan="4" colspan="1">JXTipOfTheDay<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">sync code with
+L2FProd.com version<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;">move out of the
+incubator to SwingX </td>
+
+
+      <td style="vertical-align: top; width: 25%;">done</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+  
+  
+  </tbody>
+</table>
+
+
+<br>
+
+
+<br>
+
+
+<h3>Future (?)<br>
+
+
+</h3>
+
+
+<br>
+
+
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <th style="vertical-align: top; width: 15%;">Name<br>
+
+
+      </th>
+
+
+      <th style="vertical-align: top; width: 60%;">Features<br>
+
+
+      </th>
+
+
+      <th style="vertical-align: top; width: 25%;">Status<br>
+
+
+      </th>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td colspan="1" rowspan="5" style="vertical-align: top; width: 15%;">JXButtonPanel<br>
+
+
+      <br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;">button bar/stack
+with OS respecting size, alignment, sequence<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;">postponed<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top; width: 15%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 60%;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top; width: 25%;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top;" rowspan="4" colspan="1">JXHeader/Banner<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;">postponed<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top;" rowspan="4" colspan="1">JXComboBox<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;">support arbitrary components as
+dropdown, in particular JXTable<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;">available in incubator<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top;">use autocomplete package<br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;">not yet started<br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+      <td style="vertical-align: top;"><br>
+
+
+      </td>
+
+
+    </tr>
+
+
+  
+  
+  </tbody>
+</table>
+
+
+<br>
+
+
+<br>
+
+
+<br>
+
+
+<h2><a name="Infrastructure"></a>Infrastructure</h2>
+
+
+<h3><a name="FilteringSorting"></a>Filtering/Sorting</h3>
+
+
+<ul>
+
+
+  <li>consistent support/api for all "Collection Views"</li>
+
+
+  <li>sort across several columns - supported in pipeline<br>
+
+
+  </li>
+
+
+  <li>provide "slim" hooks for custom implementations (like
+GlazedLists, JGA), implied: hide implementation details (f.i.
+FilterPipeline)<br>
+
+
+  </li>
+
+
+  <li>Performance: "fine-grained" update notification/handling</li>
+
+
+  <li>enable smooth migration to Mustang <br>
+
+
+  </li>
+
+
+  <li>(?) shareable across views - this is mandatory for use in JNTable
+with rowHeaders enabled (in the current implementation)</li>
+
+
+</ul>
+
+
+<br>
+
+
+<h3><a name="Searching"></a>Searching</h3>
+
+
+<ul>
+
+
+  <li>consistent support/api for all "Collection Views" - and others
+where applicable</li>
+
+
+  <li><a href="https://jdnc-incubator.dev.java.net/documentation/hansmuller/table">UI-specification</a></li>
+
+
+  <li>add more search-widgets (QuickSearch,...)<br>
+
+
+  </li>
+
+
+</ul>
+
+
+<br>
+
+
+<h3><a name="Autocomplete"></a>Autocomplete</h3>
+
+
+<ul>
+
+
+  <li>use internally - candidates?</li>
+
+
+  <li>(?)&nbsp; add preliminary JXComboBox with auto-complete?</li>
+
+
+  <li><br>
+
+
+  </li>
+
+
+</ul>
+
+
+<h3><a name="LookAndFeel"></a>LookAndFeel</h3>
+
+
+<ul>
+
+
+  <li>per-component LF addons</li>
+
+
+  <li><br>
+
+
+  </li>
+
+
+</ul>
+
+
+<br>
+
+
+<h3><a name="Context-dependent_Popup_Support"></a>Context-dependent
+Popup Support</h3>
+
+
+<ul>
+
+
+  <li>default popup - OS dependent?</li>
+
+
+  <li>implement getPopupLocation(...) to return something reasonable</li>
+
+
+  <li>(?) enhance ComponentPopupMenu to enable context-dependent popups<br>
+
+
+  </li>
+
+
+  <li>(?) enhance PopupEvent to include source-event (or other info)
+useful for a ContextProvider<br>
+
+
+  </li>
+
+
+  <li>(?) add pluggable ContextProvider<br>
+
+
+  </li>
+
+
+</ul>
+
+
+<br>
+
+
+<h3><a name="I18n"></a>I18n</h3>
+
+
+<ul>
+
+
+  <li>get all resources from UIManager instead of hardcoding</li>
+
+
+  <li>provide and use default framework resourceBundle: currently
+&lt;swingx-path&gt;/plaf/resources/swingx.properties - this is the
+default resourcebundle loaded in LFAddons. Open: guarantee loading even
+without a dummy XXAddOn? Solved: load LFAddOns instead of dummy component addOn.<br>
+
+
+  </li>
+
+
+  <li>make component R-to-L (component-orientation) aware <br>
+
+
+  </li>
+
+
+</ul>
+
+
+<br>
+
+
+<h3><a name="Accessability"></a>Accessability</h3>
+
+
+<ul>
+
+
+  <li>nothing done yet</li>
+
+
+  <li>collect infos about what's needed&nbsp;<br>
+
+
+  </li>
+
+
+</ul>
+
+
+<br>
+
+
+<h3><a name="Build"></a>Build Process</h3>
+
+
+<ul>
+
+
+  <li>document CruiseControl setup</li>
+
+
+</ul>
+
+
+<h2><br>
+
+
+</h2>
+
+
+<br>
+
+
+<br>
+
+
+</body>
+</html>

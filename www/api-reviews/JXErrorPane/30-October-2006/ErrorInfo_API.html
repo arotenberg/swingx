@@ -1,0 +1,212 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>ErrorInfo_API.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.java-keywords {color: #000099; font-family: Monospaced; font-weight: bold}
+.java-layer-method {font-family: Monospaced; font-weight: bold}
+.java-block-comment {color: #737373}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/Users/richardallenbair/Documents/Source/Projects/swingx-work/jxerrorpane/swingx/src/java/org/jdesktop/swingx/error/ErrorInfo_API.java</td></tr></table>
+<pre>
+<span class="java-block-comment">/*</span>
+<span class="java-block-comment"> * $Id: ErrorInfo_API.html 1530 2006-10-30 20:20:34Z rbair $</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * Copyright 2004 Sun Microsystems, Inc., 4150 Network Circle,</span>
+<span class="java-block-comment"> * Santa Clara, California 95054, U.S.A. All rights reserved.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * This library is free software; you can redistribute it and/or</span>
+<span class="java-block-comment"> * modify it under the terms of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License as published by the Free Software Foundation; either</span>
+<span class="java-block-comment"> * version 2.1 of the License, or (at your option) any later version.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * This library is distributed in the hope that it will be useful,</span>
+<span class="java-block-comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="java-block-comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span>
+<span class="java-block-comment"> * Lesser General Public License for more details.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * You should have received a copy of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License along with this library; if not, write to the Free Software</span>
+<span class="java-block-comment"> * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</span>
+<span class="java-block-comment"> */</span>
+
+<span class="java-keywords">package</span> org.jdesktop.swingx.error;
+
+<span class="java-keywords">import</span> java.util.HashMap;
+<span class="java-keywords">import</span> java.util.Map;
+<span class="java-keywords">import</span> java.util.Properties;
+<span class="java-keywords">import</span> java.util.logging.Level;
+<span class="java-keywords">import</span> java.util.regex.Matcher;
+<span class="java-keywords">import</span> java.util.regex.Pattern;
+<span class="java-keywords">import</span> javax.swing.SwingUtilities;
+
+<span class="java-block-comment">/**</span>
+<span class="java-block-comment"> * &lt;p&gt;A simple class that encapsulates all the information needed</span>
+<span class="java-block-comment"> * to report a problem using the automated report/processing system.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;All HTML referred to in this API refers to version 3.2 of the HTML</span>
+<span class="java-block-comment"> * markup specification.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;Both basicErrorMessage and detailedErrorMessage may be specified with</span>
+<span class="java-block-comment"> * variable substitution. For example, this is a valid error message string:</span>
+<span class="java-block-comment"> * &quot;${os.version} is not supported&quot;. Such variables are resovled using the</span>
+<span class="java-block-comment"> * &lt;code&gt;substituteVariables&lt;/code&gt; method. This method wi</span><span class="java-block-comment">ll use properties in</span>
+<span class="java-block-comment"> * the &quot;state&quot; map to replace these variables.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;For example:</span>
+<span class="java-block-comment"> * &lt;pre&gt;&lt;code&gt;</span>
+<span class="java-block-comment"> *    String message = &quot;An error occured on ${os.name} version ${os.version}&quot;;</span>
+<span class="java-block-comment"> *    //auto creates the state map, populated with all System properties.</span>
+<span class="java-block-comment"> *    //Sandboxed apps can&apos;t read System properties.</span>
+<span class="java-block-comment"> *    ErrorInfo info = new ErrorInfo(&quot;Error&quot;, exception);</span>
+<span class="java-block-comment"> *    message = info.substituteVariables(message);</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> *    //prints out: &quot;An error occured on Mac OS X version 10.4.7&quot; on some systems</span>
+<span class="java-block-comment"> *    System.out.println(message);</span>
+<span class="java-block-comment"> * &lt;/code&gt;&lt;/pre&gt;&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * @author Alexander Zuev</span>
+<span class="java-block-comment"> * @author rbair</span>
+<span class="java-block-comment"> */</span>
+<span class="java-keywords">public</span> <span class="java-keywords">class</span> ErrorInfo {
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Creates a new ErrorInfo based on the provided data.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param title                 used as a quick reference for the</span>
+<span class="java-block-comment">     *                              error (for example, it might be used as the</span>
+<span class="java-block-comment">     *                              title of an error dialog or as the subject of</span>
+<span class="java-block-comment">     *                              an email message). May be null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param basicErrorMessage     short description of the problem. May be null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param detailedErrorMessage  full description of the problem. It is recommended,</span>
+<span class="java-block-comment">     *                              though not required, that this String contain HTML</span>
+<span class="java-block-comment">     *                              to improve the look and layout of the detailed</span>
+<span class="java-block-comment">     *                              error message. May be null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param category              A category name, indicating where in the application</span>
+<span class="java-block-comment">     *                              this incident occurred. It is recommended that</span>
+<span class="java-block-comment">     *                              this be the same value as you would use when logging.</span>
+<span class="java-block-comment">     *                              May be null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param errorException        &lt;code&gt;Throwable&lt;/code&gt; that can be used as a</span>
+<span class="java-block-comment">     *                              source for additional information such as call</span>
+<span class="java-block-comment">     *                              stack, thread name, etc. May be null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param errorLevel            any Level (Level.SEVERE, Level.WARNING, etc).</span>
+<span class="java-block-comment">     *                              If null, then the level will be set to SEVERE.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param state                 the state of the application at the time the incident occured.</span>
+<span class="java-block-comment">     *                              The standard System properties are automatically added to this</span>
+<span class="java-block-comment">     *                              state, and thus do not need to be included. This value may be null.</span>
+<span class="java-block-comment">     *                              If null, the resulting map will contain only the System properties.</span>
+<span class="java-block-comment">     *                              If there is a value in the map with a key that also occurs in the</span>
+<span class="java-block-comment">     *                              System properties (for example: sun.java2d.noddraw), then the</span>
+<span class="java-block-comment">     *                              developer supplied value will be used. In other words, defined</span>
+<span class="java-block-comment">     *                              parameters override standard ones. In addition, the keys</span>
+<span class="java-block-comment">     *                              &quot;System.currentTimeMillis&quot; and &quot;isOnEDT&quot; are both defined</span>
+<span class="java-block-comment">     *                              automatically.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">ErrorInfo</span>(String title, String basicErrorMessage, String detailedErrorMessage,
+            String category, Throwable errorException, Level errorLevel, Map&lt;String,String&gt; state);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Gets the string to use for a dialog title or other quick reference. Used</span>
+<span class="java-block-comment">     * as a quick reference for the incident. For example, it might be used as the</span>
+<span class="java-block-comment">     * title of an error dialog or as the subject of an email message.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return quick reference String. May be null.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> String <span class="java-layer-method">getTitle</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Gets the basic error message. This message should be clear and user oriented.</span>
+<span class="java-block-comment">     * This String may have HTML formatting, but any such formatting should be used</span>
+<span class="java-block-comment">     * sparingly. Generally, such formatting makes sense for making certain words bold,</span>
+<span class="java-block-comment">     * but should not be used for page layout or other such things.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;For example, the following are perfectly acceptable basic error messages:</span>
+<span class="java-block-comment">     * &lt;pre&gt;</span>
+<span class="java-block-comment">     *      &quot;Your camera cannot be located. Please make sure that it is powered on</span>
+<span class="java-block-comment">     *       and that it is connected to this computer. Consult the instructions</span>
+<span class="java-block-comment">     *       provided with your camera to make sure you are using the appropriate</span>
+<span class="java-block-comment">     *       cable for attaching the camera to this computer&quot;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     *      &quot;&amp;lt;html&amp;gt;You are running on &amp;lt;b&amp;gt;reserver&amp;lt;/b&amp;gt; battery</span>
+<span class="java-block-comment">     *       power. Please plug into a power source immediately, or your work may</span>
+<span class="java-block-comment">     *       be lost!&amp;lt;/html&amp;gt;&quot;</span>
+<span class="java-block-comment">     * &lt;/pre&gt;&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return basic error message or null</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> String <span class="java-layer-method">getBasicErrorMessage</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Gets the detailed error message. Unlike {@link #getBasicErrorMessage},</span>
+<span class="java-block-comment">     * this method may return a more technical message to the user. However, it</span>
+<span class="java-block-comment">     * should still be user oriented. This String should be formatted using basic</span>
+<span class="java-block-comment">     * HTML to improve readability as necessary.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;This method may return null.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return detailed error message or null</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> String <span class="java-layer-method">getDetailedErrorMessage</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Gets the category name. This value indicates where in the application</span>
+<span class="java-block-comment">     * this incident occurred. It is recommended that this be the same value as</span>
+<span class="java-block-comment">     * you would use when logging. This may be null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return the category. May be null.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> String <span class="java-layer-method">getCategory</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Gets the actual exception that generated the error. If this returns a</span>
+<span class="java-block-comment">     * non null value, then {@link #getBasicErrorMessage} may return a null value.</span>
+<span class="java-block-comment">     * If this returns a non null value and {@link #getDetailedErrorMessage} returns</span>
+<span class="java-block-comment">     * a null value, then this returned &lt;code&gt;Throwable&lt;/code&gt; may be used as the</span>
+<span class="java-block-comment">     * basis for the detailed error message (generally by showing the stack trace).</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return exception or null</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Throwable <span class="java-layer-method">getErrorException</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Gets the severity of the error. The default level is &lt;code&gt;Level.SEVERE&lt;/code&gt;,</span>
+<span class="java-block-comment">     * but any {@link Level} may be specified when constructing an</span>
+<span class="java-block-comment">     * &lt;code&gt;ErrorInfo&lt;/code&gt;.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return the error level. This will never be null</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Level <span class="java-layer-method">getErrorLevel</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Gets a copy of the application state at the time that the incident occured.</span>
+<span class="java-block-comment">     * This map will never be null. If running with appropriate permissions the</span>
+<span class="java-block-comment">     * map will contain all the System properties. In addition, it contains two</span>
+<span class="java-block-comment">     * keys, &quot;System.currentTimeMillis&quot; and &quot;isOnEDT&quot;.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;Warning: The System.properties &lt;em&gt;may not&lt;/em&gt; contain the exact set</span>
+<span class="java-block-comment">     * of System properties at the time the exception occured. This is due to the</span>
+<span class="java-block-comment">     * nature of System.getProperties() and the Properties collection. While they</span>
+<span class="java-block-comment">     * are property synchronized, it is possible that while iterating the set of</span>
+<span class="java-block-comment">     * properties in the ErrorInfo constructor that some other code can change</span>
+<span class="java-block-comment">     * the properties on another thread. This is unlikely to occur, but in some</span>
+<span class="java-block-comment">     * applications &lt;em&gt;may&lt;/em&gt; occur.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return a copy of the application state. This will never be null.</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Map&lt;String,String&gt; <span class="java-layer-method">getState</span>();
+}
+
+</pre></body>
+</html>

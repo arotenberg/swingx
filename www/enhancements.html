@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns:date="http://exslt.org/dates-and-times"
+ xmlns="http://www.w3.org/1999/xhtml">
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="Content-Type">
+  <title>SwingX Enhancements</title>
+</head>
+<body>
+<p>This page documents various enhancements (many of a visual nature)
+to be made to the SwingX components to render them: </p>
+<ol>
+  <li>easier to use</li>
+  <li>more visually pleasing</li>
+</ol>
+<table>
+  <tbody>
+    <tr>
+      <th>Before</th>
+      <th>After</th>
+      <th>Notes</th>
+    </tr>
+    <tr>
+      <td><img src="images/enhancements/JXList_border_before.png"></td>
+      <td><img src="images/enhancements/JXList_border_after.png"></td>
+      <td>JXList should include a MatteBorder who's background color is
+the same color as the JXList's background color (f.i., white by default
+for most LAF's). The MatteBorder serves to move the JXList's text away
+from the edges.</td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><img
+ src="images/enhancements/JXList_after_selected.png" alt=""
+ style="width: 194px; height: 83px;"><br>
+      </td>
+      <td style="vertical-align: top;">There's a catch with using
+borders: the selection does not extend to the boundaries of the JList
+(which seems to be the native behaviour at least in win) - should check!
+      <br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+</body>
+</html>

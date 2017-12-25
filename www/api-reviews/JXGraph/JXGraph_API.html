@@ -1,0 +1,987 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>JXGraph_API.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.java-keywords {color: #000099; font-family: Monospaced; font-weight: bold}
+.java-layer-method {font-family: Monospaced; font-weight: bold}
+.java-block-comment {color: #737373}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/Users/richardallenbair/Documents/Source/Projects/nonsense/swingx/src/beaninfo/JXGraph_API.java</td></tr></table>
+<pre>
+<span class="java-block-comment">/*</span>
+<span class="java-block-comment"> * $Id: JXGraph_API.html 1347 2006-08-22 19:20:22Z rbair $</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * Copyright 2006 Sun Microsystems, Inc., 4150 Network Circle,</span>
+<span class="java-block-comment"> * Santa Clara, California 95054, U.S.A. All rights reserved.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * This library is free software; you can redistribute it and/or</span>
+<span class="java-block-comment"> * modify it under the terms of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License as published by the Free Software Foundation; either</span>
+<span class="java-block-comment"> * version 2.1 of the License, or (at your option) any later version.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * This library is distributed in the hope that it will be useful,</span>
+<span class="java-block-comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="java-block-comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span>
+<span class="java-block-comment"> * Lesser General Public License for more details.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * You should have received a copy of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License along with this library; if not, write to the Free Software</span>
+<span class="java-block-comment"> * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</span>
+<span class="java-block-comment"> */</span>
+
+<span class="java-keywords">package</span> org.jdesktop.swingx;
+
+<span class="java-keywords">import</span> java.awt.BasicStroke;
+<span class="java-keywords">import</span> java.awt.Color;
+<span class="java-keywords">import</span> java.awt.Cursor;
+<span class="java-keywords">import</span> java.awt.Dimension;
+<span class="java-keywords">import</span> java.awt.FontMetrics;
+<span class="java-keywords">import</span> java.awt.Graphics;
+<span class="java-keywords">import</span> java.awt.Graphics2D;
+<span class="java-keywords">import</span> java.awt.Point;
+<span class="java-keywords">import</span> java.awt.Rectangle;
+<span class="java-keywords">import</span> java.awt.RenderingHints;
+<span class="java-keywords">import</span> java.awt.Stroke;
+<span class="java-keywords">import</span> java.awt.event.MouseAdapter;
+<span class="java-keywords">import</span> java.awt.event.MouseEvent;
+<span class="java-keywords">import</span> java.awt.event.MouseMotionAdapter;
+<span class="java-keywords">import</span> java.awt.event.MouseWheelEvent;
+<span class="java-keywords">import</span> java.awt.event.MouseWheelListener;
+<span class="java-keywords">import</span> java.awt.geom.GeneralPath;
+<span class="java-keywords">import</span> java.awt.geom.Point2D;
+<span class="java-keywords">import</span> java.awt.geom.Rectangle2D;
+<span class="java-keywords">import</span> java.beans.PropertyChangeEvent;
+<span class="java-keywords">import</span> java.beans.PropertyChangeListener;
+<span class="java-keywords">import</span> java.beans.PropertyChangeSupport;
+<span class="java-keywords">import</span> java.text.DecimalFormat;
+<span class="java-keywords">import</span> java.text.NumberFormat;
+<span class="java-keywords">import</span> java.util.LinkedList;
+<span class="java-keywords">import</span> java.util.List;
+<span class="java-keywords">import</span> org.jdesktop.swingx.painter.Painter;
+
+<span class="java-block-comment">/**</span>
+<span class="java-block-comment"> * &lt;p&gt;&lt;code&gt;JXGraph&lt;/code&gt; provides a component which can display one or more</span>
+<span class="java-block-comment"> * plots on top of a graduated background (or grid.)&lt;/p&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;h2&gt;User input&lt;/h2&gt;</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * &lt;p&gt;To help analyze the plots, this component allows the user to pan the</span>
+<span class="java-block-comment"> * view by left-clicking and dragging the mouse around. Using the mouse wheel,</span>
+<span class="java-block-comment"> * the user is also able to zoom in and out. Clicking the middle button resets</span>
+<span class="java-block-comment"> * the view to its original position.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;All user input can be disabled by calling</span>
+<span class="java-block-comment"> * {@link #setInputEnabled(boolean)} and passing false. This does not prevent</span>
+<span class="java-block-comment"> * subclasses from registering their own event listeners, such as mouse or key</span>
+<span class="java-block-comment"> * listeners.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;h2&gt;Initializing the component and setting the view&lt;/h2&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;Whenever a new instance of this component is created, the grid boundaries,</span>
+<span class="java-block-comment"> * or view, must be defined. The view is comprised of several elements whose</span>
+<span class="java-block-comment"> * descriptions are the following:&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;ul&gt;</span>
+<span class="java-block-comment"> *   &lt;li&gt;&lt;i&gt;minX&lt;/i&gt;: Minimum value initially displayed by the component on the</span>
+<span class="java-block-comment"> *   X axis (horizontally.)&lt;/li&gt;</span>
+<span class="java-block-comment"> *   &lt;li&gt;&lt;i&gt;minY&lt;/i&gt;: Minimum value initially displayed by the component on the</span>
+<span class="java-block-comment"> *   Y axis (vertically.)&lt;/li&gt;</span>
+<span class="java-block-comment"> *   &lt;li&gt;&lt;i&gt;maxX&lt;/i&gt;: Maximum value initially displayed by the component on the</span>
+<span class="java-block-comment"> *   X axis (horizontally.)&lt;/li&gt;</span>
+<span class="java-block-comment"> *   &lt;li&gt;&lt;i&gt;maxY&lt;/i&gt;: Maximum value initially displayed by the component on the</span>
+<span class="java-block-comment"> *   Y axis (vertically.)&lt;/li&gt;</span>
+<span class="java-block-comment"> *   &lt;li&gt;&lt;i&gt;originX&lt;/i&gt;: Origin on the X axis of the vertical axis.&lt;/li&gt;</span>
+<span class="java-block-comment"> *   &lt;li&gt;&lt;i&gt;originY&lt;/i&gt;: Origin on the Y axis of the horizontal axis.&lt;/li&gt;</span>
+<span class="java-block-comment"> *   &lt;li&gt;&lt;i&gt;majorX&lt;/i&gt;: Distance between two major vertical lines of the</span>
+<span class="java-block-comment"> *   grid.&lt;/li&gt;</span>
+<span class="java-block-comment"> *   &lt;li&gt;&lt;i&gt;majorY&lt;/i&gt;: Distance between two major horizontal lines of the</span>
+<span class="java-block-comment"> *   grid.&lt;/li&gt;</span>
+<span class="java-block-comment"> *   &lt;li&gt;&lt;i&gt;minCountX&lt;/i&gt;: Number of minor vertical lines between two major</span>
+<span class="java-block-comment"> *   vertical lines in the grid.&lt;/li&gt;</span>
+<span class="java-block-comment"> *   &lt;li&gt;&lt;i&gt;minCountY&lt;/i&gt;: Number of minor horizontal lines between two major</span>
+<span class="java-block-comment"> *   horizontal lines in the grid.&lt;/li&gt;</span>
+<span class="java-block-comment"> * &lt;/ul&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;h3&gt;View and origin&lt;/h3&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;The default constructor defines a view bounds by &lt;code&gt;-1.0&lt;/code&gt; and</span>
+<span class="java-block-comment"> * &lt;code&gt;+1.0&lt;/code&gt; on both axis, and centered on an origin at</span>
+<span class="java-block-comment"> * &lt;code&gt;(0, 0)&lt;/code&gt;.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;To simplify the API, the origin can be read and written with a</span>
+<span class="java-block-comment"> * &lt;code&gt;Point2D&lt;/code&gt; instance (see {@link #getOrigin()} and</span>
+<span class="java-block-comment"> * {@link #setOrigin(Point2D)}.)&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;Likewise, the view can be read and written with a</span>
+<span class="java-block-comment"> * &lt;code&gt;Rectangle2D&lt;/code&gt; instance (see {@link #getView()} and</span>
+<span class="java-block-comment"> * {@link #setView(Rectangle2D)}.) In this case, you need not to define the</span>
+<span class="java-block-comment"> * maximum boundaries of the view. Instead, you need to set the origin of the</span>
+<span class="java-block-comment"> * rectangle as the minimum boundaries. The width and the height of the</span>
+<span class="java-block-comment"> * rectangle define the distance between the minimum and maximum boundaries. For</span>
+<span class="java-block-comment"> * instance, to set the view to minX=-1.0, maxX=1.0, minY=-1.0 and maxY=1.0 you</span>
+<span class="java-block-comment"> * can use the following rectangle:&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;pre&gt;new Rectangle2D.Double(-1.0d, -1.0d, 2.0d, 2.0d);&lt;/pre&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;You can check the boundaries by calling &lt;code&gt;Rectangle2D.getMaxX()&lt;/code&gt;</span>
+<span class="java-block-comment"> * and &lt;code&gt;Rectangle2D.getMaxY()&lt;/code&gt; once your rectangle has been</span>
+<span class="java-block-comment"> * created.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;Alternatively, you can set the view and the origin at the same time by</span>
+<span class="java-block-comment"> * calling the method {@link #setViewAndOrigin(Rectangle2D)}. Calling this</span>
+<span class="java-block-comment"> * method will set the origin so as to center it in the view defined by the</span>
+<span class="java-block-comment"> * rectangle.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;h3&gt;Grid lines&lt;/h3&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;By default, the component defines a spacing of 0.2 units between two</span>
+<span class="java-block-comment"> * major grid lines. It also defines 4 minor grid lines between two major</span>
+<span class="java-block-comment"> * grid lines. The spacing between major grid lines and the number of minor</span>
+<span class="java-block-comment"> * grid lines can be accessed through the getters {@link #getMajorX()},</span>
+<span class="java-block-comment"> * {@link #getMajorY()}, {@link #getMinorCountX()} and</span>
+<span class="java-block-comment"> * {@link #getMinorCountY()}.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;You can change the number of grid lines at runtime by calling the setters</span>
+<span class="java-block-comment"> * {@link #setMajorX(double)}, {@link #setMajorY(double)},</span>
+<span class="java-block-comment"> * {@link #setMinorCountX(int)} and {@link #setMinorCountY(int)}.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;h3&gt;Appearance&lt;/h3&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;Although it provides sensible defaults, this component lets you change</span>
+<span class="java-block-comment"> * its appearance in several ways. It is possible to modify the colors of the</span>
+<span class="java-block-comment"> * graph by calling the setters {@link #setAxisColor(Color)},</span>
+<span class="java-block-comment"> * {@link #setMajorGridColor(Color)} and {@link #setMinorGridColor(Color)}.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;You can also enable or disable given parts of the resulting graph by</span>
+<span class="java-block-comment"> * calling the following setters:&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;ul&gt;</span>
+<span class="java-block-comment"> *   &lt;li&gt;{@link #setAxisPainted(boolean)}: Defines whether the main axis (see</span>
+<span class="java-block-comment"> *   {@link #getOrigin()}) is painted.&lt;/li&gt;</span>
+<span class="java-block-comment"> *   &lt;li&gt;{@link #setBackgroundPainted(boolean)}: Defines whether the background</span>
+<span class="java-block-comment"> *   is painted (see {@link #setBackground(Color)}.)&lt;/li&gt;</span>
+<span class="java-block-comment"> *   &lt;li&gt;{@link #setGridPainted(boolean)}: Defines whether the grid is</span>
+<span class="java-block-comment"> *   painted.&lt;/li&gt;</span>
+<span class="java-block-comment"> *   &lt;li&gt;{@link #setTextPainted(boolean)}: Defines whether the axis labels are</span>
+<span class="java-block-comment"> *   painted.&lt;/li&gt;</span>
+<span class="java-block-comment"> * &lt;/ul&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;h3&gt;Usage example&lt;/h3&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;The following code snippet creates a new graph centered on</span>
+<span class="java-block-comment"> * &lt;code&gt;(0, 0)&lt;/code&gt;, bound to the view &lt;code&gt;[-1.0 1.0 -1.0 1.0]&lt;/code&gt;, with</span>
+<span class="java-block-comment"> * a major grid line every 0.5 units and a minor grid line count of 5:&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;pre&gt;</span>
+<span class="java-block-comment"> * Point2D origin = new Point2D.Double(0.0d, 0.0d);</span>
+<span class="java-block-comment"> * Rectangle2D view = new Rectangle2D.Double(-1.0d, 1.0d, 2.0d, 2.0d);</span>
+<span class="java-block-comment"> * JXGraph graph = new JXGraph(origin, view, 0.5d, 5, 0.5d, 5);</span>
+<span class="java-block-comment"> * &lt;/pre&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;h2&gt;Plots&lt;/h2&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;h3&gt;Definition&lt;/h3&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;A plot is defined by a mathematical transformation that, given a value on</span>
+<span class="java-block-comment"> * the graph&apos;s X axis, returns a value on the Y axis. The component draws the</span>
+<span class="java-block-comment"> * result by plotting a spot of color at the coordinates defined by</span>
+<span class="java-block-comment"> * &lt;code&gt;(X, f(X))&lt;/code&gt; where &lt;code&gt;f()&lt;/code&gt; is the aforementionned</span>
+<span class="java-block-comment"> * mathematical transformation. Given the following transformation:&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;pre&gt;</span>
+<span class="java-block-comment"> * f(X) = X * 2.0</span>
+<span class="java-block-comment"> * &lt;/pre&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;For &lt;code&gt;X=1.0&lt;/code&gt;, the component will show a spot of color at the</span>
+<span class="java-block-comment"> * coordinates &lt;code&gt;(1.0, 2.0)&lt;/code&gt;.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;h3&gt;Creating a new plot&lt;/h3&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;Every plot drawn by the component must be a subclass of</span>
+<span class="java-block-comment"> * {@link JXGraph.Plot}. This abstract public class defines a single method to</span>
+<span class="java-block-comment"> * be implemented by its children:&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;pre&gt;</span>
+<span class="java-block-comment"> * public double compute(double value)</span>
+<span class="java-block-comment"> * &lt;/pre&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;The previous example can be defined by a concrete</span>
+<span class="java-block-comment"> * &lt;code&gt;JXGraph.Plot&lt;/code&gt; as follow:&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;pre&gt;</span>
+<span class="java-block-comment"> * class TwiceTheValuePlot extends JXGraph.Plot {</span>
+<span class="java-block-comment"> *     public double compute(double value) {</span>
+<span class="java-block-comment"> *         return value * 2.0d;</span>
+<span class="java-block-comment"> *     }</span>
+<span class="java-block-comment"> * }</span>
+<span class="java-block-comment"> * &lt;/pre&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;Most of the time though, a plot requires supplementary parameters. For</span>
+<span class="java-block-comment"> * instance, let&apos;s define the X axis of your graph as the mass of an object. To</span>
+<span class="java-block-comment"> * compute the weight of the object given its mass, you need to use the</span>
+<span class="java-block-comment"> * acceleration of gravity (&lt;code&gt;w=m*g&lt;/code&gt; where &lt;code&gt;g&lt;/code&gt; is the</span>
+<span class="java-block-comment"> * acceleration.) To let the user modify this last parameter, to compute his</span>
+<span class="java-block-comment"> * weight at the surface of the moon for instance, you need to add a parameter</span>
+<span class="java-block-comment"> * to your plot.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;While &lt;code&gt;JXGraph.Plot&lt;/code&gt; does not give you an API for such a</span>
+<span class="java-block-comment"> * purpose, it does define an event dispatching API (see</span>
+<span class="java-block-comment"> * {@link JXGraph.Plot#firePropertyChange(String, double, double)}.) Whenever a</span>
+<span class="java-block-comment"> * plot is added to the graph, the component registers itself as a property</span>
+<span class="java-block-comment"> * listener of the plot. If you take care of firing events whenever the user</span>
+<span class="java-block-comment"> * changes a parameter of your plot, the graph will automatically update its</span>
+<span class="java-block-comment"> * display. While not mandatory, it is highly recommended to leverage this</span>
+<span class="java-block-comment"> * API.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;h3&gt;Adding and removing plots to and from the graph&lt;/h3&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;To add a plot to the graph, simply call the method</span>
+<span class="java-block-comment"> * {@link #addPlots(Color, JXGraph.Plot...)}. You can use it to add one or more</span>
+<span class="java-block-comment"> * plots at the same time and associate them with a color. This color is used</span>
+<span class="java-block-comment"> * when drawing the plots:&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;pre&gt;</span>
+<span class="java-block-comment"> * JXGraph.Plot plot = new TwiceTheValuePlot();</span>
+<span class="java-block-comment"> * graph.addPlots(Color.BLUE, plot);</span>
+<span class="java-block-comment"> * &lt;/pre&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;These two lines will display our previously defined plot in blue on</span>
+<span class="java-block-comment"> * screen. Removing one or several plots is as simple as calling the method</span>
+<span class="java-block-comment"> * {@link #removePlots(JXGraph.Plot...)}. You can also remove all plots at once</span>
+<span class="java-block-comment"> * with {@link #removeAllPlots()}.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;h2&gt;Painting more information&lt;/h2&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;h3&gt;How to draw on the graph&lt;/h3&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;If you need to add more information on the graph you need to extend</span>
+<span class="java-block-comment"> * it and override the method {@link #paintExtra(Graphics2D)}. This</span>
+<span class="java-block-comment"> * method has a default empty implementation and is called after everything</span>
+<span class="java-block-comment"> * has been drawn. Its sole parameter is a reference to the component&apos;s drawing</span>
+<span class="java-block-comment"> * surface, as configured by {@link #setupGraphics(Graphics2D)}. By default, the</span>
+<span class="java-block-comment"> * setup method activates antialising but it can be overriden to change the</span>
+<span class="java-block-comment"> * drawing surface. (Translation, rotation, new rendering hints, etc.)&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;h3&gt;Getting the right coordinates&lt;/h3&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;To properly draw on the graph you will need to perform a translation</span>
+<span class="java-block-comment"> * between the graph&apos;s coordinates and the screen&apos;s coordinates. The component</span>
+<span class="java-block-comment"> * defines 4 methods to assist you in this task:&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;ul&gt;</span>
+<span class="java-block-comment"> *   &lt;li&gt;{@link #xPixelToPosition(double)}: Converts a pixel coordinate on the</span>
+<span class="java-block-comment"> *   X axis into a world coordinate.&lt;/li&gt;</span>
+<span class="java-block-comment"> *   &lt;li&gt;{@link #xPositionToPixel(double)}: Converts a world coordinate on the</span>
+<span class="java-block-comment"> *   X axis into a pixel coordinate.&lt;/li&gt;</span>
+<span class="java-block-comment"> *   &lt;li&gt;{@link #yPixelToPosition(double)}: Converts a pixel coordinate on the</span>
+<span class="java-block-comment"> *   Y axis into a world coordinate.&lt;/li&gt;</span>
+<span class="java-block-comment"> *   &lt;li&gt;{@link #yPositionToPixel(double)}: Converts a world coordinate on the</span>
+<span class="java-block-comment"> *   Y axis into a pixel coordinate.&lt;/li&gt;</span>
+<span class="java-block-comment"> * &lt;/ul&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;If you have defined a graph view centered on the origin</span>
+<span class="java-block-comment"> * &lt;code&gt;(0, 0)&lt;/code&gt;, the origin of the graph will be at the exact center of</span>
+<span class="java-block-comment"> * the screen. That means the world coordinates &lt;code&gt;(0, 0)&lt;/code&gt; are</span>
+<span class="java-block-comment"> * equivalent to the pixel coordinates &lt;code&gt;(width / 2, height / 2)&lt;/code&gt;.</span>
+<span class="java-block-comment"> * Thus, calling &lt;code&gt;xPositionToPixel(0.0d)&lt;/code&gt; would give you the same</span>
+<span class="java-block-comment"> * value as the expression &lt;code&gt;getWidth() / 2.0d&lt;/code&gt;.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * &lt;p&gt;Converting from world coordinates to pixel coordinates is mostly used to</span>
+<span class="java-block-comment"> * draw the result of a mathematical transformation. Converting from pixel</span>
+<span class="java-block-comment"> * coordinates to world coordinates is mostly used to get the position in the</span>
+<span class="java-block-comment"> * world of a mouse event.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * @see JXGraph.Plot</span>
+<span class="java-block-comment"> * @author Romain Guy &lt;romain.guy@mac.com&gt;</span>
+<span class="java-block-comment"> */</span>
+<span class="java-keywords">public</span> <span class="java-keywords">class</span> JXGraph <span class="java-keywords">extends</span> JXPanel {
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Creates a new graph display. The following properties are</span>
+<span class="java-block-comment">     * automatically set:&lt;/p&gt;</span>
+<span class="java-block-comment">     * &lt;ul&gt;</span>
+<span class="java-block-comment">     *   &lt;li&gt;&lt;i&gt;view&lt;/i&gt;: -1.0 to +1.0 on both axis&lt;/li&gt;</span>
+<span class="java-block-comment">     *   &lt;li&gt;&lt;i&gt;origin&lt;/i&gt;: At &lt;code&gt;(0, 0)&lt;/code&gt;&lt;/li&gt;</span>
+<span class="java-block-comment">     *   &lt;li&gt;&lt;i&gt;grid&lt;/i&gt;: Spacing of 0.2 between major lines; minor lines</span>
+<span class="java-block-comment">     *   count is 4&lt;/li&gt;</span>
+<span class="java-block-comment">     * &lt;/ul&gt;</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">JXGraph</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Creates a new graph display with the specified view. The following</span>
+<span class="java-block-comment">     * properties are automatically set:&lt;/p&gt;</span>
+<span class="java-block-comment">     * &lt;ul&gt;</span>
+<span class="java-block-comment">     *   &lt;li&gt;&lt;i&gt;origin&lt;/i&gt;: Center of the specified view&lt;/code&gt;&lt;/li&gt;</span>
+<span class="java-block-comment">     *   &lt;li&gt;&lt;i&gt;grid&lt;/i&gt;: Spacing of 0.2 between major lines; minor lines</span>
+<span class="java-block-comment">     *   count is 4&lt;/li&gt;</span>
+<span class="java-block-comment">     * &lt;/ul&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param view the rectangle defining the view boundaries</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">JXGraph</span>(Rectangle2D view);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Creates a new graph display with the specified view and grid lines.</span>
+<span class="java-block-comment">     * The origin is set at the center of the view.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param view        the rectangle defining the view boundaries</span>
+<span class="java-block-comment">     * @param majorX      the spacing between two major grid lines on the X axis</span>
+<span class="java-block-comment">     * @param minorCountX the number of minor grid lines betweek two major</span>
+<span class="java-block-comment">     *                    grid lines on the X axis</span>
+<span class="java-block-comment">     * @param majorY      the spacing between two major grid lines on the Y axis</span>
+<span class="java-block-comment">     * @param minorCountY the number of minor grid lines betweek two major</span>
+<span class="java-block-comment">     *                    grid lines on the Y axis</span>
+<span class="java-block-comment">     * @throws IllegalArgumentException if minX &gt;= maxX or minY &gt;= maxY or</span>
+<span class="java-block-comment">     *                                  minorCountX &lt; 0 or minorCountY &lt; 0 or</span>
+<span class="java-block-comment">     *                                  majorX &lt;= 0.0 or majorY &lt;= 0.0</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">JXGraph</span>(Rectangle2D view,
+                   <span class="java-keywords">double</span> majorX, <span class="java-keywords">int</span> minorCountX,
+                   <span class="java-keywords">double</span> majorY, <span class="java-keywords">int</span> minorCountY);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Creates a new graph display with the specified view and origin.</span>
+<span class="java-block-comment">     * The following properties are automatically set:&lt;/p&gt;</span>
+<span class="java-block-comment">     * &lt;ul&gt;</span>
+<span class="java-block-comment">     *   &lt;li&gt;&lt;i&gt;grid&lt;/i&gt;: Spacing of 0.2 between major lines; minor lines</span>
+<span class="java-block-comment">     *   count is 4&lt;/li&gt;</span>
+<span class="java-block-comment">     * &lt;/ul&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param origin the coordinates of the main axis origin</span>
+<span class="java-block-comment">     * @param view the rectangle defining the view boundaries</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">JXGraph</span>(Point2D origin, Rectangle2D view);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Creates a new graph display with the specified view, origin and grid</span>
+<span class="java-block-comment">     * lines.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param origin      the coordinates of the main axis origin</span>
+<span class="java-block-comment">     * @param view        the rectangle defining the view boundaries</span>
+<span class="java-block-comment">     * @param majorX      the spacing between two major grid lines on the X axis</span>
+<span class="java-block-comment">     * @param minorCountX the number of minor grid lines betweek two major</span>
+<span class="java-block-comment">     *                    grid lines on the X axis</span>
+<span class="java-block-comment">     * @param majorY      the spacing between two major grid lines on the Y axis</span>
+<span class="java-block-comment">     * @param minorCountY the number of minor grid lines betweek two major</span>
+<span class="java-block-comment">     *                    grid lines on the Y axis</span>
+<span class="java-block-comment">     * @throws IllegalArgumentException if minX &gt;= maxX or minY &gt;= maxY or</span>
+<span class="java-block-comment">     *                                  minorCountX &lt; 0 or minorCountY &lt; 0 or</span>
+<span class="java-block-comment">     *                                  majorX &lt;= 0.0 or majorY &lt;= 0.0</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">JXGraph</span>(Point2D origin, Rectangle2D view,
+                   <span class="java-keywords">double</span> majorX, <span class="java-keywords">int</span> minorCountX,
+                   <span class="java-keywords">double</span> majorY, <span class="java-keywords">int</span> minorCountY);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Creates a new graph display with the specified view, origin and grid</span>
+<span class="java-block-comment">     * lines.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param originX     the coordinate of the major X axis</span>
+<span class="java-block-comment">     * @param originY     the coordinate of the major Y axis</span>
+<span class="java-block-comment">     * @param minX        the minimum coordinate on the X axis for the view</span>
+<span class="java-block-comment">     * @param maxX        the maximum coordinate on the X axis for the view</span>
+<span class="java-block-comment">     * @param minY        the minimum coordinate on the Y axis for the view</span>
+<span class="java-block-comment">     * @param maxY        the maximum coordinate on the Y axis for the view</span>
+<span class="java-block-comment">     * @param majorX      the spacing between two major grid lines on the X axis</span>
+<span class="java-block-comment">     * @param minorCountX the number of minor grid lines betweek two major</span>
+<span class="java-block-comment">     *                    grid lines on the X axis</span>
+<span class="java-block-comment">     * @param majorY      the spacing between two major grid lines on the Y axis</span>
+<span class="java-block-comment">     * @param minorCountY the number of minor grid lines betweek two major</span>
+<span class="java-block-comment">     *                    grid lines on the Y axis</span>
+<span class="java-block-comment">     * @throws IllegalArgumentException if minX &gt;= maxX or minY &gt;= maxY or</span>
+<span class="java-block-comment">     *                                  minorCountX &lt; 0 or minorCountY &lt; 0 or</span>
+<span class="java-block-comment">     *                                  majorX &lt;= 0.0 or majorY &lt;= 0.0</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">JXGraph</span>(<span class="java-keywords">double</span> originX, <span class="java-keywords">double</span> originY,
+                   <span class="java-keywords">double</span> minX,    <span class="java-keywords">double</span> maxX,
+                   <span class="java-keywords">double</span> minY,    <span class="java-keywords">double</span> maxY,
+                   <span class="java-keywords">double</span> majorX,  <span class="java-keywords">int</span> minorCountX,
+                   <span class="java-keywords">double</span> majorY,  <span class="java-keywords">int</span> minorCountY);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Enables or disables user input on the component. When user input is</span>
+<span class="java-block-comment">     * enabled, panning, zooming and view resetting. Disabling input will</span>
+<span class="java-block-comment">     * prevent the user from modifying the currently displayed view.&lt;p&gt;</span>
+<span class="java-block-comment">     * &lt;p&gt;Calling {@link #setEnabled(boolean)} disables the component in the</span>
+<span class="java-block-comment">     * Swing hierarchy and invokes this method.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param enabled true if user input must be enabled, false otherwise</span>
+<span class="java-block-comment">     * @see #setEnabled(boolean)</span>
+<span class="java-block-comment">     * @see #isInputEnabled()</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setInputEnabled</span>(<span class="java-keywords">boolean</span> enabled);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Defines whether or not user input is accepted and managed by this</span>
+<span class="java-block-comment">     * component. The component is always created with user input enabled.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return true if user input is enabled, false otherwise</span>
+<span class="java-block-comment">     * @see #setInputEnabled(boolean)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">boolean</span> <span class="java-layer-method">isInputEnabled</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Defines whether or not axis labels are painted by this component.</span>
+<span class="java-block-comment">     * The component is always created with text painting enabled.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return true if axis labels are painted, false otherwise</span>
+<span class="java-block-comment">     * @see #setTextPainted(boolean)</span>
+<span class="java-block-comment">     * @see #getForeground()</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">boolean</span> <span class="java-layer-method">isTextPainted</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Enables or disables the painting of axis labels depending on the</span>
+<span class="java-block-comment">     * value of the parameter. Text painting is enabled by default.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param textPainted if true, axis labels are painted</span>
+<span class="java-block-comment">     * @see #isTextPainted()</span>
+<span class="java-block-comment">     * @see #setForeground(Color)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setTextPainted</span>(<span class="java-keywords">boolean</span> textPainted);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Defines whether or not grids lines are painted by this component.</span>
+<span class="java-block-comment">     * The component is always created with grid lines painting enabled.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return true if grid lines are painted, false otherwise</span>
+<span class="java-block-comment">     * @see #setGridPainted(boolean)</span>
+<span class="java-block-comment">     * @see #getMajorGridColor()</span>
+<span class="java-block-comment">     * @see #getMinorGridColor()</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">boolean</span> <span class="java-layer-method">isGridPainted</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Enables or disables the painting of grid lines depending on the</span>
+<span class="java-block-comment">     * value of the parameter. Grid painting is enabled by default.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param gridPainted if true, axis labels are painted</span>
+<span class="java-block-comment">     * @see #isGridPainted()</span>
+<span class="java-block-comment">     * @see #setMajorGridColor(Color)</span>
+<span class="java-block-comment">     * @see #setMinorGridColor(Color)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setGridPainted</span>(<span class="java-keywords">boolean</span> gridPainted);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Defines whether or not the graph main axis is painted by this</span>
+<span class="java-block-comment">     * component. The component is always created with main axis painting</span>
+<span class="java-block-comment">     * enabled.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return true if main axis is painted, false otherwise</span>
+<span class="java-block-comment">     * @see #setTextPainted(boolean)</span>
+<span class="java-block-comment">     * @see #getAxisColor()</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">boolean</span> <span class="java-layer-method">isAxisPainted</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Enables or disables the painting of main axis depending on the</span>
+<span class="java-block-comment">     * value of the parameter. Axis painting is enabled by default.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param axisPainted if true, axis labels are painted</span>
+<span class="java-block-comment">     * @see #isAxisPainted()</span>
+<span class="java-block-comment">     * @see #setAxisColor(Color)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setAxisPainted</span>(<span class="java-keywords">boolean</span> axisPainted);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Defines whether or not the background painted by this component.</span>
+<span class="java-block-comment">     * The component is always created with background painting enabled.</span>
+<span class="java-block-comment">     * When background painting is disabled, background painting is deferred</span>
+<span class="java-block-comment">     * to the parent class.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return true if background is painted, false otherwise</span>
+<span class="java-block-comment">     * @see #setBackgroundPainted(boolean)</span>
+<span class="java-block-comment">     * @see #getBackground()</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">boolean</span> <span class="java-layer-method">isBackgroundPainted</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Enables or disables the painting of background depending on the</span>
+<span class="java-block-comment">     * value of the parameter. Background painting is enabled by default.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * @param backPainted if true, axis labels are painted</span>
+<span class="java-block-comment">     * @see #isBackgroundPainted()</span>
+<span class="java-block-comment">     * @see #setBackground(Color)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setBackgroundPainted</span>(<span class="java-keywords">boolean</span> backPainted);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Gets the major grid lines color of this component.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return this component&apos;s major grid lines color</span>
+<span class="java-block-comment">     * @see #setMajorGridColor(Color)</span>
+<span class="java-block-comment">     * @see #setGridPainted(boolean)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Color <span class="java-layer-method">getMajorGridColor</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Sets the color of major grid lines on this component. The color</span>
+<span class="java-block-comment">     * can be translucent.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param majorGridColor the color to become this component&apos;s major grid</span>
+<span class="java-block-comment">     *                       lines color</span>
+<span class="java-block-comment">     * @throws IllegalArgumentException if the specified color is null</span>
+<span class="java-block-comment">     * @see #getMajorGridColor()</span>
+<span class="java-block-comment">     * @see #isGridPainted()</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setMajorGridColor</span>(Color majorGridColor);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Gets the minor grid lines color of this component.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return this component&apos;s minor grid lines color</span>
+<span class="java-block-comment">     * @see #setMinorGridColor(Color)</span>
+<span class="java-block-comment">     * @see #setGridPainted(boolean)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Color <span class="java-layer-method">getMinorGridColor</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Sets the color of minor grid lines on this component. The color</span>
+<span class="java-block-comment">     * can be translucent.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param minorGridColor the color to become this component&apos;s minor grid</span>
+<span class="java-block-comment">     *                       lines color</span>
+<span class="java-block-comment">     * @throws IllegalArgumentException if the specified color is null</span>
+<span class="java-block-comment">     * @see #getMinorGridColor()</span>
+<span class="java-block-comment">     * @see #isGridPainted()</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setMinorGridColor</span>(Color minorGridColor);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Gets the main axis color of this component.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return this component&apos;s main axis color</span>
+<span class="java-block-comment">     * @see #setAxisColor(Color)</span>
+<span class="java-block-comment">     * @see #setGridPainted(boolean)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Color <span class="java-layer-method">getAxisColor</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Sets the color of main axis on this component. The color</span>
+<span class="java-block-comment">     * can be translucent.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param axisColor the color to become this component&apos;s main axis color</span>
+<span class="java-block-comment">     * @throws IllegalArgumentException if the specified color is null</span>
+<span class="java-block-comment">     * @see #getAxisColor()</span>
+<span class="java-block-comment">     * @see #isAxisPainted()</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setAxisColor</span>(Color axisColor);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Gets the distance, in graph units, between two major grid lines on</span>
+<span class="java-block-comment">     * the X axis.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return the spacing between two major grid lines on the X axis</span>
+<span class="java-block-comment">     * @see #setMajorX(double)</span>
+<span class="java-block-comment">     * @see #getMajorY()</span>
+<span class="java-block-comment">     * @see #setMajorY(double)</span>
+<span class="java-block-comment">     * @see #getMinorCountX()</span>
+<span class="java-block-comment">     * @see #setMinorCountX(int)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">double</span> <span class="java-layer-method">getMajorX</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Sets the distance, in graph units, between two major grid lines on</span>
+<span class="java-block-comment">     * the X axis.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param majorX the requested spacing between two major grid lines on the</span>
+<span class="java-block-comment">     *               X axis</span>
+<span class="java-block-comment">     * @throws IllegalArgumentException if majorX is &lt;= 0.0d</span>
+<span class="java-block-comment">     * @see #getMajorX()</span>
+<span class="java-block-comment">     * @see #getMajorY()</span>
+<span class="java-block-comment">     * @see #setMajorY(double)</span>
+<span class="java-block-comment">     * @see #getMinorCountX()</span>
+<span class="java-block-comment">     * @see #setMinorCountX(int)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setMajorX</span>(<span class="java-keywords">double</span> majorX);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Gets the number of minor grid lines between two major grid lines</span>
+<span class="java-block-comment">     * on the X axis.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return the number of minor grid lines between two major grid lines</span>
+<span class="java-block-comment">     * @see #setMinorCountX(int)</span>
+<span class="java-block-comment">     * @see #getMinorCountY()</span>
+<span class="java-block-comment">     * @see #setMinorCountY(int)</span>
+<span class="java-block-comment">     * @see #getMajorX()</span>
+<span class="java-block-comment">     * @see #setMajorX(double)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">int</span> <span class="java-layer-method">getMinorCountX</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Sets the number of minor grid lines between two major grid lines on</span>
+<span class="java-block-comment">     * the X axis.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param minorCountX the number of minor grid lines between two major grid</span>
+<span class="java-block-comment">     *                    lines on the X axis</span>
+<span class="java-block-comment">     * @throws IllegalArgumentException if minorCountX is &lt; 0</span>
+<span class="java-block-comment">     * @see #getMinorCountX()</span>
+<span class="java-block-comment">     * @see #getMinorCountY()</span>
+<span class="java-block-comment">     * @see #setMinorCountY(int)</span>
+<span class="java-block-comment">     * @see #getMajorX()</span>
+<span class="java-block-comment">     * @see #setMajorX(double)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setMinorCountX</span>(<span class="java-keywords">int</span> minorCountX);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Gets the distance, in graph units, between two major grid lines on</span>
+<span class="java-block-comment">     * the Y axis.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return the spacing between two major grid lines on the Y axis</span>
+<span class="java-block-comment">     * @see #setMajorY(double)</span>
+<span class="java-block-comment">     * @see #getMajorX()</span>
+<span class="java-block-comment">     * @see #setMajorX(double)</span>
+<span class="java-block-comment">     * @see #getMinorCountY()</span>
+<span class="java-block-comment">     * @see #setMinorCountY(int)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">double</span> <span class="java-layer-method">getMajorY</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Sets the distance, in graph units, between two major grid lines on</span>
+<span class="java-block-comment">     * the Y axis.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param majorY the requested spacing between two major grid lines on the</span>
+<span class="java-block-comment">     *               Y axis</span>
+<span class="java-block-comment">     * @throws IllegalArgumentException if majorY is &lt;= 0.0d</span>
+<span class="java-block-comment">     * @see #getMajorY()</span>
+<span class="java-block-comment">     * @see #getMajorX()</span>
+<span class="java-block-comment">     * @see #setMajorX(double)</span>
+<span class="java-block-comment">     * @see #getMinorCountY()</span>
+<span class="java-block-comment">     * @see #setMinorCountY(int)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setMajorY</span>(<span class="java-keywords">double</span> majorY);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Gets the number of minor grid lines between two major grid lines</span>
+<span class="java-block-comment">     * on the Y axis.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return the number of minor grid lines between two major grid lines</span>
+<span class="java-block-comment">     * @see #setMinorCountY(int)</span>
+<span class="java-block-comment">     * @see #getMinorCountX()</span>
+<span class="java-block-comment">     * @see #setMinorCountX(int)</span>
+<span class="java-block-comment">     * @see #getMajorY()</span>
+<span class="java-block-comment">     * @see #setMajorY(double)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">int</span> <span class="java-layer-method">getMinorCountY</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Sets the number of minor grid lines between two major grid lines on</span>
+<span class="java-block-comment">     * the Y axis.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param minorCountY the number of minor grid lines between two major grid</span>
+<span class="java-block-comment">     *                    lines on the Y axis</span>
+<span class="java-block-comment">     * @throws IllegalArgumentException if minorCountY is &lt; 0</span>
+<span class="java-block-comment">     * @see #getMinorCountY()</span>
+<span class="java-block-comment">     * @see #getMinorCountX()</span>
+<span class="java-block-comment">     * @see #setMinorCountX(int)</span>
+<span class="java-block-comment">     * @see #getMajorY()</span>
+<span class="java-block-comment">     * @see #setMajorY(double)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setMinorCountY</span>(<span class="java-keywords">int</span> minorCountY);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Sets the view and the origin of the graph at the same time. The view</span>
+<span class="java-block-comment">     * minimum boundaries are defined by the location of the rectangle passed</span>
+<span class="java-block-comment">     * as parameter. The width and height of the rectangle define the distance</span>
+<span class="java-block-comment">     * between the minimum and maximum boundaries:&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;ul&gt;</span>
+<span class="java-block-comment">     *   &lt;li&gt;&lt;i&gt;minX&lt;/i&gt;: bounds.getX()&lt;/li&gt;</span>
+<span class="java-block-comment">     *   &lt;li&gt;&lt;i&gt;minY&lt;/i&gt;: bounds.getY()&lt;/li&gt;</span>
+<span class="java-block-comment">     *   &lt;li&gt;&lt;i&gt;maxY&lt;/i&gt;: bounds.getMaxX() (minX + bounds.getWidth())&lt;/li&gt;</span>
+<span class="java-block-comment">     *   &lt;li&gt;&lt;i&gt;maxX&lt;/i&gt;: bounds.getMaxY() (minY + bounds.getHeight())&lt;/li&gt;</span>
+<span class="java-block-comment">     * &lt;/ul&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;The origin is located at the center of the view. Its coordinates are</span>
+<span class="java-block-comment">     * defined by calling bounds.getCenterX() and bounds.getCenterY().&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param bounds the rectangle defining the graph&apos;s view and its origin</span>
+<span class="java-block-comment">     * @see #getView()</span>
+<span class="java-block-comment">     * @see #setView(Rectangle2D)</span>
+<span class="java-block-comment">     * @see #getOrigin()</span>
+<span class="java-block-comment">     * @see #setOrigin(Point2D)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setViewAndOrigin</span>(Rectangle2D bounds);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Sets the view of the graph. The view minimum boundaries are defined by</span>
+<span class="java-block-comment">     * the location of the rectangle passed as parameter. The width and height</span>
+<span class="java-block-comment">     * of the rectangle define the distance between the minimum and maximum</span>
+<span class="java-block-comment">     * boundaries:&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;ul&gt;</span>
+<span class="java-block-comment">     *   &lt;li&gt;&lt;i&gt;minX&lt;/i&gt;: bounds.getX()&lt;/li&gt;</span>
+<span class="java-block-comment">     *   &lt;li&gt;&lt;i&gt;minY&lt;/i&gt;: bounds.getY()&lt;/li&gt;</span>
+<span class="java-block-comment">     *   &lt;li&gt;&lt;i&gt;maxY&lt;/i&gt;: bounds.getMaxX() (minX + bounds.getWidth())&lt;/li&gt;</span>
+<span class="java-block-comment">     *   &lt;li&gt;&lt;i&gt;maxX&lt;/i&gt;: bounds.getMaxY() (minY + bounds.getHeight())&lt;/li&gt;</span>
+<span class="java-block-comment">     * &lt;/ul&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;If the specificed view is null, nothing happens.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;Calling this method leaves the origin intact.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param bounds the rectangle defining the graph&apos;s view and its origin</span>
+<span class="java-block-comment">     * @see #getView()</span>
+<span class="java-block-comment">     * @see #setViewAndOrigin(Rectangle2D)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setView</span>(Rectangle2D bounds);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Gets the view of the graph. The returned rectangle defines the bounds</span>
+<span class="java-block-comment">     * of the view as follows:&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;ul&gt;</span>
+<span class="java-block-comment">     *   &lt;li&gt;&lt;i&gt;minX&lt;/i&gt;: bounds.getX()&lt;/li&gt;</span>
+<span class="java-block-comment">     *   &lt;li&gt;&lt;i&gt;minY&lt;/i&gt;: bounds.getY()&lt;/li&gt;</span>
+<span class="java-block-comment">     *   &lt;li&gt;&lt;i&gt;maxY&lt;/i&gt;: bounds.getMaxX() (minX + bounds.getWidth())&lt;/li&gt;</span>
+<span class="java-block-comment">     *   &lt;li&gt;&lt;i&gt;maxX&lt;/i&gt;: bounds.getMaxY() (minY + bounds.getHeight())&lt;/li&gt;</span>
+<span class="java-block-comment">     * &lt;/ul&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return the rectangle corresponding to the current view of the graph</span>
+<span class="java-block-comment">     * @see #setView(Rectangle2D)</span>
+<span class="java-block-comment">     * @see #setViewAndOrigin(Rectangle2D)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Rectangle2D <span class="java-layer-method">getView</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Resets the view to the default view if it has been changed by the user</span>
+<span class="java-block-comment">     * by panning and zooming. The default view is defined by the view last</span>
+<span class="java-block-comment">     * specified in a constructor call or a call to the methods</span>
+<span class="java-block-comment">     * {@link #setView(Rectangle2D)} and</span>
+<span class="java-block-comment">     * {@link #setViewAndOrigin(Rectangle2D)}.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @see #setView(Rectangle2D)</span>
+<span class="java-block-comment">     * @see #setViewAndOrigin(Rectangle2D)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">resetView</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Sets the origin of the graph. The coordinates of the origin are</span>
+<span class="java-block-comment">     * defined by the coordinates of the point passed as parameter.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;If the specificed view is null, nothing happens.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;Calling this method leaves the view intact.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param origin the coordinates of the new origin</span>
+<span class="java-block-comment">     * @see #getOrigin()</span>
+<span class="java-block-comment">     * @see #setViewAndOrigin(Rectangle2D)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setOrigin</span>(Point2D origin);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Gets the origin coordinates of the graph. The coordinates are</span>
+<span class="java-block-comment">     * represented as an instance of &lt;code&gt;Point2D&lt;/code&gt; and stored in</span>
+<span class="java-block-comment">     * &lt;code&gt;double&lt;/code&gt; format.&lt;/p&gt;</span>
+
+<span class="java-block-comment">     * @return the origin coordinates in double format</span>
+<span class="java-block-comment">     * @see #setOrigin(Point2D)</span>
+<span class="java-block-comment">     * @see #setViewAndOrigin(Rectangle2D)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Point2D <span class="java-layer-method">getOrigin</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Adds one or more plots to the graph. These plots are associated to</span>
+<span class="java-block-comment">     * a color used to draw them.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt;If plotList is null or empty, nothing happens.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;This method is not thread safe and should be called only from the</span>
+<span class="java-block-comment">     * EDT.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param color    the color to be usd to draw the plots</span>
+<span class="java-block-comment">     * @param plotList the list of plots to add to the graph</span>
+<span class="java-block-comment">     * @throws IllegalArgumentException if color is null</span>
+<span class="java-block-comment">     * @see #removePlots(JXGraph.Plot...)</span>
+<span class="java-block-comment">     * @see #removeAllPlots()</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">addPlots</span>(Color color, Plot... plotList);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Removes the specified plots from the graph. Plots to be removed</span>
+<span class="java-block-comment">     * are identified by identity. This means you cannot remove a plot by</span>
+<span class="java-block-comment">     * passing a clone or another instance of the same subclass of</span>
+<span class="java-block-comment">     * {@link JXGraph.Plot}.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;If plotList is null or empty, nothing happens.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;This method is not thread safe and should be called only from the</span>
+<span class="java-block-comment">     * EDT.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param plotList the list of plots to be removed from the graph</span>
+<span class="java-block-comment">     * @see #removeAllPlots()</span>
+<span class="java-block-comment">     * @see #addPlots(Color, JXGraph.Plot...)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">removePlots</span>(Plot... plotList);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Removes all the plots currently associated with this graph.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;This method is not thread safe and should be called only from the</span>
+<span class="java-block-comment">     * EDT.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @see #removePlots(JXGraph.Plot...)</span>
+<span class="java-block-comment">     * @see #addPlots(Color, JXGraph.Plot...)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">removeAllPlots</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Converts a position, in graph units, from the Y axis into a pixel</span>
+<span class="java-block-comment">     * coordinate. For instance, if you defined the origin so it appears at the</span>
+<span class="java-block-comment">     * exact center of the view, calling</span>
+<span class="java-block-comment">     * &lt;code&gt;yPositionToPixel(getOriginY())&lt;/code&gt; will return a value</span>
+<span class="java-block-comment">     * approximately equal to &lt;code&gt;getHeight() / 2.0&lt;/code&gt;.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param position the Y position to be converted into pixels</span>
+<span class="java-block-comment">     * @return the coordinate in pixels of the specified graph Y position</span>
+<span class="java-block-comment">     * @see #xPositionToPixel(double)</span>
+<span class="java-block-comment">     * @see #yPixelToPosition(double)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">protected</span> <span class="java-keywords">double</span> <span class="java-layer-method">yPositionToPixel</span>(<span class="java-keywords">double</span> position);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Converts a position, in graph units, from the X axis into a pixel</span>
+<span class="java-block-comment">     * coordinate. For instance, if you defined the origin so it appears at the</span>
+<span class="java-block-comment">     * exact center of the view, calling</span>
+<span class="java-block-comment">     * &lt;code&gt;xPositionToPixel(getOriginX())&lt;/code&gt; will return a value</span>
+<span class="java-block-comment">     * approximately equal to &lt;code&gt;getWidth() / 2.0&lt;/code&gt;.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param position the X position to be converted into pixels</span>
+<span class="java-block-comment">     * @return the coordinate in pixels of the specified graph X position</span>
+<span class="java-block-comment">     * @see #yPositionToPixel(double)</span>
+<span class="java-block-comment">     * @see #xPixelToPosition(double)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">protected</span> <span class="java-keywords">double</span> <span class="java-layer-method">xPositionToPixel</span>(<span class="java-keywords">double</span> position);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Converts a pixel coordinate from the X axis into a graph position, in</span>
+<span class="java-block-comment">     * graph units. For instance, if you defined the origin so it appears at the</span>
+<span class="java-block-comment">     * exact center of the view, calling</span>
+<span class="java-block-comment">     * &lt;code&gt;xPixelToPosition(getWidth() / 2.0)&lt;/code&gt; will return a value</span>
+<span class="java-block-comment">     * approximately equal to &lt;code&gt;getOriginX()&lt;/code&gt;.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param pixel the X pixel coordinate to be converted into a graph position</span>
+<span class="java-block-comment">     * @return the graph X position of the specified pixel coordinate</span>
+<span class="java-block-comment">     * @see #yPixelToPosition(double)</span>
+<span class="java-block-comment">     * @see #xPositionToPixel(double)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">protected</span> <span class="java-keywords">double</span> <span class="java-layer-method">xPixelToPosition</span>(<span class="java-keywords">double</span> pixel);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Converts a pixel coordinate from the Y axis into a graph position, in</span>
+<span class="java-block-comment">     * graph units. For instance, if you defined the origin so it appears at the</span>
+<span class="java-block-comment">     * exact center of the view, calling</span>
+<span class="java-block-comment">     * &lt;code&gt;yPixelToPosition(getHeight() / 2.0)&lt;/code&gt; will return a value</span>
+<span class="java-block-comment">     * approximately equal to &lt;code&gt;getOriginY()&lt;/code&gt;.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param pixel the Y pixel coordinate to be converted into a graph position</span>
+<span class="java-block-comment">     * @return the graph Y position of the specified pixel coordinate</span>
+<span class="java-block-comment">     * @see #xPixelToPosition(double)</span>
+<span class="java-block-comment">     * @see #yPositionToPixel(double)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">protected</span> <span class="java-keywords">double</span> <span class="java-layer-method">yPixelToPosition</span>(<span class="java-keywords">double</span> pixel);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;This painting method is meant to be overriden by subclasses of</span>
+<span class="java-block-comment">     * &lt;code&gt;JXGraph&lt;/code&gt;. This method is called after all the painting</span>
+<span class="java-block-comment">     * is done. By overriding this method, a subclass can display extra</span>
+<span class="java-block-comment">     * information on top of the graph.&lt;/p&gt;</span>
+<span class="java-block-comment">     * &lt;p&gt;The graphics surface passed as parameter is configured by</span>
+<span class="java-block-comment">     * {@link #setupGraphics(Graphics2D)}.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param g2 the graphics surface on which the graph is drawn</span>
+<span class="java-block-comment">     * @see #setupGraphics(Graphics2D)</span>
+<span class="java-block-comment">     * @see #xPixelToPosition(double)</span>
+<span class="java-block-comment">     * @see #yPixelToPosition(double)</span>
+<span class="java-block-comment">     * @see #xPositionToPixel(double)</span>
+<span class="java-block-comment">     * @see #yPositionToPixel(double)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">protected</span> <span class="java-keywords">void</span> <span class="java-layer-method">paintExtra</span>(Graphics2D g2);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;This method is called by the component prior to any drawing operation</span>
+<span class="java-block-comment">     * to configure the drawing surface. The default implementation enables</span>
+<span class="java-block-comment">     * antialiasing on the graphics.&lt;/p&gt;</span>
+<span class="java-block-comment">     * &lt;p&gt;This method can be overriden by subclasses to modify the drawig</span>
+<span class="java-block-comment">     * surface before any painting happens.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param g2 the graphics surface to set up</span>
+<span class="java-block-comment">     * @see #paintExtra(Graphics2D)</span>
+<span class="java-block-comment">     * @see #paintBackground(Graphics2D)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">protected</span> <span class="java-keywords">void</span> <span class="java-layer-method">setupGraphics</span>(Graphics2D g2);
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;This method is called by the component whenever it needs to paint</span>
+<span class="java-block-comment">     * its background. The default implementation fills the background with</span>
+<span class="java-block-comment">     * a solid color as defined by {@link #getBackground()}. Background painting</span>
+<span class="java-block-comment">     * does not happen when {@link #isBackgroundPainted()} returns false.&lt;/p&gt;</span>
+<span class="java-block-comment">     * &lt;p&gt;It is recommended to subclasses to honor the contract defined by</span>
+<span class="java-block-comment">     * {@link #isBackgroundPainted()} and {@link #setBackgroundPainted(boolean)}.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param g2 the graphics surface on which the background must be drawn</span>
+<span class="java-block-comment">     * @see #setupGraphics(Graphics2D)</span>
+<span class="java-block-comment">     * @see #paintExtra(Graphics2D)</span>
+<span class="java-block-comment">     * @see #isBackgroundPainted()</span>
+<span class="java-block-comment">     * @see #setBackgroundPainted(boolean)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">protected</span> <span class="java-keywords">void</span> <span class="java-layer-method">paintBackground</span>(Graphics2D g2);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;A plot represents a mathematical transformation used by</span>
+<span class="java-block-comment">     * {@link JXGraph}. When a plot belongs to a graph, the graph component</span>
+<span class="java-block-comment">     * asks for the transformation of a value along the X axis. The resulting</span>
+<span class="java-block-comment">     * value defines the Y coordinates at which the graph must draw a spot of</span>
+<span class="java-block-comment">     * color.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;Here is a sample implemention of this class that draws a straight line</span>
+<span class="java-block-comment">     * once added to a graph (it follows the well-known equation y=a.x+b):&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;pre&gt;</span>
+<span class="java-block-comment">     * class LinePlot extends JXGraph.Plot {</span>
+<span class="java-block-comment">     *     public double compute(double value) {</span>
+<span class="java-block-comment">     *         return 2.0 * value + 1.0;</span>
+<span class="java-block-comment">     *     }</span>
+<span class="java-block-comment">     * }</span>
+<span class="java-block-comment">     * &lt;/pre&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * &lt;p&gt;When a plot is added to an instance of</span>
+<span class="java-block-comment">     * &lt;code&gt;JXGraph&lt;/code&gt;, the &lt;code&gt;JXGraph&lt;/code&gt; automatically becomes</span>
+<span class="java-block-comment">     * a new property change listener of the plot. If property change events are</span>
+<span class="java-block-comment">     * fired, the graph will be updated accordingly.&lt;/p&gt;</span>
+<span class="java-block-comment">     * </span>
+<span class="java-block-comment">     * &lt;p&gt;More information about plots usage can be found in {@link JXGraph} in</span>
+<span class="java-block-comment">     * the section entitled &lt;i&gt;Plots&lt;/i&gt;.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @see JXGraph</span>
+<span class="java-block-comment">     * @see JXGraph#addPlots(Color, JXGraph.Plot...)</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">abstract</span> <span class="java-keywords">static</span> <span class="java-keywords">class</span> Plot <span class="java-keywords">extends</span> JavaBean {
+        <span class="java-block-comment">/**</span>
+<span class="java-block-comment">         * &lt;p&gt;Creates a new, parameter-less plot.&lt;/p&gt;</span>
+<span class="java-block-comment">         */</span>
+        <span class="java-keywords">protected</span> <span class="java-layer-method">Plot</span>();
+        
+        <span class="java-block-comment">/**</span>
+<span class="java-block-comment">         * &lt;p&gt;This method must return the result of a mathematical</span>
+<span class="java-block-comment">         * transformation of its sole parameter.&lt;/p&gt;</span>
+<span class="java-block-comment">         * </span>
+<span class="java-block-comment">         * @param value a value along the X axis of the graph currently</span>
+<span class="java-block-comment">         *              drawing this plot</span>
+<span class="java-block-comment">         * @return the result of the mathematical transformation of value</span>
+<span class="java-block-comment">         */</span>
+        <span class="java-keywords">public</span> <span class="java-keywords">abstract</span> <span class="java-keywords">double</span> <span class="java-layer-method">compute</span>(<span class="java-keywords">double</span> value);
+    }
+}
+
+
+</pre></body>
+</html>

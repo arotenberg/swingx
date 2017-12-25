@@ -1,0 +1,83 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+  <head>
+    <title>Readme - SwingLabs SwingX Project - http://swingx.dev.java.net</title>
+    <link rel="stylesheet" type="text/css" href="swinglabs.css" />
+  </head>
+  <body>
+    <body>
+        <div id="container">
+            <div id="stitch-hack">
+                <div id="banner">
+                </div>
+                <div id="menu">
+                    <a href="http://swinglabs.org/index.jsp">Home</a>
+                    <a href="http://swinglabs.org/projects.jsp">Projects</a>
+                    <a href="http://swinglabs.org/screenshots.jsp">Screenshots</a>
+                    <a href="http://swinglabs.org/downloads.jsp">Downloads</a>
+                    <a href="http://swinglabs.org/demos.jsp">Demos</a>
+                    <a href="http://swinglabs.org/docs.jsp">Documentation</a>
+                    <a href="http://swinglabs.org/contact.jsp">Contact Us</a>
+                </div>
+                <div id="content">
+                    <div class="section">
+                        <p>SwingX is a library of components and utilities extending the Java Swing library; read more at our website, 
+                        <a href="http://swingx.dev.java.net">http://swingx.dev.java.net</a>, and Wiki page, 
+                        <a href="http://wiki.java.net/bin/view/Javadesktop/SwingLabsSwingX">http://wiki.java.net/bin/view/Javadesktop/SwingLabsSwingX</a>
+                        </p>
+                    </div>
+                    <div class="section">
+                        <h2>Getting the Latest Source</h2>
+                        <p>Download the latest release from our CVS repository; full instructions are at
+                        <a href="https://swingx.dev.java.net/servlets/ProjectSource">https://swingx.dev.java.net/servlets/ProjectSource</a>.
+                        But you can check out using the generic account "guest", with these settings
+                        <pre>
+            cvs -d :pserver:guest@cvs.dev.java.net:/cvs login
+                        </pre>
+                        followed by
+                        <pre>
+            cvs -d :pserver:guest@cvs.dev.java.net:/cvs checkout swingx 
+                        </pre>
+                        </p>
+                    </div>
+                    <div class="section">
+                        <h2>Building the Source</h2>
+                        <p>SwingX relies on Ant and Ant build files for controlling compilation, building 
+                        docs, testing, etc. You can use our Ant build scripts or use your own--some IDEs 
+                        make this easy to do.</p>
+
+                        <p>To compile from the command line, you'll need to have Apache Ant installed; 
+                        see <a href="http://ant.apache.org">http://ant.apache.org</a>.</p>
+
+                        <p><strong>IMPORTANT</strong>: our default task in Ant also runs our unit tests, which are 
+                        written using jUnit. You need to have Ant be aware of jUnit <b>before</b> compiling 
+                        SwingX. We can't help you with this--it's an Ant configuration issue.</p>
+
+                        <p>If jUnit is not properly configured, you may get an error like this:
+                        <pre>
+            BUILD FAILED
+            c:\swingx\nbproject\build-impl.xml:407: Following error occured while executing this line
+            c:\\swingx\nbproject\build-impl.xml:127: Could not create task or type of type: junit.
+
+            Ant could not find the task or a class this task relies upon.
+                        </pre></p>
+
+                        <p>Suggestions:
+                        <ul>
+                            <li>for Ant 1.5.x and previous, make sure optional.jar is in your ANT_HOME\lib directory.</li>
+                            <li>for Ant 1.6.x and above, make sure ant-junit.jar is in your ANT_HOME\lib directory, 
+                                and that jUnit.jar is either in that directory as well OR listed on your CLASSPATH.</li>
+                        </ul>    
+                        You can build SwingX by going to the command line and typing
+                        <pre><code>
+            ant
+                        </code></pre>
+                        That should be it--this will test and build swingx.jar in the dist directory.</p>
+                    </div>
+                </div>
+                <div id="footer" />
+            </div>
+        </div>
+  </body>
+</html>

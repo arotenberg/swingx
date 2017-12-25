@@ -1,0 +1,885 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+  <meta content="text/html; charset=ISO-8859-1"
+ http-equiv="content-type">
+  <title>SwingX Todo - Summer 2005</title>
+  <meta name="author"
+ content="Jeanette Winzenburg, Richard Bair, Alexander Zuev">
+</head>
+<body>
+<h1>SwingX Task List</h1>
+<br>
+<table border="1" style="width: 100%;" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <th style="vertical-align: top; text-align: center; width: 50%;">Task<br>
+      </th>
+      <th style="vertical-align: top;">Comments<br>
+      </th>
+      <th style="vertical-align: top;">Status<br>
+      </th>
+    </tr>
+    <tr>
+      <td colspan="3" rowspan="1">
+      <h2>Documentation</h2>
+      </td>
+    </tr>
+    <tr>
+      <td>most of the methods are not properly documented even in
+its JavaDoc. This needs to be changed, the library is too complicated
+for the &#8220;see sources for the logic&#8221; type of learning. There are 3
+levels of documentation that need to be addressed, listed in order of
+importance:</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>A) HowTo's, code snippets, tip &amp; tricks, etc</td>
+      <td style="vertical-align: top;">Patrick's started a wiki with <a
+ href="http://wiki.java.net/bin/view/Javadesktop/JDNCJXTableHowTo">JXTable
+HowTo</a><br>
+      </td>
+      <td style="vertical-align: top;">started<br>
+      </td>
+    </tr>
+    <tr>
+      <td>B) JavaDoc</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>C) High level "whitepaper" documentation</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" rowspan="1">
+      <h2>Other Meta-Issues</h2>
+      </td>
+    </tr>
+    <tr>
+      <td>I18n: all strings and resources definitions should be
+replaced with the
+call to UIManager, even if these are bogus calls. Good example is
+JXDatePicker.</td>
+      <td style="vertical-align: top;">added a default swingx framework
+properties file and made the LookAndFeelAddons load it.<br>
+see JXTable for an example<br>
+      </td>
+      <td style="vertical-align: top;">started<br>
+      </td>
+    </tr>
+    <tr>
+      <td>UI:Classes which don't have their own UI but use existing
+Swing
+components for UI (like *dialogs) should be checked for the UI changing
+procedure. Ensure proper behavior when changing look and feels for all
+components.</td>
+      <td style="vertical-align: top;">special care needed for all
+components which are only temporarily contained in the container
+hierarchy (mostly renderers, editors)<br>
+see JXTable for an example<br>
+      </td>
+      <td style="vertical-align: top;">started<br>
+      </td>
+    </tr>
+    <tr>
+      <td>Code cleanup: there is a lot of the commented code that
+became obsolete
+and non-actual. For the easiness of future development is would be nice
+to clean up all the code.</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">foreever in progress...........<br>
+      </td>
+    </tr>
+    <tr>
+      <td>Coding Style: reformat all components according one coding
+style?
+Currently some components are looks like garbage in terms of
+indentation. The coding style will be the same as is used by Swing and
+the JDK development team. Coding guidelines must be written and
+published on the SwingLabs website, and be used throughout the
+swinglabs projects. (TODO Insert link to coding style)</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>"Eat our own food" - Consistently use JXPanel (or other JX*
+where available) throughout SwingX and throughout the demos.</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3">
+      <h2>Code - swingx</h2>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">* improve searching facilities:
+add reusable FindModel</td>
+      <td style="vertical-align: top;">The current name is
+"PatternModel" <br>
+      </td>
+      <td style="vertical-align: top;">started<br>
+      </td>
+    </tr>
+    <tr>
+      <td>* PaintUtils: move to swingx.utils</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td>* JXRootPane: there are links in JavaDoc that leads to
+&#8220;org.jdesktop.swing.*&#8221;</td>
+      <td style="vertical-align: top;">sometime during community
+cleanup <br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" rowspan="1">* <span style="font-weight: bold;">JXTable</span></td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>- extract tableHeader related behaviour into JXTableHeader;
+make sure we can add header grouping later on</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td>- improve column configuration (need some pluggable
+Configurator
+which is arbitrarily dumb by default but can be replaced if the context
+is MetaData-aware)</td>
+      <td style="vertical-align: top;">The basic support is added:
+ColumnFactory in swingx and ColumnFactoryExt in databinding. Need to be
+filled with value...<br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td>- move some of the interactive tests into the demos to
+demonstrate the capabilities</td>
+      <td style="vertical-align: top;">The demos are JXTableDemo and
+DecoratorDemo<br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" rowspan="1">- bug fixing (todo - list and
+prioritize most annoying misbehaviour)</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp;#169 - header renderer
+must not override LF specific look<br>
+      </td>
+      <td style="vertical-align: top;">not sure if it is completely
+solved<br>
+related issues: #25 - JN'Table and Mac<br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">#227 (fun) - expose auto-resize
+in columnControl <br>
+      </td>
+      <td style="vertical-align: top;">added localizable bound actions
+to JXTable's actionMap, used in ColumnControl<br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp;#85 cleanup in
+setTableHeader<br>
+      </td>
+      <td style="vertical-align: top;">removed - use super:
+JXTableHeader takes care of swingx specifics<br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp;#101 position of
+re-showing columns - fixed? <br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">#109 cursor shape?<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp;#192 visibility tracking
+in column control - fixed?<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">#11-swingx - add api to sort
+programmatically (interactive sorter)<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">postponed<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">#119 setModel and sorting -
+exception?<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">#125 setFilters(null) and update?<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp;#149 individual rowheights
+lost when sorting/filtering<br>
+      </td>
+      <td style="vertical-align: top;">added RowSizing for coordinate
+mapping between model/view <br>
+dirty: rowModel private to super - reflection with access mod needed<br>
+      </td>
+      <td style="vertical-align: top;">started<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp;#187 keep sorter when
+filtering<br>
+      </td>
+      <td style="vertical-align: top;">solved during filter/sorter
+overhaul<br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" rowspan="1">*<span style="font-weight: bold;">
+JXTreeTable</span>
+tree method exposure (todo - list most wanted methods)</td>
+      <td style="vertical-align: top;">in discussion<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp;#186 - getRowForPath<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">#62, #200, #203 -- access to
+listeners<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp;#70 - convertValueToText
+(can be closed?)<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">open<br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" rowspan="1" style="vertical-align: top;">*
+JXTreeTable bugs<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">#52 - visible gridlines?
+columnMargin == 1?<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">open<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">&nbsp;#120 - collapse while
+editing --&gt; datacorruption<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">open<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">#131 - renderer, setRowHeight?<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">postponed<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">#136 - support setRowHeight(int,
+int)<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">postponed<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">#10(swingx) - treetable not
+updated on property change<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">#204 - support sorting/filtering<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">postponed<br>
+      </td>
+    </tr>
+    <tr>
+      <td>* Replace <span style="font-weight: bold;">JXHyperlink</span>
+code with code from JXHyperlinkButton
+(merge with L2FProd?). Clean up. Use JXHyperlink as the final name</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td>* summarize hyperlink spec from forum discussion</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* use/enable hyperlink in JXList/JXTree/JXTreeTable</td>
+      <td style="vertical-align: top;">done for JXList, JXTable<br>
+      </td>
+      <td style="vertical-align: top;">started<br>
+      </td>
+    </tr>
+    <tr>
+      <td>* cleanup LinkRenderer (respect and visualize selection,
+focused state), possible rename</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* merge Thomas' <span style="font-weight: bold;">autocomplete
+      </span>into SwingX</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td>* JXGlassPane: dismiss on arbitrary click? dismiss on Esc?</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* remove JXListPanel (auto-insert into Scrollpane is JN*
+behaviour)</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td>* consistently use JXPanel (or other JX* where available)
+throughout swingx (and demos)</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">started<br>
+      </td>
+    </tr>
+    <tr>
+      <td>* extract logic from view in JX&lt;special&gt;Dialogs/Panels</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* status of JXStatusBar?</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* status of MouseMessagingHandler? really use the long
+description
+(probably doesn't fit into the visible part of a textfield/label)?
+relation to RolloverProducer?</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* remove ScrollUp*, (replace ScrollUpLayout with
+VerticalLayout)</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td>* add <span style="font-weight: bold;">JXCollapsible</span>,
+      <span style="font-weight: bold;">JXTaskPane</span>, <span
+ style="font-weight: bold;">JXTaskPaneContainer</span></td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" rowspan="1">
+      <h2>Code - swingx.util</h2>
+      </td>
+    </tr>
+    <tr>
+      <td>* SwingWorker, EOL it, need to know when to kill it (in
+Mustang, in
+separate SwingLabs project) (UPDATE: I looked into SwingWorker, it is
+only being used by JDNC right now. I'd like to get it out of SwingX
+since there is another SwingLabs project for it, and SwingX doesn't
+require it)</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* Remove UIManagerUtils in favor of AddOn support</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* Build in preferences support</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">postponed<br>
+      </td>
+    </tr>
+    <tr>
+      <td>* Spatial - the name has the notion of 3D when in fact it's
+an area in a plane, remove and use Rectangle instead</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* Refactor WindowUtils as needed</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">* Link needs to be refactored as
+HyperlinkModel</td>
+      <td style="vertical-align: top;">renamed LinkModel, moved into
+swingx<br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" rowspan="1">
+      <h2>Code - swingx.plaf</h2>
+      </td>
+    </tr>
+    <tr>
+      <td>* add per-component LF support (ComponentAddon/LFAddOn)</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td>* change components with ui-delegates (JXTitledPanel, ...) to
+use the addon api</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td>* Remove ScrollUp PLAF support</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td>* Refactor JXTitledPanel PLAF support. Use gradient laf,
+except on Mac use Glossy laf</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" rowspan="1">
+      <h2>Code - swingx.decorator</h2>
+      </td>
+    </tr>
+    <tr>
+      <td>* use functors</td>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">* try to further abstract the
+filter/sort/highlight pipelining
+functionality for re-use across "collection views" (table, list, tree)</td>
+      <td style="vertical-align: top;">moved responsibility for
+interactive sorter into pipeline<br>
+abstracted Selection for model/view coordinate mapping of selection<br>
+added filter support to JXList<br>
+      </td>
+      <td style="vertical-align: top;">started<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">* Pipelines need to be mutable,
+modifiable (there's an
+issue filed about it as well), but I'm not too convinced that this is
+an easy to implement enhancement, probably there's a reason they are not</td>
+      <td style="vertical-align: top;">Highlighter/-Pipeline is changed
+to fire a state change on modification/mutation<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="2" rowspan="1">* bug fixing (todo - list of most
+prominent misbehaviour)</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">#222 patternfilter exception<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">#189, #221, #214 sorting and
+classcastexception (fix suggested)<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">done<br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;">#218 - allow mutable pipelines
+(add/remove filters)<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" rowspan="1">
+      <h2>Code - swingx.calendar</h2>
+      </td>
+    </tr>
+    <tr>
+      <td>* move DateSpan &amp; DateUtils to swingx.util</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* move JXMonthView to swingx</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* finish implementing new LAF for components (Josh Outwater)</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" rowspan="1">
+      <h2>Code - swingx.border</h2>
+      </td>
+    </tr>
+    <tr>
+      <td>* confirm code review on MatteBorderExt</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* Implement Romain's DropShadowBorder code for alternate
+width shadows</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" rowspan="1">
+      <h2>Code - swingx.auth</h2>
+      </td>
+    </tr>
+    <tr>
+      <td>* SaveMode should be an Enum</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* Need more convenience methods</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* I don't like embedding the Dialog in a JXLoginPanel</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* Why are we using a class for the resource bundle instead of
+a file?</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* Check Shai Almog's login dialog enhancements</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" rowspan="1">
+      <h2>Code - swingx.action</h2>
+      </td>
+    </tr>
+    <tr>
+      <td>* Debug makes no sense here, should be moved or removed</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* Rename "TargetableAction" and "BoundAction"</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* Change so Swing components are targetable without having to
+implement "Targetable"</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* Consider changing "Targetable" to use an ActionMap instead
+of it's current 3 methods</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* Look into simplifying the architecture</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;">future<br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" rowspan="1">
+      <h2>Code - swingx.icon</h2>
+      </td>
+    </tr>
+    <tr>
+      <td>* Consider moving these?</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>---------------------------------------------------------------------</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td colspan="3" rowspan="1">
+      <h2>Thoughts</h2>
+      </td>
+    </tr>
+    <tr>
+      <td>swingx.decorator</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>* Filtering</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>- Can filters modify data?</td>
+      <td style="vertical-align: top;">no<br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>- The first two sorting "serious problem" bullets in the
+online documentation are straw men</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>- Sorting is weird -- sorters within and without a pipeline?</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+    <tr>
+      <td>- Filter should not be stateful!!!!</td>
+      <td style="vertical-align: top;"><br>
+      </td>
+      <td style="vertical-align: top;"><br>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<br>
+<br>
+<br>
+<br>
+</body>
+</html>

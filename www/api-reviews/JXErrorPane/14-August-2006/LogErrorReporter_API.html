@@ -1,0 +1,82 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>LogErrorReporter_API.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.java-keywords {color: #000099; font-family: Monospaced; font-weight: bold}
+.java-layer-method {font-family: Monospaced; font-weight: bold}
+.java-block-comment {color: #737373}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/Users/richardallenbair/Documents/Source/Projects/nonsense/swingx/src/beaninfo/LogErrorReporter_API.java</td></tr></table>
+<pre>
+<span class="java-block-comment">/*</span>
+<span class="java-block-comment"> * $Id: LogErrorReporter_API.html 1362 2006-08-24 20:06:25Z rbair $</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * Copyright 2004 Sun Microsystems, Inc., 4150 Network Circle,</span>
+<span class="java-block-comment"> * Santa Clara, California 95054, U.S.A. All rights reserved.</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * This library is free software; you can redistribute it and/or</span>
+<span class="java-block-comment"> * modify it under the terms of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License as published by the Free Software Foundation; either</span>
+<span class="java-block-comment"> * version 2.1 of the License, or (at your option) any later version.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * This library is distributed in the hope that it will be useful,</span>
+<span class="java-block-comment"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="java-block-comment"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU</span>
+<span class="java-block-comment"> * Lesser General Public License for more details.</span>
+<span class="java-block-comment"> * </span>
+<span class="java-block-comment"> * You should have received a copy of the GNU Lesser General Public</span>
+<span class="java-block-comment"> * License along with this library; if not, write to the Free Software</span>
+<span class="java-block-comment"> * Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA</span>
+<span class="java-block-comment"> */</span> 
+
+<span class="java-keywords">package</span> org.jdesktop.swingx.error;
+
+<span class="java-keywords">import</span> java.util.logging.Logger;
+<span class="java-keywords">import</span> org.jdesktop.swingx.JavaBean;
+
+<span class="java-block-comment">/**</span>
+<span class="java-block-comment"> * &lt;p&gt;A simple {@link ErrorReporter} that sends errors to a log file, using the</span>
+<span class="java-block-comment"> * standard logging facility. This allows the user to decide which errors are</span>
+<span class="java-block-comment"> * worth logging, and which aren&apos;t. It is anticipated that this class will</span>
+<span class="java-block-comment"> * prove more useful in admin or power user applications, as opposed to consumer</span>
+<span class="java-block-comment"> * oriented applications. However, if combined with some other error reporter</span>
+<span class="java-block-comment"> * such as {@link EmailErrorReporter}, this class may prove useful even</span>
+<span class="java-block-comment"> * in consumer applications.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * @author rbair</span>
+<span class="java-block-comment"> */</span>
+<span class="java-keywords">public</span> <span class="java-keywords">class</span> LogErrorReporter <span class="java-keywords">extends</span> JavaBean <span class="java-keywords">implements</span> ErrorReporter {
+    <span class="java-block-comment">/** Creates a new instance of &lt;code&gt;LogErrorReporter&lt;/code&gt; */</span>
+    <span class="java-keywords">public</span> <span class="java-layer-method">LogErrorReporter</span>();
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Sets the &lt;code&gt;Logger&lt;/code&gt; to log error reports to. The specified param</span>
+<span class="java-block-comment">     * may be null which will cause the LogErrorReporter to log nothing.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param log the &lt;code&gt;Logger&lt;/code&gt; which will receive error reports</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setLog</span>(Logger log);
+    
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * Gets the log. May be null.</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @return the &lt;code&gt;Logger&lt;/code&gt; which will process error reports</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> Logger <span class="java-layer-method">getLog</span>();
+
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * @inheritDoc</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">reportError</span>(ErrorInfo info);
+}
+
+</pre></body>
+</html>

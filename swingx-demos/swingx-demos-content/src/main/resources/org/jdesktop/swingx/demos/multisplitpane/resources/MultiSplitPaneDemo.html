@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <title>JXMultiSplitPane Demo</title>
+    </head>
+    <body>
+      JXMultiSplitPane is a container that can be split into multiple resizeable
+      areas. The layout is configured using MultiSplitLayout layout manager.
+      <p>
+      The MultiSplitLayout layout manager recursively arranges its components in
+      row and column groups called "Splits". Elements of the layout are
+      separated by gaps called "Dividers". The overall layout is defined with a
+      simple tree model whose nodes are instances of MultiSplitLayout.Split,
+      MultiSplitLayout. Divider, and MultiSplitLayout.Leaf. Named Leaf nodes
+      represent the space allocated to a component that was added with a
+      constraint that matches the Leaf's name. Extra space is distributed among
+      row/column siblings according to their 0.0 to 1.0 weight. If no weights
+      are specified then the last sibling always gets all of the extra space,
+      or space reduction.
+      <p>
+      Although MultiSplitLayout can be used with any Container, it's the default
+      layout manager for JXMultiSplitPane. JXMultiSplitPane supports
+      interactively dragging the Dividers, accessibility, and other features
+      associated with split panes.
+    </body>
+</html>

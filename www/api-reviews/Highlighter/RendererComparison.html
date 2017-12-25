@@ -1,0 +1,545 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+
+
+  
+  
+  <meta content="text/html; charset=ISO-8859-1" http-equiv="content-type" />
+
+
+
+  
+  
+  
+  <title>&lt;Component&gt;CellRenderers - Comparison of Default Implementations</title>
+</head>
+
+
+<body>
+
+
+<br />
+
+
+<h1>Default&lt;Comp&gt;CellRenderer</h1>
+
+<br />
+
+<h2>Implementations</h2>
+
+Comparing implementations (jdk1.5). Mustang?<br />
+
+
+<br />
+
+
+<br />
+
+
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+
+  <tbody>
+
+
+    <tr>
+
+
+      <th>methods/properties</th>
+
+
+      <th style="width: 25%;">Table</th>
+
+
+      <th style="width: 25%;">List</th>
+
+
+      <th style="width: 25%;">Tree</th>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>selectionForeground</td>
+
+
+      <td colspan="2" rowspan="2">methods on component<br />
+
+
+installed by UI-Delegates</td>
+
+
+      <td>textSelection: renderer-property<br />
+
+
+installed in consructor from UIManager values</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>selectionBackground</td>
+
+
+      <td>backgroundSelection: renderer-property<br />
+
+
+installed in consructor from UIManager values</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>foreground (non-selection)</td>
+
+
+      <td colspan="1" rowspan="2"><br />
+
+
+same as component if no implicit <br />
+
+
+renderer methods implicitly sets renderer specific colors which take precedence over table's<br />
+
+
+      </td>
+
+
+      <td colspan="1" rowspan="2">same as component</td>
+
+
+      <td>textNotSelection: renderer-property<br />
+
+
+installed in consructor from UIManager values:</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>background (non-selection)</td>
+
+
+      <td>backgroundNotSelection: renderer-property<br />
+
+
+installed in consructor from UIManager values</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>renderer color configuration</td>
+
+
+      <td>calls super.setFore/Background in getRendererComp<br />
+
+
+Note: needs super.setXX to not trigger implicit color setting!</td>
+
+
+      <td>calls setFore/Background in getRendererComp</td>
+
+
+      <td>setForeground in getRendererComp<br />
+
+
+manual background painting in paint<br />
+
+
+Note: manual background paint needed for of icon handling<br />
+
+
+Note: manual background paint requires state storage</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>focus specials</td>
+
+
+      <td>background depends on editable</td>
+
+
+      <td>--</td>
+
+
+      <td>border/Non/SelectionColor</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>updateUI</td>
+
+
+      <td>resets implicit non-selection colors</td>
+
+
+      <td>--</td>
+
+
+      <td>--</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>opaque</td>
+
+
+      <td colspan="2" rowspan="1">true, magic in isOpaque</td>
+
+
+      <td>--</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>font</td>
+
+
+      <td colspan="2" rowspan="1">set to component's in getRendererComp</td>
+
+
+      <td>getFont overridden to return tree's if no renderer specific set<br />
+
+
+setFont overridden to null UIResource fonts</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>enabled</td>
+
+
+      <td>--</td>
+
+
+      <td colspan="2" rowspan="1">set to component's in getRendererComp</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>border</td>
+
+
+      <td colspan="2" rowspan="1">set depending on cell context</td>
+
+
+      <td>manual border painting in paint</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>componentOrientation</td>
+
+
+      <td>-- (<a href="http://bugs.sun.com/bugdatabase/view_bug.do?bug_id=6333197">core bug #6333197</a> - status?)</td>
+
+
+      <td colspan="2" rowspan="1">set to component's in getRendererComp</td>
+
+
+    </tr>
+
+
+    <tr>
+
+
+      <td>state between calls</td>
+
+
+      <td>--</td>
+
+
+      <td>--</td>
+
+
+      <td>tree<br />
+
+
+selected<br />
+
+
+focused</td>
+
+
+    </tr>
+
+
+  
+  
+  </tbody>
+</table>
+
+
+<br />
+
+<br />
+
+<h2>API&nbsp;</h2>
+
+<p>Parameters in getXXCellRendererComponent vs. members in ComponentAdapter</p>
+
+<br />
+
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+
+  <tbody>
+
+    <tr>
+
+      <th>Parameter</th>
+
+      <th style="width: 20%;">Table</th>
+
+      <th style="width: 20%;">List </th>
+
+      <th style="width: 20%;">Tree</th>
+
+      <th>ComponentAdapter</th>
+
+    </tr>
+
+    <tr>
+
+      <td>component</td>
+
+      <td>JTable</td>
+
+      <td>JList</td>
+
+      <td>JTree</td>
+
+      <td>JComponent getComponent()</td>
+
+    </tr>
+
+    <tr>
+
+      <td>value</td>
+
+      <td>Object</td>
+
+      <td>Object</td>
+
+      <td>Object</td>
+
+      <td>Object getValue()</td>
+
+    </tr>
+
+    <tr>
+
+      <td>selected</td>
+
+      <td>boolean</td>
+
+      <td>boolean</td>
+
+      <td>boolean</td>
+
+      <td>boolean isSelected()</td>
+
+    </tr>
+
+    <tr>
+
+      <td>focused</td>
+
+      <td>boolean</td>
+
+      <td>boolean</td>
+
+      <td>boolean</td>
+
+      <td>boolean hasFocus()</td>
+
+    </tr>
+
+    <tr>
+
+      <td>expanded</td>
+
+      <td>--</td>
+
+      <td>--</td>
+
+      <td>boolean</td>
+
+      <td>boolean isExpanded()</td>
+
+    </tr>
+
+    <tr>
+
+      <td>leaf</td>
+
+      <td>--</td>
+
+      <td>--</td>
+
+      <td>boolean</td>
+
+      <td>boolean isLeaf()</td>
+
+    </tr>
+
+    <tr>
+
+      <td>editable</td>
+
+      <td>--</td>
+
+      <td>--</td>
+
+      <td>--</td>
+
+      <td>--</td>
+
+    </tr>
+
+    <tr>
+
+      <td>row</td>
+
+      <td>int</td>
+
+      <td>int</td>
+
+      <td>int</td>
+
+      <td>int row</td>
+
+    </tr>
+
+    <tr>
+
+      <td>column</td>
+
+      <td>int</td>
+
+      <td>--</td>
+
+      <td>--</td>
+
+      <td>int column</td>
+
+    </tr>
+
+  
+  </tbody>
+</table>
+<br />
+<br />
+<span style="font-weight: bold;"><br />
+</span>
+<h2>Core Documentation</h2>
+<h3>JavaDoc</h3>
+<table style="text-align: left; width: 100%;" border="1" cellpadding="2" cellspacing="2">
+  <tbody>
+    <tr>
+      <th>JavaDoc</th>
+      <th style="width: 25%;">Table</th>
+      <th style="width: 25%;">List</th>
+      <th style="width: 25%;">Tree</th>
+    </tr>
+    <tr>
+      <td>interface class doc</td>
+      <td></td>
+      <td>used in paint as rubber stamp<br />
+has example</td>
+      <td>defines requirements to display a tree node<br />
+link to swing tutorial</td>
+    </tr>
+    <tr>
+      <td>interface method doc getXXComponent</td>
+      <td>returns the component used for drawing<br />
+used to configure the renderer&nbsp;</td>
+      <td>used in paint as rubber stamp<br />
+used outside of paint for calculating prefSize</td>
+      <td>returns component that the renderer uses to draw the node</td>
+    </tr>
+    <tr>
+      <td>default impl class doc</td>
+      <td>standard class for rendering (= displaying) a table cell</td>
+      <td>same (plus notes about performance overrides and serialization)</td>
+      <td>same (plus notes about performance overrides and serialization)</td>
+    </tr>
+    <tr>
+      <td>default impl method doc</td>
+      <td>returns default renderer</td>
+      <td>same</td>
+      <td>configures renderer based on passed-in context</td>
+    </tr>
+  </tbody>
+</table>
+<br />
+<br />
+Commons: <br />
+<ul>
+  <li>&lt;strong&gt;usage&lt;/strong&gt;: rubber stamp for &nbsp;drawing (== displaying, rendering), calculate preferredSize</li>
+  <li>&lt;strong&gt;responsibilities&lt;/strong&gt;: defines display
+requirements of object to render, configure the renderer/component
+based on context</li>
+</ul>
+<br />
+<h3>Tutorial&nbsp;</h3>
+Primary focus is on data-type: from&nbsp;how-to use tables "a cell
+renderer .. is used to draw all of the cells
+that contain the same type of data... think of it as a configurable ink
+stamp ... to stamp &nbsp;appropriately formatted data onto each cell".<br />
+<br />
+Primary customization advise: subclass the default renderer (wich is a
+subclass of JLabel) and/or subclass a Component to implement custom
+rendering requirements. (Side-note: it's on the borderline of violating
+the "Do not subclass Component for application need" rule).The example
+(ColorRenderer) again is type focused.<br />
+<br />
+
+
+</body>
+</html>

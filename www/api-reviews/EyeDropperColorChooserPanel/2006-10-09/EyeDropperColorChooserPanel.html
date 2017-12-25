@@ -1,0 +1,294 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>EyeDropperColorChooserPanel.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.java-numeric-literals {color: #780000}
+.java-keywords {color: #000099; font-family: Monospaced; font-weight: bold}
+.java-layer-method {font-family: Monospaced; font-weight: bold}
+.java-block-comment {color: #737373}
+.line-number {background-color: #e9e8e2}
+.java-string-literal {color: #99006b}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/Users/joshy/projects/current/swingx/src/java/org/jdesktop/swingx/color/EyeDropperColorChooserPanel.java</td></tr></table>
+<pre>
+<span class="line-number">  1</span> <span class="java-block-comment">/*</span>
+<span class="line-number">  2</span> <span class="java-block-comment"> * EyeDropperColorChooserPanel.java</span>
+<span class="line-number">  3</span> <span class="java-block-comment"> *</span>
+<span class="line-number">  4</span> <span class="java-block-comment"> * Created on February 28, 2006, 11:52 AM</span>
+<span class="line-number">  5</span> <span class="java-block-comment"> */</span>
+<span class="line-number">  6</span> 
+<span class="line-number">  7</span> <span class="java-keywords">package</span> org.jdesktop.swingx.color;
+<span class="line-number">  8</span> 
+<span class="line-number">  9</span> <span class="java-keywords">import</span> java.awt.*;
+<span class="line-number"> 10</span> <span class="java-keywords">import</span> java.awt.event.MouseEvent;
+<span class="line-number"> 11</span> <span class="java-keywords">import</span> java.awt.geom.Point2D;
+<span class="line-number"> 12</span> <span class="java-keywords">import</span> java.awt.image.BufferedImage;
+<span class="line-number"> 13</span> <span class="java-keywords">import</span> java.beans.PropertyChangeEvent;
+<span class="line-number"> 14</span> <span class="java-keywords">import</span> java.beans.PropertyChangeListener;
+<span class="line-number"> 15</span> <span class="java-keywords">import</span> javax.swing.*;
+<span class="line-number"> 16</span> <span class="java-keywords">import</span> javax.swing.colorchooser.AbstractColorChooserPanel;
+<span class="line-number"> 17</span> <span class="java-keywords">import</span> javax.swing.event.MouseInputAdapter;
+<span class="line-number"> 18</span> <span class="java-keywords">import</span> org.jdesktop.swingx.JXColorSelectionButton;
+<span class="line-number"> 19</span> 
+<span class="line-number"> 20</span> <span class="java-block-comment">/**</span>
+<span class="line-number"> 21</span> <span class="java-block-comment"> * &lt;p&gt;EyeDropperColorChooserPanel is a pluggable panel for the </span>
+<span class="line-number"> 22</span> <span class="java-block-comment"> * {@link JColorChooser} which allows the user to grab any </span>
+<span class="line-number"> 23</span> <span class="java-block-comment"> * color from the screen using a magnifying glass.&lt;/p&gt;</span>
+<span class="line-number"> 24</span> <span class="java-block-comment"> *</span>
+<span class="line-number"> 25</span> <span class="java-block-comment"> * &lt;p&gt;Example usage:&lt;/p&gt;</span>
+<span class="line-number"> 26</span> <span class="java-block-comment"> * &lt;pre&gt;&lt;code&gt;</span>
+<span class="line-number"> 27</span> <span class="java-block-comment"> *    public static void main(String ... args) {</span>
+<span class="line-number"> 28</span> <span class="java-block-comment">        SwingUtilities.invokeLater(new Runnable() {</span>
+<span class="line-number"> 29</span> <span class="java-block-comment">            public void run() {</span>
+<span class="line-number"> 30</span> <span class="java-block-comment">                JColorChooser chooser = new JColorChooser();</span>
+<span class="line-number"> 31</span> <span class="java-block-comment">                chooser.addChooserPanel(new EyeDropperColorChooserPanel());</span>
+<span class="line-number"> 32</span> <span class="java-block-comment">                JFrame frame = new JFrame();</span>
+<span class="line-number"> 33</span> <span class="java-block-comment">                frame.add(chooser);</span>
+<span class="line-number"> 34</span> <span class="java-block-comment">                frame.pack();</span>
+<span class="line-number"> 35</span> <span class="java-block-comment">                frame.setVisible(true);</span>
+<span class="line-number"> 36</span> <span class="java-block-comment">            }</span>
+<span class="line-number"> 37</span> <span class="java-block-comment">        });</span>
+<span class="line-number"> 38</span> <span class="java-block-comment">    }</span>
+<span class="line-number"> 39</span> <span class="java-block-comment"> * &lt;/code&gt;&lt;/pre&gt;</span>
+<span class="line-number"> 40</span> <span class="java-block-comment"> *</span>
+<span class="line-number"> 41</span> <span class="java-block-comment"> * @author joshua@marinacci.org</span>
+<span class="line-number"> 42</span> <span class="java-block-comment"> */</span>
+<span class="line-number"> 43</span> <span class="java-keywords">public</span> <span class="java-keywords">class</span> EyeDropperColorChooserPanel <span class="java-keywords">extends</span> AbstractColorChooserPanel {
+<span class="line-number"> 44</span>     <span class="java-keywords">private</span> Color oldColor;
+<span class="line-number"> 45</span>     
+<span class="line-number"> 46</span>     <span class="java-block-comment">/**</span>
+<span class="line-number"> 47</span> <span class="java-block-comment">     * Example usage</span>
+<span class="line-number"> 48</span> <span class="java-block-comment">     */</span>
+<span class="line-number"> 49</span>     <span class="java-keywords">public</span> <span class="java-keywords">static</span> <span class="java-keywords">void</span> <span class="java-layer-method">main</span>(String ... args) {
+<span class="line-number"> 50</span>         SwingUtilities.<span class="java-layer-method">invokeLater</span>(<span class="java-keywords">new</span> <span class="java-layer-method">Runnable</span>() {
+<span class="line-number"> 51</span>             <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">run</span>() {
+<span class="line-number"> 52</span>                 JColorChooser chooser = <span class="java-keywords">new</span> <span class="java-layer-method">JColorChooser</span>();
+<span class="line-number"> 53</span>                 chooser.<span class="java-layer-method">addChooserPanel</span>(<span class="java-keywords">new</span> <span class="java-layer-method">EyeDropperColorChooserPanel</span>());
+<span class="line-number"> 54</span>                 JFrame frame = <span class="java-keywords">new</span> <span class="java-layer-method">JFrame</span>();
+<span class="line-number"> 55</span>                 frame.<span class="java-layer-method">add</span>(chooser);
+<span class="line-number"> 56</span>                 frame.<span class="java-layer-method">pack</span>();
+<span class="line-number"> 57</span>                 frame.<span class="java-layer-method">setVisible</span>(<span class="java-keywords">true</span>);
+<span class="line-number"> 58</span>             }
+<span class="line-number"> 59</span>         });
+<span class="line-number"> 60</span>     }
+<span class="line-number"> 61</span>     
+<span class="line-number"> 62</span>     <span class="java-block-comment">/**</span>
+<span class="line-number"> 63</span> <span class="java-block-comment">     * Creates new EyeDropperColorChooserPanel</span>
+<span class="line-number"> 64</span> <span class="java-block-comment">     */</span>
+<span class="line-number"> 65</span>     <span class="java-keywords">public</span> <span class="java-layer-method">EyeDropperColorChooserPanel</span>() {
+<span class="line-number"> 66</span>         <span class="java-layer-method">initComponents</span>();
+<span class="line-number"> 67</span>         MouseInputAdapter mia = <span class="java-keywords">new</span> <span class="java-layer-method">MouseInputAdapter</span>() {
+<span class="line-number"> 68</span>             <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">mousePressed</span>(MouseEvent evt) {
+<span class="line-number"> 69</span>             }
+<span class="line-number"> 70</span>             <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">mouseDragged</span>(MouseEvent evt) {
+<span class="line-number"> 71</span>                 Point pt = evt.<span class="java-layer-method">getPoint</span>();
+<span class="line-number"> 72</span>                 SwingUtilities.<span class="java-layer-method">convertPointToScreen</span>(pt,evt.<span class="java-layer-method">getComponent</span>());
+<span class="line-number"> 73</span>                 ((MagnifyingPanel)magPanel).<span class="java-layer-method">setMagPoint</span>(pt);
+<span class="line-number"> 74</span>             }
+<span class="line-number"> 75</span>             <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">mouseReleased</span>(MouseEvent evt) {
+<span class="line-number"> 76</span>                 Color newColor = <span class="java-keywords">new</span> <span class="java-layer-method">Color</span>(((MagnifyingPanel)magPanel).activeColor);
+<span class="line-number"> 77</span>                 oldColor = newColor;
+<span class="line-number"> 78</span>                 <span class="java-layer-method">getColorSelectionModel</span>().<span class="java-layer-method">setSelectedColor</span>(oldColor);
+<span class="line-number"> 79</span>             }
+<span class="line-number"> 80</span>         };
+<span class="line-number"> 81</span>         eyeDropper.<span class="java-layer-method">addMouseListener</span>(mia);
+<span class="line-number"> 82</span>         eyeDropper.<span class="java-layer-method">addMouseMotionListener</span>(mia);
+<span class="line-number"> 83</span>         <span class="java-keywords">try</span> {
+<span class="line-number"> 84</span>             eyeDropper.<span class="java-layer-method">setIcon</span>(<span class="java-keywords">new</span> <span class="java-layer-method">ImageIcon</span>(<span class="java-layer-method">getClass</span>().<span class="java-layer-method">getResource</span>(<span class="java-string-literal">&quot;mag.png&quot;</span>)));
+<span class="line-number"> 85</span>             eyeDropper.<span class="java-layer-method">setText</span>(<span class="java-string-literal">&quot;&quot;</span>);
+<span class="line-number"> 86</span>         } <span class="java-keywords">catch</span> (Exception ex) {
+<span class="line-number"> 87</span>             
+<span class="line-number"> 88</span>         }
+<span class="line-number"> 89</span>         
+<span class="line-number"> 90</span>         magPanel.<span class="java-layer-method">addPropertyChangeListener</span>(<span class="java-keywords">new</span> <span class="java-layer-method">PropertyChangeListener</span>() {
+<span class="line-number"> 91</span>             <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">propertyChange</span>(PropertyChangeEvent evt) {
+<span class="line-number"> 92</span>                 Color color = <span class="java-keywords">new</span> <span class="java-layer-method">Color</span>(((MagnifyingPanel)magPanel).activeColor);
+<span class="line-number"> 93</span>                 activeColor.<span class="java-layer-method">setBackground</span>(color);
+<span class="line-number"> 94</span>                 hexColor.<span class="java-layer-method">setText</span>(ColorUtil.<span class="java-layer-method">toHexString</span>(color).<span class="java-layer-method">substring</span>(<span class="java-numeric-literals">1</span>));
+<span class="line-number"> 95</span>                 rgbColor.<span class="java-layer-method">setText</span>(color.<span class="java-layer-method">getRed</span>() +<span class="java-string-literal">&quot;,&quot;</span> + color.<span class="java-layer-method">getGreen</span>() + <span class="java-string-literal">&quot;,&quot;</span> + color.<span class="java-layer-method">getBlue</span>());
+<span class="line-number"> 96</span>             }
+<span class="line-number"> 97</span>         });
+<span class="line-number"> 98</span>     }
+<span class="line-number"> 99</span>     
+<span class="line-number">100</span>     <span class="java-keywords">private</span> <span class="java-keywords">class</span> MagnifyingPanel <span class="java-keywords">extends</span> JPanel {
+<span class="line-number">101</span>         <span class="java-keywords">private</span> Point2D point;
+<span class="line-number">102</span>         <span class="java-keywords">private</span> <span class="java-keywords">int</span> activeColor;
+<span class="line-number">103</span>         <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">setMagPoint</span>(Point2D point) {
+<span class="line-number">104</span>             <span class="java-keywords">this</span>.point = point;
+<span class="line-number">105</span>             <span class="java-layer-method">repaint</span>();
+<span class="line-number">106</span>         }
+<span class="line-number">107</span>         <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">paintComponent</span>(Graphics g) {
+<span class="line-number">108</span>             <span class="java-keywords">if</span>(point != <span class="java-keywords">null</span>) {
+<span class="line-number">109</span>                 Rectangle rect = <span class="java-keywords">new</span> <span class="java-layer-method">Rectangle</span>((<span class="java-keywords">int</span>)point.<span class="java-layer-method">getX</span>()-<span class="java-numeric-literals">10</span>,(<span class="java-keywords">int</span>)point.<span class="java-layer-method">getY</span>()-<span class="java-numeric-literals">10</span>,<span class="java-numeric-literals">20</span>,<span class="java-numeric-literals">20</span>);
+<span class="line-number">110</span>                 <span class="java-keywords">try</span> {
+<span class="line-number">111</span>                     BufferedImage img =<span class="java-keywords">new</span> <span class="java-layer-method">Robot</span>().<span class="java-layer-method">createScreenCapture</span>(rect);
+<span class="line-number">112</span>                     g.<span class="java-layer-method">drawImage</span>(img,<span class="java-numeric-literals">0</span>,<span class="java-numeric-literals">0</span>,<span class="java-layer-method">getWidth</span>(),<span class="java-layer-method">getHeight</span>(),<span class="java-keywords">null</span>);
+<span class="line-number">113</span>                     <span class="java-keywords">int</span> oldColor = activeColor;
+<span class="line-number">114</span>                     activeColor = img.<span class="java-layer-method">getRGB</span>(img.<span class="java-layer-method">getWidth</span>()/<span class="java-numeric-literals">2</span>,img.<span class="java-layer-method">getHeight</span>()/<span class="java-numeric-literals">2</span>);
+<span class="line-number">115</span>                     <span class="java-layer-method">firePropertyChange</span>(<span class="java-string-literal">&quot;activeColor&quot;</span>, oldColor, activeColor);
+<span class="line-number">116</span>                 } <span class="java-keywords">catch</span> (AWTException ex) {
+<span class="line-number">117</span>                     ex.<span class="java-layer-method">printStackTrace</span>();
+<span class="line-number">118</span>                 }
+<span class="line-number">119</span>             }
+<span class="line-number">120</span>             g.<span class="java-layer-method">setColor</span>(Color.black);
+<span class="line-number">121</span>             g.<span class="java-layer-method">drawRect</span>(<span class="java-layer-method">getWidth</span>()/<span class="java-numeric-literals">2</span> - <span class="java-numeric-literals">5</span>, <span class="java-layer-method">getHeight</span>()/<span class="java-numeric-literals">2</span> -<span class="java-numeric-literals">5</span>, <span class="java-numeric-literals">10</span>,<span class="java-numeric-literals">10</span>);
+<span class="line-number">122</span>         }
+<span class="line-number">123</span>     }
+<span class="line-number">124</span>     
+<span class="line-number">125</span>     
+<span class="line-number">126</span>     <span class="java-block-comment">/** This method is called from within the constructor to</span>
+<span class="line-number">127</span> <span class="java-block-comment">     * initialize the form.</span>
+<span class="line-number">128</span> <span class="java-block-comment">     * WARNING: Do NOT modify this code. The content of this method is</span>
+<span class="line-number">129</span> <span class="java-block-comment">     * always regenerated by the Form Editor.</span>
+<span class="line-number">130</span> <span class="java-block-comment">     */</span>
+<span class="line-number">131</span>     <span class="java-block-comment">// &lt;editor-fold defaultstate=&quot;collapsed&quot; desc=&quot; Generated Code &quot;&gt;                          </span>
+<span class="line-number">132</span>     <span class="java-keywords">private</span> <span class="java-keywords">void</span> <span class="java-layer-method">initComponents</span>() {
+<span class="line-number">133</span>         eyeDropper = <span class="java-keywords">new</span> javax.swing.<span class="java-layer-method">JButton</span>();
+<span class="line-number">134</span>         magPanel = <span class="java-keywords">new</span> <span class="java-layer-method">MagnifyingPanel</span>();
+<span class="line-number">135</span>         activeColor = <span class="java-keywords">new</span> <span class="java-layer-method">JXColorSelectionButton</span>();
+<span class="line-number">136</span>         hexColor = <span class="java-keywords">new</span> javax.swing.<span class="java-layer-method">JTextField</span>();
+<span class="line-number">137</span>         jTextArea1 = <span class="java-keywords">new</span> javax.swing.<span class="java-layer-method">JTextArea</span>();
+<span class="line-number">138</span>         jLabel1 = <span class="java-keywords">new</span> javax.swing.<span class="java-layer-method">JLabel</span>();
+<span class="line-number">139</span>         rgbColor = <span class="java-keywords">new</span> javax.swing.<span class="java-layer-method">JTextField</span>();
+<span class="line-number">140</span>         jLabel2 = <span class="java-keywords">new</span> javax.swing.<span class="java-layer-method">JLabel</span>();
+<span class="line-number">141</span> 
+<span class="line-number">142</span>         eyeDropper.<span class="java-layer-method">setText</span>(<span class="java-string-literal">&quot;eye&quot;</span>);
+<span class="line-number">143</span> 
+<span class="line-number">144</span>         magPanel.<span class="java-layer-method">setBorder</span>(javax.swing.BorderFactory.<span class="java-layer-method">createLineBorder</span>(<span class="java-keywords">new</span> java.awt.<span class="java-layer-method">Color</span>(<span class="java-numeric-literals">0</span>, <span class="java-numeric-literals">0</span>, <span class="java-numeric-literals">0</span>)));
+<span class="line-number">145</span>         org.jdesktop.layout.GroupLayout magPanelLayout = <span class="java-keywords">new</span> org.jdesktop.layout.<span class="java-layer-method">GroupLayout</span>(magPanel);
+<span class="line-number">146</span>         magPanel.<span class="java-layer-method">setLayout</span>(magPanelLayout);
+<span class="line-number">147</span>         magPanelLayout.<span class="java-layer-method">setHorizontalGroup</span>(
+<span class="line-number">148</span>             magPanelLayout.<span class="java-layer-method">createParallelGroup</span>(org.jdesktop.layout.GroupLayout.LEADING)
+<span class="line-number">149</span>             .<span class="java-layer-method">add</span>(<span class="java-numeric-literals">0</span>, <span class="java-numeric-literals">100</span>, Short.MAX_VALUE)
+<span class="line-number">150</span>         );
+<span class="line-number">151</span>         magPanelLayout.<span class="java-layer-method">setVerticalGroup</span>(
+<span class="line-number">152</span>             magPanelLayout.<span class="java-layer-method">createParallelGroup</span>(org.jdesktop.layout.GroupLayout.LEADING)
+<span class="line-number">153</span>             .<span class="java-layer-method">add</span>(<span class="java-numeric-literals">0</span>, <span class="java-numeric-literals">100</span>, Short.MAX_VALUE)
+<span class="line-number">154</span>         );
+<span class="line-number">155</span> 
+<span class="line-number">156</span>         activeColor.<span class="java-layer-method">setEnabled</span>(<span class="java-keywords">false</span>);
+<span class="line-number">157</span>         activeColor.<span class="java-layer-method">setPreferredSize</span>(<span class="java-keywords">new</span> java.awt.<span class="java-layer-method">Dimension</span>(<span class="java-numeric-literals">40</span>, <span class="java-numeric-literals">40</span>));
+<span class="line-number">158</span> 
+<span class="line-number">159</span>         hexColor.<span class="java-layer-method">setEditable</span>(<span class="java-keywords">false</span>);
+<span class="line-number">160</span> 
+<span class="line-number">161</span>         jTextArea1.<span class="java-layer-method">setColumns</span>(<span class="java-numeric-literals">20</span>);
+<span class="line-number">162</span>         jTextArea1.<span class="java-layer-method">setEditable</span>(<span class="java-keywords">false</span>);
+<span class="line-number">163</span>         jTextArea1.<span class="java-layer-method">setLineWrap</span>(<span class="java-keywords">true</span>);
+<span class="line-number">164</span>         jTextArea1.<span class="java-layer-method">setRows</span>(<span class="java-numeric-literals">5</span>);
+<span class="line-number">165</span>         jTextArea1.<span class="java-layer-method">setText</span>(<span class="java-string-literal">&quot;Drag the magnifying glass to select a color from the screen.&quot;</span>);
+<span class="line-number">166</span>         jTextArea1.<span class="java-layer-method">setWrapStyleWord</span>(<span class="java-keywords">true</span>);
+<span class="line-number">167</span>         jTextArea1.<span class="java-layer-method">setOpaque</span>(<span class="java-keywords">false</span>);
+<span class="line-number">168</span> 
+<span class="line-number">169</span>         jLabel1.<span class="java-layer-method">setText</span>(<span class="java-string-literal">&quot;#&quot;</span>);
+<span class="line-number">170</span> 
+<span class="line-number">171</span>         rgbColor.<span class="java-layer-method">setEditable</span>(<span class="java-keywords">false</span>);
+<span class="line-number">172</span>         rgbColor.<span class="java-layer-method">setText</span>(<span class="java-string-literal">&quot;255,255,255&quot;</span>);
+<span class="line-number">173</span> 
+<span class="line-number">174</span>         jLabel2.<span class="java-layer-method">setText</span>(<span class="java-string-literal">&quot;RGB&quot;</span>);
+<span class="line-number">175</span> 
+<span class="line-number">176</span>         org.jdesktop.layout.GroupLayout layout = <span class="java-keywords">new</span> org.jdesktop.layout.<span class="java-layer-method">GroupLayout</span>(<span class="java-keywords">this</span>);
+<span class="line-number">177</span>         <span class="java-keywords">this</span>.<span class="java-layer-method">setLayout</span>(layout);
+<span class="line-number">178</span>         layout.<span class="java-layer-method">setHorizontalGroup</span>(
+<span class="line-number">179</span>             layout.<span class="java-layer-method">createParallelGroup</span>(org.jdesktop.layout.GroupLayout.LEADING)
+<span class="line-number">180</span>             .<span class="java-layer-method">add</span>(layout.<span class="java-layer-method">createSequentialGroup</span>()
+<span class="line-number">181</span>                 .<span class="java-layer-method">addContainerGap</span>()
+<span class="line-number">182</span>                 .<span class="java-layer-method">add</span>(layout.<span class="java-layer-method">createParallelGroup</span>(org.jdesktop.layout.GroupLayout.LEADING)
+<span class="line-number">183</span>                     .<span class="java-layer-method">add</span>(layout.<span class="java-layer-method">createSequentialGroup</span>()
+<span class="line-number">184</span>                         .<span class="java-layer-method">add</span>(magPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+<span class="line-number">185</span>                         .<span class="java-layer-method">addPreferredGap</span>(org.jdesktop.layout.LayoutStyle.RELATED)
+<span class="line-number">186</span>                         .<span class="java-layer-method">add</span>(layout.<span class="java-layer-method">createParallelGroup</span>(org.jdesktop.layout.GroupLayout.LEADING)
+<span class="line-number">187</span>                             .<span class="java-layer-method">add</span>(org.jdesktop.layout.GroupLayout.TRAILING, jLabel1)
+<span class="line-number">188</span>                             .<span class="java-layer-method">add</span>(org.jdesktop.layout.GroupLayout.TRAILING, jLabel2))
+<span class="line-number">189</span>                         .<span class="java-layer-method">addPreferredGap</span>(org.jdesktop.layout.LayoutStyle.RELATED)
+<span class="line-number">190</span>                         .<span class="java-layer-method">add</span>(layout.<span class="java-layer-method">createParallelGroup</span>(org.jdesktop.layout.GroupLayout.TRAILING)
+<span class="line-number">191</span>                             .<span class="java-layer-method">add</span>(org.jdesktop.layout.GroupLayout.LEADING, hexColor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, <span class="java-numeric-literals">97</span>, Short.MAX_VALUE)
+<span class="line-number">192</span>                             .<span class="java-layer-method">add</span>(org.jdesktop.layout.GroupLayout.LEADING, rgbColor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, <span class="java-numeric-literals">97</span>, Short.MAX_VALUE)
+<span class="line-number">193</span>                             .<span class="java-layer-method">add</span>(activeColor, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, <span class="java-numeric-literals">97</span>, Short.MAX_VALUE)))
+<span class="line-number">194</span>                     .<span class="java-layer-method">add</span>(layout.<span class="java-layer-method">createSequentialGroup</span>()
+<span class="line-number">195</span>                         .<span class="java-layer-method">add</span>(eyeDropper)
+<span class="line-number">196</span>                         .<span class="java-layer-method">addPreferredGap</span>(org.jdesktop.layout.LayoutStyle.RELATED)
+<span class="line-number">197</span>                         .<span class="java-layer-method">add</span>(jTextArea1, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, <span class="java-numeric-literals">157</span>, Short.MAX_VALUE)))
+<span class="line-number">198</span>                 .<span class="java-layer-method">addContainerGap</span>())
+<span class="line-number">199</span>         );
+<span class="line-number">200</span>         layout.<span class="java-layer-method">setVerticalGroup</span>(
+<span class="line-number">201</span>             layout.<span class="java-layer-method">createParallelGroup</span>(org.jdesktop.layout.GroupLayout.LEADING)
+<span class="line-number">202</span>             .<span class="java-layer-method">add</span>(layout.<span class="java-layer-method">createSequentialGroup</span>()
+<span class="line-number">203</span>                 .<span class="java-layer-method">addContainerGap</span>()
+<span class="line-number">204</span>                 .<span class="java-layer-method">add</span>(layout.<span class="java-layer-method">createParallelGroup</span>(org.jdesktop.layout.GroupLayout.LEADING)
+<span class="line-number">205</span>                     .<span class="java-layer-method">add</span>(jTextArea1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, <span class="java-numeric-literals">52</span>, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)
+<span class="line-number">206</span>                     .<span class="java-layer-method">add</span>(eyeDropper))
+<span class="line-number">207</span>                 .<span class="java-layer-method">addPreferredGap</span>(org.jdesktop.layout.LayoutStyle.RELATED)
+<span class="line-number">208</span>                 .<span class="java-layer-method">add</span>(layout.<span class="java-layer-method">createParallelGroup</span>(org.jdesktop.layout.GroupLayout.TRAILING)
+<span class="line-number">209</span>                     .<span class="java-layer-method">add</span>(org.jdesktop.layout.GroupLayout.LEADING, layout.<span class="java-layer-method">createSequentialGroup</span>()
+<span class="line-number">210</span>                         .<span class="java-layer-method">add</span>(layout.<span class="java-layer-method">createParallelGroup</span>(org.jdesktop.layout.GroupLayout.LEADING)
+<span class="line-number">211</span>                             .<span class="java-layer-method">add</span>(org.jdesktop.layout.GroupLayout.TRAILING, layout.<span class="java-layer-method">createSequentialGroup</span>()
+<span class="line-number">212</span>                                 .<span class="java-layer-method">add</span>(layout.<span class="java-layer-method">createParallelGroup</span>(org.jdesktop.layout.GroupLayout.BASELINE)
+<span class="line-number">213</span>                                     .<span class="java-layer-method">add</span>(jLabel2)
+<span class="line-number">214</span>                                     .<span class="java-layer-method">add</span>(rgbColor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+<span class="line-number">215</span>                                 .<span class="java-layer-method">addPreferredGap</span>(org.jdesktop.layout.LayoutStyle.RELATED)
+<span class="line-number">216</span>                                 .<span class="java-layer-method">add</span>(hexColor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+<span class="line-number">217</span>                             .<span class="java-layer-method">add</span>(org.jdesktop.layout.GroupLayout.TRAILING, jLabel1))
+<span class="line-number">218</span>                         .<span class="java-layer-method">addPreferredGap</span>(org.jdesktop.layout.LayoutStyle.RELATED, <span class="java-numeric-literals">14</span>, Short.MAX_VALUE)
+<span class="line-number">219</span>                         .<span class="java-layer-method">add</span>(activeColor, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+<span class="line-number">220</span>                     .<span class="java-layer-method">add</span>(magPanel, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE))
+<span class="line-number">221</span>                 .<span class="java-layer-method">addContainerGap</span>())
+<span class="line-number">222</span>         );
+<span class="line-number">223</span>     }<span class="java-block-comment">// &lt;/editor-fold&gt;                        </span>
+<span class="line-number">224</span>     
+<span class="line-number">225</span>     
+<span class="line-number">226</span>     <span class="java-block-comment">// Variables declaration - do not modify                     </span>
+<span class="line-number">227</span>     <span class="java-keywords">private</span> javax.swing.JButton activeColor;
+<span class="line-number">228</span>     <span class="java-keywords">private</span> javax.swing.JButton eyeDropper;
+<span class="line-number">229</span>     <span class="java-keywords">private</span> javax.swing.JTextField hexColor;
+<span class="line-number">230</span>     <span class="java-keywords">private</span> javax.swing.JLabel jLabel1;
+<span class="line-number">231</span>     <span class="java-keywords">private</span> javax.swing.JLabel jLabel2;
+<span class="line-number">232</span>     <span class="java-keywords">private</span> javax.swing.JTextArea jTextArea1;
+<span class="line-number">233</span>     <span class="java-keywords">private</span> javax.swing.JPanel magPanel;
+<span class="line-number">234</span>     <span class="java-keywords">private</span> javax.swing.JTextField rgbColor;
+<span class="line-number">235</span>     <span class="java-block-comment">// End of variables declaration                   </span>
+<span class="line-number">236</span>     
+<span class="line-number">237</span>     <span class="java-block-comment">/**</span>
+<span class="line-number">238</span> <span class="java-block-comment">     * {@inheritDoc}</span>
+<span class="line-number">239</span> <span class="java-block-comment">     */</span>
+<span class="line-number">240</span>     <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">updateChooser</span>() {
+<span class="line-number">241</span>     }
+<span class="line-number">242</span>     
+<span class="line-number">243</span>     <span class="java-block-comment">/**</span>
+<span class="line-number">244</span> <span class="java-block-comment">     * {@inheritDoc}</span>
+<span class="line-number">245</span> <span class="java-block-comment">     */</span>
+<span class="line-number">246</span>     <span class="java-keywords">protected</span> <span class="java-keywords">void</span> <span class="java-layer-method">buildChooser</span>() {
+<span class="line-number">247</span>     }
+<span class="line-number">248</span>     
+<span class="line-number">249</span>     <span class="java-block-comment">/**</span>
+<span class="line-number">250</span> <span class="java-block-comment">     * {@inheritDoc}</span>
+<span class="line-number">251</span> <span class="java-block-comment">     */</span>
+<span class="line-number">252</span>     <span class="java-keywords">public</span> String <span class="java-layer-method">getDisplayName</span>() {
+<span class="line-number">253</span>         <span class="java-keywords">return</span> <span class="java-string-literal">&quot;Grab from Screen&quot;</span>;
+<span class="line-number">254</span>     }
+<span class="line-number">255</span>     
+<span class="line-number">256</span>     <span class="java-block-comment">/**</span>
+<span class="line-number">257</span> <span class="java-block-comment">     * {@inheritDoc}</span>
+<span class="line-number">258</span> <span class="java-block-comment">     */</span>
+<span class="line-number">259</span>     <span class="java-keywords">public</span> Icon <span class="java-layer-method">getSmallDisplayIcon</span>() {
+<span class="line-number">260</span>         <span class="java-keywords">return</span> <span class="java-keywords">new</span> <span class="java-layer-method">ImageIcon</span>();
+<span class="line-number">261</span>     }
+<span class="line-number">262</span>     
+<span class="line-number">263</span>     <span class="java-block-comment">/**</span>
+<span class="line-number">264</span> <span class="java-block-comment">     * {@inheritDoc}</span>
+<span class="line-number">265</span> <span class="java-block-comment">     */</span>
+<span class="line-number">266</span>     <span class="java-keywords">public</span> Icon <span class="java-layer-method">getLargeDisplayIcon</span>() {
+<span class="line-number">267</span>         <span class="java-keywords">return</span> <span class="java-keywords">new</span> <span class="java-layer-method">ImageIcon</span>();
+<span class="line-number">268</span>     }
+<span class="line-number">269</span> }
+<span class="line-number">270</span> 
+
+</pre></body>
+</html>

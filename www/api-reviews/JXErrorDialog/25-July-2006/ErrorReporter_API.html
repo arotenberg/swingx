@@ -1,0 +1,43 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<title>ErrorReporter_API.java</title>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+<style type="text/css">
+<!--
+body {color: #000000; background-color: #ffffff; font-family: Monospaced}
+table {color: #000000; background-color: #e9e8e2; font-family: Monospaced}
+.java-layer-method {font-family: Monospaced; font-weight: bold}
+.java-keywords {color: #000099; font-family: Monospaced; font-weight: bold}
+.java-block-comment {color: #737373}
+-->
+</style>
+</head>
+<body>
+<table width="100%"><tr><td align="center">/Users/richardallenbair/Documents/Source/Projects/nonsense/swingx/src/beaninfo/ErrorReporter_API.java</td></tr></table>
+<pre>
+<span class="java-keywords">package</span> org.jdesktop.swingx.error;
+
+<span class="java-block-comment">/**</span>
+<span class="java-block-comment"> * &lt;p&gt;ErrorReporter is used by {@link JXErrorDialog} to implement a pluggable</span>
+<span class="java-block-comment"> * error reporting API. For example, a &lt;code&gt;JXErrorDialog&lt;/code&gt; may use</span>
+<span class="java-block-comment"> * an {@link EmailErrorReporter}, or a {@link LogErrorReporter}, or</span>
+<span class="java-block-comment"> * perhaps even an &lt;code&gt;RSSErrorReporter&lt;/code&gt;.&lt;/p&gt;</span>
+<span class="java-block-comment"> *</span>
+<span class="java-block-comment"> * @author Alexander Zuev</span>
+<span class="java-block-comment"> * @author rbair</span>
+<span class="java-block-comment"> * @version 1.0</span>
+<span class="java-block-comment"> */</span>
+<span class="java-keywords">public</span> <span class="java-keywords">interface</span> ErrorReporter {
+    <span class="java-block-comment">/**</span>
+<span class="java-block-comment">     * &lt;p&gt;Reports an incident based on the given {@link IncidentInfo}. This</span>
+<span class="java-block-comment">     * method may be a long running method, and so should not block the EDT in</span>
+<span class="java-block-comment">     * any way.&lt;/p&gt;</span>
+<span class="java-block-comment">     *</span>
+<span class="java-block-comment">     * @param info encapsulates all information to report using this facility</span>
+<span class="java-block-comment">     */</span>
+    <span class="java-keywords">public</span> <span class="java-keywords">void</span> <span class="java-layer-method">reportIncident</span>(IncidentInfo info);
+}
+
+</pre></body>
+</html>

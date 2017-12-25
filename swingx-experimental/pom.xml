@@ -1,0 +1,14 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <artifactId>swingx-project</artifactId>
+    <groupId>org.swinglabs.swingx</groupId>
+    <version>1.6.5-1-SNAPSHOT</version>
+    <relativePath>../pom.xml</relativePath>
+  </parent>
+  <artifactId>swingx-experimental</artifactId>
+  <name>SwingX Experimental Code</name>
+  <description>The code in the experimental module works, but may have shortcomings, such as limited testing, partial implementations, or risky features.  This code may disappear from the SwingX distributions at any time.  Use and feedback on this code can also make it stable enough to migrate to a standard SwingX module.  Any migrations to core modules may include class renamings or other API changes depending on review.
+
+Note: the contents of this module will never appear in a SwingX aggregation module.</description>
+</project>
