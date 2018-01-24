@@ -9,6 +9,12 @@ released.
 The code was downloaded from https://svn.java.net/svn/swingx~svn/trunk. The downloaded commit was
 SVN revision 4316 by user "kleopatra", made at 11:59:46 AM, Wednesday, October 09, 2013.
 
+Other repositories have copies of the entire original SVN revision history:
+* https://github.com/RockManJoe64/swingx
+* https://github.com/ebourg/swingx
+
+See also this Stack Overflow question and its answers and comments: https://stackoverflow.com/questions/6818528/what-is-the-status-of-swinglabs-swingx-post-acquisition
+
 ## Eclipse import and the SwingXSet demo program
 
 The original SwingX source code included Maven pom.xml files, but did not include any development
